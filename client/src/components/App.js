@@ -5,7 +5,7 @@ import axios from 'axios';
 import Nav from './Nav';
 import Menu from './Menu.js';
 import Workthrough from './Workthrough/Index.js';
-import Progress from './Progress.js';
+import Progress from './Progress/Index.js';
 import Signup from './Signup/Index.js';
 import Static from './Static';
 import Login from './Login.js';
