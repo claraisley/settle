@@ -1,5 +1,5 @@
 import React from "react";
-import MenuItem from "./menuItem.js";
+import MenuItem from "./MenuItem.js";
 
 export default function Menu() {
   return (

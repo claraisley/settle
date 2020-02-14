@@ -1,5 +1,5 @@
 import React from "react";
-import StaticItem from "./menuItem.js";
+import StaticItem from "./StaticItem.js";
 
 export default function Static() {
   return (
