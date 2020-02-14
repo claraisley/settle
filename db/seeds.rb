@@ -7,3 +7,5 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 User.create(first_name: "Katherine", last_name: "Szelag", email: "katherine.szelag@alum.utoronto.ca")
+
+Interest
