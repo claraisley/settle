@@ -1,8 +1,9 @@
 class UsersController < ApplicationController
 
+
   def index
-    
-    render json: {value: 'hello!'}
+    @users = User.all
+    render json: @users
   end
 
 end
