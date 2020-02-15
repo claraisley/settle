@@ -4,11 +4,11 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Nav from './Nav';
 import useApplicationData from "../hooks/useApplicationData.js";
 
-const GlobalStyle =
-  createGlobalStyle`
-    body {
-      background-color: #3c445c
-    }`;
+// const GlobalStyle =
+//   createGlobalStyle`
+//     body {
+//       background-color: #3c445c
+//     }`;
 function App() {
 
   const {
