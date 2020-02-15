@@ -4,6 +4,11 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Nav from './Nav';
 import useApplicationData from "../hooks/useApplicationData.js";
 
+const GlobalStyle =
+  createGlobalStyle`
+    body {
+      background-color: #3c445c
+    }`;
 function App() {
 
   const {
@@ -15,9 +20,9 @@ function App() {
 
   const routes = links.map((link, index) => {
     return (
-      <Route 
-      key={index}
-      path={link.path} >
+      <Route
+        key={index}
+        path={link.path} >
         {link.component}
       </Route>
     )
@@ -27,13 +32,13 @@ function App() {
     <div>
       <h1>settle</h1>
       <Router>
-        <Nav 
-        links={links} />
+        <Nav
+          links={links} />
         <Switch>
           {routes}
         </Switch>
       </Router>
-    </div>
+    </div >
   );
 }
 
