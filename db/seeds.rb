@@ -29,13 +29,15 @@ catastrophizing = ThinkingTrap.create!(
   name: "Catastrophizing", 
   example_statement1: "I will fail this test and then fail my course.", 
   example_statement2: "When I get to the test I'm going to completely blank and everyone around me will notice.", 
-  text: "Catastrophizing is when we imagine that the worst possible scenerio is about to happen. Not only does our brain jumps to the worst possible outcome, we also predict that we wont be able to cope when it happens. But, the imagined worst-case scenario usually never happens and even if it did, we are most likely able to cope with it. We can also catastrophize a current situtation by believing that something is far worse than it actually is. Either way, these are irrational thoughts involving the belief that you’re in a worse situation than you really are.", definition: "Catastrophizing is when someone assumes that the worst will happen."
+  text: "Catastrophizing is when we imagine that the worst possible scenerio is about to happen. Not only does our brain jumps to the worst possible outcome, we also predict that we wont be able to cope when it happens. But, the imagined worst-case scenario usually never happens and even if it did, we are most likely able to cope with it. We can also catastrophize a current situtation by believing that something is far worse than it actually is. Either way, these are irrational thoughts involving the belief that you’re in a worse situation than you really are.",
+  definition: "Catastrophizing is when someone assumes that the worst will happen."
   )
 filtering = ThinkingTrap.create!(
   name: "Filtering",
   example_statement1: "I left 3 questions blank, my mark will be horrible",
   example_statement2: "Who cares if I did great on my english test, my math test will still go poorly.",
-  text: "When we fall into the thinking trap of Filtering, we pay attention only to the negative aspects and ignore all the positive ones. It's hard to have balanced thoughts if you only focus on the negative. You are more than your test anxiety and there are many good things about you!"
+  text: "When we fall into the thinking trap of Filtering, we pay attention only to the negative aspects and ignore all the positive ones. It's hard to have balanced thoughts if you only focus on the negative. You are more than your test anxiety and there are many good things about you!",
+  definition: "Filtering involves only paying attention to the negative aspects of a situation while ignoring all the positive"
 )
 
 
