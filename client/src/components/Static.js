@@ -1,7 +1,7 @@
 import React from "react";
 import StaticItem from "./StaticItem.js";
 
-export default function Static(props) {
+export default function StaticPage(props) {
 
   const meditations = [
     {"id": 1, "name": "One minute", "value": "www.google.ca"},
