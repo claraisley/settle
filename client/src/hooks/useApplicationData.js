@@ -85,22 +85,22 @@ export default function useApplicationData() {
     {
       name: "What is test anxiety?",
       path: "/test-anxiety",
-      component: <StaticPage data={state.pages.testAnxiety} />
+      component: <StaticPage title={"What is test anxiety?"} data={state.pages.testAnxiety} />
     },
     {
       name: "Thinking Traps",
       path: "/thinking-traps",
-      component: <StaticPage data={state.pages.thinkingTraps} />
+      component: <StaticPage title={"Thinking Traps"} data={state.pages.thinkingTraps} />
     },
     {
       name: "Tips/Tricks",
       path: "/tips-tricks",
-      component: <StaticPage data={state.pages.tipsTricks} />
+      component: <StaticPage title={"Tips and Tricks"} data={state.pages.tipsTricks} />
     },
     {
       name: "Meditations",
       path: "/meditations",
-      component: <StaticPage data={state.pages.meditations} />
+      component: <StaticPage title={"Meditations"} data={state.pages.meditations} />
     }
   ]
 

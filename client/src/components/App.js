@@ -15,7 +15,6 @@ function App() {
     state, links
   } = useApplicationData();
 
-  console.log("state", state)
   // getPages
   // getUsers
 
