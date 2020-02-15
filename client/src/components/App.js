@@ -13,7 +13,7 @@ import useApplicationData from "../hooks/useApplicationData.js";
 function App() {
 
   const {
-    pages, links
+    state, links
   } = useApplicationData();
 
   // getPages
