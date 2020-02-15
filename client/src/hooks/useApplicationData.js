@@ -5,6 +5,7 @@ import Workthrough from '../components/Workthrough/Index.js';
 import Progress from '../components/Progress/Index.js';
 import Signup from '../components/Signup/Index.js';
 import StaticPage from '../components/StaticPage';
+import Meditation from '../components/Meditation';
 import Login from '../components/Login.js';
 
 export default function useApplicationData() {
@@ -100,7 +101,7 @@ export default function useApplicationData() {
     {
       name: "Meditations",
       path: "/meditations",
-      component: <StaticPage title={"Meditations"} data={state.pages.meditations} />
+      component: <Meditation />
     }
   ]
 
