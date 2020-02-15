@@ -6,12 +6,15 @@ import * as serviceWorker from './serviceWorker';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import { Button, Box, Container, CssBaseline } from '@material-ui/core';
 
-import red from '@material-ui/core/colors/red';
+import deepOrange from '@material-ui/core/colors/deepOrange';
+
 
 const theme = createMuiTheme({
   palette: {
-    primary: red,
-    background: {
+    primary: {
+      main: deepOrange[400],
+    },
+      background: {
       // light: will be calculated from palette.primary.main,
       default: '#353c52',
     }
