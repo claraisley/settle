@@ -2,7 +2,14 @@ import React from 'react';
 import './App.css';
 import axios from 'axios';
 import Nav from './Nav';
+import { createGlobalStyle } from 'styled-components'
 
+
+    const GlobalStyle = 
+    createGlobalStyle`
+    body {
+      background-color: #3c445c
+    }`;
 function App() {
 
   axios.request({
@@ -21,12 +28,19 @@ function App() {
       console.log(error);
     });
 
+    // CSS STYLING
+
+
+  
 
   return (
-    <div>
+    <GlobalStyle>
+       <div>
       <h1>settle</h1>
       <Nav />
-    </div>
+    </div>   
+    </GlobalStyle>
+
   );
 }
 
