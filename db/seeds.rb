@@ -22,7 +22,7 @@ UserInterest.create!(user: User.first, interest: Interest.first, value: "Charlie
 
 Thought.destroy_all
 q1 = Thought.create!(interest: pet_interest, text: "If I mess this test up, will [pet name] be there for me when I get home?")
-
+q2 = Thought.create!(interest: NIL, text: "People can tell when I am feeling anxious.")
 
 ThinkingTrap.destroy_all
 catastrophizing = ThinkingTrap.create!(
@@ -37,6 +37,13 @@ filtering = ThinkingTrap.create!(
   example_statement2: "Who cares if I did great on my english test, my math test will still go poorly.",
   text: "When we fall into the thinking trap of Filtering, we pay attention only to the negative aspects and ignore all the positive ones. It's hard to have balanced thoughts if you only focus on the negative. You are more than your test anxiety and there are many good things about you!"
 )
+
+
+
+
+
+
+
 
 
 Response.destroy_all
@@ -59,6 +66,28 @@ r3 = Response.create!(
   text: "No, they'll be upset if I fail the test."
 )
 
+
+r4 = Response.create!(
+  thought: q2,
+  thinking_trap: catastrophizing,
+  value: 2,
+  text: "Yes, everyone will know I'm freaking out. "
+)
+r5 = Response.create!(
+  thought: q2,
+  thinking_trap: catastrophizing,
+  value: 1,
+  text: "Probably not."
+)
+r6 = Response.create!(
+  thought: q2,
+  thinking_trap: catastrophizing,
+  value: 0,
+  text: "No, people will be busy with their own test. "
+)
+
+
+
 FollowUp.destroy_all
 f1 = FollowUp.create!(
   response: r1,
@@ -76,8 +105,21 @@ f3 = FollowUp.create!(
   text:"If your pet could understand the situation I don't think they would agree. You are more than your test results. This type of thinking could fall under Filtering, you are focusing on the bad over the good. A more balanced conclusion could include the following: There are good things in my life like [pet name], this upcoming test does not out weight those things."
 )
 
-
-
+f4 = FollowUp.create!(
+  response: r4,
+  thinking_trap: catastrophizing,
+  text:" We can agree that before and during the test you may feel anxious, and that's totally normal - t’s OK that you are anxious. But people around you cannot read your mind, you classmates and teacher will NOT know you are anxious. Resist the urge to fall into the Catastrophizing thinking trap, the worst-case-scenerio you imagined will not happen. Repeat this thought in your head as many times as you need: 'People around me cannot tell when I feel anxious.'"
+)
+f5 = FollowUp.create!(
+  response: r5,
+  thinking_trap: catastrophizing,
+  text:" It is perfectly normal to feel anxious going into a test, but people around you cannot read your mind. Your classmates and teacher will NOT know you are anxious. Repeat this thought in your head as many times as you need: 'People around me cannot tell when I feel anxious.'"
+)
+f6 = FollowUp.create!(
+  response: r6,
+  thinking_trap: catastrophizing,
+  text:"You are right, people cannot tell when you are feeling anxious. Great job on being kind to yourelf. Keep challenging the anxious thoughts with these coping statements: 'I have taken many tests in my life, I know I can hanlde this.' 'My anxiety won't last forever' "
+)
 
 
 Tip.destroy_all
