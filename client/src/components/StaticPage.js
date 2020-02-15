@@ -16,8 +16,6 @@ export default function StaticPage(props) {
     value={meditation.value} />
   })
 
-  console.log(items)
-
   return (
     <main className="static">
       <h2>Static</h2>
