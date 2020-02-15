@@ -1,8 +1,16 @@
 import React from 'react';
 import './App.css';
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import axios from 'axios';
 import Nav from './Nav';
 import { createGlobalStyle } from 'styled-components'
+import Menu from './Menu.js';
+import Workthrough from './Workthrough/Index.js';
+import Progress from './Progress/Index.js';
+import Signup from './Signup/Index.js';
+import Static from './Static';
+import Login from './Login.js';
+
 
 
     const GlobalStyle = 
@@ -37,10 +45,33 @@ function App() {
     <GlobalStyle>
        <div>
       <h1>settle</h1>
+      <Router>
       <Nav />
     </div>   
     </GlobalStyle>
 
+        <Switch>
+          <Route path="/menu">
+            <Menu />
+          </Route>
+          <Route path="/workthrough">
+            <Workthrough />
+          </Route>
+          <Route path="/progress">
+            <Progress />
+          </Route>
+          <Route path="/signup">
+            <Signup />
+          </Route>
+          <Route path="/static">
+            <Static />
+          </Route>
+          <Route path="/login">
+            <Login />
+          </Route>
+        </Switch>
+      </Router>
+    </div>
   );
 }
 
