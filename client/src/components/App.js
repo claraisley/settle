@@ -12,9 +12,10 @@ import useApplicationData from "../hooks/useApplicationData.js";
 function App() {
 
   const {
-    pages, links
+    state, links
   } = useApplicationData();
 
+  console.log("state", state)
   // getPages
   // getUsers
 
