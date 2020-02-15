@@ -1,3 +1,4 @@
 class Interest < ApplicationRecord
-  belongs_to :user
+  has_many :user_interests
+  has_many :thoughts
 end
