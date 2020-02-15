@@ -95,12 +95,10 @@ export default function Nav(props) {
   const navList = props.links.map(link => {
     return (
       <List>
-        <ListItem button key={link.path}>
-          <Link to={link.path} href={link.path}></Link>
-
-        <ListItemText primary={link.name} />
-      </ListItem>
-    </List>
+        <ListItem button key={link.path} component={Link} to={link.path}>
+          <ListItemText primary={link.name} />   
+        </ListItem>
+      </List>
     )
   })
 
