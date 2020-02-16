@@ -58,7 +58,7 @@ ActiveRecord::Base.transaction do
     text: "No, they'll be upset if I fail the test."
   )
   
-  
+
   r4 = Response.create!(
     thought: q2,
     thinking_trap: catastrophizing,
