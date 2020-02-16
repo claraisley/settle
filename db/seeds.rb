@@ -8,7 +8,7 @@
 
 ActiveRecord::Base.transaction do
 
-  r.create(first_name: "Katherine", last_name: "Szelag", email: "katherine.szelag@alum.utoronto.ca")
+  User.create(first_name: "Katherine", last_name: "Szelag", email: "katherine.szelag@alum.utoronto.ca")
   
   
   pet_interest = Interest.create!(name: "pet_name", question: "Do you have any pets?")
