@@ -42,6 +42,7 @@ export default function useApplicationData() {
       withCredentials: true
     })])
     .then((response) => {
+      console.log(response[0].data)
       setState(prev => ({
         ...prev,
         pages: {
