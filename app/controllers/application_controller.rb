@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::API
+require 'jwt'
 
   def not_found
     render json: { error: 'not_found' }
