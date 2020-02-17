@@ -1,5 +1,5 @@
 import React, {useState}  from 'react';
-import useSignUpForm from "./customHooks";
+import useSignUpForm from "../../hooks/useSignUpForm";
 const axios = require("axios").default;
 
 export default function SignUpForm(props) {
