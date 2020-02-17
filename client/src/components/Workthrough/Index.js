@@ -4,23 +4,62 @@ import Question from "./Question.js";
 import useVisualMode from "../../hooks/useVisualMode"
 import Followup from "./Followup.js";
 import Completion from "./Completion.js";
-import LengthPicker from "./LengthPicker.js";
+import Start from "./Start.js";
 
 const MOOD = "MOOD";
 const QUESTION = "QUESTION";
 const FOLLOWUP = "FOLLOWUP";
 const COMPLETION = "COMPLETION";
-const LENGTHPICKER = "LENGTHPICKER"
+const START = "START"
+
+const sampleThoughtData = [
+  {
+    "id": 1,
+    "interest_id": "NIL",
+    "text": "If I mess this test up, will [pet name] be there for me when I get home?",
+  },
+  {
+    "id": 2,
+    "interest_id": "NIL",
+    "text": "People can tell when I am feeling anxious.",
+  },
+  {
+    "id": 3,
+    "interest_id": "NIL",
+    "text": "Text for example thought numero 3.",
+  },
+  {
+    "id": 4,
+    "interest_id": "NIL",
+    "text": "Text for example thought numero 4.",
+  },
+  {
+    "id": 5,
+    "interest_id": "NIL",
+    "text": "Text for example thought numero 5.",
+  },
+  {
+    "id": 6,
+    "interest_id": "NIL",
+    "text": "Text for example thought numero 6.",
+  }]
 
 export default function Workthrough() {
 
-  const { mode, transition, back } = useVisualMode(LENGTHPICKER);
+  const { mode, transition, back } = useVisualMode(START);
+
+  const startWorkthrough = (numberOfQuestions) => {
+    const shuffled = sampleThoughtData.sort(() => 0.5 - Math.random());
+    let selected = shuffled.slice(0, numberOfQuestions)
+    console.log(selected)
+  }
 
   return (
     <main className="workthrough">
       <h2>Workthrough</h2>
       <section>
-        {mode === LENGTHPICKER && <LengthPicker />}
+        {mode === START && <Start
+        startWorkthrough={startWorkthrough} />}
         {mode === MOOD && <Mood />}
         {mode === QUESTION && <Question />}
         {mode === FOLLOWUP && <Followup />}
