@@ -31,9 +31,14 @@ function App() {
 
   return (
     <div>
-      <Router>
-        <Nav
-          links={links} />
+    <GlobalStyle>
+       <div>
+      <h1>settle</h1>
+      
+      <Nav />
+    </div>   
+    </GlobalStyle>
+    <Router>
         <Switch>
           {routes}
         </Switch>
