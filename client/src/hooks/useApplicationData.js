@@ -18,7 +18,9 @@ export default function useApplicationData() {
       meditations: []
     },
     user: {
-      email: ""
+      email: "",
+      name: "",
+      id: ""
     }
   });
   //sets user
@@ -71,17 +73,18 @@ export default function useApplicationData() {
     {
       name: "Signup",
       path: "/signup",
+      requiresAuthentication: false,
       component: <Signup user={state.user} setUser={setUser} />
     },
     {
       name: "Login",
       path: "/login",
-      component: <Login />
+      component: <Login user={state.user} setUser={setUser} />
     },
     {
       name: "Menu",
       path: "/menu",
-      component: <Menu />
+      component: <Menu user={state.user} />
     },
     {
       name: "Workthrough",

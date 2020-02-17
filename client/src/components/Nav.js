@@ -91,7 +91,21 @@ export default function Nav(props) {
     setOpen(false);
   };
 
-  const navList = props.links.map((link, index) => {
+  const filteredLinks = props.links.filter(function(link) {
+    return link.name !== "Signup" && link.name !== "Login"
+  })
+
+  const linksToUse = () => {
+    console.log(props.user)
+    if (props.user) {
+      return filteredLinks
+    } else {
+      return props.links
+    }
+  }
+  const links = linksToUse()
+  
+  const navList = links.map((link, index) => {
     return (
       <List key={index} >
         <ListItem button key={link.path} component={Link} to={link.path}>

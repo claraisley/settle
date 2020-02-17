@@ -14,7 +14,9 @@ function App() {
   // getPages
   // getUsers
 
-  const routes = links.map((link, index) => {
+  // const filteredLinks = links.filter(l => l.isProtected && state.user || l.isProtected === false)
+  // const routes = filteredLinks.map((link, index) => {
+    const routes = links.map((link, index) => {
     return (
       <Route
         key={index}
@@ -23,13 +25,14 @@ function App() {
       </Route>
     )
   })
+  
+ 
 
   return (
     <div>
       <h1>settle</h1>
       <Router>
-        <Nav
-          links={links} />
+        <Nav links={links} user={state.user} />
         <Switch>
           {routes}
         </Switch>
