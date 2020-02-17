@@ -42,14 +42,15 @@ function App() {
   
 
   return (
+    <div>
     <GlobalStyle>
        <div>
       <h1>settle</h1>
-      <Router>
+      
       <Nav />
     </div>   
     </GlobalStyle>
-
+    <Router>
         <Switch>
           <Route path="/menu">
             <Menu />
