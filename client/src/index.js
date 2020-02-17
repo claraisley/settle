@@ -12,10 +12,14 @@ import deepOrange from '@material-ui/core/colors/deepOrange';
 const theme = createMuiTheme({
   palette: {
     primary: {
-      main: deepOrange[400],
+      main: deepOrange[300],
+    },
+    text: {
+      primary: "#ffffff",
+      secondary: "#ffffff"
     },
       background: {
-      // light: will be calculated from palette.primary.main,
+        // default: "#3d496e"
       default: '#353c52',
     }
   },
