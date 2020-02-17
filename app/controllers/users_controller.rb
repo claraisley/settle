@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-  before_action :authorize_request, except: %i[create index]
+  before_action :authorize_request, except: :create 
   before_action :find_user, except: %i[create index]
 
   # GET /users
@@ -18,7 +18,11 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      render json: @user, status: :created
+      #render json: @user, status: :created
+        token = JsonWebToken.encode(user_id: @user.id)
+        time = Time.now + 24.hours.to_i
+        render json: { token: token, exp: time.strftime("%m-%d-%Y %H:%M"),
+          email: @user.email, name: @user.first_name, id: @user.id}, status: :ok
     else
       render json: { errors: @user.errors.full_messages },
              status: :unprocessable_entity

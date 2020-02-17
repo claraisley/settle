@@ -1,9 +1,10 @@
-import React from "react";
+import React, {useState}  from 'react';
 import useSignUpForm from "./customHooks";
 const axios = require("axios").default;
 
 export default function SignUpForm(props) {
 
+  
 
   const signUserUp = () => {
     const body = {
@@ -25,6 +26,7 @@ export default function SignUpForm(props) {
            Email: ${inputs.email}`);
         
         console.log(response);
+        props.setUser({email: response.data.email, name: response.data.name, id: response.data.id })
 
         props.userCreated()
       })
@@ -37,7 +39,7 @@ export default function SignUpForm(props) {
 
   return (
     <main className="signup">
-      <h2>Signup</h2>
+      <h2>Signup </h2>
       <section>
         <form autoComplete="off" id="create-user-form" onSubmit={handleSubmit}>
           <div>
@@ -45,7 +47,7 @@ export default function SignUpForm(props) {
               name="firstName"
               type="text"
               placeholder="Enter First Name"
-              value={inputs.firstName}
+              value={inputs.firstName || ""}
               onChange={handleInputChange}
               required
             />
@@ -55,7 +57,7 @@ export default function SignUpForm(props) {
               name="lastName"
               type="text"
               placeholder="Enter Last Name"
-              value={inputs.lastName}
+              value={inputs.lastName || ""}
               onChange={handleInputChange}
               required
             />
@@ -65,8 +67,9 @@ export default function SignUpForm(props) {
               name="email"
               type="email"
               placeholder="Enter Email"
-              value={inputs.email}
+              value={inputs.email || ""}
               onChange={handleInputChange}
+              required
             />
           </div>
           <div>
@@ -74,8 +77,9 @@ export default function SignUpForm(props) {
               name="password1"
               type="password"
               placeholder="Enter Password"
-              value={inputs.password1}
+              value={inputs.password1 || ""}
               onChange={handleInputChange}
+              required
             />
           </div>
           <div>
@@ -83,8 +87,9 @@ export default function SignUpForm(props) {
               name="password2"
               type="password"
               placeholder="Confirm Password"
-              value={inputs.password2}
+              value={inputs.password2 || ""}
               onChange={handleInputChange}
+              required
             />
           </div>
           <button type="submit">Sign up</button>

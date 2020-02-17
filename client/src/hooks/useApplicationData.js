@@ -17,8 +17,19 @@ export default function useApplicationData() {
       tipsTricks: [],
       testAnxiety: [],
       meditations: []
+    },
+    user: {
+      email: ''
+
     }
   })
+
+  const setUser = (user) => {
+    setState(prev => ({
+      ...prev,
+      user
+    }))
+  }
 
   useEffect(() => {
     Promise.all([
@@ -61,7 +72,7 @@ export default function useApplicationData() {
     {
       name: "Signup",
       path: "/signup",
-      component: <Signup />
+      component: <Signup user={state.user} setUser={setUser}/>
     },
     {
       name: "Login",
