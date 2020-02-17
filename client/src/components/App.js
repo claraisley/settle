@@ -31,13 +31,13 @@ function App() {
 
   return (
     <div>
-    <GlobalStyle>
+    
        <div>
       <h1>settle</h1>
       
-      <Nav />
+     
     </div>   
-    </GlobalStyle>
+   
     <Router>
         <Switch>
           {routes}
