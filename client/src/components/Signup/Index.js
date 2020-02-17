@@ -1,19 +1,47 @@
 import React from "react";
 import useSignUpForm from "./customHooks";
+const axios = require("axios").default;
 
 export default function Signup() {
-  const signup = () => {
-    alert(`User Created!
+
+
+
+
+  const signUserUp = () => {
+    
+    const body = {
+      first_name: inputs.firstName,
+      last_name: inputs.lastName,
+      email: inputs.email,
+      password: inputs.password1,
+      password_confirmation: inputs.password2
+    }
+
+    return axios({
+      method: 'post',
+      url: '/users',
+      data: body
+  })
+    .then((response) => {
+      alert(`User Created!
            Name: ${inputs.firstName} ${inputs.lastName}
            Email: ${inputs.email}`);
+      
+      console.log(response)
+    })
+    .catch((err) => {
+      console.log(err)
+    })
   };
-  const { inputs, handleInputChange, handleSubmit } = useSignUpForm(signup);
+
+
+  const { inputs, handleInputChange, handleSubmit } = useSignUpForm(signUserUp);
 
   return (
     <main className="signup">
       <h2>Signup</h2>
       <section>
-        <form autoComplete="off" id="create_user" onSubmit={handleSubmit}>
+        <form autoComplete="off" id="create-user-form" onSubmit={handleSubmit}>
           <div>
             <input
               name="firstName"
