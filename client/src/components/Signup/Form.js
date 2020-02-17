@@ -1,10 +1,23 @@
 import React, {useState}  from 'react';
 import useSignUpForm from "../../hooks/useSignUpForm";
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
+import { makeStyles } from '@material-ui/core/styles';
+import Grid from '@material-ui/core/Grid';
+
 const axios = require("axios").default;
+  const useStyles = makeStyles(theme => ({
+    root: {
+      '& .MuiTextField-root': {
+        margin: theme.spacing(1),
+        width: 200,
+      },
+    },
+  }));
 
 export default function SignUpForm(props) {
 
-  
+  const classes = useStyles();
 
   const signUserUp = () => {
     const body = {
@@ -39,62 +52,85 @@ export default function SignUpForm(props) {
 
   return (
     <main className="signup">
+      <Grid
+  container
+  direction="column"
+  justify="flex-end"
+  alignItems="center"
+>
       <h2>Signup </h2>
       <section>
-        <form autoComplete="off" id="create-user-form" onSubmit={handleSubmit}>
+        <form className={classes.root} autoComplete="off" id="create-user-form" onSubmit={handleSubmit}>
+        <div>
+        <TextField
+          id="outlined-name"
+          name="firstName"
+          placeholder="Enter First Name"
+          type="text"
+          label="First Name"
+          value={inputs.firstName || ""}
+          onChange={handleInputChange}
+          variant="outlined"
+          required
+        />
+        </div>
           <div>
-            <input
-              name="firstName"
-              type="text"
-              placeholder="Enter First Name"
-              value={inputs.firstName || ""}
-              onChange={handleInputChange}
-              required
-            />
+          <TextField
+          id="outlined-name"
+          name="lastName"
+          placeholder="Enter Last Name"
+          type="text"
+          label="Last Name"
+          value={inputs.lastName || ""}
+          onChange={handleInputChange}
+          variant="outlined"
+          required
+        />
           </div>
           <div>
-            <input
-              name="lastName"
-              type="text"
-              placeholder="Enter Last Name"
-              value={inputs.lastName || ""}
-              onChange={handleInputChange}
-              required
-            />
+          <TextField
+          id="outlined-email"
+          name="email"
+          placeholder="Enter Email"
+          type="email"
+          label="email"
+          value={inputs.email || ""}
+          onChange={handleInputChange}
+          variant="outlined"
+          required
+        />
           </div>
           <div>
-            <input
-              name="email"
-              type="email"
-              placeholder="Enter Email"
-              value={inputs.email || ""}
-              onChange={handleInputChange}
-              required
-            />
+          <TextField
+          id="outlined-password1"
+          name="password1"
+          placeholder="Enter Password"
+          type="password"
+          label="password"
+          value={inputs.password1 || ""}
+          onChange={handleInputChange}
+          variant="outlined"
+          required
+        />
           </div>
           <div>
-            <input
-              name="password1"
-              type="password"
-              placeholder="Enter Password"
-              value={inputs.password1 || ""}
-              onChange={handleInputChange}
-              required
-            />
+          <TextField
+          id="outlined-password2"
+          name="password2"
+          placeholder="Confirm Password"
+          type="password"
+          label="password"
+          value={inputs.password2 || ""}
+          onChange={handleInputChange}
+          variant="outlined"
+          required
+        />
           </div>
-          <div>
-            <input
-              name="password2"
-              type="password"
-              placeholder="Confirm Password"
-              value={inputs.password2 || ""}
-              onChange={handleInputChange}
-              required
-            />
-          </div>
-          <button type="submit">Sign up</button>
+          <Button type="submit" variant="contained">Sign up</Button>
         </form>
       </section>
+    </Grid>
     </main>
   );
 }
+
