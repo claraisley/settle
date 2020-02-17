@@ -1,13 +1,24 @@
 import React from "react";
-import Form from "./Form.js"
+import SignUpForm from "./Form";
+import Welcome from "./Welcome"
+import useVisualMode from "../../hooks/useVisualMode"
 
-export default function Signup() {
+export default function Signup(props) {
+
+  const SIGNUPFORM = "FORM"
+  const WELCOME = "WELCOME"
+
+  const { mode, transition, back } = useVisualMode(SIGNUPFORM);
+
+  const userCreated = () => {
+    transition(WELCOME)
+  }
+
+
   return (
-    <main className="signup">
-      <section>
-      <h2>Signup</h2>
-      <Form></Form>
-      </section>
-    </main>
-  )
+    <article>
+      {mode === SIGNUPFORM && <SignUpForm userCreated={userCreated} setUser={props.setUser} />}
+      {mode === WELCOME && <Welcome user={props.user} />}
+    </article>
+  ) 
 }

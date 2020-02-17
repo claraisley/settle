@@ -6,6 +6,7 @@ import useApplicationData from "../hooks/useApplicationData.js";
 
 function App() {
 
+  
   const {
     state, links
   } = useApplicationData();

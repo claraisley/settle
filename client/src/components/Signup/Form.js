@@ -1,53 +1,100 @@
-import React, { useState } from "react";
+import React, {useState}  from 'react';
+import useSignUpForm from "../../hooks/useSignUpForm";
+const axios = require("axios").default;
 
-export default function Form() {
+export default function SignUpForm(props) {
 
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [email, setEmail] = useState("");
+  
 
+  const signUserUp = () => {
+    const body = {
+      first_name: inputs.firstName,
+      last_name: inputs.lastName,
+      email: inputs.email,
+      password: inputs.password1,
+      password_confirmation: inputs.password2
+    };
 
+    return axios({
+      method: "post",
+      url: "/users",
+      data: body
+    })
+      .then(response => {
+        alert(`User Created!
+           Name: ${inputs.firstName} ${inputs.lastName}
+           Email: ${inputs.email}`);
+        
+        console.log(response);
+        props.setUser({email: response.data.email, name: response.data.name, id: response.data.id })
+
+        props.userCreated()
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
+  
+  const { inputs, handleInputChange, handleSubmit } = useSignUpForm(signUserUp);
 
   return (
-    <main>
+    <main className="signup">
+      <h2>Signup </h2>
       <section>
-      <form autoComplete="off">
-        <input
-        onSubmit={event => event.preventDefault()}
-        name="firstName"
-        type="text"
-        placeholder="Enter First Name"
-        value={firstName}
-        onChange={currentName => setFirstName(currentName.target.value)}
-        />
-      </form>
-      <form autoComplete="off">
-        <input
-        onSubmit={event => event.preventDefault()}
-        name="lastName"
-        type="text"
-        placeholder="Enter Last Name"
-        value={lastName}
-        onChange={currentName => setLastName(currentName.target.value)}
-        />
-      </form>
-      <form autoComplete="off">
-        <input
-        onSubmit={event => event.preventDefault()}
-        name="email"
-        type="email"
-        placeholder="Enter Email"
-        value={email}
-        onChange={currentName => setEmail(currentName.target.value)}
-        />
-      </form>
+        <form autoComplete="off" id="create-user-form" onSubmit={handleSubmit}>
+          <div>
+            <input
+              name="firstName"
+              type="text"
+              placeholder="Enter First Name"
+              value={inputs.firstName || ""}
+              onChange={handleInputChange}
+              required
+            />
+          </div>
+          <div>
+            <input
+              name="lastName"
+              type="text"
+              placeholder="Enter Last Name"
+              value={inputs.lastName || ""}
+              onChange={handleInputChange}
+              required
+            />
+          </div>
+          <div>
+            <input
+              name="email"
+              type="email"
+              placeholder="Enter Email"
+              value={inputs.email || ""}
+              onChange={handleInputChange}
+              required
+            />
+          </div>
+          <div>
+            <input
+              name="password1"
+              type="password"
+              placeholder="Enter Password"
+              value={inputs.password1 || ""}
+              onChange={handleInputChange}
+              required
+            />
+          </div>
+          <div>
+            <input
+              name="password2"
+              type="password"
+              placeholder="Confirm Password"
+              value={inputs.password2 || ""}
+              onChange={handleInputChange}
+              required
+            />
+          </div>
+          <button type="submit">Sign up</button>
+        </form>
       </section>
-      <section>
-        <button>
-          submit
-        </button>
-      </section>
-      
     </main>
-  )
+  );
 }
