@@ -79,6 +79,7 @@ export default function useApplicationData() {
     {
       name: "Login",
       path: "/login",
+      requiresAuthentication: false,
       component: <Login user={state.user} setUser={setUser} />
     },
     {

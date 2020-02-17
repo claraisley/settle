@@ -97,7 +97,7 @@ export default function Nav(props) {
 
   const linksToUse = () => {
     console.log(props.user)
-    if (props.user) {
+    if (props.user.name) {
       return filteredLinks
     } else {
       return props.links
