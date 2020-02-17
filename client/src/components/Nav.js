@@ -92,9 +92,9 @@ export default function Nav(props) {
     setOpen(false);
   };
 
-  const navList = props.links.map(link => {
+  const navList = props.links.map((link, index) => {
     return (
-      <List>
+      <List key={index} >
         <ListItem button key={link.path} component={Link} to={link.path}>
           <ListItemText primary={link.name} />   
         </ListItem>

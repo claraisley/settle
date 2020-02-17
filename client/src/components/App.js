@@ -5,11 +5,6 @@ import Nav from './Nav';
 
 import useApplicationData from "../hooks/useApplicationData.js";
 
-// const GlobalStyle =
-//   createGlobalStyle`
-//     body {
-//       background-color: #3c445c
-//     }`;
 function App() {
 
   const {
@@ -31,19 +26,14 @@ function App() {
 
   return (
     <div>
-    
-       <div>
       <h1>settle</h1>
-      
-     
-    </div>   
-   
-    <Router>
+      <Router>
+        <Nav
+          links={links} />
         <Switch>
           {routes}
         </Switch>
       </Router>
-
     </div >
   );
 }
