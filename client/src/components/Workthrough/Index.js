@@ -50,6 +50,9 @@ export default function Workthrough() {
         'Accept': 'application/json',
         'Access-Control-Allow-Credentials': true
       },
+      params: {
+        number: numberOfQuestions
+      },
       withCredentials: true
     }).then(function (response) {
       for (let question of response.data) {
