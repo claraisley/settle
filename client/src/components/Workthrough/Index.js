@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Mood from "./Mood.js";
 import Question from "./Question.js";
 import useVisualMode from "../../hooks/useVisualMode"
@@ -20,9 +20,15 @@ export default function Workthrough() {
     currentQuestion: {}
   })
 
+  console.log("STATE", state)
+
   const { mode, transition, back } = useVisualMode(START);
 
   const startNextQuestion = () => {
+    setState(prev => ({
+      ...prev,
+      currentQuestion: {}
+    }))
     transition(QUESTION)
   }
 
@@ -67,14 +73,14 @@ export default function Workthrough() {
   }
 
   // this function is triggered when a user responds to a question. currently doesn't save their response anywhere
-  const respond = () => {
+  // sets the current question answered to true
+  const respond = (responseID) => {
     setState(prev => ({
       ...prev,
       questions: [
         ...state.questions.filter(({ id }) => id !== state.currentQuestion.id),
         { ...state.currentQuestion, answered: true }
-      ],
-      currentQuestion: {}
+      ]
     }))
     transition(FOLLOWUP)
   }
