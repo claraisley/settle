@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Mood from "./Mood.js";
 import Question from "./Question.js";
 import useVisualMode from "../../hooks/useVisualMode"
 import Followup from "./Followup.js";
 import Completion from "./Completion.js";
 import Start from "./Start.js";
-import sampleData from "./sampleData.js"
+import axios from "axios";
 
 const MOOD = "MOOD";
 const QUESTION = "QUESTION";
@@ -17,7 +17,6 @@ export default function Workthrough() {
 
   const [state, setState] = useState({
     questions: [],
-    responses: [],
     currentQuestion: {}
   })
 
@@ -41,20 +40,27 @@ export default function Workthrough() {
     transition(MOOD)
   }
 
-  // sets current responses on the fly instead of keeping them in state
-  const responses = state.responses.filter(response => {
-    return response.thought === state.currentQuestion.id;
-  })
-
   // starts the workthrough when the user selects 4 or 6 questions. needs to be updated to pull real data
   const startWorkthrough = (numberOfQuestions) => {
-    const shuffled = sampleData.sampleThoughtData.sort(() => 0.5 - Math.random());
-    let selected = shuffled.slice(0, numberOfQuestions)
-    for (let question of selected) {
-      question.answered = false;
-    }
-    setState(prev => ({ ...prev, questions: selected, responses: sampleData.sampleResponseData }));
-    startNextQuestion();
+    axios.request({
+      url: 'http://localhost:3001/reflections',
+      method: 'get',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        'Access-Control-Allow-Credentials': true
+      },
+      withCredentials: true
+    }).then(function (response) {
+      for (let question of response.data) {
+        question.answered = false;
+      }
+      setState(prev => ({ ...prev, questions: response.data }));
+      startNextQuestion();
+    })
+      .catch(function (error) {
+        console.log(error);
+      })
   }
 
   // this function is triggered when a user responds to a question. currently doesn't save their response anywhere
@@ -86,7 +92,7 @@ export default function Workthrough() {
       <section>
         {mode === START && <Start startWorkthrough={startWorkthrough} />}
         {mode === MOOD && <Mood onResponse={respondMood} />}
-        {mode === QUESTION && <Question question={state.currentQuestion} responses={responses} onResponse={respond} />}
+        {mode === QUESTION && <Question question={state.currentQuestion} responses={state.currentQuestion.responses} onResponse={respond} />}
         {mode === FOLLOWUP && <Followup />}
         {mode === COMPLETION && <Completion />}
       </section>
