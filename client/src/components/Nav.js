@@ -96,7 +96,6 @@ export default function Nav(props) {
   })
 
   const linksToUse = () => {
-    console.log(props.user)
     if (props.user.name) {
       return filteredLinks
     } else {
@@ -154,7 +153,7 @@ return (
         </IconButton>
       </div>
       <Divider />
-        {navList }
+        {navList}
       <Divider />
     </Drawer>
   </div>
