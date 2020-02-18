@@ -6,6 +6,18 @@ import Followup from "./Followup.js";
 import Completion from "./Completion.js";
 import Start from "./Start.js";
 import sampleData from "./sampleData.js"
+import IconButton from '@material-ui/core/IconButton';
+import ExpandLessIcon from '@material-ui/icons/ExpandLess';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import { makeStyles } from '@material-ui/core/styles';
+import LinearProgress from '@material-ui/core/LinearProgress';
+
+const useStyles = makeStyles(theme => ({
+  root: {
+    width: '25%',
+  },
+}));
+
 
 const MOOD = "MOOD";
 const QUESTION = "QUESTION";
@@ -13,13 +25,37 @@ const FOLLOWUP = "FOLLOWUP";
 const COMPLETION = "COMPLETION";
 const START = "START"
 
+
 export default function Workthrough() {
+
+  const classes = useStyles();
 
   const [state, setState] = useState({
     questions: [],
     responses: [],
-    currentQuestion: {}
+    currentQuestion: {},
+    // completed: 0
   })
+
+  // React.useEffect(() => {
+  //   function progress() {
+  //     setState(prev => {
+  //       ...prev,
+  //       completed
+      
+  //       if (oldCompleted === 100) {
+  //         return 0;
+  //       }
+  //       const diff = Math.random() * 10;
+  //       return Math.min(oldCompleted + diff, 100);
+  //     });
+  //   }
+
+  //   const timer = setInterval(progress, 500);
+  //   return () => {
+  //     clearInterval(timer);
+  //   };
+  // }, []);
 
   const { mode, transition, back } = useVisualMode(START);
 
@@ -92,9 +128,15 @@ export default function Workthrough() {
       </section>
       <section>
         <label htmlFor="workthrough-progress">Progress {state.questions.length - currentProgress}/{state.questions.length}</label>
-        <progress id="workthrough-progress" max="100" ></progress>
-        <button onClick={() => back()}>⬆</button>
-        <button onClick={() => startNextQuestion()}>⬇</button>
+        <div className={classes.root}>
+      <LinearProgress variant="determinate" color="secondary" />
+    </div>
+        <IconButton onClick={() => back()}>
+          <ExpandLessIcon fontSize="large" />
+        </IconButton>
+        <IconButton onClick={() => startNextQuestion()}>
+          <ExpandMoreIcon fontSize="large" />
+        </IconButton>
       </section>
     </main>
   )
