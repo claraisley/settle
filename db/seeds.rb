@@ -80,8 +80,16 @@ ActiveRecord::Base.transaction do
   q1 = Thought.create!(interest: pet_interest, text: "If I mess this test up, will [pet name] be there for me when I get home?")
   q2 = Thought.create!(interest: NIL, text: "People can tell when I am feeling anxious.")
   q3 = Thought.create!(interest: NIL, text: "Am I 100% sure you will fail this test?")
+  q4 = Thought.create!(interest: NIL, text: "Is this test a hassle or a horror for me?")
+  q5 = Thought.create!(interest: NIL, text: "I always fail tests and exams.")
+  q6 = Thought.create!(interest: NIL, text: "If I don't get a good mark on this test, I am going to fail the course.")
+  q7 = Thought.create!(interest: NIL, text: "I shouldn't have test anxiety.")
+  q8 = Thought.create!(interest: NIL, text: "My teacher doesn't like me.")
+  q9 = Thought.create!(interest: NIL, text: "I shouldn't run out of time when doing a test.")
+  q10 = Thought.create!(interest: NIL, text: "If my mark on this test is 'bad', my teacher, friends and classmates will think I am stupid.")
 
 
+  ###############################################################################################
   # RESPONSES
   #q1 responses
   r1 = Response.create!(
@@ -102,6 +110,7 @@ ActiveRecord::Base.transaction do
     value: 2,
     text: "No, they'll be upset if I fail the test."
   )
+
   #q2 responses
   r4 = Response.create!(
     thought: q2,
@@ -121,6 +130,7 @@ ActiveRecord::Base.transaction do
     value: 0,
     text: "No, people will be busy with their own test. "
   )
+
   #q3 responses
   r7 = Response.create!(
     thought: q3,
@@ -140,10 +150,156 @@ ActiveRecord::Base.transaction do
     value: 2,
     text: "Yes, I will defintely 100% fail."
   )
+
   #q4 responses
+  r10 = Response.create!(
+    thought: q4,
+    thinking_trap: catastrophizing,
+    value: 0,
+    text: "Hassle."
+  )
+  r11 = Response.create!(
+    thought: q4,
+    thinking_trap: catastrophizing,
+    value: 2,
+    text: "Horror."
+  )
+  r12 = Response.create!(
+    thought: q4,
+    thinking_trap: catastrophizing,
+    value: 1,
+    text: "Both."
+  )
 
+  #q5 responses
+  r13 = Response.create!(
+    thought: q5,
+    thinking_trap: over_gen,
+    value: 0,
+    text: "No, I don't always fail tests/exams."
+  )
+  r14 = Response.create!(
+    thought: q5,
+    thinking_trap: over_gen,
+    value: 1,
+    text: "I don't always fail...but this time I might."
+  )
+  r15 = Response.create!(
+    thought: q5,
+    thinking_trap: over_gen,
+    value: 1,
+    text: "Yes, I always fail."
+  )
+
+  #q6 responses
+  r16 = Response.create!(
+    thought: q6,
+    thinking_trap: black_white,
+    value: 1,
+    text: "I can't say for sure but it's possible I will fail completely. "
+  )
+  r17 = Response.create!(
+    thought: q6,
+    thinking_trap: black_white,
+    value: 2,
+    text: "Yes, by failing the test I have totally failed. "
+  )
+  r18 = Response.create!(
+    thought: q6,
+    thinking_trap: black_white,
+    value: 0,
+    text: "No, I don't think one test will make or break my mark. "
+  )
+
+  #q7
+  r19 = Response.create!(
+    thought: q7,
+    thinking_trap: should,
+    value: 0,
+    text: "I wish I didn't have it, but it's not up to me. "
+  )
+  r20 = Response.create!(
+    thought: q7,
+    thinking_trap: should,
+    value: 1,
+    text: "It's not fully my fault but I shouldn't have it."
+  )
+  r21 = Response.create!(
+    thought: q7,
+    thinking_trap: should,
+    value: 2,
+    text: "True, it's embarassing and I shouldn't have it."
+  )
   
+  #q8 responses
+  r22 = Response.create!(
+    thought: q8,
+    thinking_trap: mind_reading,
+    value: 2,
+    text: "True, my teacher thinks poorly of me."
+  )
+  r23 = Response.create!(
+    thought: q8,
+    thinking_trap: mind_reading,
+    value: 0,
+    text: "I can't say for sure what my teacher thinks of me."
+  )
+  r24 = Response.create!(
+    thought: q8,
+    thinking_trap: mind_reading,
+    value: 1,
+    text: "I'm not sure but I wouldn't be surprised."
+  )
 
+  #q9 responses
+
+  r25 = Response.create!(
+    thought: q9,
+    thinking_trap: should,
+    value: 1,
+    text: "Ideally yes, I should finish before the times ends. "
+  )
+  r26 = Response.create!(
+    thought: q9,
+    thinking_trap: should,
+    value: 0,
+    text: "I will try my best to finish the test in the alloted time. "
+  )
+  r27 = Response.create!(
+    thought: q9,
+    thinking_trap: should,
+    value: 2,
+    text: "I shouldn't struggle the way I do with finishing tests in time. "
+  )
+
+  #q10 responses
+  r28 = Response.create!(
+    thought: q10,
+    thinking_trap: mind_reading,
+    value: 0,
+    text: "No, even if this test doesn't go my way the teacher won't see that it as a reflection of my full capabilities.  "
+  )
+  r29 = Response.create!(
+    thought: q10,
+    thinking_trap: mind_reading,
+    value: 1,
+    text: "My teacher may think I am incapable if I don't do well."
+  )
+  r30 = Response.create!(
+    thought: q10,
+    thinking_trap: mind_reading,
+    value: 2,
+    text: "Yes, my teacher will think I am stupid and maybe they are right. "
+  )
+
+  #q11 responses
+
+
+
+
+
+
+  ###############################################################################################
   #FOLLOWUPS
   #q1 followups
   f1 = FollowUp.create!(
@@ -161,6 +317,7 @@ ActiveRecord::Base.transaction do
     thinking_trap: filtering,
     text:"If your pet could understand the situation I don't think they would agree. You are more than your test results. This type of thinking could fall under Filtering, you are focusing on the bad over the good. A more balanced conclusion could include the following: There are good things in my life like [pet name], this upcoming test does not out weight those things."
   )
+
   #q2 followups
   f4 = FollowUp.create!(
     response: r4,
@@ -177,6 +334,7 @@ ActiveRecord::Base.transaction do
     thinking_trap: catastrophizing,
     text:"You are right, people cannot tell when you are feeling anxious. Great job on being kind to yourelf. Keep challenging the anxious thoughts with these coping statements: 'I have taken many tests in my life, I know I can hanlde this.' 'My anxiety won't last forever' "
   )
+
   #q3 followups
   f7 = FollowUp.create!(
     response: r7,
@@ -194,9 +352,128 @@ ActiveRecord::Base.transaction do
     text:"The common thinking trap Fortune-telling falls under the category of jumping to conclusions. You are predicting things will turn out badly but in reality noone can predict the future because we don't have a magic ball. Fortune-telling is not a realistic assessment based on evidence, and it doesn't take into account the real odds of a situation. For example: what facts do you actually have that prove that you will 100% fail? You may be able to come up with lots of reasons that support this thought, but would this evidence hold up in court? Would it make sense to someone else?"
   )
 
+  #q4 followups
+  f10 = FollowUp.create!(
+    response: r10,
+    thinking_trap: catastrophizing,
+    text:"Taking a test is definitely a hassle. Many students experience some nervousness or apprehension before, during, or even after an exam. It is perfectly natural to feel some anxiety! Think of an activity or event you are looking forward to, by finishing the test you will be one step closer to that!"
+  )
+  f11 = FollowUp.create!(
+    response: r11,
+    thinking_trap: catastrophizing,
+    text:"Are you falling into a thinking trap? Catastrophizing leads us to think everything is an extreme, we don't like tests so therefore they are a horror. Test anxiety is annoying and not easy to deal with, but if we think of it as just a hassle, something that gets in the way, then it becomes more manageable and realistic."
+  )
+  f12 = FollowUp.create!(
+    response: r12,
+    thinking_trap: catastrophizing,
+    text:"Are you falling into a thinking trap? Catastrophizing leads us to think everything is an extreme, we don't like tests so therefore they are a horror. Test anxiety is annoying and not easy to deal with, but if we think of it as just a hassle, something that gets in the way, then it becomes more manageable and realistic."
+  )
+
+  #q5 followups
+  f13 = FollowUp.create!(
+    response: r13,
+    thinking_trap: over_gen,
+    text:"It's hard not to get down on ourselves after being disspointed with our performance on a test or exam, but by recognizing the statement 'I always fail' as unrealistic you are already being kind to yourself and that's an awesome thing. Keep resisting the trap of Over-generalization and remind yourself: 'I’m strong enough to do this test. I will do my best.'"
+  )
+  f14 = FollowUp.create!(
+    response: r14,
+    thinking_trap: over_gen,
+    text:"You have passed many school assignments and tests before and you can't know for sure you won't pass this one. Resist Over-generalization and try to avoid using words like 'always' and 'never' when talking about yourself. Take a moment to be kind to yourself: 'These anxious feelings will pass.' 'The test won’t last long, and I know I can cope.'"
+  )
+  f15 = FollowUp.create!(
+    response: r15,
+    thinking_trap: over_gen,
+    text:"Using words like 'always' or 'never' can be a sign that you are falling into the trap of Over-generalization. These thoughts don't help us in the long run because they don't take the full picture into account. It's very unlikely and unrealistic that you acutally always fail at tests. To begin pushing back against these irrational thoughts start by trying to catch yourself using words like 'always' and 'never' - almost like putting a mental flag up."
+  )
+
+  #q6 followups
+  f16 = FollowUp.create!(
+    response: r16,
+    thinking_trap: black_white,
+    text:"Black-and-white thinking is a common defence mechanism where a person views things in extreme ways: things are ALL good or ALL bad. Seeing things as all-or-nothing prevents us from having a balanced, realistic outlook on the world. It's much more likely that even if you didn't pass this test you will still be able to pass the course. The reality is that course marks flucuate and many teachers even provide additional assignments to boost your mark."
+  )
+  f17 = FollowUp.create!(
+    response: r17,
+    thinking_trap: black_white,
+    text:"When we look at circumstances in terms of extremes, we get caught in the pitfall of Black-and-white Thinking - we think things are ALL good or ALL bad. Let's step to the side and start to think about our thinking: How did you come to the conclusion that you will totally fail? Maybe you won't pass, but are you sure that means you fail the course completely? Isn't it more likely that your mark will decrease but not enough to truly fail? In reality very situations fall under the 'all-or-nothing' category. The reality is that course marks flucuate and many teachers even provide additional assignments to boost your mark."
+  )
+  f18 = FollowUp.create!(
+    response: r18,
+    thinking_trap: black_white,
+    text:"Exactly, it's very rare that one test could decide everything. The reality is that course marks flucuate and many teachers even provide additional assignments to boost your mark. "
+  )
+
+  #q7 followups
+  f19 = FollowUp.create!(
+    response: r19,
+    thinking_trap: should,
+    text:"It's normal to be frustrated when dealing with unwanted anxiety, it's not easy! Test anxiety is very common among students and it's nothing to be embarassed about. By continuing to challenge negative thoughts you are working towards a goal to make your future self feel better!"
+  )
+  f20 = FollowUp.create!(
+    response: r20,
+    thinking_trap: should,
+    text:"When we make statments to ourselves about how things are suppose to be - how we 'ought' to act or feel, we are falling into the common negative thinking pattern called Should-statements. Should-statements often leave us feeling frustrated and dissapointed with oursleves. Let's challenge that line of thinking: Do you think that being strict and demanding will motivate you or others? Probably not right? Be kind to yourself and avoid using statements with the words 'should' and 'must'."
+  )
+  f21 = FollowUp.create!(
+    response: r21,
+    thinking_trap: should,
+    text:"When we make statments to ourselves about how things 'ought' to be, we fall into negative thinking pattern called Should-statements. It's natural to want to motivate yourself but these thoughts often actually leave us feeling frustrated and dissapointed with oursleves. Students who experience test anxiety often use Should-statements to describe their symptoms but in reality, test anxiety is very common among students and there's no reason to be embarassed about it. Do you think that being strict and demanding will motivate you or others? Probably not right? In the future see if you can make a mental flag when you tell yourself how things 'should' be."
+  )
+
+  #q8 followups
+  f22 = FollowUp.create!(
+    response: r22,
+    thinking_trap: mind_reading,
+    text:"Mind-reading is common negative thinking error where we believe we know what others are thinking. Here you are assuming your teacher thinks the worst of you. Regardless of your relationship with your teacher, you can't know for sure what they are thinking. You are being too hard on yourself when you assume your teacher thinks the worst. Remind yourself that you can't really know a person’s intentions or thoughts. It's natural to want to take things personally but in reality someone's negative reaction often times has nothing to do with you."
+  )
+  f23 = FollowUp.create!(
+    response: r23,
+    thinking_trap: mind_reading,
+    text:"You are right, you can't know for sure the thoughts and intentions of another person. Remember: it's natural to want to take things personally but in reality someone's negative reaction often times has nothing to do with you."
+  )
+  f24 = FollowUp.create!(
+    response: r24,
+    thinking_trap: mind_reading,
+    text:"Mind-reading is common negative thinking error where we believe we know what others are thinking and we assume they are thinking the worst of us. Regardless of your relationship with your teacher, you can't know for sure their thoughts and intentions. Ask yourself: How do you know that? Does assuming something make it true? Remember: it's natural to want to take things personally but someone's negative reaction often times has nothing to do with you."
+  )
+
+  #q9 followups
+  f25 = FollowUp.create!(
+    response: r25,
+    thinking_trap: should,
+    text:"It's natural and healthy to want to move towards a goal like finishing your tests in the alloted time. But a problem starts when motivating statements become internal rules. A common thinking error, Should-statements cause us stress by laying out rules we 'must' follow, leaving us disspointed with ourselves when we don't live up to them. We can still work towards a goal, just without all the negative self-talk! Try and spot the next time you hear yourself use a Should-statement."
+  )
+  f26 = FollowUp.create!(
+    response: r26,
+    thinking_trap: should,
+    text:"Great job on being kind to yourself. It's natural and healthy to want to move towards a goal like finishing your tests in the alloted time. The reality is we can work on this goal while still being kind to ourselves and not using words like 'shoud' and 'must'."
+  )
+  f27 = FollowUp.create!(
+    response: r27,
+    thinking_trap: should,
+    text:"When we have a goal like finishing a test in the alloted time, it's understandable that we become frustrated with ourselves when we aren't succeeding. A problem starts though when our motivating statements become internal rules. A common thinking trap, Should-statements cause us stress by laying out rules we 'must' follow, leaving us disspointed with ourselves when we don't live up to them. Let's rework your should statement and create a more balanced one. 'I shouldn't struggle the way I do with finishing tests in time' becomes 'I'd like to finish my tests on time, but I know that sometimes it isn't possible'. See if you can spot the next time you hear yourself use a Should-statement and if you can rework it to a more realistic thought."
+  )
+
+  #q10 followups
+
+  f28 = FollowUp.create!(
+    response: r28,
+    thinking_trap: mind_reading,
+    text:"You're right, your teacher will definitely not be thinking this of you, especially not after one bad outcome. It's natural to be worried what others think but in reality you can't know for sure the thoughts and intentions of another person, including your teacher. "
+  )
+  f29 = FollowUp.create!(
+    response: r29,
+    thinking_trap: mind_reading,
+    text:"Are you basing this on facts or feelings? What solid evidence would you give that supports the idea that your teacher will think this? Resist the trap of Mind-reading - you can't know for sure the thoughts and intentions of another person, including your teacher and classmates. Remember: you've prepared for this test and have passed other tests at school before."
+  )
+  f30 = FollowUp.create!(
+    response: r30,
+    thinking_trap: mind_reading,
+    text:"Woah! That's not a very nice thing to say to yourself. What would you say to [friend name] if they said the same thing about themselves. When we fall into the trap of Mind-reading, not only do we wrongly believe we know what others are thinking, but we assume they think they are thinking the worst of us. Your teacher will not think you are stupid if you do poorly. They might be concerned but not mad, and will most likey only want to help. Try not to assume the worst of your classmates, everyone experiences an academic struggle at some point and they can probably relate. Be kind to yourself!"
+  )
 
 
-
+#################################################################################################
 #TIPS FOR TEST SUCCESS
   Tip.create!(name: "do", 
     text: "Do reward yourself after the test with your favourite food, movie or some other treat!"
