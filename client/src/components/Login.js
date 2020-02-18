@@ -11,6 +11,7 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 
+
 const axios = require("axios").default;
 
 const useStyles = makeStyles(theme => ({
@@ -112,6 +113,7 @@ export default function Login(props) {
       </div>
       <Box mt={8}>
       </Box>
+      <p>Don't have an account? <button onClick={() => history.push("/signup")}>Sign up</button></p>
     </Container>
   );
 }
