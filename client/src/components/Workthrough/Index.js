@@ -21,6 +21,8 @@ export default function Workthrough() {
     currentQuestion: {}
   })
 
+  console.log("STATE", state)
+
   const { mode, transition, back } = useVisualMode(START);
 
   const startNextQuestion = () => {
@@ -28,14 +30,16 @@ export default function Workthrough() {
   }
 
   const unansweredQuestions = state.questions.filter(question => !question.answered)
+  // if there's no current question and there's still unanswered questions
   if (!state.currentQuestion.id && unansweredQuestions.length) {
     const currentQuestion = unansweredQuestions.pop()
     setState(prev => ({
       ...prev,
       currentQuestion
     }))
-  } else if (!unansweredQuestions.length && state.questions.length && mode !== COMPLETION) {
-    transition(COMPLETION)
+    // if there's no unanswered questions left, the mode isn't start, mood (to prevent infinite loops), or complete
+  } else if (!unansweredQuestions.length && mode !== START && mode !== MOOD && mode !== COMPLETION) {
+    transition(MOOD)
   }
 
   const responses = state.responses.filter(response => {
@@ -61,6 +65,11 @@ export default function Workthrough() {
       ],
       currentQuestion: {}
     }))
+    transition(FOLLOWUP)
+  }
+
+  const respondMood = () => {
+    transition(COMPLETION)
   }
 
   const currentProgress = state.questions.filter(question => {
@@ -71,9 +80,8 @@ export default function Workthrough() {
     <main className="workthrough">
       <h2>Workthrough</h2>
       <section>
-        {mode === START && <Start
-          startWorkthrough={startWorkthrough} />}
-        {mode === MOOD && <Mood />}
+        {mode === START && <Start startWorkthrough={startWorkthrough} />}
+        {mode === MOOD && <Mood onResponse={respondMood} />}
         {mode === QUESTION && <Question question={state.currentQuestion} responses={responses} onResponse={respond} />}
         {mode === FOLLOWUP && <Followup />}
         {mode === COMPLETION && <Completion />}
@@ -81,8 +89,8 @@ export default function Workthrough() {
       <section>
         <label htmlFor="workthrough-progress">Progress {state.questions.length - currentProgress}/{state.questions.length}</label>
         <progress id="workthrough-progress" max="100" ></progress>
-        <span role="img" aria-label="up-arrow">⬆</span>
-        <span role="img" aria-label="down-arrow">⬇</span>
+        <button onClick={() => startNextQuestion()}>⬆</button>
+        <button onClick={() => startNextQuestion()}>⬇</button>
       </section>
     </main>
   )
