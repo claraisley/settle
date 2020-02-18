@@ -25,21 +25,20 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-
 export default function StaticPage(props) {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
-  const handleChange = panel => (event, isExpanded) => {
-    setExpanded(isExpanded ? panel : false);
+  const handleChange = panel => (event) => {
+    setExpanded(prevEx => prevEx !== panel ? panel : false);
   };
 
   const items = props.data.map(data => {
     return (
-      <ExpansionPanel expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
+      <ExpansionPanel expanded={expanded === `panel${data.id}`} key={data.id} onChange={handleChange(`panel${data.id}`)}>
         <ExpansionPanelSummary
           expandIcon={<ExpandMoreIcon />}
-          aria-controls="panel1bh-content"
-          id="panel1bh-header"
+          aria-controls={`panel${data.id}bh-content`}
+          id={`panel${data.id}bh-header`}
         >
           <Typography className={classes.heading}>{data.name}</Typography>
         </ExpansionPanelSummary>
