@@ -36,7 +36,7 @@ export default function Workthrough() {
     }))
   } else if (!unansweredQuestions.length && state.questions.length && mode !== COMPLETION) {
     transition(COMPLETION)
-  } 
+  }
 
   const responses = state.responses.filter(response => {
     return response.thought === state.currentQuestion.id;
@@ -52,10 +52,6 @@ export default function Workthrough() {
     startNextQuestion();
   }
 
-  const currentProgress = state.questions.filter(question => {
-    return question.answered === false
-  }).length
-
   const respond = () => {
     setState(prev => ({
       ...prev,
@@ -66,6 +62,10 @@ export default function Workthrough() {
       currentQuestion: {}
     }))
   }
+
+  const currentProgress = state.questions.filter(question => {
+    return question.answered === false
+  }).length
 
   return (
     <main className="workthrough">
