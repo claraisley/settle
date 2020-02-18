@@ -6,7 +6,6 @@ import useApplicationData from "../hooks/useApplicationData.js";
 
 function App() {
 
-  
   const {
     state, links
   } = useApplicationData();
@@ -26,8 +25,6 @@ function App() {
     )
   })
   
- 
-
   return (
     <div>
       <h1>settle</h1>
