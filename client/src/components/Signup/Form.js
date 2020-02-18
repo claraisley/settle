@@ -27,7 +27,7 @@ export default function SignUpForm(props) {
         
         console.log(response);
         props.setUser({email: response.data.email, name: response.data.name, id: response.data.id })
-
+        localStorage.setItem('currentUser', JSON.stringify(response));
         props.userCreated()
       })
       .catch(err => {

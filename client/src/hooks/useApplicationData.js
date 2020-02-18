@@ -30,6 +30,12 @@ export default function useApplicationData() {
       user
     }));
   };
+  
+  if (!state.user.name && localStorage.getItem('currentUser')) {
+    const { data } = JSON.parse(localStorage.getItem('currentUser'));
+    console.log(data)
+    setUser({email: data.email, name: data.name, id: data.id })
+  }
 
   useEffect(() => {
     Promise.all([
@@ -69,6 +75,16 @@ export default function useApplicationData() {
       });
   }, []);
 
+
+  const authenticatetUser = function() {
+    // const currentUserSubject = JSON.parse(localStorage.getItem('currentUser'))
+    if (state.user.name) {
+      return true
+    } else {
+      return false
+    }
+  }
+
   const links = [
     {
       name: "Signup",
@@ -85,21 +101,13 @@ export default function useApplicationData() {
     {
       name: "Menu",
       path: "/menu",
+      requiresAuthentication: true,
       component: <Menu user={state.user} />
-    },
-    {
-      name: "Workthrough",
-      path: "/workthrough",
-      component: <Workthrough />
-    },
-    {
-      name: "Progress",
-      path: "/progress",
-      component: <Progress />
     },
     {
       name: "What is test anxiety?",
       path: "/test-anxiety",
+      requiresAuthentication: true,
       component: (
         <StaticPage
           title={"What is test anxiety?"}
@@ -110,23 +118,38 @@ export default function useApplicationData() {
     {
       name: "Thinking Traps",
       path: "/thinking-traps",
+      requiresAuthentication: true,
       component: (
         <StaticPage title={"Thinking Traps"} data={state.pages.thinkingTraps} />
       )
     },
     {
-      name: "Tips/Tricks",
+      name: "Meditations",
+      path: "/meditations",
+      requiresAuthentication: true,
+      component: <Meditation />
+    },
+    {
+      name: "Work-Throughs",
+      path: "/workthrough",
+      requiresAuthentication: true,
+      component: <Workthrough />
+    },
+    {
+      name: "My Progress",
+      path: "/progress",
+      requiresAuthentication: true,
+      component: <Progress />
+    },
+    {
+      name: "Tips for Test Success",
       path: "/tips-tricks",
+      requiresAuthentication: true,
       component: (
         <StaticPage title={"Tips and Tricks"} data={state.pages.tipsTricks} />
       )
     },
-    {
-      name: "Meditations",
-      path: "/meditations",
-      component: <Meditation />
-    }
   ];
 
-  return { state, links };
+  return { state, setState, links, authenticatetUser };
 }
