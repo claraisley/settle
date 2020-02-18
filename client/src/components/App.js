@@ -6,7 +6,6 @@ import useApplicationData from "../hooks/useApplicationData.js";
 
 function App() {
 
-  
   const {
     state, links, authenticatetUser
   } = useApplicationData();
@@ -39,8 +38,6 @@ function App() {
     
   })
   
- console.log(routes)
-
   return (
     <div>
       <h1>settle</h1>
