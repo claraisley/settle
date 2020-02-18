@@ -72,6 +72,9 @@ const useStyles = makeStyles(theme => ({
     }),
     marginRight: 0,
   },
+  linkName: {
+    color: theme.palette.text.secondary,
+  }
 }));
 
 
@@ -106,7 +109,7 @@ export default function Nav(props) {
     return (
       <List key={index} >
         <ListItem button key={link.path} component={Link} to={link.path}>
-          <ListItemText primary={link.name} />   
+          <ListItemText primary={link.name} className={classes.linkName} />   
         </ListItem>
       </List>
     )
