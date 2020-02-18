@@ -11,7 +11,7 @@ const useStyles = makeStyles(theme => ({
     width: '100%',
   },
   heading: {
-    fontSize: theme.typography.pxToRem(15),
+    fontSize: 20,
     flexBasis: '33.33%',
     flexShrink: 0,
     color: theme.palette.text.secondary
