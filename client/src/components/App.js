@@ -10,8 +10,6 @@ function App() {
     state, links, authenticatetUser
   } = useApplicationData();
 
-  // const filteredLinks = links.filter(l => l.isProtected && state.user || l.isProtected === false)
-  // const routes = filteredLinks.map((link, index) => {
   const PrivateRoute = ({ component: Component, ...rest }) => (
     <Route {...rest} render={(props) => (
       authenticatetUser()
@@ -20,7 +18,6 @@ function App() {
     )} />
   )
   const routes = links.map((link, index) => {
-    //const component = link.requiresAuthentication && !authenticatetUser()? <Redirect to={{ pathname: '/login'}} /> : link.component
     return link.requiresAuthentication
       ? <PrivateRoute
         key={index}
@@ -41,7 +38,7 @@ function App() {
         <Switch>
           {routes}
         </Switch>
-        <Redirect to='/signup'></Redirect>
+        {authenticatetUser() ? <Redirect to='/menu'></Redirect> : <Redirect to='/signup'></Redirect>}
       </Router>
     </div >
   );
