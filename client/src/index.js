@@ -8,7 +8,6 @@ import { Button, Box, Container, CssBaseline } from '@material-ui/core';
 
 import deepOrange from '@material-ui/core/colors/deepOrange';
 
-
 const theme = createMuiTheme({
   palette: {
     primary: {

@@ -6,40 +6,29 @@ import useApplicationData from "../hooks/useApplicationData.js";
 
 function App() {
 
-  
   const {
     state, links, authenticatetUser
   } = useApplicationData();
 
-
-  // getPages
-  // getUsers
-
-  // const filteredLinks = links.filter(l => l.isProtected && state.user || l.isProtected === false)
-  // const routes = filteredLinks.map((link, index) => {
-    const PrivateRoute = ({ component: Component, ...rest }) => (
-      <Route {...rest} render={(props) => (
-        authenticatetUser()
-          ? <Component {...props} />
-          : <Redirect to='/login' />
-      )} />
-    )
-    const routes = links.map((link, index) => {
-      //const component = link.requiresAuthentication && !authenticatetUser()? <Redirect to={{ pathname: '/login'}} /> : link.component
-      return link.requiresAuthentication 
+  const PrivateRoute = ({ component: Component, ...rest }) => (
+    <Route {...rest} render={(props) => (
+      authenticatetUser()
+        ? <Component {...props} />
+        : <Redirect to='/login' />
+    )} />
+  )
+  const routes = links.map((link, index) => {
+    return link.requiresAuthentication
       ? <PrivateRoute
         key={index}
         path={link.path}
-        component={() => link.component} /> 
+        component={() => link.component} />
       : <Route
         key={index}
         path={link.path} >
         {link.component}
-        </Route>
-    
+      </Route>
   })
-  
- console.log(routes)
 
   return (
     <div>
@@ -49,6 +38,7 @@ function App() {
         <Switch>
           {routes}
         </Switch>
+        {authenticatetUser() ? <Redirect to='/menu'></Redirect> : <Redirect to='/signup'></Redirect>}
       </Router>
     </div >
   );

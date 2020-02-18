@@ -8,6 +8,7 @@ import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import { useHistory } from 'react-router-dom';
 
 const axios = require("axios").default;
 
@@ -32,6 +33,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default function SignUp(props) {
+  let history = useHistory();
   const classes = useStyles();
 
   const signUserUp = () => {
@@ -158,6 +160,7 @@ export default function SignUp(props) {
       </div>
       <Box mt={5}>
       </Box>
+      <p>Already have an account? <button onClick={() => history.push("/login")}>Log in</button></p>
     </Container>
   );
 }

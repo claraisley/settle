@@ -21,8 +21,6 @@ export default function Workthrough() {
     currentQuestion: {}
   })
 
-  console.log("STATE", state)
-
   const { mode, transition, back } = useVisualMode(START);
 
   const startNextQuestion = () => {
@@ -30,22 +28,25 @@ export default function Workthrough() {
   }
 
   const unansweredQuestions = state.questions.filter(question => !question.answered)
-  // if there's no current question and there's still unanswered questions
+  // sets a current questions if there's no current question and there's still unanswered questions
   if (!state.currentQuestion.id && unansweredQuestions.length) {
     const currentQuestion = unansweredQuestions.pop()
     setState(prev => ({
       ...prev,
       currentQuestion
     }))
-    // if there's no unanswered questions left, the mode isn't start, mood (to prevent infinite loops), or complete
+    // transitions to mood when there's no unanswered questions left (and it's not start or completion)
+    // this function is why the back button on mood doesn't work...to be fixed depending on how we want to allow users to go back
   } else if (!unansweredQuestions.length && mode !== START && mode !== MOOD && mode !== COMPLETION) {
     transition(MOOD)
   }
 
+  // sets current responses on the fly instead of keeping them in state
   const responses = state.responses.filter(response => {
     return response.thought === state.currentQuestion.id;
   })
 
+  // starts the workthrough when the user selects 4 or 6 questions. needs to be updated to pull real data
   const startWorkthrough = (numberOfQuestions) => {
     const shuffled = sampleData.sampleThoughtData.sort(() => 0.5 - Math.random());
     let selected = shuffled.slice(0, numberOfQuestions)
@@ -56,6 +57,7 @@ export default function Workthrough() {
     startNextQuestion();
   }
 
+  // this function is triggered when a user responds to a question. currently doesn't save their response anywhere
   const respond = () => {
     setState(prev => ({
       ...prev,
@@ -68,10 +70,12 @@ export default function Workthrough() {
     transition(FOLLOWUP)
   }
 
+  // triggered when a user responds to the mood question. currently doesn't save their response anywhere
   const respondMood = () => {
     transition(COMPLETION)
   }
 
+  // progress is based on number of questions answered so doesn't go down if the user presses the back button
   const currentProgress = state.questions.filter(question => {
     return question.answered === false
   }).length
@@ -89,7 +93,7 @@ export default function Workthrough() {
       <section>
         <label htmlFor="workthrough-progress">Progress {state.questions.length - currentProgress}/{state.questions.length}</label>
         <progress id="workthrough-progress" max="100" ></progress>
-        <button onClick={() => startNextQuestion()}>⬆</button>
+        <button onClick={() => back()}>⬆</button>
         <button onClick={() => startNextQuestion()}>⬇</button>
       </section>
     </main>
