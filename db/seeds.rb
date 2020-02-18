@@ -64,14 +64,14 @@ ActiveRecord::Base.transaction do
     name: "Over-generalization",
     example_statement1: "I always fail tests or exams",
     example_statement2: "I never succeed in school.",
-    text: "Over-generalization occurs when we draw conclusions based on just one example. For exmaple after interviewing for a job and not getting it, we might overgeneralize by thinking we’ll never get a job. Although common, this thinking error is highly inaccurate and very limiting and usually involves words like 'always' and 'never'."
+    text: "Over-generalization occurs when we draw conclusions based on just one example. For exmaple after interviewing for a job and not getting it, we might overgeneralize by thinking we’ll never get a job. Although common, this thinking error is highly inaccurate and very limiting and usually involves words like 'always' and 'never'.",
     definition: "Over-generalization occurs when we inaccurately conclude that one negative event puts us in a never-ending pattern of defeat. One failed test becomes 'I always fail tests'."
   )
   should = ThinkingTrap.create!(
     name: "Should-statements",
     example_statement1: "I should stop worrying about my tests.",
     example_statement2: "I shouldn't have text anxiety.",
-    text: "Should-statements are thinking errors involving telling yourself how you 'should', 'must', or 'ought' to feel and behave. They may seem like thoughts meant to motivate us, but in reality they often become unrealistic interal rules that leave us dissapointed and frustrated in overselves when they aren't followed. We can work towards goals without putting extra pressure on ourselves by avoiding using words like 'should' and 'must'."
+    text: "Should-statements are thinking errors involving telling yourself how you 'should', 'must', or 'ought' to feel and behave. They may seem like thoughts meant to motivate us, but in reality they often become unrealistic interal rules that leave us dissapointed and frustrated in overselves when they aren't followed. We can work towards goals without putting extra pressure on ourselves by avoiding using words like 'should' and 'must'.",
     definition: "Should-statements are a common thinking trap where we tell ourselves how we “should”, “must”, or “ought” to feel and behave. In reality they often leave us anxious and dissapointed in ourselves."
   )
 
