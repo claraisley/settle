@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(version: 2020_02_15_174933) do
   end
 
   create_table "reflection_responses", force: :cascade do |t|
-    t.integer "user_id"
+    t.integer "response_id"
     t.integer "reflection_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
