@@ -17,9 +17,10 @@ export default function Workthrough() {
 
   const [state, setState] = useState({
     questions: [],
-    currentQuestion: {}
+    currentQuestion: {},
+    responsesChosen: [],
+    currentFollowup: {}
   })
-
   console.log("STATE", state)
 
   const { mode, transition, back } = useVisualMode(START);
@@ -72,15 +73,19 @@ export default function Workthrough() {
       })
   }
 
-  // this function is triggered when a user responds to a question. currently doesn't save their response anywhere
+  // this function is triggered when a user responds to a question
   // sets the current question answered to true
   const respond = (responseID) => {
+    const followup = state.currentQuestion.responses.find(response => response.id === responseID)
     setState(prev => ({
       ...prev,
       questions: [
         ...state.questions.filter(({ id }) => id !== state.currentQuestion.id),
         { ...state.currentQuestion, answered: true }
-      ]
+      ],
+      // adds their response to an array in state (just the id)
+      responsesChosen: [...prev.responsesChosen, responseID],
+      currentFollowup: followup
     }))
     transition(FOLLOWUP)
   }
@@ -89,6 +94,8 @@ export default function Workthrough() {
   const respondMood = () => {
     transition(COMPLETION)
   }
+
+  // finds the followup to display to the user based on the response that they picked
 
   // progress is based on number of questions answered so doesn't go down if the user presses the back button
   const currentProgress = state.questions.filter(question => {

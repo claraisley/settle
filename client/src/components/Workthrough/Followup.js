@@ -1,6 +1,7 @@
 import React from "react";
 
 export default function Followup(props) {
+  console.log("PROPS", props)
 
   return (
     <main className="followup">
