@@ -86,8 +86,8 @@ ActiveRecord::Base.transaction do
   q7 = Thought.create!(interest: NIL, text: "I shouldn't have test anxiety.")
   q8 = Thought.create!(interest: NIL, text: "My teacher doesn't like me.")
   q9 = Thought.create!(interest: NIL, text: "I shouldn't run out of time when doing a test.")
-  q10 = Thought.create!(interest: NIL, text: "If my mark on this test is 'bad', my teacher, friends and classmates will think I am stupid.")
-
+  q10 = Thought.create!(interest: friend_name, text: "If my mark on this test is 'bad', my teacher, friends and classmates will think I am stupid.")
+  q11 = Thought.create!(interest: friend_name, text: "Will [friend-name] still hangout with me if I mess this test up?")
 
   ###############################################################################################
   # RESPONSES
@@ -294,6 +294,24 @@ ActiveRecord::Base.transaction do
 
   #q11 responses
 
+  r31 = Response.create!(
+    thought: q11,
+    thinking_trap: catastrophizing,
+    value: 2,
+    text: "Yes, [friend-name] doesn't care about that."
+  )
+  r32 = Response.create!(
+    thought: q11,
+    thinking_trap: catastrophizing,
+    value: 1,
+    text: "Yes, but I doubt I'll be in the mood to even hangout soon thanks to this test."
+  )
+  r33 = Response.create!(
+    thought: q11,
+    thinking_trap: catastrophizing,
+    value: 0,
+    text: "No, they won't want to."
+  )
 
 
 
@@ -470,6 +488,24 @@ ActiveRecord::Base.transaction do
     response: r30,
     thinking_trap: mind_reading,
     text:"Woah! That's not a very nice thing to say to yourself. What would you say to [friend name] if they said the same thing about themselves. When we fall into the trap of Mind-reading, not only do we wrongly believe we know what others are thinking, but we assume they think they are thinking the worst of us. Your teacher will not think you are stupid if you do poorly. They might be concerned but not mad, and will most likey only want to help. Try not to assume the worst of your classmates, everyone experiences an academic struggle at some point and they can probably relate. Be kind to yourself!"
+  )
+
+  #q11 followups
+
+  f31 = FollowUp.create!(
+    response: r31,
+    thinking_trap: catastrophizing,
+    text:"I'm sure [friend name] would agree! Close friends support you and like you for who you are, the outcome of this test does not affect that."
+  )
+  f32 = FollowUp.create!(
+    response: r32,
+    thinking_trap: catastrophizing,
+    text:"What better way to forget about how a test went than to hang out with a friend? One of the quickest ways to change your mood is to socialize with other who support you. Would you be there for [friend name] after a test?"
+  )
+  f33 = FollowUp.create!(
+    response: r33,
+    thinking_trap: catastrophizing,
+    text:"[friend name] wouldn't be your friend if they cared about stuff like that. Sometimes we talk to ourselves in a mean way. This kind of thinking is unhelpful and unfair. Close friends support you and like you for who you are, the outcome of this test will not affect that."
   )
 
 

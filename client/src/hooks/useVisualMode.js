@@ -9,6 +9,7 @@ export default function useVisualMode(initial) {
     } else {
       setHistory(history => [...history, newMode])
     };
+    localStorage.setItem('mode', newMode);
   };
 
   function back() {

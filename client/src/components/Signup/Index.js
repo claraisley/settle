@@ -12,12 +12,11 @@ export default function Signup(props) {
   const FORM = "SIGNUPFORM"
   const QUIZ = "SIGNUPQUIZ"
 
-  const { mode, transition, back } = useVisualMode(FORM);
+  const storedMode = localStorage.getItem('mode');
 
-  // if (props.user.name) {
-  //   transition(QUIZ)
-  // } 
-  
+  const { mode, transition, back } = useVisualMode(storedMode? storedMode : FORM);
+
+ 
   
 
 
