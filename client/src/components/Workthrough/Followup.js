@@ -1,10 +1,12 @@
 import React from "react";
 
-export default function Followup() {
+export default function Followup(props) {
+
   return (
     <main className="followup">
-      <h2>Followup</h2>
-      <p>Text text text for followup....</p>
+      <p>{props.followup[0].text}</p>
+      <h4>Related thinking trap: {props.thinkingTrap.name}</h4>
+      <p>{props.thinkingTrap.definition}</p>
     </main>
   )
 }
