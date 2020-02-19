@@ -24,7 +24,7 @@ const FOLLOWUP = "FOLLOWUP";
 const COMPLETION = "COMPLETION";
 const START = "START";
 
-export default function Workthrough() {
+export default function Workthrough(props) {
   const classes = useStyles();
 
   const [state, setState] = useState({
@@ -77,14 +77,14 @@ export default function Workthrough() {
         },
         withCredentials: true
       })
-      .then(function(response) {
+      .then(function (response) {
         for (let question of response.data) {
           question.answered = false;
         }
         setState(prev => ({ ...prev, questions: response.data }));
         startNextQuestion();
       })
-      .catch(function(error) {
+      .catch(function (error) {
         console.log(error);
       });
   };
@@ -114,9 +114,33 @@ export default function Workthrough() {
   };
 
   // triggered when a user responds to the mood question. currently doesn't save their response anywhere
-  const respondMood = () => {
-    transition(COMPLETION);
-  };
+  const respondMood = (moodValue) => {
+    const reflection_responses = state.responsesChosen.map(response => {
+      return { "response_id": response }
+    })
+    const postData = {
+      "user_id": props.user.id,
+      "moods": [{ "value": moodValue }],
+      "reflection_responses": reflection_responses
+    }
+    console.log("POST DATA TO SEND", postData)
+    axios.request({
+      url: 'http://localhost:3001/reflections',
+      method: 'post',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        'Access-Control-Allow-Credentials': true
+      },
+      data: postData,
+      withCredentials: true
+    }).then(function (response) {
+      transition(COMPLETION)
+    })
+      .catch(function (error) {
+        console.log(error);
+      })
+  }
 
   // progress is based on number of questions answered so doesn't go down if the user presses the back button
   const currentProgress = state.questions.filter(question => {

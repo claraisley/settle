@@ -148,7 +148,7 @@ export default function useApplicationData() {
       name: "Work-Throughs",
       path: "/workthrough",
       requiresAuthentication: true,
-      component: <Workthrough />
+      component: <Workthrough user={state.user}/>
     },
     {
       name: "My Progress",
