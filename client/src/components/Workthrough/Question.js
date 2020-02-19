@@ -7,7 +7,6 @@ export default function Question(props) {
 
   return (
     <main className="question">
-      <h2>Question</h2>
       <h4>{props.question.text}</h4>
       {responseList}
     </main>
