@@ -163,5 +163,5 @@ export default function useApplicationData() {
     },
   ];
 
-  return { state, setState, links, authenticatetUser };
+  return { state, setUser, links, authenticatetUser };
 }
