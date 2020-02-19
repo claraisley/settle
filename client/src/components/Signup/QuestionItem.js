@@ -8,26 +8,23 @@ export default function QuestionItem(props) {
   const [state, setState] = useState({
     checkedA: false,
     checkedB: false,
-    interestValue: ""
   });
 
   const handleChangeA = name => event => {
-    setState({ ...state, [name]: event.target.checked });
+    setState({ ...state, [name]: event.target.checked, checkedB: false });
   };
 
   const handleChangeB = name => event => {
     setState({ ...state, [name]: event.target.checked, checkedA: false });
   };
 
-  const handleInterestChange = name => event => {
-    setState({...state, [name]: event.target.value})
+  const handleInterestChange = event => {
+    props.changeQuestion(props.id, event.target.value)
   };
 
   return (
     <main>
       <h2>{props.question}</h2>
-      <form autoComplete="off">
-       
           <FormControlLabel
             control={
               <Checkbox
@@ -47,8 +44,8 @@ export default function QuestionItem(props) {
             type="text"
             label={props.field}
             name="interestValue"
-            value={state.interestValue}
-            onChange={handleInterestChange("interestValue")}
+            value={props.value === undefined ? "" : props.value }
+            onChange={handleInterestChange}
           />}
           
           <FormControlLabel
@@ -62,8 +59,6 @@ export default function QuestionItem(props) {
             }
             label="No"
           />
-        
-      </form>
     </main>
   );
 }

@@ -37,7 +37,7 @@ const useStyles = makeStyles(theme => ({
 export default function Login(props) {
   const classes = useStyles();
 
-  let history = useHistory();
+  const history = useHistory();
   
   const login = () => {
     const body = {

@@ -1,24 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 import QuestionItem from "./QuestionItem";
 
 
 export default function QuestionList(props) {
-  console.log("now in question list", props.signupQuestions)
+  
 
+ 
   const questionList = props.signupQuestions.map(question => {
-
     return (
-      <QuestionItem
-      key={question.id}
-      question={question.question}
-      field={question.question_field}
-      />
-    )
-
+      <article>
+        <QuestionItem
+          key={question.id}
+          id={question.id}
+          question={question.question}
+          field={question.question_field}
+          value={props.questionState[question.id]}
+          changeQuestion={props.changeQuestion}
+        />
+       
+      </article>
+    );
   });
-  
-  
-  
 
   return questionList;
 }
