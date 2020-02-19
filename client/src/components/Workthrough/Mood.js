@@ -3,8 +3,8 @@ import React from "react";
 export default function Mood(props) {
 
   const moods = [
-    { emoji: "😟", value: 1, label: "sad" }, 
-    { emoji: "😐", value: 2, label: "neutral" }, 
+    { emoji: "😟", value: 1, label: "sad" },
+    { emoji: "😐", value: 2, label: "neutral" },
     { emoji: "😃", value: 3, label: "happy" }
   ]
   const moodList = moods.map(mood => {
