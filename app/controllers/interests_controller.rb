@@ -3,7 +3,7 @@ class InterestsController < ApplicationController
 
   # GET /interests
   def index
-    @interests = Interest.all
+    @interests = Interest.select("id","question","question_field")
 
     render json: @interests
   end
@@ -16,6 +16,8 @@ class InterestsController < ApplicationController
   # POST /interests
   def create
     @interest = Interest.new(interest_params)
+
+    
 
     if @interest.save
       render json: @interest, status: :created, location: @interest

@@ -38,10 +38,11 @@ function App() {
         <Switch>
           {routes}
         </Switch>
-        {authenticatetUser() ? <Redirect to='/menu'></Redirect> : <Redirect to='/signup'></Redirect>}
+        {!authenticatetUser() && <Redirect to='/signup'/>}
       </Router>
     </div >
   );
 }
 
 export default App;
+
