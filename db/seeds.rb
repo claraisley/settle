@@ -30,7 +30,7 @@ ActiveRecord::Base.transaction do
     example_statement1: "I will fail this test and then fail my course.", 
     example_statement2: "When I get to the test I'm going to completely blank and everyone around me will notice.", 
     text: "Catastrophizing is when we imagine that the worst possible scenerio is about to happen. Not only does our brain jumps to the worst possible outcome, we also predict that we wont be able to cope when it happens. But, the imagined worst-case scenario usually never happens and even if it did, we are most likely able to cope with it. We can also catastrophize a current situtation by believing that something is far worse than it actually is. Either way, these are irrational thoughts involving the belief that you’re in a worse situation than you really are.",
-    definition: "Catastrophizing is when someone assumes that the worst will happen."
+    definition: "Catastrophizing is when we assume the worst possible scenerio will happen."
     )
   filtering = ThinkingTrap.create!(
     name: "Filtering",
