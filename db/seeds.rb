@@ -13,10 +13,10 @@ ActiveRecord::Base.transaction do
   User.create!(first_name: "Katherine", last_name: "Szelag", email: "katherine.szelag@alum.utoronto.ca", password: "123456")
   
   #INTERESTS
-  pet_interest = Interest.create!(name: "pet_name", question: "Do you have any pets?")
-  friend_name = Interest.create!(name: "friend_name", question: "Mind giving me the first name of one of your close friends.")
-  hobby = Interest.create!(name: "hobby", question: "Fill in the blank with a hobby of yours: I like to ")
-  sport = Interest.create!(name: "sport", question: "Do you play any or watch any sports? (If yes, type the name of one here)")
+  pet_interest = Interest.create!(name: "pet_name", question: "Do you have any pets?", question_field: "Type the name of your pet here")
+  friend_name = Interest.create!(name: "friend_name", question: "Will you give us the first name of someone your close with?", question_field: "Type the name here")
+  hobby = Interest.create!(name: "hobby", question: "Do you have any hobbies?", question_field: "Type the hobby here")
+  sport = Interest.create!(name: "sport", question: "Do you play any or watch any sports?", question_field: "Type the name of the sport here")
  
   #USER INTERESTS
   UserInterest.create!(user: User.first, interest: Interest.first, value: "Charlie")

@@ -15,7 +15,8 @@ export default function useApplicationData() {
       thinkingTraps: [],
       tipsTricks: [],
       testAnxiety: [],
-      meditations: []
+      meditations: [],
+      signupQuestions: []
     },
     user: {
       email: "",
@@ -58,6 +59,16 @@ export default function useApplicationData() {
           "Access-Control-Allow-Credentials": true
         },
         withCredentials: true
+      }),
+      axios.request({
+        url: "http://localhost:3001/interests",
+        method: "get",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+          "Access-Control-Allow-Credentials": true
+        },
+        withCredentials: true
       })
     ])
       .then(response => {
@@ -66,7 +77,8 @@ export default function useApplicationData() {
           pages: {
             ...prev.pages,
             thinkingTraps: response[0].data,
-            tipsTricks: response[1].data
+            tipsTricks: response[1].data,
+            signupQuestions: response[2].data
           }
         }));
       })
@@ -90,7 +102,7 @@ export default function useApplicationData() {
       name: "Signup",
       path: "/signup",
       requiresAuthentication: false,
-      component: <Signup user={state.user} setUser={setUser} />
+      component: <Signup user={state.user} setUser={setUser} signupQuestions={state.pages.signupQuestions} />
     },
     {
       name: "Login",
@@ -151,5 +163,5 @@ export default function useApplicationData() {
     },
   ];
 
-  return { state, setState, links, authenticatetUser };
+  return { state, setUser, links, authenticatetUser };
 }

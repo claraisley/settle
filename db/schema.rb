@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 2020_02_15_174933) do
   create_table "interests", force: :cascade do |t|
     t.string "name"
     t.text "question"
+    t.text "question_field"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
