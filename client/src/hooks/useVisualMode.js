@@ -9,9 +9,10 @@ export default function useVisualMode(initial) {
         history.slice(0, history.length - 1).concat(newMode)
       );
     } else {
-      setHistory(history => [...history, newMode]);
-    }
-  }
+      setHistory(history => [...history, newMode])
+    };
+    localStorage.setItem('mode', newMode);
+  };
 
   function back() {
     if (history.length > 1) {

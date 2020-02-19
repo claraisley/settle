@@ -9,12 +9,11 @@ function App() {
 
  
   const {
-    state, links, authenticatetUser, setUser
+    state, links, authenticatetUser, setUser,
   } = useApplicationData();
-  
-  
 
 
+  
 
   const PrivateRoute = ({ component: Component, ...rest }) => (
     <Route {...rest} render={(props) => (
