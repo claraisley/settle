@@ -1,12 +1,11 @@
 import React from "react";
-
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Button from "@material-ui/core/Button";
 import Card from "@material-ui/core/Card";
-import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
+import "./question.css";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -29,7 +28,8 @@ const useStyles = makeStyles(theme => ({
   cards: {
     display: "flex",
     justifyContent: "center",
-    width: "50%"
+    backgroundColor: "#353c52",
+    color: "white"
   }
 }));
 
@@ -53,16 +53,16 @@ export default function Question(props) {
 
   return (
     <div className={classes.root}>
-      <Paper elevation={6}>
+      <Paper elevation={10}>
         <Card className={classes.cards}>
           <CardContent>
-            <Typography color="textSecondary" gutterBottom>
+            <Typography class="header" gutterBottom>
               Question
             </Typography>
-            <Typography color="textSecondary">{props.question.text}</Typography>
+            <Typography>{props.question.text}</Typography>
           </CardContent>
         </Card>
-        {responseList}
+        <div className="responseList">{responseList}</div>
       </Paper>
     </div>
   );
