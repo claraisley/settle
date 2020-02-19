@@ -19,7 +19,7 @@ export default function Workthrough() {
     questions: [],
     currentQuestion: {},
     responsesChosen: [],
-    currentFollowup: {}, 
+    currentFollowup: {},
     currentThinkingTrap: {}
   })
 
@@ -85,14 +85,32 @@ export default function Workthrough() {
         { ...state.currentQuestion, answered: true }
       ],
       responsesChosen: [...prev.responsesChosen, responseID],
-      currentFollowup: followup, 
+      currentFollowup: followup,
       currentThinkingTrap: thinkingTrap
     }))
     transition(FOLLOWUP)
   }
 
   // triggered when a user responds to the mood question. currently doesn't save their response anywhere
-  const respondMood = () => {
+  const respondMood = (moodValue) => {
+    // axios.request({
+    //   url: 'http://localhost:3001/reflections',
+    //   method: 'post',
+    //   headers: {
+    //     'Content-Type': 'application/json',
+    //     'Accept': 'application/json',
+    //     'Access-Control-Allow-Credentials': true
+    //   },
+    //   data: {
+    //     {PUT STUFF HERE TO SEND}
+    //   },
+    //   withCredentials: true
+    // }).then(function (response) {
+    //   transition(COMPLETION)
+    // })
+    //   .catch(function (error) {
+    //     console.log(error);
+    //   })
     transition(COMPLETION)
   }
 
