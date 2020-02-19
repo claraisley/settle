@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   resources :user_interests, only: [:create]
 
-  resources :reflections
+  resources :reflections, only: [:index, :create]
 
   resources :users, param: :_email
   post '/auth/login', to: 'authentication#login'
