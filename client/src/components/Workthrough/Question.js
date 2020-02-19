@@ -43,7 +43,7 @@ export default function Question(props) {
         column
         variant="contained"
         color="default"
-        onClick={props.onResponse}
+        onClick={() => props.onResponse(response.id)}
         key={response.id}
       >
         {response.text}
@@ -56,9 +56,7 @@ export default function Question(props) {
       <Paper elevation={10}>
         <Card className={classes.cards}>
           <CardContent>
-            <Typography class="header" gutterBottom>
-              Question
-            </Typography>
+            <Typography gutterBottom>Question</Typography>
             <Typography>{props.question.text}</Typography>
           </CardContent>
         </Card>
