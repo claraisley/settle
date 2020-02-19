@@ -4,8 +4,9 @@ export default function Followup(props) {
 
   return (
     <main className="followup">
-      <h2>Followup</h2>
       <p>{props.followup[0].text}</p>
+      <h4>Related thinking trap: {props.thinkingTrap.name}</h4>
+      <p>{props.thinkingTrap.definition}</p>
     </main>
   )
 }

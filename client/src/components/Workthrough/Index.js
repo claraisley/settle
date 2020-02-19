@@ -19,7 +19,8 @@ export default function Workthrough() {
     questions: [],
     currentQuestion: {},
     responsesChosen: [],
-    currentFollowup: {}
+    currentFollowup: {}, 
+    currentThinkingTrap: {}
   })
 
   const { mode, transition, back } = useVisualMode(START);
@@ -76,6 +77,7 @@ export default function Workthrough() {
   // sets the current question answered to true, saves their response in the responseChosen array in state, and pulls the followup
   const respond = (responseID) => {
     const followup = state.currentQuestion.responses.find(response => response.id === responseID).follow_ups
+    const thinkingTrap = state.currentQuestion.responses.find(response => response.id === responseID).thinking_trap
     setState(prev => ({
       ...prev,
       questions: [
@@ -83,7 +85,8 @@ export default function Workthrough() {
         { ...state.currentQuestion, answered: true }
       ],
       responsesChosen: [...prev.responsesChosen, responseID],
-      currentFollowup: followup
+      currentFollowup: followup, 
+      currentThinkingTrap: thinkingTrap
     }))
     transition(FOLLOWUP)
   }
@@ -105,7 +108,7 @@ export default function Workthrough() {
         {mode === START && <Start startWorkthrough={startWorkthrough} />}
         {mode === MOOD && <Mood onResponse={respondMood} />}
         {mode === QUESTION && <Question question={state.currentQuestion} responses={state.currentQuestion.responses} onResponse={respond} />}
-        {mode === FOLLOWUP && <Followup followup={state.currentFollowup} />}
+        {mode === FOLLOWUP && <Followup followup={state.currentFollowup} thinkingTrap={state.currentThinkingTrap} />}
         {mode === COMPLETION && <Completion />}
       </section>
       <section>
