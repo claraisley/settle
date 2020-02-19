@@ -29,7 +29,7 @@ const useStyles = makeStyles(theme => ({
   responseList: {
     justifyContent: "center",
     textAlign: "center",
-    margin: theme.spacing(3)
+    margin: theme.spacing(2)
   },
   cards: {
     display: "flex",
