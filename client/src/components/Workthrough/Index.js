@@ -21,7 +21,6 @@ export default function Workthrough() {
     responsesChosen: [],
     currentFollowup: {}
   })
-  console.log("STATE", state)
 
   const { mode, transition, back } = useVisualMode(START);
 
@@ -41,9 +40,9 @@ export default function Workthrough() {
       ...prev,
       currentQuestion
     }))
-    // transitions to mood when there's no unanswered questions left (and it's not start or completion)
+    // transitions to mood when there's no unanswered questions left
     // this function is why the back button on mood doesn't work...to be fixed depending on how we want to allow users to go back
-  } else if (!unansweredQuestions.length && mode !== START && mode !== MOOD && mode !== COMPLETION) {
+  } else if (!unansweredQuestions.length && mode === QUESTION) {
     transition(MOOD)
   }
 
@@ -74,16 +73,15 @@ export default function Workthrough() {
   }
 
   // this function is triggered when a user responds to a question
-  // sets the current question answered to true
+  // sets the current question answered to true, saves their response in the responseChosen array in state, and pulls the followup
   const respond = (responseID) => {
-    const followup = state.currentQuestion.responses.find(response => response.id === responseID)
+    const followup = state.currentQuestion.responses.find(response => response.id === responseID).follow_ups
     setState(prev => ({
       ...prev,
       questions: [
         ...state.questions.filter(({ id }) => id !== state.currentQuestion.id),
         { ...state.currentQuestion, answered: true }
       ],
-      // adds their response to an array in state (just the id)
       responsesChosen: [...prev.responsesChosen, responseID],
       currentFollowup: followup
     }))
@@ -94,8 +92,6 @@ export default function Workthrough() {
   const respondMood = () => {
     transition(COMPLETION)
   }
-
-  // finds the followup to display to the user based on the response that they picked
 
   // progress is based on number of questions answered so doesn't go down if the user presses the back button
   const currentProgress = state.questions.filter(question => {
@@ -109,7 +105,7 @@ export default function Workthrough() {
         {mode === START && <Start startWorkthrough={startWorkthrough} />}
         {mode === MOOD && <Mood onResponse={respondMood} />}
         {mode === QUESTION && <Question question={state.currentQuestion} responses={state.currentQuestion.responses} onResponse={respond} />}
-        {mode === FOLLOWUP && <Followup />}
+        {mode === FOLLOWUP && <Followup followup={state.currentFollowup} />}
         {mode === COMPLETION && <Completion />}
       </section>
       <section>
