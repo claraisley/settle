@@ -120,6 +120,7 @@ export default function Nav(props) {
   function logout() {
     // remove user from local storage to log user out
     localStorage.removeItem("currentUser");
+    localStorage.removeItem("mode");
     props.setUser({ email: "", name: "", id: "" });
     history.push("/login");
   }
