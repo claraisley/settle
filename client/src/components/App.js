@@ -3,12 +3,17 @@ import './App.css';
 import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 import Nav from './Nav';
 import useApplicationData from "../hooks/useApplicationData.js";
+//import { useHistory } from "react-router-dom";
 
 function App() {
 
+ 
   const {
-    state, links, authenticatetUser
+    state, links, authenticatetUser, setUser,
   } = useApplicationData();
+
+
+  
 
   const PrivateRoute = ({ component: Component, ...rest }) => (
     <Route {...rest} render={(props) => (
@@ -34,11 +39,11 @@ function App() {
     <div>
       <h1>settle</h1>
       <Router>
-        <Nav links={links} user={state.user} />
+        <Nav links={links} user={state.user} setUser={setUser}  />
         <Switch>
           {routes}
         </Switch>
-        {!authenticatetUser() && <Redirect to='/signup'/>}
+        {!authenticatetUser() && <Redirect to='/login'/>}
       </Router>
     </div >
   );

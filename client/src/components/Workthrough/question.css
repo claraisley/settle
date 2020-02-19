@@ -1,0 +1,24 @@
+.MuiCard-root {
+  margin-top: 5%;
+  margin-left: 15%;
+  margin-right: 15%;
+  margin-bottom: 7%;
+}
+
+.MuiCardContent-root > p {
+  margin-top: 5%;
+  margin-bottom: 5%;
+  color: white;
+  text-align: center;
+}
+
+.header {
+  font-size: x-large;
+  font-weight: 600;
+}
+
+.responseList {
+  display: grid;
+  margin-left: 25%;
+  margin-right: 25%;
+}
