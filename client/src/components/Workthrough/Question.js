@@ -19,10 +19,17 @@ const useStyles = makeStyles(theme => ({
       height: theme.spacing(64),
       backgroundColor: "#353c52",
       backgroundImage: `url(http://www.transparenttextures.com/patterns/cubes.png)`
-    },
-    Button: {
-      justifyContent: "center"
     }
+  },
+  responseList: {
+    justifyContent: "center",
+    textAlign: "center",
+    margin: theme.spacing(2)
+  },
+  cards: {
+    display: "flex",
+    justifyContent: "center",
+    width: "50%"
   }
 }));
 
@@ -32,6 +39,7 @@ export default function Question(props) {
   const responseList = props.responses.map(response => {
     return (
       <Button
+        className={classes.responseList}
         column
         variant="contained"
         color="default"
@@ -46,15 +54,15 @@ export default function Question(props) {
   return (
     <div className={classes.root}>
       <Paper elevation={6}>
-        <Card>
+        <Card className={classes.cards}>
           <CardContent>
             <Typography color="textSecondary" gutterBottom>
               Question
             </Typography>
             <Typography color="textSecondary">{props.question.text}</Typography>
-            {responseList}
           </CardContent>
         </Card>
+        {responseList}
       </Paper>
     </div>
   );
