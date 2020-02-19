@@ -35,6 +35,7 @@ export default function SignUpQuiz(props) {
         axios.spread((...responses) => {
           responses.forEach(res => console.log("Success"));
           console.log("submitted all axios calls");
+          localStorage.removeItem("mode");
           history.push("/menu");
         })
       )

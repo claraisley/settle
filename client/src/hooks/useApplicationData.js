@@ -32,11 +32,14 @@ export default function useApplicationData() {
     }));
   };
   
-  if (!state.user.name && localStorage.getItem('currentUser')) {
-    const { data } = JSON.parse(localStorage.getItem('currentUser'));
-    console.log(data)
-    setUser({email: data.email, name: data.name, id: data.id })
-  }
+    if (!state.user.name && localStorage.getItem('currentUser')) {
+      const { data } = JSON.parse(localStorage.getItem('currentUser'));
+      console.log(data)
+      setUser({email: data.email, name: data.name, id: data.id })
+    } 
+
+  
+  
 
   useEffect(() => {
     Promise.all([
@@ -163,5 +166,5 @@ export default function useApplicationData() {
     },
   ];
 
-  return { state, setState, links, authenticatetUser };
+  return { state, setUser, links, authenticatetUser };
 }
