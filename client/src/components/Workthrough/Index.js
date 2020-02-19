@@ -5,7 +5,7 @@ import useVisualMode from "../../hooks/useVisualMode"
 import Followup from "./Followup.js";
 import Completion from "./Completion.js";
 import Start from "./Start.js";
-import sampleData from "./sampleData.js"
+import axios from "axios";
 
 const MOOD = "MOOD";
 const QUESTION = "QUESTION";
@@ -17,13 +17,18 @@ export default function Workthrough() {
 
   const [state, setState] = useState({
     questions: [],
-    responses: [],
-    currentQuestion: {}
+    currentQuestion: {},
+    responsesChosen: [],
+    currentFollowup: {}
   })
 
   const { mode, transition, back } = useVisualMode(START);
 
   const startNextQuestion = () => {
+    setState(prev => ({
+      ...prev,
+      currentQuestion: {}
+    }))
     transition(QUESTION)
   }
 
@@ -35,37 +40,50 @@ export default function Workthrough() {
       ...prev,
       currentQuestion
     }))
-    // transitions to mood when there's no unanswered questions left (and it's not start or completion)
+    // transitions to mood when there's no unanswered questions left
     // this function is why the back button on mood doesn't work...to be fixed depending on how we want to allow users to go back
-  } else if (!unansweredQuestions.length && mode !== START && mode !== MOOD && mode !== COMPLETION) {
+  } else if (!unansweredQuestions.length && mode === QUESTION) {
     transition(MOOD)
   }
 
-  // sets current responses on the fly instead of keeping them in state
-  const responses = state.responses.filter(response => {
-    return response.thought === state.currentQuestion.id;
-  })
-
   // starts the workthrough when the user selects 4 or 6 questions. needs to be updated to pull real data
   const startWorkthrough = (numberOfQuestions) => {
-    const shuffled = sampleData.sampleThoughtData.sort(() => 0.5 - Math.random());
-    let selected = shuffled.slice(0, numberOfQuestions)
-    for (let question of selected) {
-      question.answered = false;
-    }
-    setState(prev => ({ ...prev, questions: selected, responses: sampleData.sampleResponseData }));
-    startNextQuestion();
+    axios.request({
+      url: 'http://localhost:3001/reflections',
+      method: 'get',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        'Access-Control-Allow-Credentials': true
+      },
+      params: {
+        number: numberOfQuestions
+      },
+      withCredentials: true
+    }).then(function (response) {
+      for (let question of response.data) {
+        question.answered = false;
+      }
+      setState(prev => ({ ...prev, questions: response.data }));
+      startNextQuestion();
+    })
+      .catch(function (error) {
+        console.log(error);
+      })
   }
 
-  // this function is triggered when a user responds to a question. currently doesn't save their response anywhere
-  const respond = () => {
+  // this function is triggered when a user responds to a question
+  // sets the current question answered to true, saves their response in the responseChosen array in state, and pulls the followup
+  const respond = (responseID) => {
+    const followup = state.currentQuestion.responses.find(response => response.id === responseID).follow_ups
     setState(prev => ({
       ...prev,
       questions: [
         ...state.questions.filter(({ id }) => id !== state.currentQuestion.id),
         { ...state.currentQuestion, answered: true }
       ],
-      currentQuestion: {}
+      responsesChosen: [...prev.responsesChosen, responseID],
+      currentFollowup: followup
     }))
     transition(FOLLOWUP)
   }
@@ -86,8 +104,8 @@ export default function Workthrough() {
       <section>
         {mode === START && <Start startWorkthrough={startWorkthrough} />}
         {mode === MOOD && <Mood onResponse={respondMood} />}
-        {mode === QUESTION && <Question question={state.currentQuestion} responses={responses} onResponse={respond} />}
-        {mode === FOLLOWUP && <Followup />}
+        {mode === QUESTION && <Question question={state.currentQuestion} responses={state.currentQuestion.responses} onResponse={respond} />}
+        {mode === FOLLOWUP && <Followup followup={state.currentFollowup} />}
         {mode === COMPLETION && <Completion />}
       </section>
       <section>
