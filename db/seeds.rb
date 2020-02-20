@@ -503,7 +503,6 @@ ActiveRecord::Base.transaction do
     text:"[friend name] wouldn't be your friend if they cared about stuff like that. Sometimes we talk to ourselves in a mean way. This kind of thinking is unhelpful and unfair. Close friends support you and like you for who you are, the outcome of this test will not affect that."
   )
 
-
 #################################################################################################
 #TIPS FOR TEST SUCCESS
   Tip.create!(name: "do", 
@@ -524,8 +523,6 @@ ActiveRecord::Base.transaction do
   Tip.create!(name: "do", 
     text: "Do eat a light meal before a test. Having food in your stomach will give you enery and keep you focused."
     )
-
-
 
 #################################################################################################
 #REEFLECTIONS AND MOODS FOR ANALYTICS SECTIONS
@@ -608,14 +605,14 @@ ActiveRecord::Base.transaction do
     )
     
   #### MEDITATIONS AND USER MEDITATIONS
-  med1 = Meditation.create!(name: "2 Minute Short Meditation", time_in_minutes: 2)
-  med2 = Meditation.create!(name: "Before a Test", time_in_minutes: 5)
-  med3 = Meditation.create!(name: "Chill Out", time_in_minutes: 10)
+  Meditation.create!(name: "2 Minute Short Meditation", time_in_minutes: 2)
+  Meditation.create!(name: "Before a Test", time_in_minutes: 5)
+  Meditation.create!(name: "Chill Out", time_in_minutes: 10)
 
-  UserMeditation.create!(user: User.first, meditation: Meditation.first)
-  UserMeditation.create!(user: User.first, meditation: med2)
-  UserMeditation.create!(user: User.first, meditation: med2)
-  UserMeditation.create!(user: User.first, meditation: med3)
-  UserMeditation.create!(user: User.first, meditation: med3)
+  UserMeditation.create!(user: User.first, meditation_id: 1)
+  UserMeditation.create!(user: User.first, meditation_id: 2)
+  UserMeditation.create!(user: User.first, meditation_id: 2)
+  UserMeditation.create!(user: User.first, meditation_id: 3)
+  UserMeditation.create!(user: User.first, meditation_id: 3)
 
 end  
