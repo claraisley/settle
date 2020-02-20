@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 import Nav from './Nav';
+import Login from './Login'
 import useApplicationData from "../hooks/useApplicationData.js";
 //import { useHistory } from "react-router-dom";
 
@@ -41,13 +42,13 @@ function App() {
       <Router>
         <Nav links={links} user={state.user} setUser={setUser}  />
         <Switch>
+          <Route path='/' exact component={Login}/>
           {routes}
         </Switch>
-        {!authenticatetUser() && <Redirect to='/login'/>}
+        
       </Router>
     </div >
   );
 }
 
 export default App;
-
