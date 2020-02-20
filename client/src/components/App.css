@@ -1,4 +1,5 @@
 .app-wrapper {
+  margin-top: 64px;
   height: 100vh;
   /* background-image: "http://www.transparenttextures.com/patterns/cubes.png"; */
 }

@@ -10,13 +10,8 @@ import Nav from "./Nav";
 import Login from "./Login";
 import useApplicationData from "../hooks/useApplicationData.js";
 
-
 function App() {
-
   const { state, links, authenticatetUser, setUser } = useApplicationData();
-
-
-  
 
   const PrivateRoute = ({ component: Component, ...rest }) => (
     <Route
@@ -38,7 +33,7 @@ function App() {
         component={() => link.component}
       />
     ) : (
-      <Route key={index} path={link.path}  >
+      <Route key={index} path={link.path}>
         {link.component}
       </Route>
     );
@@ -46,11 +41,13 @@ function App() {
 
   return (
     <div className="app-wrapper">
-      <h1>settle</h1>
-      <Router>
-        <Nav links={links} user={state.user} setUser={setUser} />
-        <Switch>{routes}</Switch>
-      </Router>
+      <header>
+        <Router>
+          <Nav links={links} user={state.user} setUser={setUser} />
+          <Switch>{routes}</Switch>
+        </Router>
+      </header>
+      <main></main>
     </div>
   );
 }
