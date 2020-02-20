@@ -58,7 +58,7 @@ export default function Login(props) {
         console.log(response);
         props.setUser({email: response.data.email, name: response.data.name, id: response.data.id })
         localStorage.setItem('currentUser', JSON.stringify(response));
-        history.push("/menu");
+        history.push("/explore");
       })
       .catch(err => {
         console.log(err);

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Menu from "../components/Menu.js";
+import Explore from "../components/Explore.js";
 import Workthrough from "../components/Workthrough/Index.js";
 import Progress from "../components/Progress/Index.js";
 import Signup from "../components/Signup/Index.js";
@@ -114,10 +114,10 @@ export default function useApplicationData() {
       component: <Login user={state.user} setUser={setUser} />
     },
     {
-      name: "Menu",
-      path: "/menu",
+      name: "Explore",
+      path: "/explore",
       requiresAuthentication: true,
-      component: <Menu user={state.user} />
+      component: <Explore user={state.user} />
     },
     {
       name: "What is test anxiety?",

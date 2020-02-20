@@ -11,7 +11,7 @@ export default function Completion() {
       <button onClick={() => history.push("/meditations")}>Meditations</button>
       <button onClick={() => history.push("/tips-tricks")}>Tips and Tricks</button>
       <p>If not, have fun and do your best!</p>
-      <button onClick={() => history.push("/menu")}>Home</button>
+      <button onClick={() => history.push("/explore")}>Home</button>
     </main>
   )
 }
