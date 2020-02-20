@@ -123,7 +123,6 @@ export default function Workthrough(props) {
       "moods": [{ "value": moodValue }],
       "reflection_responses": reflection_responses
     }
-    console.log("POST DATA TO SEND", postData)
     axios.request({
       url: 'http://localhost:3001/reflections',
       method: 'post',
