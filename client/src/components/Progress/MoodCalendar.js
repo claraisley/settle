@@ -6,7 +6,6 @@ export default function MoodCalendar(props) {
   const [state, setState] = useState({
     moods: []
   })
-  console.log("STATE MOODS", state.moods)
 
   const emojiLookup = {
     1: "😢",
@@ -38,16 +37,16 @@ export default function MoodCalendar(props) {
       });
   }, []);
 
-  // const tileContent = ({ date, view }) => view === 'month' && date.getDay() === 0 ? <p>Sunday!</p> : null;
-  // const tileContent = ({ date }) => console.log(date.toDateString())
   let tileContent = ""
-  if (state.moods.length > 1) {
+  if (state.moods.length > 0) {
     tileContent = ({ date }) => {
       let content = ""
       state.moods.forEach(mood => {
         let calendarDate = date.toDateString()
-        let moodDate = new Date(mood.created_at).toDateString()
-        if (calendarDate == moodDate) {
+        let moodDate = new Date(mood.created_at) // changes it to a date object
+        moodDate.setDate(moodDate.getDate() + 1) // adds a day because it shows up on the day before, don't know why
+        let compareMoodDate = moodDate.toDateString() // changes it to a date string so it can be compared
+        if (calendarDate == compareMoodDate) {
           content = emojiLookup[mood.value]
         }
       })
