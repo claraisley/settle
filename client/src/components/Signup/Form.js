@@ -1,35 +1,36 @@
-import React from 'react';
+import React from "react";
 import useSignUpForm from "../../hooks/useSignUpForm";
-import Button from '@material-ui/core/Button';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import TextField from '@material-ui/core/TextField';
-import Grid from '@material-ui/core/Grid';
-import Box from '@material-ui/core/Box';
-import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
-import Container from '@material-ui/core/Container';
-import { useHistory } from 'react-router-dom';
+import Button from "@material-ui/core/Button";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import TextField from "@material-ui/core/TextField";
+import Link from "@material-ui/core/Link";
+import Grid from "@material-ui/core/Grid";
+import Box from "@material-ui/core/Box";
+import Typography from "@material-ui/core/Typography";
+import { makeStyles } from "@material-ui/core/styles";
+import Container from "@material-ui/core/Container";
+import { useHistory } from "react-router-dom";
 
 const axios = require("axios").default;
 
 const useStyles = makeStyles(theme => ({
   paper: {
     marginTop: theme.spacing(8),
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center"
   },
   avatar: {
     margin: theme.spacing(1),
-    backgroundColor: theme.palette.secondary.main,
+    backgroundColor: theme.palette.secondary.main
   },
   form: {
-    width: '100%', // Fix IE 11 issue.
-    marginTop: theme.spacing(3),
+    width: "100%", // Fix IE 11 issue.
+    marginTop: theme.spacing(3)
   },
   submit: {
-    margin: theme.spacing(3, 0, 2),
-  },
+    margin: theme.spacing(3, 0, 2)
+  }
 }));
 
 export default function SignUp(props) {
@@ -54,17 +55,21 @@ export default function SignUp(props) {
         alert(`User Created!
            Name: ${inputs.firstName} ${inputs.lastName}
            Email: ${inputs.email}`);
-        
+
         console.log(response);
-        props.setUser({email: response.data.email, name: response.data.name, id: response.data.id })
-        localStorage.setItem('currentUser', JSON.stringify(response));
-        props.userCreated()
+        props.setUser({
+          email: response.data.email,
+          name: response.data.name,
+          id: response.data.id
+        });
+        localStorage.setItem("currentUser", JSON.stringify(response));
+        props.userCreated();
       })
       .catch(err => {
         console.log(err);
       });
   };
-  
+
   const { inputs, handleInputChange, handleSubmit } = useSignUpForm(signUserUp);
 
   return (
@@ -74,7 +79,11 @@ export default function SignUp(props) {
         <Typography component="h1" variant="h5">
           Sign Up
         </Typography>
-        <form className={classes.form} autoComplete="off" onSubmit={handleSubmit}>
+        <form
+          className={classes.form}
+          autoComplete="off"
+          onSubmit={handleSubmit}
+        >
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
               <TextField
@@ -154,15 +163,18 @@ export default function SignUp(props) {
           </Button>
           <Grid container justify="flex-end">
             <Grid item>
+              <Link
+                href=""
+                onClick={() => history.push("/login")}
+                variant="body2"
+              >
+                Already have an account? Login
+              </Link>
             </Grid>
           </Grid>
         </form>
       </div>
-      <Box mt={5}>
-      </Box>
-      <p>Already have an account? <button onClick={() => history.push("/login")}>Log in</button></p>
+      <Box mt={5}></Box>
     </Container>
   );
 }
-
-

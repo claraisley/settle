@@ -7,34 +7,33 @@ import useApplicationData from "../hooks/useApplicationData.js";
 //import { useHistory } from "react-router-dom";
 
 function App() {
-
- 
-  const {
-    state, links, authenticatetUser, setUser,
-  } = useApplicationData();
-
-
-  
+  const { state, links, authenticatetUser, setUser } = useApplicationData();
 
   const PrivateRoute = ({ component: Component, ...rest }) => (
-    <Route {...rest} render={(props) => (
-      authenticatetUser()
-        ? <Component {...props} />
-        : <Redirect to='/login' />
-    )} />
-  )
+    <Route
+      {...rest}
+      render={props =>
+        authenticatetUser() ? (
+          <Component {...props} />
+        ) : (
+          <Redirect to="/login" />
+        )
+      }
+    />
+  );
   const routes = links.map((link, index) => {
-    return link.requiresAuthentication
-      ? <PrivateRoute
+    return link.requiresAuthentication ? (
+      <PrivateRoute
         key={index}
         path={link.path}
-        component={() => link.component} />
-      : <Route
-        key={index}
-        path={link.path} >
+        component={() => link.component}
+      />
+    ) : (
+      <Route key={index} path={link.path}>
         {link.component}
       </Route>
-  })
+    );
+  });
 
   return (
     <div>
@@ -47,7 +46,7 @@ function App() {
         </Switch>
         
       </Router>
-    </div >
+    </div>
   );
 }
 

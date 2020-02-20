@@ -5,6 +5,12 @@ import Button from "@material-ui/core/Button";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
+import Radio from "@material-ui/core/Radio";
+import RadioGroup from "@material-ui/core/RadioGroup";
+import FormHelperText from "@material-ui/core/FormHelperText";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import FormControl from "@material-ui/core/FormControl";
+import FormLabel from "@material-ui/core/FormLabel";
 import "./question.css";
 
 const useStyles = makeStyles(theme => ({
@@ -31,23 +37,29 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: "#353c52",
     color: "white"
   }
+  // formControl: {
+  //   margin: theme.spacing(3)
+  // }
 }));
 
 export default function Question(props) {
   const classes = useStyles();
+  const [value, setValue] = React.useState("");
+
+  const handleChange = event => {
+    setValue(event.target.value);
+  };
 
   const responseList = props.responses.map(response => {
     return (
-      <Button
-        className={classes.responseList}
-        column
-        variant="contained"
-        color="default"
-        onClick={() => props.onResponse(response.id)}
+      <FormControlLabel
         key={response.id}
-      >
-        {response.text}
-      </Button>
+        className={classes.responseList}
+        value={response.text}
+        onClick={() => props.onResponse(response.id)}
+        control={<Radio className={classes.cards} />}
+        label={response.text}
+      />
     );
   });
 
@@ -60,7 +72,19 @@ export default function Question(props) {
             <Typography>{props.question.text}</Typography>
           </CardContent>
         </Card>
-        <div className="responseList">{responseList}</div>
+        <Card className={classes.cards}>
+          <FormControl component="fieldset" className={classes.formControl}>
+            <FormLabel component="legend"></FormLabel>
+            <RadioGroup
+              aria-label="gender"
+              name="gender1"
+              value={value}
+              onChange={handleChange}
+            >
+              <div>{responseList}</div>
+            </RadioGroup>
+          </FormControl>
+        </Card>
       </Paper>
     </div>
   );
