@@ -7,15 +7,15 @@ class ReflectionsController < ApplicationController
     # @user_id = (params[:user_id])
     #@user_id = 2
 
-    @thoughts = Thought.where(interest_id: NIL)
-    # .or(Thought.where(interest_id:))
+    # @thoughts = Thought.where(interest_id: NIL)
+    # # .or(Thought.where(interest_id:))
     
 
-    # Post.where(id: 1).or(Post.where(title: 'Learn Rails'))
+    # # Post.where(id: 1).or(Post.where(title: 'Learn Rails'))
 
-    @interest_ids = UserInterest.select(:interest_id).where(["user_id = :user_id", {user_id: 2}]).to_a
-    puts "here"
-    puts @interest_ids
+    # @interest_ids = UserInterest.select(:interest_id).where(["user_id = :user_id", {user_id: 2}]).to_a
+    # puts "here"
+    # puts @interest_ids
 
     #YourModel.where("categories.id IN ? OR category_relationships.category_id IN ?", category_ids, category_ids)
 
@@ -26,8 +26,8 @@ class ReflectionsController < ApplicationController
     # grab the interests associated with that user via the user_id
     # grab the recent questions(aka thoughts) they have done via reflections, reflection_responses
     # grab thoughts where interest is NULL && where interest lines up with what user
-    # @thoughts = Thought.limit(params[:number])
-    # render :json => @thoughts.to_json(:include => {:responses => { :include => [:follow_ups, :thinking_trap] }})
+    @thoughts = Thought.limit(params[:number])
+    render :json => @thoughts.to_json(:include => {:responses => { :include => [:follow_ups, :thinking_trap] }})
   end
 
   def create

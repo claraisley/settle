@@ -4,6 +4,7 @@ import Menu from "../components/Menu.js";
 import Workthrough from "../components/Workthrough/Index.js";
 import Progress from "../components/Progress/Index.js";
 import Signup from "../components/Signup/Index.js";
+import StaticPageList from "../components/StaticPageList";
 import StaticPage from "../components/StaticPage";
 import Meditation from "../components/Meditation";
 import Login from "../components/Login.js";
@@ -14,8 +15,6 @@ export default function useApplicationData() {
     pages: {
       thinkingTraps: [],
       tipsTricks: [],
-      testAnxiety: [],
-      meditations: [],
       signupQuestions: []
     },
     user: {
@@ -24,6 +23,7 @@ export default function useApplicationData() {
       id: ""
     }
   });
+
   //sets user
   const setUser = user => {
     setState(prev => ({
@@ -37,9 +37,6 @@ export default function useApplicationData() {
       console.log(data)
       setUser({email: data.email, name: data.name, id: data.id })
     } 
-
-  
-  
 
   useEffect(() => {
     Promise.all([
@@ -92,7 +89,7 @@ export default function useApplicationData() {
 
 
   const authenticatetUser = function() {
-    // const currentUserSubject = JSON.parse(localStorage.getItem('currentUser'))
+   
     if (state.user.name) {
       return true
     } else {
@@ -100,7 +97,13 @@ export default function useApplicationData() {
     }
   }
 
+  const pageText = {
+    about: "KATHERINE WRITE THE THING HERE SEARCH ME IN USEAPPLICATIONDATA FOR ABOUT PAGE",
+    whatIs: "KATHERINE WRITE THE THING HERE SEARCH ME IN USEAPPLICATIONDATA FOR WHAT IS TEST ANXIETY PAGE"
+  };
+
   const links = [
+    
     {
       name: "Signup",
       path: "/signup",
@@ -126,7 +129,7 @@ export default function useApplicationData() {
       component: (
         <StaticPage
           title={"What is test anxiety?"}
-          data={state.pages.testAnxiety}
+          text={pageText.whatIs}
         />
       )
     },
@@ -135,7 +138,7 @@ export default function useApplicationData() {
       path: "/thinking-traps",
       requiresAuthentication: true,
       component: (
-        <StaticPage title={"Thinking Traps"} data={state.pages.thinkingTraps} />
+        <StaticPageList title={"Thinking Traps"} data={state.pages.thinkingTraps} />
       )
     },
     {
@@ -161,9 +164,21 @@ export default function useApplicationData() {
       path: "/tips-tricks",
       requiresAuthentication: true,
       component: (
-        <StaticPage title={"Tips and Tricks"} data={state.pages.tipsTricks} />
+        <StaticPageList title={"Tips and Tricks"} data={state.pages.tipsTricks} />
+      )
+    },    
+    {
+      name: "About",
+      path: "/about",
+      requiresAuthentication: true,
+      component: (
+        <StaticPage
+          title={"About"}
+          text={pageText.about}
+        />
       )
     },
+
   ];
 
   return { state, setUser, links, authenticatetUser };
