@@ -5,8 +5,9 @@ import QuestionItem from "./QuestionItem";
 export default function QuestionList(props) {
   
 
- 
+ console.log(props.signupQuestions)
   const questionList = props.signupQuestions.map(question => {
+    
     return (
       <article>
         <QuestionItem
