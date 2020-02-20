@@ -1,8 +1,13 @@
-import React from 'react';
-import './App.css';
-import { BrowserRouter as Router, Switch, Route, Redirect, onEnter } from "react-router-dom";
-import Nav from './Nav';
-import Login from './Login'
+import React from "react";
+import "./App.css";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect
+} from "react-router-dom";
+import Nav from "./Nav";
+import Login from "./Login";
 import useApplicationData from "../hooks/useApplicationData.js";
 
 
@@ -40,17 +45,14 @@ function App() {
   });
 
   return (
-    <div>
+    <div className="app-wrapper">
       <h1>settle</h1>
       <Router>
-        <Nav links={links} user={state.user} setUser={setUser}  />
-        <Switch>
-          {routes}
-        </Switch>
+        <Nav links={links} user={state.user} setUser={setUser} />
+        <Switch>{routes}</Switch>
       </Router>
     </div>
   );
 }
 
 export default App;
-
