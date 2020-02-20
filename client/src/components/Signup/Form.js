@@ -38,9 +38,7 @@ export default function SignUp(props) {
   const classes = useStyles();
 
 
-  if (props.user.name) {
-    history.push("/menu");
-  }
+  
 
   const signUserUp = () => {
     const body = {

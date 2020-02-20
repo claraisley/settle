@@ -38,11 +38,7 @@ export default function Login(props) {
 
   const history = useHistory();
 
-  if (props.user.name) {
-    history.push("/menu");
-  }
-
-
+  
   const login = () => {
     const body = {
       email: inputs.email,

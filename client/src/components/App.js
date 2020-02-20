@@ -1,13 +1,17 @@
 import React from 'react';
 import './App.css';
-import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Redirect, onEnter } from "react-router-dom";
 import Nav from './Nav';
 import Login from './Login'
 import useApplicationData from "../hooks/useApplicationData.js";
-//import { useHistory } from "react-router-dom";
+
 
 function App() {
+
   const { state, links, authenticatetUser, setUser } = useApplicationData();
+
+
+  
 
   const PrivateRoute = ({ component: Component, ...rest }) => (
     <Route
@@ -29,7 +33,7 @@ function App() {
         component={() => link.component}
       />
     ) : (
-      <Route key={index} path={link.path}>
+      <Route key={index} path={link.path}  >
         {link.component}
       </Route>
     );
