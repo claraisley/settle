@@ -5,6 +5,9 @@ class User < ApplicationRecord
   has_many :user_interests
   has_many :interests, :through => :user_interests
 
+  has_many :reflections
+  has_many :moods, :through => :reflections
+
   validates :email, presence: true, uniqueness: true
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
   validates :password,
