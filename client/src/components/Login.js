@@ -4,8 +4,6 @@ import { useHistory } from "react-router-dom";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import Checkbox from "@material-ui/core/Checkbox";
 import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
@@ -113,10 +111,10 @@ export default function Login(props) {
           >
             Sign In
           </Button>
-          <Grid container>
+          <Grid container justify="flex-end">
             <Grid item>
               <Link
-                // href=""
+                href=""
                 onClick={() => history.push("/signup")}
                 variant="body2"
               >
