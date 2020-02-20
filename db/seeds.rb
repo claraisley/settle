@@ -605,6 +605,17 @@ ActiveRecord::Base.transaction do
   Mood.create!(reflection_id: 11,
     value: 3,
     created_at: Date.new(2020, 2, 24)
-    )                                     
+    )
+    
+  #### MEDITATIONS AND USER MEDITATIONS
+  med1 = Meditation.create!(name: "2 Minute Short Meditation", time_in_minutes: 2)
+  med2 = Meditation.create!(name: "Before a Test", time_in_minutes: 5)
+  med3 = Meditation.create!(name: "Chill Out", time_in_minutes: 10)
+
+  UserMeditation.create!(user: User.first, meditation: Meditation.first)
+  UserMeditation.create!(user: User.first, meditation: med2)
+  UserMeditation.create!(user: User.first, meditation: med2)
+  UserMeditation.create!(user: User.first, meditation: med3)
+  UserMeditation.create!(user: User.first, meditation: med3)
 
 end  
