@@ -11,7 +11,8 @@ ActiveRecord::Base.transaction do
 
   #USERS
   User.create!(first_name: "Katherine", last_name: "Szelag", email: "katherine.szelag@alum.utoronto.ca", password: "123456")
-  
+  User.create!(first_name: "Dwight", last_name: "Shrute", email: "dwight@gmail.com", password: "123123")
+
   #INTERESTS
   pet_interest = Interest.create!(name: "pet_name", question: "Do you have any pets?", question_field: "Type the name of your pet here")
   friend_name = Interest.create!(name: "friend_name", question: "Will you give us the first name of someone your close with?", question_field: "Type the name here")
@@ -21,8 +22,6 @@ ActiveRecord::Base.transaction do
   #USER INTERESTS
   UserInterest.create!(user: User.first, interest: Interest.first, value: "Charlie")
   
-  
- 
   #THINKING TRAPS
 
   catastrophizing = ThinkingTrap.create!(
@@ -313,10 +312,6 @@ ActiveRecord::Base.transaction do
     text: "No, they won't want to."
   )
 
-
-
-
-
   ###############################################################################################
   #FOLLOWUPS
   #q1 followups
@@ -529,5 +524,87 @@ ActiveRecord::Base.transaction do
   Tip.create!(name: "do", 
     text: "Do eat a light meal before a test. Having food in your stomach will give you enery and keep you focused."
     )
+
+
+
+#################################################################################################
+#REEFLECTIONS AND MOODS FOR ANALYTICS SECTIONS
+  Reflection.create!(user_id: 2, 
+    created_at: Date.new(2020, 2, 1)
+    )
+  Reflection.create!(user_id: 2, 
+    created_at: Date.new(2020, 2, 2)
+    )
+  Reflection.create!(user_id: 2, 
+    created_at: Date.new(2020, 2, 4)
+    )
+  Reflection.create!(user_id: 2, 
+    created_at: Date.new(2020, 2, 5)
+    )  
+  Reflection.create!(user_id: 2, 
+    created_at: Date.new(2020, 2, 7)
+    )
+  Reflection.create!(user_id: 2, 
+    created_at: Date.new(2020, 2, 10)
+    )
+  Reflection.create!(user_id: 2, 
+    created_at: Date.new(2020, 2, 14)
+    )
+  Reflection.create!(user_id: 2, 
+    created_at: Date.new(2020, 2, 15)
+    )
+  Reflection.create!(user_id: 2, 
+    created_at: Date.new(2020, 2, 18)
+    )
+  Reflection.create!(user_id: 2, 
+    created_at: Date.new(2020, 2, 22)
+    )
+  Reflection.create!(user_id: 2, 
+    created_at: Date.new(2020, 2, 24)
+    )
+  Mood.create!(reflection_id: 1,
+    value: 2, 
+    created_at: Date.new(2020, 2, 1)
+    )
+  Mood.create!(reflection_id: 2,
+    value: 3, 
+    created_at: Date.new(2020, 2, 2)
+    )
+  Mood.create!(reflection_id: 3,
+    value: 5, 
+    created_at: Date.new(2020, 2, 4)
+    )
+  Mood.create!(reflection_id: 4,
+    value: 1, 
+    created_at: Date.new(2020, 2, 5)
+    )  
+  Mood.create!(reflection_id: 5,
+    value: 2, 
+    created_at: Date.new(2020, 2, 7)
+    )
+  Mood.create!(reflection_id: 6,
+    value: 3, 
+    created_at: Date.new(2020, 2, 10)
+    )
+  Mood.create!(reflection_id: 7,
+    value: 5, 
+    created_at: Date.new(2020, 2, 14)
+    )
+  Mood.create!(reflection_id: 8,
+    value: 4, 
+    created_at: Date.new(2020, 2, 15)
+    )
+  Mood.create!(reflection_id: 9,
+    value: 1, 
+    created_at: Date.new(2020, 2, 18)
+    )
+  Mood.create!(reflection_id: 10,
+    value: 2,
+    created_at: Date.new(2020, 2, 22)
+    )
+  Mood.create!(reflection_id: 11,
+    value: 3,
+    created_at: Date.new(2020, 2, 24)
+    )                                     
 
 end  
