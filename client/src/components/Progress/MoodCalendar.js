@@ -13,7 +13,7 @@ export default function MoodCalendar(props) {
     3: "😐",
     4: "😃",
     5: "😄",
-}
+  }
 
   useEffect(() => {
     axios.request({
@@ -57,7 +57,7 @@ export default function MoodCalendar(props) {
   return (
     <main className="mood-calendar">
       <h2>Mood Chart</h2>
-      <Calendar tileContent={tileContent} />
+        {state.moods.length > 0 ? <Calendar tileContent={tileContent} /> : <p>Start a reflection to start tracking your moods!</p>}
     </main>
   )
 }
