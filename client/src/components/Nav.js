@@ -186,7 +186,6 @@ export default function Nav(props) {
         </div>
         <Divider />
         {navList}
-        <Divider />
       </Drawer>
     </div>
   );

@@ -9,7 +9,7 @@ import { Button, Box, Container, CssBaseline } from "@material-ui/core";
 const theme = createMuiTheme({
   palette: {
     primary: {
-      main: "#ff8a65"
+      main: "#e57e5f"
     },
     text: {
       primary: "#ffffff",
