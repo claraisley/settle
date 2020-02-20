@@ -8,6 +8,8 @@ class ReflectionsController < ApplicationController
     #@user_id = 2
 
     # @thoughts = Thought.where(interest_id: NIL)
+
+    
     # # .or(Thought.where(interest_id:))
     
 
@@ -21,7 +23,7 @@ class ReflectionsController < ApplicationController
 
     
 
-    render :json => @interest_ids.to_json
+    # render :json => @interest_ids.to_json
    
     # grab the interests associated with that user via the user_id
     # grab the recent questions(aka thoughts) they have done via reflections, reflection_responses

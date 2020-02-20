@@ -37,8 +37,9 @@ export default function SignUp(props) {
   let history = useHistory();
   const classes = useStyles();
 
-
-  
+  if (localStorage.getItem('currentUser')) {
+    history.push("/menu");
+  }
 
   const signUserUp = () => {
     const body = {
