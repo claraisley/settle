@@ -17,12 +17,14 @@ import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
+import "./nav.css";
 
 const drawerWidth = 300;
 
 const useStyles = makeStyles(theme => ({
   root: {
-    display: "flex"
+    display: "flex",
+    color: "white"
   },
   appBar: {
     transition: theme.transitions.create(["margin", "width"], {
@@ -142,8 +144,7 @@ export default function Nav(props) {
             <Typography variant="h6" noWrap className={classes.title}>
               Welcome {props.user.name}!
             </Typography>
-          )
-          }
+          )}
           {props.user.name && (
             <Button
               variant="contained"
