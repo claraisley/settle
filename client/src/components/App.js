@@ -41,13 +41,12 @@ function App() {
       <Router>
         <Nav links={links} user={state.user} setUser={setUser}  />
         <Switch>
-          <Route path='/' exact component={Login}/>
           {routes}
         </Switch>
-        
       </Router>
     </div>
   );
 }
 
 export default App;
+

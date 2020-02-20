@@ -37,6 +37,11 @@ export default function SignUp(props) {
   let history = useHistory();
   const classes = useStyles();
 
+
+  // if (props.user.name) {
+  //   history.push("/menu");
+  // }
+
   const signUserUp = () => {
     const body = {
       first_name: inputs.firstName,

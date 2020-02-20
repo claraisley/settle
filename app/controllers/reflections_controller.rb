@@ -1,6 +1,12 @@
 class ReflectionsController < ApplicationController
 
   def index
+
+    #psuedo code for what I want to do:
+    # send the user_id here with the get (from state)
+    # grab the interests associated with that user via the user_id
+    # grab the recent questions(aka thoughts) they have done via reflections, reflection_responses
+    # grab thoughts where interest is NULL && where interest lines up with what user
     @thoughts = Thought.limit(params[:number])
     render :json => @thoughts.to_json(:include => {:responses => { :include => [:follow_ups, :thinking_trap] }})
   end
