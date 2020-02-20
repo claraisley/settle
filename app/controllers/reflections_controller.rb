@@ -1,8 +1,35 @@
 class ReflectionsController < ApplicationController
 
   def index
-    @thoughts = Thought.limit(params[:number])
-    render :json => @thoughts.to_json(:include => {:responses => { :include => [:follow_ups, :thinking_trap] }})
+
+    # send the user_id here with the get (from state)
+    # user it find the user
+    @user = User.find(params[:id])
+   
+
+    # grab universal thoughts, now an array
+    @thoughts = Thought.where(interest_id: nil).to_a
+
+    @thoughtsArray = []
+
+    # grabs the interests associated with that user and the thoughts that use that interest, 
+    # joins them to @thoughtsArray
+    @user.interests.each do |interest|
+      @thoughtsArray.concat(interest.thoughts.to_a)
+    end
+
+    # joins @thoughts and @thoughtsArray
+    @thoughts.concat(@thoughtsArray)
+
+    # makes param into integer so I can use it in sample
+    int = Integer(params[:number])
+
+    # takes a sample from the array, each are distinct, number is sent as params
+    @random_thoughts = @thoughts.sample(int)
+    
+    #renders the random thoughts and their responses and followups 
+    render :json => @random_thoughts.to_json(:include => {:responses => { :include => [:follow_ups, :thinking_trap] }})
+  
   end
 
   def create

@@ -6,6 +6,7 @@ import SignUpQuiz from "./SignUpQuiz";
 
 
 
+
 export default function Signup(props) {
 
  
@@ -14,7 +15,7 @@ export default function Signup(props) {
 
   const storedMode = localStorage.getItem('mode');
 
-  const { mode, transition, back } = useVisualMode(storedMode? storedMode : FORM);
+  const { mode, transition } = useVisualMode(storedMode? storedMode : FORM);
 
  
   
@@ -28,7 +29,7 @@ export default function Signup(props) {
 
   return (
     <article>
-      {mode === FORM && <SignUpForm userCreated={userCreated} setUser={props.setUser} />}
+      {mode === FORM && <SignUpForm userCreated={userCreated} setUser={props.setUser} user={props.user}/>}
       {mode === QUIZ && <SignUpQuiz user={props.user} signupQuestions={props.signupQuestions} />}
     </article>
   ) 

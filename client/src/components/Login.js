@@ -38,6 +38,9 @@ export default function Login(props) {
 
   const history = useHistory();
 
+  if (localStorage.getItem('currentUser')) {
+    history.push("/menu");
+  }
   const login = () => {
     const body = {
       email: inputs.email,
