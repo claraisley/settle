@@ -89,7 +89,7 @@ export default function useApplicationData() {
 
 
   const authenticatetUser = function() {
-    // const currentUserSubject = JSON.parse(localStorage.getItem('currentUser'))
+   
     if (state.user.name) {
       return true
     } else {
@@ -103,6 +103,7 @@ export default function useApplicationData() {
   };
 
   const links = [
+    
     {
       name: "Signup",
       path: "/signup",
