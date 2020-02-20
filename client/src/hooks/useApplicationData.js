@@ -156,7 +156,7 @@ export default function useApplicationData() {
       name: "My Progress",
       path: "/progress",
       requiresAuthentication: true,
-      component: <Progress />
+      component: <Progress user={state.user} />
     },
     {
       name: "Tips for Test Success",
