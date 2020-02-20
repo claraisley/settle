@@ -73,7 +73,7 @@ export default function Workthrough(props) {
           "Access-Control-Allow-Credentials": true
         },
         params: {
-          number: numberOfQuestions
+          number: numberOfQuestions, id: props.user.id
         },
         withCredentials: true
       })

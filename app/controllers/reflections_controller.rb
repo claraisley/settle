@@ -2,34 +2,34 @@ class ReflectionsController < ApplicationController
 
   def index
 
-    #psuedo code for what I want to do:
     # send the user_id here with the get (from state)
-    # @user_id = (params[:user_id])
-    #@user_id = 2
-
-    # @thoughts = Thought.where(interest_id: NIL)
-
-    
-    # # .or(Thought.where(interest_id:))
-    
-
-    # # Post.where(id: 1).or(Post.where(title: 'Learn Rails'))
-
-    # @interest_ids = UserInterest.select(:interest_id).where(["user_id = :user_id", {user_id: 2}]).to_a
-    # puts "here"
-    # puts @interest_ids
-
-    #YourModel.where("categories.id IN ? OR category_relationships.category_id IN ?", category_ids, category_ids)
-
-    
-
-    # render :json => @interest_ids.to_json
+    # user it find the user
+    @user = User.find(params[:id])
    
-    # grab the interests associated with that user via the user_id
-    # grab the recent questions(aka thoughts) they have done via reflections, reflection_responses
-    # grab thoughts where interest is NULL && where interest lines up with what user
-    @thoughts = Thought.limit(params[:number])
-    render :json => @thoughts.to_json(:include => {:responses => { :include => [:follow_ups, :thinking_trap] }})
+
+    # grab universal thoughts, now an array
+    @thoughts = Thought.where(interest_id: nil).to_a
+
+    @thoughtsArray = []
+
+    # grabs the interests associated with that user and the thoughts that use that interest, 
+    # joins them to @thoughtsArray
+    @user.interests.each do |interest|
+      @thoughtsArray.concat(interest.thoughts.to_a)
+    end
+
+    # joins @thoughts and @thoughtsArray
+    @thoughts.concat(@thoughtsArray)
+
+    # makes param into integer so I can use it in sample
+    int = Integer(params[:number])
+
+    # takes a sample from the array, each are distinct, number is sent as params
+    @random_thoughts = @thoughts.sample(int)
+    
+    #renders the random thoughts and their responses and followups 
+    render :json => @random_thoughts.to_json(:include => {:responses => { :include => [:follow_ups, :thinking_trap] }})
+  
   end
 
   def create
