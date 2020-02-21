@@ -3,8 +3,9 @@ class MeditationsController < ApplicationController
 
   # GET /meditations
   def index
-    @meditations = Meditation.all
-    render json: @meditations
+    @user = User.find(params[:user_id])
+    render :json => @user.user_meditations.to_json
+
   end
 
   def create

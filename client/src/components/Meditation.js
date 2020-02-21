@@ -56,7 +56,7 @@ export default function Meditation(props) {
       withCredentials: true
     })
     .then(function (response) {
-      console.log(response)
+      console.log(response) // here we could maybe do like a "congrats for finishing a meditation thing!"
     })
     .catch(function (error) {
       console.log(error);
