@@ -35,7 +35,7 @@ export default function MoodCalendar(props) {
       .catch(function (error) {
         console.log(error);
       });
-  }, []);
+  }, [props.user.id]);
 
   let tileContent = ""
   if (state.moods.length > 0) {
@@ -57,7 +57,7 @@ export default function MoodCalendar(props) {
   return (
     <main className="mood-calendar">
       <h2>Mood Chart</h2>
-        {state.moods.length > 0 ? <Calendar tileContent={tileContent} /> : <p>Start a reflection to start tracking your moods!</p>}
+        {state.moods.length > 0 ? <Calendar tileContent={tileContent} calendarType={"US"}/> : <p>Start a reflection to start tracking your moods!</p>}
     </main>
   )
 }
