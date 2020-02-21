@@ -4,7 +4,6 @@ import Chart from "react-apexcharts";
 import { makeStyles } from '@material-ui/core/styles';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
-import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 
@@ -26,7 +25,7 @@ export default function MeditationHistory(props) {
   const classes = useStyles();
 
   const handleChange = event => {
-    console.log("date has changed")
+    setState(prev => ({ ...prev, baseDay: new Date(event.target.value) }))
   };
 
   useEffect(() => {
@@ -104,12 +103,12 @@ export default function MeditationHistory(props) {
   let weekStartArray = [];
   for (let i = 0; i < 6; i++) {
     let weekStart = new Date()
-    weekStart.setDate(startOfWeek.getDate() - 7 * i)
+    weekStart.setDate(startOfWeek.getDate() - 7 * i) // THIS IS THE WRONG PART. MAKE A FUNCTION THAT GETS SUNDAY.
     weekStartArray.push(weekStart)
   }
 
   const weekStartOptions = weekStartArray.map(day => {
-    return <MenuItem value={day.toDateString()}>{day.toDateString()}</MenuItem>
+    return <MenuItem key={day.toDateString()} value={day.toDateString()}>{day.toDateString()}</MenuItem>
   })
 
   return (
