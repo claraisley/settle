@@ -5,6 +5,7 @@ import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import axios from "axios";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -32,12 +33,35 @@ export default function Meditation(props) {
     setExpanded(prevEx => prevEx !== panel ? panel : false);
   };
 
-
   const meditationData = [
     { "id": 1, "name": "One minute", "value": "https://www2.cs.uic.edu/~i101/SoundFiles/CantinaBand60.wav" },
     { "id": 2, "name": "Two minutes", "value": "https://www2.cs.uic.edu/~i101/SoundFiles/CantinaBand60.wav" },
     { "id": 3, "name": "Three minutes", "value": "https://www2.cs.uic.edu/~i101/SoundFiles/CantinaBand60.wav" }
   ]
+
+  const handleEnd = (meditationId) => {
+    axios
+    .request({
+      url: "http://localhost:3001/meditations",
+      method: "post",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        "Access-Control-Allow-Credentials": true
+      },
+      params: {
+        user_id: props.user.id,
+        meditation_id: meditationId
+      },
+      withCredentials: true
+    })
+    .then(function (response) {
+      console.log(response) // here we could maybe do like a "congrats for finishing a meditation thing!"
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+  }
 
   const meditations = meditationData.map(meditation => {
     return (
@@ -50,7 +74,7 @@ export default function Meditation(props) {
           <Typography className={classes.heading}>{meditation.name}</Typography>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
-          <audio controls src={meditation.value}></audio>
+          <audio controls src={meditation.value} onEnded={() => handleEnd(meditation.id)}></audio>
         </ExpansionPanelDetails>
       </ExpansionPanel>
     )
