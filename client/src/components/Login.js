@@ -15,6 +15,8 @@ import Paper from "@material-ui/core/Paper";
 
 const axios = require("axios").default;
 
+// CSS STYLED COMPONENTS
+
 const ContainerLogin = styled(Container)`
   padding: 3%;
 `;
@@ -40,6 +42,8 @@ const TypographyLogin = styled(Typography)`
   font-weight: 600;
 `;
 
+// MATERIAL UI STYLING CSS
+
 const useStyles = makeStyles(theme => ({
   paper: {
     marginTop: theme.spacing(5),
@@ -55,6 +59,8 @@ const useStyles = makeStyles(theme => ({
     margin: theme.spacing(3, 0, 2)
   }
 }));
+
+// LOGIN FUNCTION
 
 export default function Login(props) {
   const classes = useStyles();
