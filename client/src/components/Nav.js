@@ -128,7 +128,7 @@ export default function Nav(props) {
   const navList = links.map((link, index) => {
     return (
       <div
-        className={classes.list}
+        className={classes.drawerPaper}
         role="presentation"
         onClick={toggleDrawer(state.right, false)}
         onKeyDown={toggleDrawer(state.right, false)}
