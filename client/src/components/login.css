@@ -1,0 +1,18 @@
+.MuiContainer-root {
+  padding: 5%;
+}
+.MuiPaper-rounded {
+  margin-top: 5%;
+  margin-left: 15%;
+  margin-right: 15%;
+  background-color: #353c52 !important;
+}
+
+.MuiInputLabel-outlined {
+  color: white;
+}
+
+.header {
+  font-size: x-large;
+  font-weight: 600;
+}
