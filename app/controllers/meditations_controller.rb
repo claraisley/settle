@@ -4,6 +4,16 @@ class MeditationsController < ApplicationController
   # GET /meditations
   def index
     @meditations = Meditation.all
-
     render json: @meditations
   end
+
+  def create
+    @meditation = UserMeditation.create(meditation_params)
+  end
+
+
+  def meditation_params
+    params.permit(:user_id, :meditation_id)
+  end
+
+end
