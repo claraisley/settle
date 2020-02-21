@@ -1,4 +1,5 @@
 import React from "react";
+import styled from "styled-components";
 import useSignUpForm from "../../hooks/useSignUpForm";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -11,9 +12,37 @@ import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import { useHistory } from "react-router-dom";
 import Paper from "@material-ui/core/Paper";
-import "../login.css";
 
 const axios = require("axios").default;
+
+// CSS STYLED COMPONENTS
+
+const ContainerSignup = styled(Container)`
+  padding: 3%;
+`;
+
+const PaperSignup = styled(Paper)`
+  margin-top: 7%;
+  margin-left: 20%;
+  margin-right: 20%;
+  background-color: #353c52;
+`;
+
+const TextFieldSignup = styled(TextField)`
+  & > * {
+    color: white;
+    & > fieldset {
+      border-color: white;
+    }
+  }
+`;
+
+const TypographySignup = styled(Typography)`
+  font-size: x-large;
+  font-weight: 600;
+`;
+
+// MATERIAL UI COMPONENT STYLING THEME
 
 const useStyles = makeStyles(theme => ({
   paper: {
@@ -30,6 +59,8 @@ const useStyles = makeStyles(theme => ({
     margin: theme.spacing(3, 0, 2)
   }
 }));
+
+// SIGNUP FUNCTION
 
 export default function SignUp(props) {
   let history = useHistory();
@@ -75,13 +106,13 @@ export default function SignUp(props) {
   const { inputs, handleInputChange, handleSubmit } = useSignUpForm(signUserUp);
 
   return (
-    <Paper elevation={10}>
-      <Container component="main" maxWidth="xs">
+    <PaperSignup elevation={10}>
+      <ContainerSignup component="main" maxWidth="xs">
         <CssBaseline />
         <div className={classes.paper}>
-          <Typography component="h1" variant="h5">
+          <TypographySignup component="h1" variant="h5">
             Sign Up
-          </Typography>
+          </TypographySignup>
           <form
             className={classes.form}
             autoComplete="off"
@@ -89,7 +120,7 @@ export default function SignUp(props) {
           >
             <Grid container spacing={2}>
               <Grid item xs={12} sm={6}>
-                <TextField
+                <TextFieldSignup
                   name="firstName"
                   variant="outlined"
                   required
@@ -103,7 +134,7 @@ export default function SignUp(props) {
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
-                <TextField
+                <TextFieldSignup
                   variant="outlined"
                   required
                   fullWidth
@@ -116,7 +147,7 @@ export default function SignUp(props) {
                 />
               </Grid>
               <Grid item xs={12}>
-                <TextField
+                <TextFieldSignup
                   variant="outlined"
                   required
                   fullWidth
@@ -129,7 +160,7 @@ export default function SignUp(props) {
                 />
               </Grid>
               <Grid item xs={12}>
-                <TextField
+                <TextFieldSignup
                   variant="outlined"
                   required
                   fullWidth
@@ -142,7 +173,7 @@ export default function SignUp(props) {
                 />
               </Grid>
               <Grid item xs={12}>
-                <TextField
+                <TextFieldSignup
                   variant="outlined"
                   required
                   fullWidth
@@ -178,7 +209,7 @@ export default function SignUp(props) {
           </form>
         </div>
         <Box mt={5}></Box>
-      </Container>
-    </Paper>
+      </ContainerSignup>
+    </PaperSignup>
   );
 }
