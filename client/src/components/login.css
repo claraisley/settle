@@ -1,15 +1,16 @@
 .MuiContainer-root {
   padding: 5%;
 }
+
 .MuiPaper-rounded {
   margin-top: 5%;
-  margin-left: 15%;
-  margin-right: 15%;
+  margin-left: 20%;
+  margin-right: 20%;
   background-color: #353c52 !important;
 }
 
-.MuiInputLabel-outlined {
-  color: white;
+.MuiFormLabel-root {
+  color: white !important;
 }
 
 .header {

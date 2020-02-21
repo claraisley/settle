@@ -17,14 +17,15 @@ const axios = require("axios").default;
 
 const useStyles = makeStyles(theme => ({
   paper: {
-    marginTop: theme.spacing(8),
+    marginTop: theme.spacing(5),
     display: "flex",
+    flexWrap: "wrap",
     flexDirection: "column",
     alignItems: "center"
   },
   form: {
     width: "100%", // Fix IE 11 issue.
-    marginTop: theme.spacing(1)
+    marginTop: theme.spacing(2)
   },
   submit: {
     margin: theme.spacing(3, 0, 2)
@@ -72,7 +73,7 @@ export default function Login(props) {
   const { inputs, handleInputChange, handleSubmit } = useLoginForm(login);
 
   return (
-    <Paper>
+    <Paper elevation={10}>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <div className={classes.paper}>
