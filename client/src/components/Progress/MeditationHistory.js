@@ -80,10 +80,24 @@ export default function MeditationHistory(props) {
     ]
   };
 
+  // creates array of the last 5 Sundays
+  let weekStartArray = [];
+  for (let i = 0; i < 6; i++) {
+    let weekStart = new Date()
+    weekStart.setDate(startOfWeek.getDate() - 7 * i)
+    weekStartArray.push(weekStart)
+  }
+  const weekStartOptions = weekStartArray.map(day => {
+    return <option value={day.toDateString()}>{day.toDateString()}</option>
+  })
+
   return (
     <main className="MeditationHistory">
       <h2>My Previous Meditations</h2>
-      <p>Your meditations for the week of {startOfWeek.toDateString()}</p>
+      <span>This is how long you've meditated for the week of </span>
+      <select>
+        {weekStartOptions}
+      </select>
       {state.meditations.length > 0 ?
         <Chart
           type="bar"
