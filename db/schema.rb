@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_15_174933) do
+ActiveRecord::Schema.define(version: 2020_02_20_230752) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,13 @@ ActiveRecord::Schema.define(version: 2020_02_15_174933) do
     t.string "name"
     t.text "question"
     t.text "question_field"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "meditations", force: :cascade do |t|
+    t.string "name"
+    t.integer "time_in_minutes"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -88,6 +95,13 @@ ActiveRecord::Schema.define(version: 2020_02_15_174933) do
     t.integer "user_id"
     t.integer "interest_id"
     t.string "value"
+  end
+
+  create_table "user_meditations", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "meditation_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "users", force: :cascade do |t|

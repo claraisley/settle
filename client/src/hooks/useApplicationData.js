@@ -145,7 +145,7 @@ export default function useApplicationData() {
       name: "Meditations",
       path: "/meditations",
       requiresAuthentication: true,
-      component: <Meditation />
+      component: <Meditation user={state.user}/>
     },
     {
       name: "Work-Throughs",
@@ -157,7 +157,7 @@ export default function useApplicationData() {
       name: "My Progress",
       path: "/progress",
       requiresAuthentication: true,
-      component: <Progress />
+      component: <Progress user={state.user} />
     },
     {
       name: "Tips for Test Success",
