@@ -13,7 +13,7 @@ class MeditationsController < ApplicationController
 
 
   def meditation_params
-    params.permit(:user_id, :meditation_id)
+    params.permit(:user_id, :meditation_id, :meditation)
   end
 
 end
