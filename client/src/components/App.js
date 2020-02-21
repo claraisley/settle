@@ -40,14 +40,13 @@ function App() {
   });
 
   return (
-    <div className="app-wrapper">
-      <header>
-        <Router>
-          <Nav links={links} user={state.user} setUser={setUser} />
-          <Switch>{routes}</Switch>
-        </Router>
-      </header>
-      <main></main>
+    <div className="header">
+      <Router>
+        <Nav links={links} user={state.user} setUser={setUser} />
+        <Switch>{routes}</Switch>
+      </Router>
+
+      <div className="body-wrapper"></div>
     </div>
   );
 }
