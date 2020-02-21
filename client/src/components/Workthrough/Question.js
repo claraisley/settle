@@ -1,4 +1,5 @@
 import React from "react";
+import styled from "styled-components";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Button from "@material-ui/core/Button";
@@ -7,13 +8,52 @@ import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import Radio from "@material-ui/core/Radio";
 import RadioGroup from "@material-ui/core/RadioGroup";
-import FormHelperText from "@material-ui/core/FormHelperText";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormControl from "@material-ui/core/FormControl";
 import FormLabel from "@material-ui/core/FormLabel";
-import "./question.css";
-import personalizeText from "./HelperFunction"
+import personalizeText from "./HelperFunction";
+import { Container } from "@material-ui/core";
 
+const PaperQuestion = styled(Paper)`
+  margin-top: 7%;
+  margin-left: 20%;
+  margin-right: 20%;
+  margin-bottom: 7%
+  background-color: #353c52;
+  backgroundimage: http://www.transparenttextures.com/patterns/cubes.png;
+`;
+
+const CardQuestion = styled(Card)`
+  margin-top: 5%;
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-bottom: 5%;
+`;
+
+const CardContentQuestion = styled(CardContent)`
+  & > p {
+    margin-top: 5%;
+    margin-bottom: 5%;
+    color: white;
+    text-align: center;
+  }
+`;
+
+const TypographyHeader = styled(Typography)`
+  font-size: x-large;
+  font-weight: 600;
+`;
+
+const QuestionResponse = styled.div`
+  display: grid;
+  & > label {
+    margin: 0.5em;
+    text-align: center;
+    & > span:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+  }
+`;
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -35,7 +75,9 @@ const useStyles = makeStyles(theme => ({
   },
   cards: {
     display: "flex",
+    flexDirection: "column",
     justifyContent: "center",
+    textAlign: "center",
     backgroundColor: "#353c52",
     color: "white"
   }
@@ -68,13 +110,15 @@ export default function Question(props) {
   return (
     <div className={classes.root}>
       <Paper elevation={10}>
-        <Card className={classes.cards}>
-          <CardContent>
-            <Typography gutterBottom>Question</Typography>
-            <Typography>{personalizeText(props.interests, props.question.text)}</Typography>
-          </CardContent>
-        </Card>
-        <Card className={classes.cards}>
+        <CardQuestion className={classes.cards}>
+          <CardContentQuestion>
+            <TypographyHeader gutterBottom>Question</TypographyHeader>
+            <Typography>
+              {personalizeText(props.interests, props.question.text)}
+            </Typography>
+          </CardContentQuestion>
+        </CardQuestion>
+        <CardQuestion className={classes.cards}>
           <FormControl component="fieldset" className={classes.formControl}>
             <FormLabel component="legend"></FormLabel>
             <RadioGroup
@@ -83,10 +127,10 @@ export default function Question(props) {
               value={value}
               onChange={handleChange}
             >
-              <div>{responseList}</div>
+              <QuestionResponse>{responseList}</QuestionResponse>
             </RadioGroup>
           </FormControl>
-        </Card>
+        </CardQuestion>
       </Paper>
     </div>
   );
