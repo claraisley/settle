@@ -8,7 +8,6 @@ export default function MeditationHistory(props) {
 
   console.log("MEDITATIONS IN STATE", state.meditations)
 
-
   useEffect(() => {
     axios.request({
       url: "http://localhost:3001/meditations",
@@ -24,7 +23,7 @@ export default function MeditationHistory(props) {
       withCredentials: true
     })
       .then(response => {
-        setState(prev => ({ ...prev, meditations: response.data })) // if no moods, then state.moods is just an empty array
+        setState(prev => ({ ...prev, meditations: response.data })) // if no meditations, then state.meditations is just an empty array
       })
       .catch(function (error) {
         console.log(error);
