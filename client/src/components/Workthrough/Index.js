@@ -29,11 +29,13 @@ export default function Workthrough(props) {
 
   const [state, setState] = useState({
     questions: [],
+    interests: [],
     currentQuestion: {},
     responsesChosen: [],
     currentFollowup: {},
     currentThinkingTrap: {}
   });
+
 
   const { mode, transition, back } = useVisualMode(START);
 
@@ -63,8 +65,8 @@ export default function Workthrough(props) {
 
   // starts the workthrough when the user selects 4 or 6 questions. needs to be updated to pull real data
   const startWorkthrough = numberOfQuestions => {
-    axios
-      .request({
+    Promise.all([
+      axios.request({
         url: "http://localhost:3001/reflections",
         method: "get",
         headers: {
@@ -76,12 +78,25 @@ export default function Workthrough(props) {
           number: numberOfQuestions, id: props.user.id
         },
         withCredentials: true
-      })
+      }),
+      axios.request({ url: "http://localhost:3001/user_interests",
+      method: "get",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        "Access-Control-Allow-Credentials": true
+      },
+      params: {
+        id: props.user.id
+      },
+      withCredentials: true})
+    ])
       .then(function (response) {
-        for (let question of response.data) {
+        console.log(response)
+        for (let question of response[0].data) {
           question.answered = false;
         }
-        setState(prev => ({ ...prev, questions: response.data }));
+        setState(prev => ({ ...prev, questions: response[0].data, interests: response[1].data }));
         startNextQuestion();
       })
       .catch(function (error) {
@@ -157,12 +172,14 @@ export default function Workthrough(props) {
             question={state.currentQuestion}
             responses={state.currentQuestion.responses}
             onResponse={respond}
+            interests={state.interests}
           />
         )}
         {mode === FOLLOWUP && (
           <Followup
             followup={state.currentFollowup}
             thinkingTrap={state.currentThinkingTrap}
+            interests={state.interests}
           />
         )}
         {mode === COMPLETION && <Completion />}

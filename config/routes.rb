@@ -1,11 +1,12 @@
 Rails.application.routes.draw do
+  resources :meditations, only: [:index, :create]
   resources :interests
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   
   resources :thinking_traps
   resources :tips
 
-  resources :user_interests, only: [:create]
+  resources :user_interests, only: [:create, :index]
 
   resources :reflections, only: [:index, :create]
 

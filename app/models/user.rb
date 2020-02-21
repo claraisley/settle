@@ -8,6 +8,9 @@ class User < ApplicationRecord
   has_many :reflections
   has_many :moods, :through => :reflections
 
+  has_many :user_meditations
+  has_many :meditations, :through => :meditations
+
   validates :email, presence: true, uniqueness: true
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
   validates :password,

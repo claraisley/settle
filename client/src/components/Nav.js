@@ -142,8 +142,7 @@ export default function Nav(props) {
             <Typography variant="h6" noWrap className={classes.title}>
               Welcome {props.user.name}!
             </Typography>
-          )
-          }
+          )}
           {props.user.name && (
             <Button
               variant="contained"
