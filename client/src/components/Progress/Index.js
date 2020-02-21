@@ -1,7 +1,7 @@
 import React from "react";
 import MoodCalendar from "./MoodCalendar";
 import ThinkingTrap from "./ThinkingTrap"
-import WorkthroughHistory from "./WorkthroughHistory"
+import MeditationHistory from "./MeditationHistory"
 
 export default function Progress(props) {
   return (
@@ -9,7 +9,7 @@ export default function Progress(props) {
       <h2>Progress</h2>
       <MoodCalendar user={props.user} />
       <ThinkingTrap />
-      <WorkthroughHistory />
+      <MeditationHistory user={props.user} />
     </main>
   )
 }

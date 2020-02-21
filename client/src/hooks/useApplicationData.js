@@ -39,7 +39,7 @@ export default function useApplicationData() {
     } 
 
   useEffect(() => {
-    Promise.all([
+    Promise.all([ 
       axios.request({
         url: "http://localhost:3001/thinking_traps",
         method: "get",
@@ -145,7 +145,7 @@ export default function useApplicationData() {
       name: "Meditations",
       path: "/meditations",
       requiresAuthentication: true,
-      component: <Meditation />
+      component: <Meditation user={state.user}/>
     },
     {
       name: "Work-Throughs",

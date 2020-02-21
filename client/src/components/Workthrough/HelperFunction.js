@@ -1,26 +1,4 @@
-const arr = [
-  {
-    value: "Charlie",
-    interest_id: 1
-  },
-  {
-    value: "Nicole",
-    interest_id: 2
-  },
-  {
-    value: "Swimming",
-    interest_id: 3
-  },
-  {
-    value: "Skiing",
-    interest_id: 4
-  }
-];
-const z = "I'm sure friendName would agree! Close friends and petName support you and like you for who you are, the outcome of this test does not affect that."
 
-// const interestValues = arr.map(obj => {
-//   return [obj.interest_id, obj.value];
-// });
 
 const personalizeText = function(arr, text) {
   let newText = text
@@ -50,8 +28,4 @@ const personalizeText = function(arr, text) {
   return newText
 };
 
-console.log(personalizeText(arr, z))
-// const regex = /friendName/
-// const val = 'wow'
-// console.log(z)
-// console.log(z.replace(regex, val))
+export default personalizeText

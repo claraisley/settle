@@ -15,7 +15,7 @@ ActiveRecord::Base.transaction do
 
   #INTERESTS
   pet_interest = Interest.create!(name: "pet_name", question: "Do you have any pets?", question_field: "Type the name of your pet here")
-  friend_name = Interest.create!(name: "friend_name", question: "Will you give us the first name of someone your close with?", question_field: "Type the name here")
+  friend_name = Interest.create!(name: "friend_name", question: "Will you give us the first name of someone you're close with?", question_field: "Type the name here")
   hobby = Interest.create!(name: "hobby", question: "Do you have any hobbies?", question_field: "Type the hobby here")
   sport = Interest.create!(name: "sport", question: "Do you play any or watch any sports?", question_field: "Type the name of the sport here")
  
@@ -76,7 +76,7 @@ ActiveRecord::Base.transaction do
 
 
   #QUESTIONS/AKA THOUGHTS
-  q1 = Thought.create!(interest: pet_interest, text: "If I mess this test up, will [pet name] be there for me when I get home?")
+  q1 = Thought.create!(interest: pet_interest, text: "If I mess this test up, will petName be there for me when I get home?")
   q2 = Thought.create!(interest: NIL, text: "People can tell when I am feeling anxious.")
   q3 = Thought.create!(interest: NIL, text: "Am I 100% sure you will fail this test?")
   q4 = Thought.create!(interest: NIL, text: "Is this test a hassle or a horror for me?")
@@ -86,7 +86,7 @@ ActiveRecord::Base.transaction do
   q8 = Thought.create!(interest: NIL, text: "My teacher doesn't like me.")
   q9 = Thought.create!(interest: NIL, text: "I shouldn't run out of time when doing a test.")
   q10 = Thought.create!(interest: friend_name, text: "If my mark on this test is 'bad', my teacher, friends and classmates will think I am stupid.")
-  q11 = Thought.create!(interest: friend_name, text: "Will [friend-name] still hangout with me if I mess this test up?")
+  q11 = Thought.create!(interest: friend_name, text: "Will friendName still hangout with me if I mess this test up?")
 
   ###############################################################################################
   # RESPONSES
@@ -95,13 +95,13 @@ ActiveRecord::Base.transaction do
     thought: q1,
     thinking_trap: filtering,
     value: 0,
-    text: "Yes, [pet name] loves me no matter what."
+    text: "Yes, petName loves me no matter what."
   )
   r2 = Response.create!(
     thought: q1,
     thinking_trap: filtering,
     value: 1,
-    text: "[pet name] doesn't show much affection but I don't think they would care."
+    text: " petName doesn't show much affection but I don't think they would care."
   )
   r3 = Response.create!(
     thought: q1,
@@ -297,7 +297,7 @@ ActiveRecord::Base.transaction do
     thought: q11,
     thinking_trap: catastrophizing,
     value: 2,
-    text: "Yes, [friend-name] doesn't care about that."
+    text: "Yes, friendName doesn't care about that."
   )
   r32 = Response.create!(
     thought: q11,
@@ -318,7 +318,7 @@ ActiveRecord::Base.transaction do
   f1 = FollowUp.create!(
     response: r1,
     thinking_trap: filtering,
-    text:"[pet name] does love you no matter what! The test is a hassle and will be over soon. Remind yourself: “I’m strong enough to do this test. I will do my best.” "
+    text:" petName does love you no matter what! The test is a hassle and will be over soon. Remind yourself: “I’m strong enough to do this test. I will do my best.” "
   )
   f2 = FollowUp.create!(
     response: r2,
@@ -328,7 +328,7 @@ ActiveRecord::Base.transaction do
   f3 = FollowUp.create!(
     response: r3,
     thinking_trap: filtering,
-    text:"If your pet could understand the situation I don't think they would agree. You are more than your test results. This type of thinking could fall under Filtering, you are focusing on the bad over the good. A more balanced conclusion could include the following: There are good things in my life like [pet name], this upcoming test does not out weight those things."
+    text:"If your pet could understand the situation I don't think they would agree. You are more than your test results. This type of thinking could fall under Filtering, you are focusing on the bad over the good. A more balanced conclusion could include the following: There are good things in my life like petName, this upcoming test does not out weight those things."
   )
 
   #q2 followups
@@ -482,7 +482,7 @@ ActiveRecord::Base.transaction do
   f30 = FollowUp.create!(
     response: r30,
     thinking_trap: mind_reading,
-    text:"Woah! That's not a very nice thing to say to yourself. What would you say to [friend name] if they said the same thing about themselves. When we fall into the trap of Mind-reading, not only do we wrongly believe we know what others are thinking, but we assume they think they are thinking the worst of us. Your teacher will not think you are stupid if you do poorly. They might be concerned but not mad, and will most likey only want to help. Try not to assume the worst of your classmates, everyone experiences an academic struggle at some point and they can probably relate. Be kind to yourself!"
+    text:"Woah! That's not a very nice thing to say to yourself. What would you say to friendName if they said the same thing about themselves. When we fall into the trap of Mind-reading, not only do we wrongly believe we know what others are thinking, but we assume they think they are thinking the worst of us. Your teacher will not think you are stupid if you do poorly. They might be concerned but not mad, and will most likey only want to help. Try not to assume the worst of your classmates, everyone experiences an academic struggle at some point and they can probably relate. Be kind to yourself!"
   )
 
   #q11 followups
@@ -490,38 +490,39 @@ ActiveRecord::Base.transaction do
   f31 = FollowUp.create!(
     response: r31,
     thinking_trap: catastrophizing,
-    text:"I'm sure [friend name] would agree! Close friends support you and like you for who you are, the outcome of this test does not affect that."
+    text:"I'm sure friendName would agree! Close friends support you and like you for who you are, the outcome of this test does not affect that."
   )
   f32 = FollowUp.create!(
     response: r32,
     thinking_trap: catastrophizing,
-    text:"What better way to forget about how a test went than to hang out with a friend? One of the quickest ways to change your mood is to socialize with other who support you. Would you be there for [friend name] after a test?"
+    text:"What better way to forget about how a test went than to hang out with a friend? One of the quickest ways to change your mood is to socialize with other who support you. Would you be there for friendName after a test?"
   )
   f33 = FollowUp.create!(
     response: r33,
     thinking_trap: catastrophizing,
-    text:"[friend name] wouldn't be your friend if they cared about stuff like that. Sometimes we talk to ourselves in a mean way. This kind of thinking is unhelpful and unfair. Close friends support you and like you for who you are, the outcome of this test will not affect that."
+    text:"friendName wouldn't be your friend if they cared about stuff like that. Sometimes we talk to ourselves in a mean way. This kind of thinking is unhelpful and unfair. Close friends support you and like you for who you are, the outcome of this test will not affect that."
   )
 
 #################################################################################################
 #TIPS FOR TEST SUCCESS
-  Tip.create!(name: "do", 
+  Tip.create!(name: "DO", 
     text: "Do reward yourself after the test with your favourite food, movie or some other treat!"
     )
-  Tip.create!(name: "don't", 
+  Tip.create!(name: "DON'T", 
     text: "Don't spend your time before a test with classmates who generate stress for you."
     )
-  Tip.create!(name: "don't", 
-    text: "Don't stay up late studying the night before a test. A lack of sleep can increase anxious thoughts and only make things worse."
-    )
-  Tip.create!(name: "do", 
+ 
+  Tip.create!(name: "DO", 
     text: "Do start studying for the test in advance. Budget your time so you are well prepared for the test."
     )
-  Tip.create!(name: "don't", 
+  Tip.create!(name: "DON'T", 
     text: "Don't spend the hour before the test cramming, grab a bite to eat and do one of Settle's meditations or work-throughs instead."
     ) 
-  Tip.create!(name: "do", 
+  Tip.create!(name: "DO", 
     text: "Do eat a light meal before a test. Having food in your stomach will give you enery and keep you focused."
+    )
+  Tip.create!(name: "DON'T", 
+    text: "Don't stay up late studying the night before a test. A lack of sleep can increase anxious thoughts and only make things worse."
     )
 
 #################################################################################################
