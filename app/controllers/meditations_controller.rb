@@ -5,7 +5,6 @@ class MeditationsController < ApplicationController
   def index
     @user = User.find(params[:user_id])
     render :json => @user.user_meditations.to_json
-
   end
 
   def create
