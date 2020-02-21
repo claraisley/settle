@@ -1,12 +1,33 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Chart from "react-apexcharts";
+import { makeStyles } from '@material-ui/core/styles';
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+import FormHelperText from '@material-ui/core/FormHelperText';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
+
+const useStyles = makeStyles(theme => ({
+  formControl: {
+    margin: theme.spacing(1),
+    minWidth: 120,
+  },
+  selectEmpty: {
+    marginTop: theme.spacing(2),
+  },
+}));
 
 export default function MeditationHistory(props) {
   const [state, setState] = useState({
     meditations: [],
     baseDay: new Date()
   })
+  const classes = useStyles();
+
+  const handleChange = event => {
+    console.log("date has changed")
+  };
 
   useEffect(() => {
     axios.request({
@@ -46,7 +67,6 @@ export default function MeditationHistory(props) {
       time: 0
     }
   }
-  // console.log("weekobject", weekObject)
 
   // builds an array objects of user's meditations: key is the date and value is the time
   let meditationArray = [];
@@ -87,17 +107,24 @@ export default function MeditationHistory(props) {
     weekStart.setDate(startOfWeek.getDate() - 7 * i)
     weekStartArray.push(weekStart)
   }
+
   const weekStartOptions = weekStartArray.map(day => {
-    return <option value={day.toDateString()}>{day.toDateString()}</option>
+    return <MenuItem value={day.toDateString()}>{day.toDateString()}</MenuItem>
   })
 
   return (
     <main className="MeditationHistory">
       <h2>My Previous Meditations</h2>
       <span>This is how long you've meditated for the week of </span>
-      <select>
-        {weekStartOptions}
-      </select>
+      <FormControl className={classes.formControl}>
+        <InputLabel id="week-picker">Week</InputLabel>
+        <Select
+          value={weekStartArray[0].toDateString()}
+          onChange={handleChange}
+        >
+          {weekStartOptions}
+        </Select>
+      </FormControl>
       {state.meditations.length > 0 ?
         <Chart
           type="bar"
