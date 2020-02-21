@@ -7,17 +7,23 @@ export default function MeditationHistory(props) {
     meditations: [],
     baseDay: new Date()
   })
+  // console.log("meditations in state", state.meditations)
 
-  // getting start of week for the graph...yes this is weird
+  // gets Sunday as the start of week for the graph
   let dayOfWeek = state.baseDay.getDay()
-  let startOfWeek = new Date(state.baseDay.setDate(state.baseDay.getDate() - dayOfWeek))
+  let startOfWeek = new Date();
+  startOfWeek.setDate(state.baseDay.getDate() - dayOfWeek)
 
   // makes an array for the week, key is the actual date object, value is a string to put in the graph
   let weekObject = {}
-  weekObject[startOfWeek] = startOfWeek.toDateString().substr(4, 6)
-  for (let i = 0; i < 6; i++) {
-    let weekday = new Date(startOfWeek.setDate(startOfWeek.getDate() + 1))
-    weekObject[weekday] = weekday.toDateString().substr(4, 6)
+  // weekObject[startOfWeek.toDateString()] = {displayDate: startOfWeek.toDateString().substr(4, 6), time: 0};
+  for (let i = 0; i < 7; i++) {
+    let weekday = new Date()
+    weekday.setDate(startOfWeek.getDate() + i)
+    weekObject[weekday.toDateString()] = {
+      displayDate: weekday.toDateString().substr(4, 6),
+      time: 0
+    }
   }
   console.log("weekobject", weekObject)
 
@@ -26,12 +32,13 @@ export default function MeditationHistory(props) {
   for (let meditation of state.meditations) {
     meditationArray.push({ [meditation.created_at]: meditation.meditation.time_in_minutes })
   }
+
+  console.log("meditation array for user", meditationArray)
   // needs to result in an array that's just the minutes for each day in weekobject
-  for (let dayOfWeek of Object.keys(weekObject)) {
-    for (let meditation of meditationArray) {
-      if (new Date(dayOfWeek).toDateString() === new Date(Object.keys(meditation)[0]).toDateString()) {
-        console.log("match")
-      }
+  for (let meditation of meditationArray) {
+    let formatMeditationDay = new Date(Object.keys(meditation)[0]).toDateString()
+    if (formatMeditationDay in weekObject) {
+      weekObject[formatMeditationDay].time += Object.values(meditation)[0]
     }
   }
 
@@ -41,7 +48,7 @@ export default function MeditationHistory(props) {
         id: "basic-bar"
       },
       xaxis: {
-        categories: Object.values(weekObject)
+        categories: Object.values(weekObject).map(({ displayDate }) => displayDate)
       }
     },
     series: [
@@ -67,7 +74,8 @@ export default function MeditationHistory(props) {
       withCredentials: true
     })
       .then(response => {
-        setState(prev => ({ ...prev, meditations: response.data })) // if no meditations, then state.meditations is just an empty array
+        let results = response.data
+        setState(prev => ({ ...prev, meditations: results })) // if no meditations, then state.meditations is just an empty array
       })
       .catch(function (error) {
         console.log(error);
