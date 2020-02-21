@@ -32,12 +32,15 @@ export default function Meditation(props) {
     setExpanded(prevEx => prevEx !== panel ? panel : false);
   };
 
-
   const meditationData = [
     { "id": 1, "name": "One minute", "value": "https://www2.cs.uic.edu/~i101/SoundFiles/CantinaBand60.wav" },
     { "id": 2, "name": "Two minutes", "value": "https://www2.cs.uic.edu/~i101/SoundFiles/CantinaBand60.wav" },
     { "id": 3, "name": "Three minutes", "value": "https://www2.cs.uic.edu/~i101/SoundFiles/CantinaBand60.wav" }
   ]
+
+  const handleEnd = () => {
+    alert("ended!")
+  }
 
   const meditations = meditationData.map(meditation => {
     return (
@@ -50,7 +53,7 @@ export default function Meditation(props) {
           <Typography className={classes.heading}>{meditation.name}</Typography>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
-          <audio controls src={meditation.value}></audio>
+          <audio controls src={meditation.value} onEnded={() => handleEnd()}></audio>
         </ExpansionPanelDetails>
       </ExpansionPanel>
     )

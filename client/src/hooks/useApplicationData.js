@@ -145,7 +145,7 @@ export default function useApplicationData() {
       name: "Meditations",
       path: "/meditations",
       requiresAuthentication: true,
-      component: <Meditation />
+      component: <Meditation user={state.user}/>
     },
     {
       name: "Work-Throughs",
