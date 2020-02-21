@@ -115,7 +115,7 @@ export default function SignUp(props) {
           </TypographySignup>
           <form
             className={classes.form}
-            autoComplete="off"
+            autocomplete="off"
             onSubmit={handleSubmit}
           >
             <Grid container spacing={2}>

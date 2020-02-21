@@ -1,7 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
-import clsx from "clsx";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import Drawer from "@material-ui/core/Drawer";
@@ -13,12 +12,10 @@ import Typography from "@material-ui/core/Typography";
 import Divider from "@material-ui/core/Divider";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
-import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
-import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 
-const drawerWidth = 300;
+const drawerWidth = 240;
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -76,6 +73,12 @@ const useStyles = makeStyles(theme => ({
   },
   linkName: {
     color: theme.palette.text.secondary
+  },
+  list: {
+    width: 250
+  },
+  fullList: {
+    width: "auto"
   }
 }));
 
@@ -84,15 +87,30 @@ export default function Nav(props) {
   const classes = useStyles();
   const theme = useTheme();
 
-  const [open, setOpen] = React.useState(false);
+  const [state, setState] = React.useState({
+    right: false
+  });
 
-  const handleDrawerOpen = () => {
-    setOpen(true);
+  const toggleDrawer = (state, open) => event => {
+    if (
+      event.type === "keydown" &&
+      (event.key === "Tab" || event.key === "Shift")
+    ) {
+      return;
+    }
+
+    setState({ ...state, right: open });
   };
 
-  const handleDrawerClose = () => {
-    setOpen(false);
-  };
+  // const [open, setOpen] = React.useState(false);
+
+  // const handleDrawerOpen = () => {
+  //   setOpen(true);
+  // };
+
+  // const handleDrawerClose = () => {
+  //   setOpen(false);
+  // };
 
   const filteredLinks = props.links.filter(function(link) {
     return link.name !== "Signup" && link.name !== "Login";
@@ -109,11 +127,18 @@ export default function Nav(props) {
 
   const navList = links.map((link, index) => {
     return (
-      <List key={index}>
-        <ListItem button key={link.path} component={Link} to={link.path}>
-          <ListItemText primary={link.name} className={classes.linkName} />
-        </ListItem>
-      </List>
+      <div
+        className={classes.list}
+        role="presentation"
+        onClick={toggleDrawer(state.right, false)}
+        onKeyDown={toggleDrawer(state.right, false)}
+      >
+        <List key={index}>
+          <ListItem button key={link.path} component={Link} to={link.path}>
+            <ListItemText primary={link.name} className={classes.linkName} />
+          </ListItem>
+        </List>
+      </div>
     );
   });
 
@@ -128,12 +153,7 @@ export default function Nav(props) {
   return (
     <div className={classes.root}>
       <CssBaseline />
-      <AppBar
-        position="fixed"
-        className={clsx(classes.appBar, {
-          [classes.appBarShift]: open
-        })}
-      >
+      <AppBar position="fixed" className={classes.appBar}>
         <Toolbar>
           <Typography variant="h6" noWrap className={classes.title}>
             SETTLE
@@ -157,8 +177,7 @@ export default function Nav(props) {
             color="inherit"
             aria-label="open drawer"
             edge="end"
-            onClick={handleDrawerOpen}
-            className={clsx(open && classes.hide)}
+            onClick={toggleDrawer("right", true)}
           >
             <MenuIcon />
           </IconButton>
@@ -166,22 +185,11 @@ export default function Nav(props) {
       </AppBar>
       <Drawer
         className={classes.drawer}
-        variant="persistent"
         anchor="right"
-        open={open}
-        classes={{
-          paper: classes.drawerPaper
-        }}
+        open={state.right}
+        onClose={toggleDrawer("right", false)}
       >
-        <div className={classes.drawerHeader}>
-          <IconButton onClick={handleDrawerClose}>
-            {theme.direction === "rtl" ? (
-              <ChevronLeftIcon />
-            ) : (
-              <ChevronRightIcon />
-            )}
-          </IconButton>
-        </div>
+        <div className={classes.drawerHeader}></div>
         <Divider />
         {navList}
         <Divider />
