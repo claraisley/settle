@@ -111,7 +111,7 @@ export default function Login(props) {
               color="primary"
               className={classes.submit}
             >
-              Sign In
+              Login
             </Button>
             <Grid container justify="flex-end">
               <Grid item>
