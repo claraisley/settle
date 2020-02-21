@@ -29,6 +29,9 @@ const PaperLogin = styled(Paper)`
 const LoginTextField = styled(TextField)`
   & > * {
     color: white;
+    & > fieldset {
+      border-color: white;
+    }
   }
 `;
 
