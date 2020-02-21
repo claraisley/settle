@@ -19,7 +19,21 @@ export default function MeditationHistory(props) {
     let weekday = new Date(startOfWeek.setDate(startOfWeek.getDate() + 1))
     weekObject[weekday] = weekday.toDateString().substr(4, 6)
   }
-  console.log("objects values", Object.values(weekObject))
+  console.log("weekobject", weekObject)
+
+  // builds an array objects of user's meditations: key is the date and value is the time
+  let meditationArray = [];
+  for (let meditation of state.meditations) {
+    meditationArray.push({ [meditation.created_at]: meditation.meditation.time_in_minutes })
+  }
+  // needs to result in an array that's just the minutes for each day in weekobject
+  for (let dayOfWeek of Object.keys(weekObject)) {
+    for (let meditation of meditationArray) {
+      if (new Date(dayOfWeek).toDateString() === new Date(Object.keys(meditation)[0]).toDateString()) {
+        console.log("match")
+      }
+    }
+  }
 
   const example = {
     options: {
