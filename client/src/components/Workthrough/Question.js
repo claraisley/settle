@@ -12,6 +12,8 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormControl from "@material-ui/core/FormControl";
 import FormLabel from "@material-ui/core/FormLabel";
 import "./question.css";
+import personalizeText from "./HelperFunction"
+
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -58,7 +60,7 @@ export default function Question(props) {
         value={response.text}
         onClick={() => props.onResponse(response.id)}
         control={<Radio className={classes.cards} />}
-        label={response.text}
+        label={personalizeText(props.interests, response.text)}
       />
     );
   });
@@ -69,7 +71,7 @@ export default function Question(props) {
         <Card className={classes.cards}>
           <CardContent>
             <Typography gutterBottom>Question</Typography>
-            <Typography>{props.question.text}</Typography>
+            <Typography>{personalizeText(props.interests, props.question.text)}</Typography>
           </CardContent>
         </Card>
         <Card className={classes.cards}>
