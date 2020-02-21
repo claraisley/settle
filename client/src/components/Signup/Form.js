@@ -11,9 +11,34 @@ import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import { useHistory } from "react-router-dom";
 import Paper from "@material-ui/core/Paper";
-import "../login.css";
 
 const axios = require("axios").default;
+
+// CSS STYLED COMPONENTS
+
+const ContainerLogin = styled(Container)`
+  padding: 3%;
+`;
+
+const PaperLogin = styled(Paper)`
+  margin-top: 10%;
+  margin-left: 20%;
+  margin-right: 20%;
+  background-color: #353c52;
+`;
+
+const LoginTextField = styled(TextField)`
+  & > * {
+    color: white;
+  }
+`;
+
+const TypographyLogin = styled(Typography)`
+  font-size: x-large;
+  font-weight: 600;
+`;
+
+// MATERIAL UI COMPONENT STYLING THEME
 
 const useStyles = makeStyles(theme => ({
   paper: {
@@ -30,6 +55,8 @@ const useStyles = makeStyles(theme => ({
     margin: theme.spacing(3, 0, 2)
   }
 }));
+
+// SIGNUP FUNCTION
 
 export default function SignUp(props) {
   let history = useHistory();

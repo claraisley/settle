@@ -12,7 +12,6 @@ import Container from "@material-ui/core/Container";
 import Link from "@material-ui/core/Link";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
-import "./login.css";
 
 const axios = require("axios").default;
 
@@ -33,10 +32,10 @@ const LoginTextField = styled(TextField)`
   }
 `;
 
-// .header {
-//   font-size: x-large;
-//   font-weight: 600;
-// }
+const TypographyLogin = styled(Typography)`
+  font-size: x-large;
+  font-weight: 600;
+`;
 
 const useStyles = makeStyles(theme => ({
   paper: {
@@ -99,9 +98,9 @@ export default function Login(props) {
       <ContainerLogin component="main" maxWidth="xs">
         <CssBaseline />
         <div className={classes.paper}>
-          <Typography component="h1" variant="h5">
+          <TypographyLogin component="h1" variant="h5">
             Login
-          </Typography>
+          </TypographyLogin>
           <form className={classes.form} onSubmit={handleSubmit}>
             <LoginTextField
               variant="outlined"
