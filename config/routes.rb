@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :thinking_traps
   resources :tips
 
-  resources :user_interests, only: [:create]
+  resources :user_interests, only: [:create, :index]
 
   resources :reflections, only: [:index, :create]
 
