@@ -1,4 +1,5 @@
 import React from "react";
+import styled from "styled-components";
 import useLoginForm from "../hooks/useLoginForm";
 import { useHistory } from "react-router-dom";
 import Button from "@material-ui/core/Button";
@@ -11,9 +12,37 @@ import Container from "@material-ui/core/Container";
 import Link from "@material-ui/core/Link";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
-import "./login.css";
 
 const axios = require("axios").default;
+
+// CSS STYLED COMPONENTS
+
+const ContainerLogin = styled(Container)`
+  padding: 3%;
+`;
+
+const PaperLogin = styled(Paper)`
+  margin-top: 10%;
+  margin-left: 20%;
+  margin-right: 20%;
+  background-color: #353c52;
+`;
+
+const LoginTextField = styled(TextField)`
+  & > * {
+    color: white;
+    & > fieldset {
+      border-color: white;
+    }
+  }
+`;
+
+const TypographyLogin = styled(Typography)`
+  font-size: x-large;
+  font-weight: 600;
+`;
+
+// MATERIAL UI STYLING CSS
 
 const useStyles = makeStyles(theme => ({
   paper: {
@@ -30,6 +59,8 @@ const useStyles = makeStyles(theme => ({
     margin: theme.spacing(3, 0, 2)
   }
 }));
+
+// LOGIN FUNCTION
 
 export default function Login(props) {
   const classes = useStyles();
@@ -72,15 +103,15 @@ export default function Login(props) {
   const { inputs, handleInputChange, handleSubmit } = useLoginForm(login);
 
   return (
-    <Paper elevation={10}>
-      <Container component="main" maxWidth="xs">
+    <PaperLogin elevation={10}>
+      <ContainerLogin component="main" maxWidth="xs">
         <CssBaseline />
         <div className={classes.paper}>
-          <Typography component="h1" variant="h5">
+          <TypographyLogin component="h1" variant="h5">
             Login
-          </Typography>
+          </TypographyLogin>
           <form className={classes.form} onSubmit={handleSubmit}>
-            <TextField
+            <LoginTextField
               variant="outlined"
               margin="normal"
               required
@@ -91,8 +122,9 @@ export default function Login(props) {
               value={inputs.email || ""}
               onChange={handleInputChange}
               autoFocus
+              style={{ color: "white" }}
             />
-            <TextField
+            <LoginTextField
               variant="outlined"
               margin="normal"
               required
@@ -127,7 +159,7 @@ export default function Login(props) {
           </form>
         </div>
         <Box mt={8}></Box>
-      </Container>
-    </Paper>
+      </ContainerLogin>
+    </PaperLogin>
   );
 }
