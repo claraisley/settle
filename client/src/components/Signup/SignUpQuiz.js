@@ -12,13 +12,12 @@ import { Paper } from "@material-ui/core";
 const axios = require("axios").default;
 
 const PaperQuiz = styled(Paper)`
-  &&& {
-    margin-top: 7%;
-    margin-left: 10%;
-    margin-right: 10%;
-    margin-bottom: 7%;
-    background-color: #353c52;
-  }
+  margin-top: 7%;
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-bottom: 7%;
+  background-color: #353c52;
+  background-image: url(http://www.transparenttextures.com/patterns/cubes.png);
 `;
 
 const CardQuiz = styled(Card)`
@@ -28,17 +27,16 @@ const CardQuiz = styled(Card)`
   margin-bottom: 5%;
   align-items: center;
   height: 7em;
-  width: 75%;
+
   background-color: #353c52;
 `;
 
 const CardContentQuiz = styled(CardContent)`
-  & > p {
-    margin-top: 5%;
-    margin-bottom: 5%;
-    color: white;
-    text-align: center;
-  }
+  padding: 0;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  color: white;
+  text-align: center;
 `;
 
 const useStyles = makeStyles(theme => ({
@@ -120,7 +118,7 @@ export default function SignUpQuiz(props) {
             </Typography>
           </CardContentQuiz>
         </CardQuiz>
-        <Card>
+        <CardQuiz>
           <form onSubmit={handleSubmit}>
             <QuestionList
               signupQuestions={props.signupQuestions}
@@ -132,7 +130,7 @@ export default function SignUpQuiz(props) {
               Submit
             </Button>
           </form>
-        </Card>
+        </CardQuiz>
       </PaperQuiz>
     </main>
   );
