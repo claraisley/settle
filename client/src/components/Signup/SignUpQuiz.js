@@ -11,6 +11,7 @@ import Typography from "@material-ui/core/Typography";
 import { Paper } from "@material-ui/core";
 const axios = require("axios").default;
 
+const FormQuiz = styled.form``;
 const PaperQuiz = styled(Paper)`
   margin-top: 7%;
   margin-left: 10%;
@@ -26,13 +27,13 @@ const CardQuiz = styled(Card)`
   margin-right: 10%;
   margin-bottom: 5%;
   align-items: center;
-  height: 7em;
-
+  height: 100%;
   background-color: #353c52;
 `;
 
 const CardContentQuiz = styled(CardContent)`
-  padding: 0;
+  padding: 10px;
+  padding-bottom: 0 !important;
   margin-top: 5%;
   margin-bottom: 5%;
   color: white;
@@ -118,8 +119,8 @@ export default function SignUpQuiz(props) {
             </Typography>
           </CardContentQuiz>
         </CardQuiz>
-        <CardQuiz>
-          <form onSubmit={handleSubmit}>
+        <CardQuiz className={classes.responseList}>
+          <FormQuiz onSubmit={handleSubmit}>
             <QuestionList
               signupQuestions={props.signupQuestions}
               questionState={questionState}
@@ -129,7 +130,7 @@ export default function SignUpQuiz(props) {
             <Button type="submit" fullWidth variant="contained" color="primary">
               Submit
             </Button>
-          </form>
+          </FormQuiz>
         </CardQuiz>
       </PaperQuiz>
     </main>

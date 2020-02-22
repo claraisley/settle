@@ -7,8 +7,6 @@ import Button from "@material-ui/core/Button";
 import useSignUpQuiz from "../../hooks/useSignUpQuiz";
 import Card from "@material-ui/core/Card";
 
-const ListCard = styled(Card)``;
-
 export default function QuestionList(props) {
   const questionList = props.signupQuestions.map(question => {
     return (
