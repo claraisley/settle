@@ -1,8 +1,17 @@
 import React, { useState } from "react";
+import styled from "styled-components";
 import TextField from "@material-ui/core/TextField";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
 
+const QuestionTextField = styled(TextField)`
+  & > * {
+    color: white;
+    & > fieldset {
+      border-color: white;
+    }
+  }
+`;
 export default function QuestionItem(props) {
   const [state, setState] = useState({
     checkedA: false,
@@ -37,7 +46,7 @@ export default function QuestionItem(props) {
       />
 
       {state.checkedA && (
-        <TextField
+        <QuestionTextField
           fullWidth
           variant="outlined"
           id={props.id}
