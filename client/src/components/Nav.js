@@ -112,7 +112,7 @@ export default function Nav(props) {
   //   setOpen(false);
   // };
 
-  const filteredLinks = props.links.filter(function(link) {
+  const filteredLinks = props.links.filter(function (link) {
     return link.name !== "Signup" && link.name !== "Login";
   });
 
@@ -163,16 +163,6 @@ export default function Nav(props) {
               Welcome {props.user.name}!
             </Typography>
           )}
-          {props.user.name && (
-            <Button
-              variant="contained"
-              onClick={() => {
-                logout();
-              }}
-            >
-              Logout
-            </Button>
-          )}
           <IconButton
             color="inherit"
             aria-label="open drawer"
@@ -189,7 +179,16 @@ export default function Nav(props) {
         open={state.right}
         onClose={toggleDrawer("right", false)}
       >
-        <div className={classes.drawerHeader}></div>
+        <div className={classes.drawerHeader}>
+          {props.user.name && (
+            <Button
+              variant="contained"
+              onClick={() => { logout() }}
+            >
+              Logout
+              </Button>
+          )}
+        </div>
         <Divider />
         {navList}
         <Divider />
