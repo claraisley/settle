@@ -10,14 +10,14 @@ const BackPackDiv = styled.div`
 }
 `
 const BackPackItem = styled(Backpack) `
-padding: 2em;
+padding: 1em;
 `
 
 
 
 
 export function OneBackPack() {
-  return <BackPackItem size={220} mood="excited" />;
+  return <BackPackItem size={100} mood="excited" />;
 }
 
 export function TwoBackPack() {
@@ -30,6 +30,26 @@ export function TwoBackPack() {
 }
 
 export function ThreeBackPack() {
+  return (
+    <BackPackDiv>
+      <BackPackItem size={100} mood="sad" />
+      <BackPackItem size={100} mood="sad" />
+      <BackPackItem size={100} mood="sad" />
+    </BackPackDiv>
+  );
+}
+
+export function FourBackPack() {
+  return (
+    <BackPackDiv>
+      <BackPackItem size={100} mood="sad" />
+      <BackPackItem size={100} mood="sad" />
+      <BackPackItem size={100} mood="sad" />
+    </BackPackDiv>
+  );
+}
+
+export function FiveBackPack() {
   return (
     <BackPackDiv>
       <BackPackItem size={100} mood="sad" />
