@@ -58,16 +58,9 @@ export default function MoodCalendar(props) {
     tileContent = ({ date }) => {
       let content = "";
       state.moods.forEach(mood => {
-<<<<<<< HEAD
-        let calendarDate = date.toDateString();
-        let moodDate = new Date(mood.created_at); // changes it to a date object
-        moodDate.setDate(moodDate.getDate() + 1); // adds a day because it shows up on the day before, don't know why
-        let compareMoodDate = moodDate.toDateString(); // changes it to a date string so it can be compared
-=======
         let calendarDate = date.toDateString()
         let moodDate = new Date(mood.created_at) // changes it to a date object
         let compareMoodDate = moodDate.toDateString() // changes it to a date string so it can be compared
->>>>>>> master
         if (calendarDate === compareMoodDate) {
           content = emojiLookup[mood.value];
         }
