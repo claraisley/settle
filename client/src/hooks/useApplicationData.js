@@ -34,7 +34,6 @@ export default function useApplicationData() {
   
     if (!state.user.name && localStorage.getItem('currentUser')) {
       const { data } = JSON.parse(localStorage.getItem('currentUser'));
-      console.log(data)
       setUser({email: data.email, name: data.name, id: data.id })
     } 
 
