@@ -7,28 +7,33 @@ class ReflectionsController < ApplicationController
     @user = User.find(params[:id])
    
 
-    # grab universal thoughts, now an array
+    # grab universal thoughts sort according to most recent 
     @thoughts = Thought.where(interest_id: nil).to_a
+    @thoughts.sort_by {|thought| thought.most_recent_for(@user)}
 
+    
+
+    # grabs the interests associated with that user and the thoughts that use that interest
     @thoughtsArray = []
-
-    # grabs the interests associated with that user and the thoughts that use that interest, 
-    # joins them to @thoughtsArray
     @user.interests.each do |interest|
       @thoughtsArray.concat(interest.thoughts.to_a)
     end
 
-    # joins @thoughts and @thoughtsArray
-    @thoughts.concat(@thoughtsArray)
+    #samples on random interest-thought
+    @interest_thought = @thoughtsArray.sample(1)
 
-    # makes param into integer so I can use it in sample
+
+    # makes param into integer so I can use it below
     int = Integer(params[:number])
 
-    # takes a sample from the array, each are distinct, number is sent as params
-    @random_thoughts = @thoughts.sample(int)
+    # takes first section from the array, each are distinct, amount to take is sent as params
+    @sorted_thoughts = @thoughts.first(int)
+
+    # joins interest thoght to sorted thoughts
+    @sampled_thoughts = @sorted_thoughts.concat(@interest_thought)
     
-    #renders the random thoughts and their responses and followups 
-    render :json => @random_thoughts.to_json(:include => {:responses => { :include => [:follow_ups, :thinking_trap] }})
+    #renders the thoughts and their responses and followups 
+    render :json => @sampled_thoughts.to_json(:include => {:responses => { :include => [:follow_ups, :thinking_trap] }})
   
   end
 

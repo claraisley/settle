@@ -8,7 +8,7 @@ export default function Progress(props) {
     <main className="progress">
       <h2>Progress</h2>
       <MoodCalendar user={props.user} />
-      <ThinkingTrap />
+      <ThinkingTrap user={props.user}/>
       <MeditationHistory user={props.user} />
     </main>
   )

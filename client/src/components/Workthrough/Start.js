@@ -54,7 +54,7 @@ export default function Start(props) {
               className={classes.button}
               variant="contained"
               color="primary"
-              onClick={() => props.startWorkthrough(4)}
+              onClick={() => props.startWorkthrough(3)}
             >
               Today
             </Button>
@@ -62,7 +62,7 @@ export default function Start(props) {
               className={classes.button}
               variant="contained"
               color="primary"
-              onClick={() => props.startWorkthrough(6)}
+              onClick={() => props.startWorkthrough(5)}
             >
               Tomorrow
             </Button>
