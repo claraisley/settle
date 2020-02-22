@@ -23,10 +23,8 @@ export default function MeditationHistory(props) {
     baseDay: new Date()
   })
   const classes = useStyles();
-  console.log("STATE BASE DAY", state.baseDay)
 
   const handleChange = event => {
-    console.log("EVENT TARGET VALUE", event.target.value)
     setState(prev => ({ ...prev, baseDay: new Date(event.target.value) }))
   };
 
@@ -111,13 +109,10 @@ export default function MeditationHistory(props) {
     sunday.setDate(getSunday(sunday).getDate() - 7 * i)
     sundayArray.push(sunday)
   }
-  // console.log("week start array", sundayArray)
 
   const weekStartOptions = sundayArray.map(sunday => {
     return <MenuItem key={sunday.toDateString()} value={sunday.toDateString()}>{sunday.toDateString()}</MenuItem>
   })
-
-  // console.log("value of select", getSunday(state.baseDay).toDateString())
 
   return (
     <main className="MeditationHistory">
