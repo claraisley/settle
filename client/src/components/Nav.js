@@ -15,7 +15,7 @@ import MenuIcon from "@material-ui/icons/Menu";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 
-const drawerWidth = 240;
+const drawerWidth = 300;
 
 const useStyles = makeStyles(theme => ({
   root: {
