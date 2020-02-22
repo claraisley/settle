@@ -127,6 +127,7 @@ export default function SignUpQuiz(props) {
               questionState={questionState}
               changeQuestion={changeQuestion}
             />
+
             <Button type="submit" fullWidth variant="contained" color="primary">
               Submit
             </Button>
