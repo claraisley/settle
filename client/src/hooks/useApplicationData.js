@@ -8,6 +8,8 @@ import StaticPageList from "../components/StaticPageList";
 import StaticPage from "../components/StaticPage";
 import Meditation from "../components/Meditation";
 import Login from "../components/Login.js";
+import WhatIs from "../components/Whatis";
+
 
 export default function useApplicationData() {
   //pages state
@@ -97,10 +99,7 @@ export default function useApplicationData() {
     }
   }
 
-  const pageText = {
-    about: "KATHERINE WRITE THE THING HERE SEARCH ME IN USEAPPLICATIONDATA FOR ABOUT PAGE",
-    whatIs: "KATHERINE WRITE THE THING HERE SEARCH ME IN USEAPPLICATIONDATA FOR WHAT IS TEST ANXIETY PAGE"
-  };
+ const about = "About us"
 
   const links = [
     
@@ -127,10 +126,7 @@ export default function useApplicationData() {
       path: "/test-anxiety",
       requiresAuthentication: true,
       component: (
-        <StaticPage
-          title={"What is test anxiety?"}
-          text={pageText.whatIs}
-        />
+        <WhatIs/>
       )
     },
     {
@@ -174,7 +170,7 @@ export default function useApplicationData() {
       component: (
         <StaticPage
           title={"About"}
-          text={pageText.about}
+          text={about}
         />
       )
     },

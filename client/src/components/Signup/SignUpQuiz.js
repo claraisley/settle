@@ -3,6 +3,7 @@ import QuestionList from "./QuestionList";
 import { useHistory } from "react-router-dom";
 import Button from "@material-ui/core/Button";
 import useSignUpQuiz from "../../hooks/useSignUpQuiz";
+import { Planet } from 'react-kawaii'
 const axios = require("axios").default;
 
 export default function SignUpQuiz(props) {
@@ -54,6 +55,7 @@ export default function SignUpQuiz(props) {
         Thanks for signing up {props.user.name}, we'd like to
         ask you a few questions to get to know you better. It'll help us loads!
       </p>
+      <Planet size={220} mood="happy" color="#FCCB7E" />
       <form onSubmit={handleSubmit}>
         <QuestionList
           signupQuestions={props.signupQuestions}

@@ -106,7 +106,7 @@ ActiveRecord::Base.transaction do
   r3 = Response.create!(
     thought: q1,
     thinking_trap: filtering,
-    value: 2,
+    value: 3,
     text: "No, they'll be upset if I fail the test."
   )
 
@@ -135,18 +135,18 @@ ActiveRecord::Base.transaction do
     thought: q3,
     thinking_trap: fortune_telling,
     value: 0,
-    text: "No, I can't know that for sure, but I think it won't go well. "
+    text: "No, I can't know that for sure. "
   )
   r8 = Response.create!(
     thought: q3,
     thinking_trap: fortune_telling,
-    value: 1,
+    value: 2,
     text: "No, but what if I do this time?"
   )
   r9 = Response.create!(
     thought: q3,
     thinking_trap: fortune_telling,
-    value: 2,
+    value: 5,
     text: "Yes, I will defintely 100% fail."
   )
 
@@ -160,7 +160,7 @@ ActiveRecord::Base.transaction do
   r11 = Response.create!(
     thought: q4,
     thinking_trap: catastrophizing,
-    value: 2,
+    value: 3,
     text: "Horror."
   )
   r12 = Response.create!(
@@ -180,13 +180,13 @@ ActiveRecord::Base.transaction do
   r14 = Response.create!(
     thought: q5,
     thinking_trap: over_gen,
-    value: 1,
+    value: 2,
     text: "I don't always fail...but this time I might."
   )
   r15 = Response.create!(
     thought: q5,
     thinking_trap: over_gen,
-    value: 1,
+    value: 5,
     text: "Yes, I always fail."
   )
 
@@ -214,19 +214,19 @@ ActiveRecord::Base.transaction do
   r19 = Response.create!(
     thought: q7,
     thinking_trap: should,
-    value: 0,
+    value: 1,
     text: "I wish I didn't have it, but it's not up to me. "
   )
   r20 = Response.create!(
     thought: q7,
     thinking_trap: should,
-    value: 1,
+    value: 3,
     text: "It's not fully my fault but I shouldn't have it."
   )
   r21 = Response.create!(
     thought: q7,
     thinking_trap: should,
-    value: 2,
+    value: 5,
     text: "True, it's embarassing and I shouldn't have it."
   )
   
@@ -267,7 +267,7 @@ ActiveRecord::Base.transaction do
   r27 = Response.create!(
     thought: q9,
     thinking_trap: should,
-    value: 2,
+    value: 4,
     text: "I shouldn't struggle the way I do with finishing tests in time. "
   )
 
@@ -281,13 +281,13 @@ ActiveRecord::Base.transaction do
   r29 = Response.create!(
     thought: q10,
     thinking_trap: mind_reading,
-    value: 1,
+    value: 2,
     text: "My teacher may think I am incapable if I don't do well."
   )
   r30 = Response.create!(
     thought: q10,
     thinking_trap: mind_reading,
-    value: 2,
+    value: 5,
     text: "Yes, my teacher will think I am stupid and maybe they are right. "
   )
 
@@ -296,19 +296,19 @@ ActiveRecord::Base.transaction do
   r31 = Response.create!(
     thought: q11,
     thinking_trap: catastrophizing,
-    value: 2,
+    value: 0,
     text: "Yes, friendName doesn't care about that."
   )
   r32 = Response.create!(
     thought: q11,
     thinking_trap: catastrophizing,
-    value: 1,
+    value: 2,
     text: "Yes, but I doubt I'll be in the mood to even hangout soon thanks to this test."
   )
   r33 = Response.create!(
     thought: q11,
     thinking_trap: catastrophizing,
-    value: 0,
+    value: 5,
     text: "No, they won't want to."
   )
 

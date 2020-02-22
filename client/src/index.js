@@ -11,7 +11,9 @@ import deepOrange from "@material-ui/core/colors/deepOrange";
 const theme = createMuiTheme({
   palette: {
     primary: {
-      main: "#d67557"
+      main: "#deb559"
+      //#d6a026 - yellow
+      //#d67557 -orange one
     },
     text: {
       primary: "#ffffff",

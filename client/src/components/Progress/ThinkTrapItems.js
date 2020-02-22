@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { OneBackPack, TwoBackPack, ThreeBackPack } from './backpacks'
+import { OneBackPack, TwoBackPack, ThreeBackPack, FourBackPack, FiveBackPack } from './backpacks'
 
 
 const Value = styled.article`
@@ -26,7 +26,7 @@ export default function TrapItems(props) {
     6: "Should-statements"
   }
 
-  const comps = [OneBackPack, TwoBackPack, ThreeBackPack];
+  const comps = [OneBackPack, TwoBackPack, ThreeBackPack, FourBackPack, FiveBackPack];
 
   const traps = rounded.map((trap, index) => {
     let Comp = comps[trap] || ThreeBackPack;
