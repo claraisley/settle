@@ -1,57 +1,21 @@
-const arr = [
-  {
-    value: "Charlie",
-    interest_id: 1
-  },
-  {
-    value: "Nicole",
-    interest_id: 2
-  },
-  {
-    value: "Swimming",
-    interest_id: 3
-  },
-  {
-    value: "Skiing",
-    interest_id: 4
+data = {
+  1: 1.5,
+  2: 1.5,
+  3: 0.3333333333333333,
+  4: 1.2,
+  5: 1,
+  7: 1.5
   }
-];
-const z = "I'm sure friendName would agree! Close friends and petName support you and like you for who you are, the outcome of this test does not affect that."
 
-// const interestValues = arr.map(obj => {
-//   return [obj.interest_id, obj.value];
-// });
+  //1 - cat
+  //2 - filt
+  //3 - fortu
+  //4 - mind
+  //5 - black
+  //6 -over gen
+  //7 - should
 
-const personalizeText = function(arr, text) {
-  let newText = text
-  
-  for (const interest of arr) {
-    let userValue = interest.value;
-    
-    switch (interest.interest_id) {
-      case 1:
-        const regex = /petName/;
-        newText = newText.replace(regex, userValue);
-        break;
-      case 2:
-        const regex1 = /friendName/;
-        newText = newText.replace(regex1, userValue);
-        break;
-      case 3:
-        const regex2 = /hobbyName/;
-        newText = newText.replace(regex2, userValue);
-        break;
-      case 4:
-        const regex3 = /sportName/;
-        newText = newText.replace(regex3, userValue);
-        break;
-    }
-  }
-  return newText
-};
-
-console.log(personalizeText(arr, z))
-// const regex = /friendName/
-// const val = 'wow'
-// console.log(z)
-// console.log(z.replace(regex, val))
+  const rounded = Object.entries(data).map((trap) => {
+    return [trap[0], Math.round(trap[1])]
+  })
+  console.log(rounded)
