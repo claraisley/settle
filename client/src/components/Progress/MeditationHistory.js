@@ -25,6 +25,7 @@ export default function MeditationHistory(props) {
   const classes = useStyles();
 
   const handleChange = event => {
+    console.log("EVENT TARGET VALUE", event.target.value)
     setState(prev => ({ ...prev, baseDay: new Date(event.target.value) }))
   };
 
@@ -52,15 +53,18 @@ export default function MeditationHistory(props) {
   }, [props.user.id]);
 
   // gets Sunday as the start of week for the graph
-  let dayOfWeek = state.baseDay.getDay()
-  let startOfWeek = new Date();
-  startOfWeek.setDate(state.baseDay.getDate() - dayOfWeek)
+  const getSunday = (inputDay) => {
+    let dayOfWeek = inputDay.getDay()
+    let startOfWeek = new Date();
+    startOfWeek.setDate(inputDay.getDate() - dayOfWeek)
+    return startOfWeek
+  }
 
   // makes an array for the week, key is the actual date object, value is a string to put in the graph
   let weekObject = {}
   for (let i = 0; i < 7; i++) {
     let weekday = new Date()
-    weekday.setDate(startOfWeek.getDate() + i)
+    weekday.setDate(getSunday(state.baseDay).getDate() + i)
     weekObject[weekday.toDateString()] = {
       displayDate: weekday.toDateString().substr(4, 6),
       time: 0
@@ -103,9 +107,10 @@ export default function MeditationHistory(props) {
   let weekStartArray = [];
   for (let i = 0; i < 6; i++) {
     let weekStart = new Date()
-    weekStart.setDate(startOfWeek.getDate() - 7 * i) // THIS IS THE WRONG PART. MAKE A FUNCTION THAT GETS SUNDAY.
+    weekStart.setDate(getSunday(weekStart).getDate() - 7 * i)
     weekStartArray.push(weekStart)
   }
+  console.log("week start array", weekStartArray)
 
   const weekStartOptions = weekStartArray.map(day => {
     return <MenuItem key={day.toDateString()} value={day.toDateString()}>{day.toDateString()}</MenuItem>
@@ -118,7 +123,7 @@ export default function MeditationHistory(props) {
       <FormControl className={classes.formControl}>
         <InputLabel id="week-picker">Week</InputLabel>
         <Select
-          value={weekStartArray[0].toDateString()}
+          value={getSunday(state.baseDay).toDateString()}
           onChange={handleChange}
         >
           {weekStartOptions}
