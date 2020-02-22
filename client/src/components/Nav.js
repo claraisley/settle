@@ -36,7 +36,11 @@ const useStyles = makeStyles(theme => ({
     marginRight: drawerWidth
   },
   title: {
-    flexGrow: 1
+    flexGrow: 1,
+  },
+  welcome: {
+    flexGrow: 1,
+    textAlign: "right"
   },
   hide: {
     display: "none"
@@ -159,7 +163,7 @@ export default function Nav(props) {
             SETTLE
           </Typography>
           {props.user.name && (
-            <Typography variant="h6" noWrap className={classes.title}>
+            <Typography variant="h6" noWrap className={classes.welcome}>
               Welcome {props.user.name}!
             </Typography>
           )}
