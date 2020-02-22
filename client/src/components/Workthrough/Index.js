@@ -35,7 +35,7 @@ export default function Workthrough(props) {
     currentFollowup: {},
     currentThinkingTrap: {}
   });
-  // console.log("STATE", state)
+  console.log("STATE", state)
 
   const { mode, transition, back } = useVisualMode(START);
 
@@ -63,7 +63,7 @@ export default function Workthrough(props) {
     transition(MOOD);
   }
 
-  // starts the workthrough when the user selects 4 or 6 questions. needs to be updated to pull real data
+  // starts the workthrough when the user selects today or tomorrow on the start page
   const startWorkthrough = numberOfQuestions => {
     Promise.all([
       axios.request({
@@ -209,6 +209,7 @@ export default function Workthrough(props) {
         <IconButton onClick={() => startNextQuestion()}>
           <ExpandMoreIcon fontSize="large" />
         </IconButton>
+        <button onClick={() => restartWorkthrough()}>Quit without saving</button>
       </section>
     </main>
   );
