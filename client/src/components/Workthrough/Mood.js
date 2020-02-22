@@ -19,6 +19,7 @@ const MoodPaper = styled(Paper)`
   margin: 5% auto 5% auto;
   width: 50%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   background-color: #353c52;
