@@ -23,7 +23,7 @@ export default function MeditationHistory(props) {
     baseDay: new Date()
   })
   const classes = useStyles();
-  // console.log("STATE BASE DAY", state.baseDay)
+  console.log("STATE BASE DAY", state.baseDay)
 
   const handleChange = event => {
     console.log("EVENT TARGET VALUE", event.target.value)
@@ -64,7 +64,7 @@ export default function MeditationHistory(props) {
   // makes an object for the week to use as data for the graph
   let weekObject = {}
   for (let i = 0; i < 7; i++) {
-    let weekday = new Date()
+    let weekday = state.baseDay
     weekday.setDate(getSunday(state.baseDay).getDate() + i)
     weekObject[weekday.toDateString()] = {
       displayDate: weekday.toDateString().substr(4, 6),
