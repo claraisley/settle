@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import styled from "styled-components";
 import Chart from "react-apexcharts";
 import { makeStyles } from '@material-ui/core/styles';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
+import Button from "@material-ui/core/Button";
 
 const useStyles = makeStyles(theme => ({
   formControl: {
@@ -16,6 +18,23 @@ const useStyles = makeStyles(theme => ({
     marginTop: theme.spacing(2),
   },
 }));
+
+const BackButton = styled(Button)`
+height: 100px;
+width: 100px;
+`;
+const BackImg = styled.img`
+height: 100px;
+width: 100px;
+`;
+const ForwardButton = styled(Button)`
+height: 100px;
+width: 100px;
+`;
+const ForwardImg = styled.img`
+height: 100px;
+width: 100px;
+`;
 
 export default function MeditationHistory(props) {
   const [state, setState] = useState({
@@ -117,6 +136,9 @@ export default function MeditationHistory(props) {
   return (
     <main className="MeditationHistory">
       <h2>My Previous Meditations</h2>
+      <BackButton onClick={()=>{props.goToProgressPage("MOOD")}}>
+      <BackImg src="https://res.cloudinary.com/dpfixnpii/image/upload/v1582400198/arrow_xph8bj.svg"/>
+      </BackButton>
       <span>This is how long you've meditated for the week of </span>
       <FormControl className={classes.formControl}>
         <InputLabel id="week-picker">Week</InputLabel>
@@ -134,6 +156,9 @@ export default function MeditationHistory(props) {
           series={chartData.series}
           width="500" /> : <p>Do a meditation to start tracking your progress!</p>
       }
+       <ForwardButton onClick={()=>{props.goToProgressPage("HOME")}}>
+      <ForwardImg src="https://res.cloudinary.com/dpfixnpii/image/upload/v1582400212/arrow-point-to-right_qgqicj.svg"/>
+      </ForwardButton> 
     </main>
   )
 }

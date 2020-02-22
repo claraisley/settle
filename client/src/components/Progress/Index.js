@@ -36,29 +36,33 @@ export default function Progress(props) {
 
   const { mode, transition } = useVisualMode(HOME);
 
+  const goToProgressPage = (mode) => {
+    transition(mode);
+  }
+
   return (
     <main className="progress">
       <h2>Progress</h2>
       {mode === HOME && 
       <ProgressPaper elevation={10}>
   
-      <ProgressButton>
+      <ProgressButton onClick={()=>{goToProgressPage(TRAP)}}>
       <ProgressImg src="https://res.cloudinary.com/dpfixnpii/image/upload/v1582394796/brain_thxely.svg"/>
       </ProgressButton> 
       
-      <ProgressButton>
+      <ProgressButton onClick={()=>{goToProgressPage(MOOD)}}>
       <ProgressImg src="https://res.cloudinary.com/dpfixnpii/image/upload/v1582394641/emoji_z9c9di.svg"/>
       </ProgressButton> 
      
-      <ProgressButton>
+      <ProgressButton onClick={()=>{goToProgressPage(MEDITATION)}}> 
       <ProgressImg src="https://res.cloudinary.com/dpfixnpii/image/upload/v1582394724/clock_cz4ub4.svg"/>
       </ProgressButton>
      
       </ProgressPaper>
       }
-      {mode === MOOD && <MoodCalendar user={props.user}/>}
-      {mode === TRAP && <ThinkingTrap user={props.user}/>}
-      {mode === MEDITATION && <MeditationHistory user={props.user}/>}
+      {mode === TRAP && <ThinkingTrap user={props.user} goToProgressPage={goToProgressPage}/>}
+      {mode === MOOD && <MoodCalendar user={props.user} goToProgressPage={goToProgressPage}/>}
+      {mode === MEDITATION && <MeditationHistory user={props.user} goToProgressPage={goToProgressPage}/>}
     </main>
   )
 }
