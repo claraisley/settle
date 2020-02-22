@@ -23,12 +23,14 @@ export default function MeditationHistory(props) {
     baseDay: new Date()
   })
   const classes = useStyles();
+  // console.log("STATE BASE DAY", state.baseDay)
 
   const handleChange = event => {
     console.log("EVENT TARGET VALUE", event.target.value)
     setState(prev => ({ ...prev, baseDay: new Date(event.target.value) }))
   };
 
+  // gets the user's meditation history
   useEffect(() => {
     axios.request({
       url: "http://localhost:3001/meditations",
@@ -52,15 +54,14 @@ export default function MeditationHistory(props) {
       });
   }, [props.user.id]);
 
-  // gets Sunday as the start of week for the graph
-  const getSunday = (inputDay) => {
-    let dayOfWeek = inputDay.getDay()
-    let startOfWeek = new Date();
-    startOfWeek.setDate(inputDay.getDate() - dayOfWeek)
-    return startOfWeek
-  }
+  // gets Sunday for a given day
+  const getSunday = (day) => {
+    let dayOfWeek = day.getDay();
+    day.setDate(day.getDate() - dayOfWeek);
+    return day;
+  };
 
-  // makes an array for the week, key is the actual date object, value is a string to put in the graph
+  // makes an object for the week to use as data for the graph
   let weekObject = {}
   for (let i = 0; i < 7; i++) {
     let weekday = new Date()
@@ -77,8 +78,8 @@ export default function MeditationHistory(props) {
     meditationArray.push({ [meditation.created_at]: meditation.meditation.time_in_minutes })
   }
 
-  // console.log("meditation array for user", meditationArray)
-  // needs to result in an array that's just the minutes for each day in weekobject
+
+  // adds the user's meditations to the week object
   for (let meditation of meditationArray) {
     let formatMeditationDay = new Date(Object.keys(meditation)[0]).toDateString()
     if (formatMeditationDay in weekObject) {
@@ -104,17 +105,19 @@ export default function MeditationHistory(props) {
   };
 
   // creates array of the last 5 Sundays
-  let weekStartArray = [];
+  let sundayArray = [];
   for (let i = 0; i < 6; i++) {
-    let weekStart = new Date()
-    weekStart.setDate(getSunday(weekStart).getDate() - 7 * i)
-    weekStartArray.push(weekStart)
+    let sunday = new Date()
+    sunday.setDate(getSunday(sunday).getDate() - 7 * i)
+    sundayArray.push(sunday)
   }
-  console.log("week start array", weekStartArray)
+  // console.log("week start array", sundayArray)
 
-  const weekStartOptions = weekStartArray.map(day => {
-    return <MenuItem key={day.toDateString()} value={day.toDateString()}>{day.toDateString()}</MenuItem>
+  const weekStartOptions = sundayArray.map(sunday => {
+    return <MenuItem key={sunday.toDateString()} value={sunday.toDateString()}>{sunday.toDateString()}</MenuItem>
   })
+
+  // console.log("value of select", getSunday(state.baseDay).toDateString())
 
   return (
     <main className="MeditationHistory">
