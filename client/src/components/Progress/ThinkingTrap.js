@@ -13,14 +13,6 @@ const BackImg = styled.img`
 height: 100px;
 width: 100px;
 `;
-const ForwardButton = styled(Button)`
-height: 100px;
-width: 100px;
-`;
-const ForwardImg = styled.img`
-height: 100px;
-width: 100px;
-`;
 
 
 
@@ -65,10 +57,6 @@ const emptyMessage = "Go through some Work-Throughs to see which thinking traps 
       <article> 
         {!(Object.entries(trapData).length) ? <p>{emptyMessage}</p> : <TrapItems trapData={trapData}/>}
       </article>
-      <ForwardButton onClick={()=>{props.goToProgressPage("MOOD")}}>
-      <ForwardImg src="https://res.cloudinary.com/dpfixnpii/image/upload/v1582400212/arrow-point-to-right_qgqicj.svg"/>
-      </ForwardButton> 
-      
     </main>
   )
 }

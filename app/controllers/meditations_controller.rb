@@ -1,11 +1,19 @@
 class MeditationsController < ApplicationController
-  before_action :set_meditation, only: [:show, :update, :destroy]
+  
 
   # GET /meditations
   def index
+
+    @meditations = Meditation.all
+    render :json => @meditations.to_json  
+    
+  end
+
+  def data
     @user = User.find(params[:user_id])
     render :json => @user.user_meditations.to_json(:include => :meditation)
   end
+
 
   def create
     @meditation = UserMeditation.create(meditation_params)

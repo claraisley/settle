@@ -27,14 +27,7 @@ const BackImg = styled.img`
 height: 100px;
 width: 100px;
 `;
-const ForwardButton = styled(Button)`
-height: 100px;
-width: 100px;
-`;
-const ForwardImg = styled.img`
-height: 100px;
-width: 100px;
-`;
+
 
 export default function MeditationHistory(props) {
   const [state, setState] = useState({
@@ -50,7 +43,7 @@ export default function MeditationHistory(props) {
   // gets the user's meditation history
   useEffect(() => {
     axios.request({
-      url: "http://localhost:3001/meditations",
+      url: "http://localhost:3001/user_meditations",
       method: "get",
       headers: {
         "Content-Type": "application/json",
@@ -63,6 +56,7 @@ export default function MeditationHistory(props) {
       withCredentials: true
     })
       .then(response => {
+        console.log(response)
         let results = response.data
         setState(prev => ({ ...prev, meditations: results })) // if no meditations, then state.meditations is just an empty array
       })
@@ -136,7 +130,7 @@ export default function MeditationHistory(props) {
   return (
     <main className="MeditationHistory">
       <h2>My Previous Meditations</h2>
-      <BackButton onClick={()=>{props.goToProgressPage("MOOD")}}>
+      <BackButton onClick={()=>{props.goToProgressPage("HOME")}}>
       <BackImg src="https://res.cloudinary.com/dpfixnpii/image/upload/v1582400198/arrow_xph8bj.svg"/>
       </BackButton>
       <span>This is how long you've meditated for the week of </span>
@@ -156,9 +150,6 @@ export default function MeditationHistory(props) {
           series={chartData.series}
           width="500" /> : <p>Do a meditation to start tracking your progress!</p>
       }
-       <ForwardButton onClick={()=>{props.goToProgressPage("HOME")}}>
-      <ForwardImg src="https://res.cloudinary.com/dpfixnpii/image/upload/v1582400212/arrow-point-to-right_qgqicj.svg"/>
-      </ForwardButton> 
     </main>
   )
 }

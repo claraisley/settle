@@ -13,14 +13,7 @@ const BackImg = styled.img`
 height: 100px;
 width: 100px;
 `;
-const ForwardButton = styled(Button)`
-height: 100px;
-width: 100px;
-`;
-const ForwardImg = styled.img`
-height: 100px;
-width: 100px;
-`;
+
 
 
 
@@ -81,7 +74,7 @@ export default function MoodCalendar(props) {
     <main className="mood-calendar">
       <BackButton
         onClick={() => {
-          props.goToProgressPage("TRAP");
+          props.goToProgressPage("HOME");
         }}
       >
         <BackImg src="https://res.cloudinary.com/dpfixnpii/image/upload/v1582400198/arrow_xph8bj.svg" />
@@ -92,13 +85,6 @@ export default function MoodCalendar(props) {
       ) : (
         <p>Start a reflection to start tracking your moods!</p>
       )}
-      <ForwardButton
-        onClick={() => {
-          props.goToProgressPage("MEDITATION");
-        }}
-      >
-        <ForwardImg src="https://res.cloudinary.com/dpfixnpii/image/upload/v1582400212/arrow-point-to-right_qgqicj.svg" />
-      </ForwardButton>
     </main>
   );
 }

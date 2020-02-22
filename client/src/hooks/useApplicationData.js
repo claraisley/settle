@@ -17,7 +17,9 @@ export default function useApplicationData() {
     pages: {
       thinkingTraps: [],
       tipsTricks: [],
-      signupQuestions: []
+      signupQuestions: [],
+      meditations: []
+
     },
     user: {
       email: "",
@@ -70,16 +72,28 @@ export default function useApplicationData() {
           "Access-Control-Allow-Credentials": true
         },
         withCredentials: true
+      }),
+      axios.request({
+        url: "http://localhost:3001/meditations",
+        method: "get",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+          "Access-Control-Allow-Credentials": true
+        },
+        withCredentials: true
       })
     ])
       .then(response => {
+        console.log(response)
         setState(prev => ({
           ...prev,
           pages: {
             ...prev.pages,
             thinkingTraps: response[0].data,
             tipsTricks: response[1].data,
-            signupQuestions: response[2].data
+            signupQuestions: response[2].data,
+            meditations: response[3].data
           }
         }));
       })
@@ -140,7 +154,7 @@ export default function useApplicationData() {
       name: "Meditations",
       path: "/meditations",
       requiresAuthentication: true,
-      component: <Meditation user={state.user}/>
+      component: <Meditation user={state.user} meditations={state.pages.meditations}/>
     },
     {
       name: "Work-Throughs",

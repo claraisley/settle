@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
@@ -33,12 +33,7 @@ export default function Meditation(props) {
     setExpanded(prevEx => prevEx !== panel ? panel : false);
   };
 
-  const meditationData = [
-    { "id": 1, "name": "One minute", "value": "https://www2.cs.uic.edu/~i101/SoundFiles/CantinaBand60.wav" },
-    { "id": 2, "name": "Two minutes", "value": "https://www2.cs.uic.edu/~i101/SoundFiles/CantinaBand60.wav" },
-    { "id": 3, "name": "Three minutes", "value": "https://www2.cs.uic.edu/~i101/SoundFiles/CantinaBand60.wav" }
-  ]
-
+  
   const handleEnd = (meditationId) => {
     axios
     .request({
@@ -63,7 +58,7 @@ export default function Meditation(props) {
     });
   }
 
-  const meditations = meditationData.map(meditation => {
+  const meditations = props.meditations.map(meditation => {
     return (
       <ExpansionPanel expanded={expanded === `panel${meditation.id}`} key={meditation.id} onChange={handleChange(`panel${meditation.id}`)}>
         <ExpansionPanelSummary
@@ -74,7 +69,7 @@ export default function Meditation(props) {
           <Typography className={classes.heading}>{meditation.name}</Typography>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
-          <audio controls src={meditation.value} onEnded={() => handleEnd(meditation.id)}></audio>
+          <audio controls src={meditation.URL} onEnded={() => handleEnd(meditation.id)}></audio>
         </ExpansionPanelDetails>
       </ExpansionPanel>
     )

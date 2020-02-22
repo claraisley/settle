@@ -606,9 +606,10 @@ ActiveRecord::Base.transaction do
     )
     
   #### MEDITATIONS AND USER MEDITATIONS
-  Meditation.create!(name: "2 Minute Short Meditation", time_in_minutes: 2)
-  Meditation.create!(name: "Before a Test", time_in_minutes: 5)
-  Meditation.create!(name: "Chill Out", time_in_minutes: 10)
+  Meditation.create!(name: "Good Enough", time_in_minutes: 2, URL: "https://res.cloudinary.com/dpfixnpii/video/upload/v1582394111/Good_Enough_-_1_Minute_30_Seconds_lphc1x.mp4")
+  Meditation.create!(name: "Fine Right Now", time_in_minutes: 2, URL: "https://res.cloudinary.com/dpfixnpii/video/upload/v1582394078/Fine_Right_Now_-_2_minutes_jy8v9k.mp4")
+  Meditation.create!(name: "Trust Yourself", time_in_minutes: 6, URL: "https://res.cloudinary.com/dpfixnpii/video/upload/v1582394145/Trust_Yourself_-_6_minutes_wssty0.mp4")
+  Meditation.create!(name: "Set Yourself Up For Sucess", time_in_minutes: 9, URL: "https://res.cloudinary.com/dpfixnpii/video/upload/v1582394130/Set_Yourself_Up_For_Success_-_9_Minutes_d9lsxw.mp4")
 
   UserMeditation.create!(user: User.first, meditation_id: 1)
   UserMeditation.create!(user: User.first, meditation_id: 2)
