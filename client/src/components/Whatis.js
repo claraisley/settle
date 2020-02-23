@@ -8,7 +8,7 @@ import Typography from "@material-ui/core/Typography";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
-import { Planet } from "react-kawaii";
+import { Backpack } from "react-kawaii";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -16,7 +16,8 @@ const useStyles = makeStyles(theme => ({
   },
   grid: {
     flexGrow: 1,
-    flexWrap: "wrap"
+    flexWrap: "wrap",
+    display: 'grid',
   },
   heading: {
     fontSize: theme.typography.pxToRem(20),
@@ -42,15 +43,16 @@ const WhatIsPaper = styled(Paper)`
 `;
 
 const Text = styled.p`
-  text-indent: 50px;
-  line-height: 2;
+  line-height: 1.5;
   font-size: 1.5em;
   font-weight: normal;
+  margin: 5%
 `;
-const StyledPlanet = styled(Planet)`
-  margin-top: 15%;
-  margin-bottom: 5%;
-  margin-right: 45%;
+const StyledBackPack = styled(Backpack)`
+justify-content: center;
+margin-left: 35%;
+margin-top: 7%;
+margin-bottom: 5%;
 `;
 const TitlePaper = styled(Paper)`
 background-color: #353c52;
@@ -119,22 +121,23 @@ export default function WhatIs() {
     <main>
       <div className={classes.grid}>
       <Grid container spacing={3}>
-      <Grid item xs={9}>
+      <Grid item sm={9} xs={12}>
           <TitlePaper >
             <Title>
               What is Test Anxiety?
             </Title>
           </TitlePaper>
         </Grid>
-        <Grid item xs>
-        <StyledPlanet size={150} mood="happy" color="#FCCB7E" />
+        <Grid item sm={3} xs={12} >
+         
+          <StyledBackPack size={150} mood="happy" color="#FFD882"/>
+         
         </Grid>
-
       </Grid>
-
       </div>
-     
-      
+      <div className={classes.grid}>
+      <Grid container spacing={3}>
+      <Grid item xs={12} sm={6}>
       <WhatIsPaper elevation={10}>
         <Text>
           Anxiety is a normal human emotion that causes increased alertness,
@@ -164,11 +167,15 @@ export default function WhatIs() {
           to a host of problems in those who suffer with it.
         </Text>
       </WhatIsPaper>
-
+      </Grid>
+      <Grid item xs={12} sm={6}>
       <WhatIsPaper>
         <h2>Symptoms</h2>
         {items}
       </WhatIsPaper>
+      </Grid>
+      </Grid>
+      </div>
     </main>
   );
 }
