@@ -12,6 +12,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import { useHistory } from "react-router-dom";
 import Paper from "@material-ui/core/Paper";
+import KawaiiAnimation from "../backpackAnimation";
 
 const axios = require("axios").default;
 
@@ -41,6 +42,12 @@ const TypographySignup = styled(Typography)`
   font-size: x-large;
   font-weight: 600;
 `;
+
+const BackpackBox = styled.div`
+margin-top: 2%;
+margin-bottom: 2%;
+margin-left: 45%
+`
 
 // MATERIAL UI COMPONENT STYLING THEME
 
@@ -103,7 +110,11 @@ export default function SignUp(props) {
   const { inputs, handleInputChange, handleSubmit } = useSignUpForm(signUserUp);
 
   return (
-    <PaperSignup elevation={10}>
+    <main>
+       <BackpackBox>
+      <KawaiiAnimation/>
+      </BackpackBox>
+      <PaperSignup elevation={10}>
       <ContainerSignup component="main" maxWidth="xs">
         <CssBaseline />
         <div className={classes.paper}>
@@ -208,5 +219,8 @@ export default function SignUp(props) {
         <Box mt={5}></Box>
       </ContainerSignup>
     </PaperSignup>
+
+    </main>
+    
   );
 }
