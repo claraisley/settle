@@ -83,10 +83,6 @@ export default function Login(props) {
       withCredentials: true
     })
       .then(response => {
-        alert(`User Logged In!
-           Email: ${inputs.email}`);
-
-        console.log(response);
         props.setUser({
           email: response.data.email,
           name: response.data.name,

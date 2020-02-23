@@ -85,10 +85,7 @@ export default function SignUp(props) {
       data: body
     })
       .then(response => {
-        alert(`User Created!
-           Name: ${inputs.firstName} ${inputs.lastName}
-           Email: ${inputs.email}`);
-
+       
         console.log(response);
         props.setUser({
           email: response.data.email,
@@ -115,7 +112,7 @@ export default function SignUp(props) {
           </TypographySignup>
           <form
             className={classes.form}
-            autocomplete="off"
+            autoComplete="off"
             onSubmit={handleSubmit}
           >
             <Grid container spacing={2}>
