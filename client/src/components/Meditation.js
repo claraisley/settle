@@ -99,12 +99,14 @@ export default function Meditation(props) {
         expanded={expanded === `panel${meditation.id}`}
         key={meditation.id}
         onChange={handleChange(`panel${meditation.id}`)}
+        
       >
         <ExpansionPanelSummary
           expandIcon={<ExpandMoreIcon />}
           aria-controls={`panel${meditation.id}bh-content`}
           id={`panel${meditation.id}bh-header`}
           className={classes.expansion}
+          
         >
           <Typography className={classes.heading}>{meditation.name}</Typography>
         </ExpansionPanelSummary>
@@ -124,14 +126,18 @@ export default function Meditation(props) {
       <Title>Meditations</Title>
       <StaticPaper2 elevation={10}>
         <Text>
-          Mindfulness means paying full attention to something. It means taking
-          your time to really notice what you're doing. Use the guided
-          medidations below to help you relax and start practicing your
-          mindfulness skill. These meditations have been made specifically with
-          test anxiety in mind and it’s OK if it seems a little weird at first.
-          To get the hang of it, try practicing with one of the longer
-          recordings at the same time in the days leading up to a test. The
-          shorter ones are great for the day of!{" "}
+          Mindfulness is a process where we purposely bring our attention to
+          things happening in the present moment. It means taking your time to
+          really notice, without judgement, what's happening right now.
+          Practicing mindfulness has been shown to reduce symptoms of anxiety -
+          by focusing your attention on the here and now, your mind gets a break
+          from worrying about the future or past. Use the guided medidations
+          below to help you relax and start practicing your mindfulness skills.
+          These meditations have been specifically made for students with test
+          anxiety and it’s OK if it seems a little weird at first. To get the
+          hang of it, try practicing with one of the longer recordings in the
+          days leading up to a test. The shorter ones are great for doing the
+          day of a test, like on your lunch break!{" "}
         </Text>
       </StaticPaper2>
       <StaticPaper elevation={10}>{meditations}</StaticPaper>
