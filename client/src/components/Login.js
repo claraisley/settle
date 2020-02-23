@@ -43,13 +43,11 @@ const TypographyLogin = styled(Typography)`
   font-weight: 600;
 `;
 
-
 const BackpackBox = styled.div`
-margin-top: 2%;
-margin-bottom: 2%;
-margin-left: 45%
-`
-
+  margin-top: 2%;
+  margin-bottom: 2%;
+  margin-left: 45%;
+`;
 
 // MATERIAL UI STYLING CSS
 
@@ -110,7 +108,7 @@ export default function Login(props) {
   return (
     <main>
       <BackpackBox>
-      <KawaiiAnimation/>
+        <KawaiiAnimation />
       </BackpackBox>
       <PaperLogin elevation={10}>
         <ContainerLogin component="main" maxWidth="xs">

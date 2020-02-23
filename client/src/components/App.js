@@ -7,7 +7,6 @@ import {
   Redirect
 } from "react-router-dom";
 import Nav from "./Nav";
-
 import useApplicationData from "../hooks/useApplicationData.js";
 
 function App() {
@@ -43,7 +42,7 @@ function App() {
     <div className="header">
       <Router>
         <Nav links={links} user={state.user} setUser={setUser} />
-       
+
         <Switch>{routes}</Switch>
       </Router>
 

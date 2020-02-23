@@ -10,6 +10,7 @@ import Meditation from "../components/Meditation";
 import Login from "../components/Login.js";
 import WhatIs from "../components/Whatis";
 import ThinkingTraps from "../components/ThinkingTrap";
+import { useLocation } from "react-router-dom";
 
 export default function useApplicationData() {
   //pages state
@@ -170,17 +171,13 @@ export default function useApplicationData() {
       name: "Dos and Don'ts For Test Success",
       path: "/tips-tricks",
       requiresAuthentication: true,
-      component: (
-        <Tips
-          data={state.pages.tipsTricks}
-        />
-      )
+      component: <Tips data={state.pages.tipsTricks} />
     },
     {
       name: "About",
       path: "/about",
       requiresAuthentication: false,
-      component: <About/>
+      component: <About />
     }
   ];
 
