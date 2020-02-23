@@ -36,7 +36,11 @@ const useStyles = makeStyles(theme => ({
     marginRight: drawerWidth
   },
   title: {
-    flexGrow: 1
+    flexGrow: 1,
+  },
+  welcome: {
+    flexGrow: 1,
+    textAlign: "right"
   },
   hide: {
     display: "none"
@@ -112,7 +116,7 @@ export default function Nav(props) {
   //   setOpen(false);
   // };
 
-  const filteredLinks = props.links.filter(function(link) {
+  const filteredLinks = props.links.filter(function (link) {
     return link.name !== "Signup" && link.name !== "Login";
   });
 
@@ -159,19 +163,9 @@ export default function Nav(props) {
             SETTLE
           </Typography>
           {props.user.name && (
-            <Typography variant="h6" noWrap className={classes.title}>
+            <Typography variant="h6" noWrap className={classes.welcome}>
               Welcome {props.user.name}!
             </Typography>
-          )}
-          {props.user.name && (
-            <Button
-              variant="contained"
-              onClick={() => {
-                logout();
-              }}
-            >
-              Logout
-            </Button>
           )}
           <IconButton
             color="inherit"
@@ -189,7 +183,16 @@ export default function Nav(props) {
         open={state.right}
         onClose={toggleDrawer("right", false)}
       >
-        <div className={classes.drawerHeader}></div>
+        <div className={classes.drawerHeader}>
+          {props.user.name && (
+            <Button
+              variant="contained"
+              onClick={() => { logout() }}
+            >
+              Logout
+              </Button>
+          )}
+        </div>
         <Divider />
         {navList}
         <Divider />

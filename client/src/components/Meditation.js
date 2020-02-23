@@ -6,6 +6,8 @@ import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import axios from "axios";
+import Paper from "@material-ui/core/Paper";
+import styled from "styled-components";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -26,6 +28,15 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
+const StaticPaper = styled(Paper)`
+  width: 90%;
+  margin: 6% auto 5% auto;
+  background-color: #353c52;
+  justify-content: center;
+  align-items: center;
+  padding: 4%;
+`;
+
 export default function Meditation(props) {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
@@ -33,29 +44,29 @@ export default function Meditation(props) {
     setExpanded(prevEx => prevEx !== panel ? panel : false);
   };
 
-  
+
   const handleEnd = (meditationId) => {
     axios
-    .request({
-      url: "http://localhost:3001/meditations",
-      method: "post",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-        "Access-Control-Allow-Credentials": true
-      },
-      params: {
-        user_id: props.user.id,
-        meditation_id: meditationId
-      },
-      withCredentials: true
-    })
-    .then(function (response) {
-      console.log(response) // here we could maybe do like a "congrats for finishing a meditation thing!"
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
+      .request({
+        url: "http://localhost:3001/meditations",
+        method: "post",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+          "Access-Control-Allow-Credentials": true
+        },
+        params: {
+          user_id: props.user.id,
+          meditation_id: meditationId
+        },
+        withCredentials: true
+      })
+      .then(function (response) {
+        console.log(response) // here we could maybe do like a "congrats for finishing a meditation thing!"
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   }
 
   const meditations = props.meditations.map(meditation => {
@@ -77,8 +88,10 @@ export default function Meditation(props) {
 
   return (
     <main className="meditations">
-      <h2>Meditations</h2>
-      {meditations}
+      <StaticPaper elevation={10}>
+        <h2>Meditations</h2>
+        {meditations}
+      </StaticPaper>
     </main>
   )
 }

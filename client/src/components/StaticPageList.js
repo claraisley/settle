@@ -5,6 +5,8 @@ import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import Paper from "@material-ui/core/Paper";
+import styled from "styled-components";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -24,6 +26,19 @@ const useStyles = makeStyles(theme => ({
     color: theme.palette.text.secondary,
   }
 }));
+
+const StaticPaper = styled(Paper)`
+  width: 90%;
+  margin: 6% auto 5% auto;
+  background-color: #353c52;
+  justify-content: center;
+  align-items: center;
+  padding: 4%;
+`;
+
+// const PanelHeader = styled(ExpansionPanelSummary)` // this turns the header the same yellow but it's not great
+//   background-color: #deb559;
+// `;
 
 export default function StaticPageList(props) {
   const classes = useStyles();
@@ -51,10 +66,12 @@ export default function StaticPageList(props) {
 
   return (
     <main className="static">
-      <h2>{props.title}</h2>
-      <div className={classes.root}>
-      </div>
-      {items}
+      <StaticPaper elevation={10}>
+        <h2>{props.title}</h2>
+        <div className={classes.root}>
+        </div>
+        {items}
+      </StaticPaper>
     </main>
   )
 }
