@@ -1,11 +1,10 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import ExpansionPanel from "@material-ui/core/ExpansionPanel";
 import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";
 import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
 import Typography from "@material-ui/core/Typography";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import axios from "axios";
 import Paper from "@material-ui/core/Paper";
 import styled from "styled-components";
 
@@ -40,7 +39,6 @@ const StaticPaper = styled(Paper)`
   padding: 4%;
   background-image: url(http://www.transparenttextures.com/patterns/cubes.png);
 `;
-
 const StaticPaper2 = styled(Paper)`
   width: 90%;
   margin: 10px auto;
@@ -61,80 +59,62 @@ const Text = styled.p`
   font-weight: normal;
   margin: 15px;
 `;
+// const PanelHeader = styled(ExpansionPanelSummary)` // this turns the header the same yellow but it's not great
+//   background-color: #deb559;
+// `;
 
-export default function Meditation(props) {
+export default function ThinkingTraps(props) {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
   const handleChange = panel => event => {
     setExpanded(prevEx => (prevEx !== panel ? panel : false));
   };
 
-  const handleEnd = meditationId => {
-    axios
-      .request({
-        url: "http://localhost:3001/meditations",
-        method: "post",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-          "Access-Control-Allow-Credentials": true
-        },
-        params: {
-          user_id: props.user.id,
-          meditation_id: meditationId
-        },
-        withCredentials: true
-      })
-      .then(function(response) {
-        console.log(response); // here we could maybe do like a "congrats for finishing a meditation thing!"
-      })
-      .catch(function(error) {
-        console.log(error);
-      });
-  };
-
-  const meditations = props.meditations.map(meditation => {
+  const items = props.data.map(data => {
     return (
       <ExpansionPanel
-        expanded={expanded === `panel${meditation.id}`}
-        key={meditation.id}
-        onChange={handleChange(`panel${meditation.id}`)}
+        expanded={expanded === `panel${data.id}`}
+        key={data.id}
+        onChange={handleChange(`panel${data.id}`)}
       >
         <ExpansionPanelSummary
-          expandIcon={<ExpandMoreIcon />}
-          aria-controls={`panel${meditation.id}bh-content`}
-          id={`panel${meditation.id}bh-header`}
           className={classes.expansion}
+          expandIcon={<ExpandMoreIcon />}
+          aria-controls={`panel${data.id}bh-content`}
+          id={`panel${data.id}bh-header`}
         >
-          <Typography className={classes.heading}>{meditation.name}</Typography>
+          <Typography className={classes.heading}>{data.name}</Typography>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
-          <audio
-            controls
-            src={meditation.URL}
-            onEnded={() => handleEnd(meditation.id)}
-          ></audio>
+          <Typography className={classes.details}>
+            {data.text}
+            <h5>Example Statements</h5>
+            <p>{data.example_statement1}</p>
+            <p>{data.example_statement2}</p>
+          </Typography>
         </ExpansionPanelDetails>
       </ExpansionPanel>
     );
   });
 
   return (
-    <main className="meditations">
-      <Title>Meditations</Title>
+    <main className="static">
+      <Title>Thinking Traps</Title>
       <StaticPaper2 elevation={10}>
         <Text>
-          Mindfulness means paying full attention to something. It means taking
-          your time to really notice what you're doing. Use the guided
-          medidations below to help you relax and start practicing your
-          mindfulness skill. These meditations have been made specifically with
-          test anxiety in mind and it’s OK if it seems a little weird at first.
-          To get the hang of it, try practicing with one of the longer
-          recordings at the same time in the days leading up to a test. The
-          shorter ones are great for the day of!{" "}
+          Just because you think something doesn’t mean it’s true or that it
+          will happen. For example, thinking that you will fail a test doesn’t
+          mean you will actually fail. Certain types or patterns of thoughts
+          tend to trap us in anxiety. These patterns or Thinking Traps are
+          unfair or overly negative ways of seeing things. Thinking Traps
+          prevent us from seeing ourselves, others, and the world in a balanced
+          and fair way. Explore the common Thinking Traps below and consider
+          which of them may be contributing to your own anxiety.{" "}
         </Text>
       </StaticPaper2>
-      <StaticPaper elevation={10}>{meditations}</StaticPaper>
+      <StaticPaper elevation={10}>
+        <div className={classes.root}>{items}</div>
+      </StaticPaper>
     </main>
   );
 }

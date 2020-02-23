@@ -12,8 +12,11 @@ const useStyles = makeStyles(theme => ({
   root: {
     width: '100%',
   },
+  expansion:{
+    background: "#ededed"
+  },
   heading: {
-    fontSize: theme.typography.pxToRem(15),
+    fontSize: theme.typography.pxToRem(20),
     flexBasis: '33.33%',
     flexShrink: 0,
     color: theme.palette.text.secondary
@@ -40,7 +43,7 @@ const StaticPaper = styled(Paper)`
 //   background-color: #deb559;
 // `;
 
-export default function StaticPageList(props) {
+export default function Tips(props) {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
   const handleChange = panel => (event) => {
@@ -54,6 +57,7 @@ export default function StaticPageList(props) {
           expandIcon={<ExpandMoreIcon />}
           aria-controls={`panel${data.id}bh-content`}
           id={`panel${data.id}bh-header`}
+          className={classes.expansion}
         >
           <Typography className={classes.heading}>{data.name}</Typography>
         </ExpansionPanelSummary>
@@ -67,7 +71,7 @@ export default function StaticPageList(props) {
   return (
     <main className="static">
       <StaticPaper elevation={10}>
-        <h2>{props.title}</h2>
+        <h2>Dos and Dont's For Test Success</h2>
         <div className={classes.root}>
         </div>
         {items}

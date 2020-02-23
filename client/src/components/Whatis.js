@@ -14,6 +14,9 @@ const useStyles = makeStyles(theme => ({
   root: {
     width: "100%"
   },
+  expansion:{
+    background: "#dadde0"
+  },
   grid: {
     flexGrow: 1,
     flexWrap: "wrap",
@@ -62,6 +65,12 @@ padding: 3%;
 const Title = styled.h1`
 text-align: center;
 `
+const WhatIsPaperBackground = styled(Paper)`
+background-color: #353c52;
+background-image: url(http://www.transparenttextures.com/patterns/cubes.png);
+margin: 5%;
+padding: 3%;
+`
 
 export default function WhatIs() {
   const classes = useStyles();
@@ -107,6 +116,7 @@ export default function WhatIs() {
           expandIcon={<ExpandMoreIcon />}
           aria-controls={`panel${data.id}bh-content`}
           id={`panel${data.id}bh-header`}
+          className={classes.expansion}
         >
           <Typography className={classes.heading}>{data.name}</Typography>
         </ExpansionPanelSummary>
@@ -130,7 +140,7 @@ export default function WhatIs() {
         </Grid>
         <Grid item sm={3} xs={12} >
          
-          <StyledBackPack size={150} mood="happy" color="#FFD882"/>
+          <StyledBackPack size={150} mood="blissful" color="#FFD882"/>
          
         </Grid>
       </Grid>
@@ -169,10 +179,10 @@ export default function WhatIs() {
       </WhatIsPaper>
       </Grid>
       <Grid item xs={12} sm={6}>
-      <WhatIsPaper>
+      <WhatIsPaperBackground>
         <h2>Symptoms</h2>
         {items}
-      </WhatIsPaper>
+      </WhatIsPaperBackground>
       </Grid>
       </Grid>
       </div>

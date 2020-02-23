@@ -26,51 +26,51 @@ ActiveRecord::Base.transaction do
 
   catastrophizing = ThinkingTrap.create!(
     name: "Catastrophizing", 
-    example_statement1: "I will fail this test and then fail my course.", 
-    example_statement2: "When I get to the test I'm going to completely blank and everyone around me will notice.", 
+    example_statement1: "'I will fail this test and then fail my course.'", 
+    example_statement2: "'When I get to the test I'm going to completely blank and everyone around me will notice.'", 
     text: "Catastrophizing is when we imagine that the worst possible scenerio is about to happen. Not only does our brain jumps to the worst possible outcome, we also predict that we wont be able to cope when it happens. But, the imagined worst-case scenario usually never happens and even if it did, we are most likely able to cope with it. We can also catastrophize a current situtation by believing that something is far worse than it actually is. Either way, these are irrational thoughts involving the belief that you’re in a worse situation than you really are.",
     definition: "Catastrophizing is when we assume the worst possible scenerio will happen."
     )
   filtering = ThinkingTrap.create!(
     name: "Filtering",
-    example_statement1: "I left 3 questions blank, my mark will be horrible",
-    example_statement2: "Who cares if I did great on my english test, my math test will still go poorly.",
+    example_statement1: "'I left 3 questions blank, my mark will be horrible.'",
+    example_statement2: "'Who cares if I did great on my english test, my math test will still go poorly.'",
     text: "When we fall into the thinking trap of Filtering, we pay attention only to the negative aspects and ignore all the positive ones. It's hard to have balanced thoughts if you only focus on the negative. You are more than your test anxiety and there are many good things about you!",
     definition: "Filtering involves only paying attention to the negative aspects of a situation while ignoring all the positive"
   )
   fortune_telling = ThinkingTrap.create!(
     name: "Fortune-telling",
-    example_statement1: "I know I’ll mess up.",
-    example_statement2: "I'm going to fail the math test",
+    example_statement1: "'I know I’ll mess up.'",
+    example_statement2: "'I'm going to fail the math test.'",
     text: "Fortune-telling is a type of thinking error where we predict something negative will happen without realistically considering the real odds of the situation. We assume that some event or events will end badly for us, but in reality, we cannot predict the future because we don’t have a magic ball!",
     definition: "Fortune-telling is thinking trap where we predict that things will turn out badly without realistically considering the evidence adn odds in a situation. "
   )
   mind_reading = ThinkingTrap.create!(
     name: "Mind-reading",
-    example_statement1: "Everyone will think I'm stupid.",
-    example_statement2: "My teacher doesn't like me",
+    example_statement1: "'Everyone will think I'm stupid.'",
+    example_statement2: "'My teacher doesn't like me.'",
     text: "When you think you know a person’s intentions or thoughts, you are falling into the thinking trap known as Mind-reading. You assume people will focus your flaws and believe their negative responses are your fault, even though their response might have nothing to do with you at all.",
     definition: "Fortune-telling is thinking trap where we believe that we know what others are thinking and we assume that they are thinking the worst of us."
   )
   black_white = ThinkingTrap.create!(
     name: "Black-and-white thinking",
-    example_statement1: "If I don't do get a good mark on this test I will totally fail",
-    example_statement2: "I planned to study for 6 hours but could only study for 4, now there is no way I will pass.",
-    text: "Black-and-white thinking occurs when we only look at situations in terms of extremes: things are either good or bad, a success or a failure - it's all or nothing. For example; if you do something in a way that is less than perfect, you automatically see yourself as a failure. In reality, most outcomes fall in between absolute perfection and complete disaste",
+    example_statement1: "'If I don't do get a good mark on this test I will totally fail.'",
+    example_statement2: "'I planned to study for 6 hours but could only study for 4, now there is no way I will pass.",
+    text: "Black-and-white thinking occurs when we only look at situations in terms of extremes: things are either good or bad, a success or a failure - it's all or nothing. For example, if you do something in a way that is less than perfect, you automatically see yourself as a failure. In reality, most outcomes fall in between absolute perfection and complete disaster.'",
     definition: "When we constantly think of things in extreme terms, such as “always” and “never” we are fall into the trap of Black-and-white thinking."
   )
   over_gen = ThinkingTrap.create!(
     name: "Over-generalization",
-    example_statement1: "I always fail tests or exams",
-    example_statement2: "I never succeed in school.",
-    text: "Over-generalization occurs when we draw conclusions based on just one example. For exmaple after interviewing for a job and not getting it, we might overgeneralize by thinking we’ll never get a job. Although common, this thinking error is highly inaccurate and very limiting and usually involves words like 'always' and 'never'.",
+    example_statement1: "'I always fail tests or exams.'",
+    example_statement2: "'I never succeed in school.'",
+    text: "Over-generalization occurs when we draw conclusions based on just one example. After interviewing for a job and not getting it, we might overgeneralize by thinking we’ll never get a job. Although common, this thinking error is highly inaccurate and very limiting and usually involves words like 'always' and 'never'.",
     definition: "Over-generalization occurs when we inaccurately conclude that one negative event puts us in a never-ending pattern of defeat. One failed test becomes 'I always fail tests'."
   )
   should = ThinkingTrap.create!(
     name: "Should-statements",
-    example_statement1: "I should stop worrying about my tests.",
-    example_statement2: "I shouldn't have text anxiety.",
-    text: "Should-statements are thinking errors involving telling yourself how you 'should', 'must', or 'ought' to feel and behave. They may seem like thoughts meant to motivate us, but in reality they often become unrealistic interal rules that leave us dissapointed and frustrated in overselves when they aren't followed. We can work towards goals without putting extra pressure on ourselves by avoiding using words like 'should' and 'must'.",
+    example_statement1: "'I should stop worrying about my tests.'",
+    example_statement2: "'I shouldn't have text anxiety.'",
+    text: "Should-statements are thinking errors involving telling yourself how you 'should', 'must', or 'ought' to feel and behave. They may seem like thoughts meant to motivate us, but in reality they often become unrealistic internal rules, leaving us dissapointed and frustrated in overselves when they aren't followed. We can work towards goals without putting extra pressure on ourselves by avoiding using words like 'should' and 'must'.",
     definition: "Should-statements are a common thinking trap where we tell ourselves how we “should”, “must”, or “ought” to feel and behave. In reality they often leave us anxious and dissapointed in ourselves."
   )
 
