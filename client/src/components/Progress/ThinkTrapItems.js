@@ -29,7 +29,7 @@ export default function TrapItems(props) {
   const comps = [OneBackPack, TwoBackPack, ThreeBackPack, FourBackPack, FiveBackPack];
 
   const traps = rounded.map((trap, index) => {
-    let Comp = comps[trap] || ThreeBackPack;
+    let Comp = comps[trap];
     return(
     <Value>
       <h1>{lookup[index]}</h1>
