@@ -28,7 +28,6 @@ height: 100px;
 width: 100px;
 `;
 
-
 export default function MeditationHistory(props) {
   const [state, setState] = useState({
     meditations: [],
@@ -104,7 +103,22 @@ export default function MeditationHistory(props) {
         id: "basic-bar"
       },
       xaxis: {
-        categories: Object.values(weekObject).map(({ displayDate }) => displayDate)
+        categories: Object.values(weekObject).map(({ displayDate }) => displayDate),
+        title: {
+          text: `Week of ${getSunday(state.baseDay).toDateString()}`,
+          style: {
+            fontSize: '1rem'
+          }
+        }
+      },
+      yaxis: {
+        title: {
+          text: 'Minutes',
+          style: {
+            fontSize: '1rem'
+          }
+        },
+        forceNiceScale: true
       }
     },
     series: [
