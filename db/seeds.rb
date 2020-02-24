@@ -503,6 +503,12 @@ ActiveRecord::Base.transaction do
     text:"friendName wouldn't be your friend if they cared about stuff like that. Sometimes we talk to ourselves in a mean way. This kind of thinking is unhelpful and unfair. Close friends support you and like you for who you are, the outcome of this test will not affect that."
   )
 
+
+
+
+
+
+
 #################################################################################################
 #TIPS FOR TEST SUCCESS
   Tip.create!(name: "DO", 
@@ -511,7 +517,6 @@ ActiveRecord::Base.transaction do
   Tip.create!(name: "DON'T", 
     text: "Don't spend your time before a test with classmates who generate stress for you."
     )
- 
   Tip.create!(name: "DO", 
     text: "Do start studying for the test in advance. Budget your time so you are well prepared for the test."
     )
@@ -524,6 +529,20 @@ ActiveRecord::Base.transaction do
   Tip.create!(name: "DON'T", 
     text: "Don't stay up late studying the night before a test. A lack of sleep can increase anxious thoughts and only make things worse."
     )
+  Tip.create!(name: "DO", 
+    text: "Do tell yourself that you will do your best on the test, and that will be enough! "
+    )
+  Tip.create!(name: "DON'T", 
+    text: "Don't skip the class right before the test - it's a prime time for the instructor to give out hints or the format of the test. "
+    )
+  Tip.create!(name: "DO", 
+    text: "Do remind yourself that the test is only a test."
+    )
+  Tip.create!(name: "DON'T", 
+    text: "Don't spend too much time on one question. Answer the easy questions first. This will give you the confidence and momentum to get through the rest of the test.  "
+    )   
+
+
 
 #################################################################################################
 #REEFLECTIONS AND MOODS FOR ANALYTICS SECTIONS
@@ -604,6 +623,7 @@ ActiveRecord::Base.transaction do
     value: 3,
     created_at: Date.new(2020, 2, 24)
     )
+  
     
   #### MEDITATIONS AND USER MEDITATIONS
   Meditation.create!(name: "Good Enough", time_in_minutes: 2, URL: "https://res.cloudinary.com/dpfixnpii/video/upload/v1582394111/Good_Enough_-_1_Minute_30_Seconds_lphc1x.mp4")
