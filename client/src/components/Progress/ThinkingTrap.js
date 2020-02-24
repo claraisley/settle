@@ -32,8 +32,7 @@ export default function ThinkingTrap(props) {
         withCredentials: true
       })
       .then(response => {
-        let results = response.data;
-        setTrapData(results); // if no relfections done, then trapData is empty object
+        setTrapData(response.data);
       })
       .catch(function(error) {
         console.log(error);

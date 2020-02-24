@@ -10,11 +10,12 @@ const Value = styled.article`
 
 
 export default function TrapItems(props) {
-
+  console.log(props.trapData)
   const rounded = Object.entries(props.trapData).map((trap) => {
    return Math.round(trap[1])
   })
   
+  console.log(rounded)
 
   const lookup = {
     0: "Catastrophizing",
@@ -29,7 +30,8 @@ export default function TrapItems(props) {
   const comps = [OneBackPack, TwoBackPack, ThreeBackPack, FourBackPack, FiveBackPack];
 
   const traps = rounded.map((trap, index) => {
-    let Comp = comps[trap];
+    
+    let Comp = comps[trap] || FiveBackPack;
     return(
     <Value>
       <h1>{lookup[index]}</h1>
