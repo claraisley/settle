@@ -74,7 +74,6 @@ ActiveRecord::Base.transaction do
     definition: "Should-statements are a common thinking trap where we tell ourselves how we “should”, “must”, or “ought” to feel and behave. In reality they often leave us anxious and dissapointed in ourselves."
   )
 
-
   #QUESTIONS/AKA THOUGHTS
   q1 = Thought.create!(interest: pet_interest, text: "If I mess this test up, will petName be there for me when I get home?")
   q2 = Thought.create!(interest: NIL, text: "People can tell when I am feeling anxious.")
@@ -336,12 +335,16 @@ ActiveRecord::Base.transaction do
 
 #################################################################################################
 #TIPS FOR TEST SUCCESS
-  Tip.create!(name: "DO", text: "Do reward yourself after the test with your favourite food, movie or some other treat!")
-  Tip.create!(name: "DON'T", text: "Don't spend your time before a test with classmates who generate stress for you.")
-  Tip.create!(name: "DO", text: "Do start studying for the test in advance. Budget your time so you are well prepared for the test.")
-  Tip.create!(name: "DON'T", text: "Don't spend the hour before the test cramming, grab a bite to eat and do one of Settle's meditations or work-throughs instead.") 
-  Tip.create!(name: "DO", text: "Do eat a light meal before a test. Having food in your stomach will give you enery and keep you focused.")
-  Tip.create!(name: "DON'T", text: "Don't stay up late studying the night before a test. A lack of sleep can increase anxious thoughts and only make things worse.")
+Tip.create!(name: "DO", text: "Do reward yourself after the test with your favourite food, movie or some other treat!")
+Tip.create!(name: "DON'T", text: "Don't spend your time before a test with classmates who generate stress for you.")
+Tip.create!(name: "DO", text: "Do start studying for the test in advance. Budget your time so you are well prepared for the test.")
+Tip.create!(name: "DON'T", text: "Don't spend the hour before the test cramming, grab a bite to eat and do one of Settle's meditations or work-throughs instead.") 
+Tip.create!(name: "DO", text: "Do eat a light meal before a test. Having food in your stomach will give you enery and keep you focused.")
+Tip.create!(name: "DON'T", text: "Don't stay up late studying the night before a test. A lack of sleep can increase anxious thoughts and only make things worse.")
+Tip.create!(name: "DO", text: "Do tell yourself that you will do your best on the test, and that will be enough! ")
+Tip.create!(name: "DON'T", text: "Don't skip the class right before the test - it's a prime time for the instructor to give out hints or the format of the test. ")
+Tip.create!(name: "DO", text: "Do remind yourself that the test is only a test.")
+Tip.create!(name: "DON'T", text: "Don't spend too much time on one question. Answer the easy questions first. This will give you the confidence and momentum to get through the rest of the test.  ")   
 
 #################################################################################################
 #REFLECTIONS, MOODS AND RESPONSES FOR ANALYTICS SECTIONS
