@@ -34,24 +34,24 @@ export default function Workthrough(props) {
     responsesChosen: [],
     currentFollowup: {},
     currentThinkingTrap: {},
-    open: false
   });
+  console.log("STATE RESPONSES", state.responsesChosen)
 
 
-  const handleClickOpen = () => {
-    setState(prev => ({
-      ...prev,
-      open: true
-    }));
-   };
+  // const handleClickOpen = () => {
+  //   setState(prev => ({
+  //     ...prev,
+  //     open: true
+  //   }));
+  //  };
 
-  const handleClose = () => {
-    setState(prev => ({
-      ...prev,
-      open: false
-    }));
-    startNextQuestion();
-  };
+  // const handleClose = () => {
+  //   setState(prev => ({
+  //     ...prev,
+  //     open: false
+  //   }));
+  //   startNextQuestion();
+  // };
 
   const { mode, transition, back } = useVisualMode(START);
 
@@ -197,7 +197,7 @@ export default function Workthrough(props) {
         {mode === START && <Start startWorkthrough={startWorkthrough} />}
         {mode === MOOD && <Mood onResponse={respondMood} />}
         {mode === QUESTION && (
-          <>
+   
           <Question
             question={state.currentQuestion}
             responses={state.currentQuestion.responses}
@@ -205,11 +205,10 @@ export default function Workthrough(props) {
             interests={state.interests}
           />
 
-          <button onClick={startNextQuestion}>ttt</button>
-          </>
+        
         )}
           <Followup
-            open= {open}
+            open={open}
             handleClose = { () =>  setOpen(prev => !prev)}
             followup={state.currentFollowup}
             thinkingTrap={state.currentThinkingTrap}
@@ -232,9 +231,7 @@ export default function Workthrough(props) {
         <IconButton onClick={() => back()}>
           <ExpandLessIcon fontSize="large" />
         </IconButton>
-        <IconButton onClick={() => handleClickOpen() }>
-          <ExpandMoreIcon fontSize="large" />
-        </IconButton>
+   
         <button onClick={() => restartWorkthrough()}>Quit without saving</button>
       </section>
     </main>
