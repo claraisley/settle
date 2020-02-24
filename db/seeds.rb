@@ -301,7 +301,6 @@ ActiveRecord::Base.transaction do
   )
 
   #q10 followups
-
   f28 = FollowUp.create!(
     response: r28,
     thinking_trap: mind_reading,
@@ -319,7 +318,6 @@ ActiveRecord::Base.transaction do
   )
 
   #q11 followups
-
   f31 = FollowUp.create!(
     response: r31,
     thinking_trap: catastrophizing,
@@ -435,5 +433,6 @@ ActiveRecord::Base.transaction do
   UserMeditation.create!(user: User.first, meditation_id: 4, created_at: Date.new(2020, 2, 25))
   UserMeditation.create!(user: User.first, meditation_id: 3, created_at: Date.new(2020, 2, 26))
   UserMeditation.create!(user: User.first, meditation_id: 1, created_at: Date.new(2020, 2, 27))
+  UserMeditation.create!(user: User.first, meditation_id: 3, created_at: Date.new(2020, 2, 28))
 
 end  
