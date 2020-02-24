@@ -22,20 +22,26 @@ const CardStart = styled(Card)`
   flex-direction: column;
 `;
 
-const CardContentStart = styled(CardContent)`
-  padding: 0;
-  & > p {
-    margin-top: 5%;
-    margin-bottom: 5%;
-    color: white;
-    text-align: center;
-  }
+const PaperStart = styled(Paper)`
+  padding-top: 7em;
+  padding-bottom: 7em;
+  background-color: #353c52;
 `;
 
-const TypographyStart = styled(Typography)`
-  font-size: x-large;
-  font-weight: 600;
-`;
+// const CardContentStart = styled(CardContent)`
+//   padding: 0;
+//   & > p {
+//     margin-top: 5%;
+//     margin-bottom: 5%;
+//     color: white;
+//     text-align: center;
+//   }
+// `;
+
+// const TypographyStart = styled(Typography)`
+//   font-size: x-large;
+//   font-weight: 600;
+// `;
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -70,13 +76,8 @@ export default function Start(props) {
   return (
     <main className="start">
       <div className={classes.root}>
-        <Paper elevation={10}>
-          <CardStart className={classes.cards}>
-            <CardContentStart>
-              <TypographyStart gutterBottom>
-                The test I'm preparing for is today
-              </TypographyStart>
-            </CardContentStart>
+        <PaperStart elevation={10}>
+          <CardStart elevation={6} className={classes.cards}>
             <ButtonDiv>
               <Button
                 className={classes.button}
@@ -84,16 +85,11 @@ export default function Start(props) {
                 color="primary"
                 onClick={() => props.startWorkthrough(3)}
               >
-                Today
+                The test I am preparing for is today
               </Button>
             </ButtonDiv>
           </CardStart>
-          <CardStart className={classes.cards}>
-            <CardContentStart>
-              <TypographyStart gutterBottom>
-                The test I'm preparing for is tomorrow
-              </TypographyStart>
-            </CardContentStart>
+          <CardStart elevation={6} className={classes.cards}>
             <ButtonDiv>
               <Button
                 className={classes.button}
@@ -101,11 +97,11 @@ export default function Start(props) {
                 color="primary"
                 onClick={() => props.startWorkthrough(5)}
               >
-                Tomorrow
+                The test I am preparing for is tomorrow
               </Button>
             </ButtonDiv>
           </CardStart>
-        </Paper>
+        </PaperStart>
       </div>
     </main>
   );
