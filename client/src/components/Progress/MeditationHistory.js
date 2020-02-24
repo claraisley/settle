@@ -7,10 +7,7 @@ import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
-<<<<<<< HEAD
 import Paper from "@material-ui/core/Paper";
-=======
->>>>>>> master
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
 
@@ -31,7 +28,6 @@ const BackButton = styled(Button)`
 const BackImg = styled.img`
   height: 100px;
   width: 100px;
-<<<<<<< HEAD
 `;
 
 const Title = styled.h1`
@@ -53,8 +49,6 @@ const NotePaper = styled(Paper)`
   margin-bottom: 3%;
   padding: 3%;
   background-color: #353c52;
-=======
->>>>>>> master
 `;
 
 export default function MeditationHistory(props) {
@@ -72,11 +66,7 @@ export default function MeditationHistory(props) {
   useEffect(() => {
     axios
       .request({
-<<<<<<< HEAD
-        url: "http://localhost:3001/user_meditations",
-=======
         url: "/user_meditations",
->>>>>>> master
         method: "get",
         headers: {
           "Content-Type": "application/json",
@@ -186,7 +176,6 @@ export default function MeditationHistory(props) {
 
   return (
     <main className="MeditationHistory">
-<<<<<<< HEAD
       <StyledDiv>
         <BackButton
           onClick={() => {
@@ -235,36 +224,6 @@ export default function MeditationHistory(props) {
           </Grid>
         </Grid>
       </NotePaper>
-=======
-      <h2>My Previous Meditations</h2>
-      <BackButton
-        onClick={() => {
-          props.goToProgressPage("HOME");
-        }}
-      >
-        <BackImg src="https://res.cloudinary.com/dpfixnpii/image/upload/v1582400198/arrow_xph8bj.svg" />
-      </BackButton>
-      <span>This is how long you've meditated for the week of </span>
-      <FormControl className={classes.formControl}>
-        <InputLabel id="week-picker">Week</InputLabel>
-        <Select
-          value={getSunday(state.baseDay).toDateString()}
-          onChange={handleChange}
-        >
-          {weekStartOptions}
-        </Select>
-      </FormControl>
-      {state.meditations.length > 0 ? (
-        <Chart
-          type="bar"
-          options={chartData.options}
-          series={chartData.series}
-          width="500"
-        />
-      ) : (
-        <p>Do a meditation to start tracking your progress!</p>
-      )}
->>>>>>> master
     </main>
   );
 }

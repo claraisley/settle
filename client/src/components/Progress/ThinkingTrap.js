@@ -12,19 +12,17 @@ const BackImg = styled.img`
   height: 100px;
   width: 100px;
 `;
-<<<<<<< HEAD
 const Title = styled.h1`
-  text-align: center;
-  margin-left: 30%;
+text-align: center;
+margin-bottom: 5%;
 `;
 const StyledDiv = styled.div`
 display: flex;
-margin-bottom: 3%;
 margin-top: 3%;
 `
-
-=======
->>>>>>> master
+const StyledTitle = styled.h1`
+  color: #ffd882;
+`;
 
 export default function ThinkingTrap(props) {
   const [trapData, setTrapData] = useState({});
@@ -54,37 +52,20 @@ export default function ThinkingTrap(props) {
 
   const emptyMessage =
     "Go through some Work-Throughs to see which thinking traps you are falling into!";
-
+    
+  const checkEmpty = Object.entries(trapData).length
   return (
-<<<<<<< HEAD
     <main>
       <StyledDiv>
       
       <BackButton onClick={()=>{props.goToProgressPage("HOME")}}>
       <BackImg src="https://res.cloudinary.com/dpfixnpii/image/upload/v1582400198/arrow_xph8bj.svg"/>
       </BackButton> 
-      <Title>Thinking Traps Progress</Title>
-      </StyledDiv>
       
+      </StyledDiv>
+      <Title>Thinking Traps Progress</Title>
       <article> 
-        {!(Object.entries(trapData).length) ? <p>{emptyMessage}</p> : <TrapItems trapData={trapData}/>}
-=======
-    <main className="ThinkingTrap">
-      <h2>Thinking Traps</h2>
-      <BackButton
-        onClick={() => {
-          props.goToProgressPage("HOME");
-        }}
-      >
-        <BackImg src="https://res.cloudinary.com/dpfixnpii/image/upload/v1582400198/arrow_xph8bj.svg" />
-      </BackButton>
-      <article>
-        {!Object.entries(trapData).length ? (
-          <p>{emptyMessage}</p>
-        ) : (
-          <TrapItems trapData={trapData} />
-        )}
->>>>>>> master
+        {checkEmpty ? <TrapItems trapData={trapData}/> : <StyledTitle>{emptyMessage}</StyledTitle> }
       </article>
     </main>
   );
