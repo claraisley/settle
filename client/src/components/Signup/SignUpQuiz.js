@@ -8,7 +8,7 @@ import useSignUpQuiz from "../../hooks/useSignUpQuiz";
 
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
-import Typography from "@material-ui/core/Typography";
+// import Typography from "@material-ui/core/Typography";
 import { Paper } from "@material-ui/core";
 
 import { Planet } from 'react-kawaii'
