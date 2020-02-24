@@ -12,6 +12,7 @@ import Container from "@material-ui/core/Container";
 import Link from "@material-ui/core/Link";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
+import KawaiiAnimation from "./backpackAnimation";
 
 const axios = require("axios").default;
 
@@ -22,7 +23,7 @@ const ContainerLogin = styled(Container)`
 `;
 
 const PaperLogin = styled(Paper)`
-  margin-top: 10%;
+  margin-top: 8%;
   margin-left: 20%;
   margin-right: 20%;
   background-color: #353c52;
@@ -40,6 +41,12 @@ const LoginTextField = styled(TextField)`
 const TypographyLogin = styled(Typography)`
   font-size: x-large;
   font-weight: 600;
+`;
+
+const BackpackBox = styled.div`
+  margin-top: 2%;
+  margin-bottom: 2%;
+  margin-left: 45%;
 `;
 
 // MATERIAL UI STYLING CSS
@@ -83,10 +90,6 @@ export default function Login(props) {
       withCredentials: true
     })
       .then(response => {
-        alert(`User Logged In!
-           Email: ${inputs.email}`);
-
-        console.log(response);
         props.setUser({
           email: response.data.email,
           name: response.data.name,
@@ -103,63 +106,68 @@ export default function Login(props) {
   const { inputs, handleInputChange, handleSubmit } = useLoginForm(login);
 
   return (
-    <PaperLogin elevation={10}>
-      <ContainerLogin component="main" maxWidth="xs">
-        <CssBaseline />
-        <div className={classes.paper}>
-          <TypographyLogin component="h1" variant="h5">
-            Login
-          </TypographyLogin>
-          <form className={classes.form} onSubmit={handleSubmit}>
-            <LoginTextField
-              variant="outlined"
-              margin="normal"
-              required
-              fullWidth
-              id="email"
-              label="Email Address"
-              name="email"
-              value={inputs.email || ""}
-              onChange={handleInputChange}
-              autoFocus
-              style={{ color: "white" }}
-            />
-            <LoginTextField
-              variant="outlined"
-              margin="normal"
-              required
-              fullWidth
-              name="password"
-              label="Password"
-              type="password"
-              id="password"
-              value={inputs.password || ""}
-              onChange={handleInputChange}
-            />
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              color="primary"
-              className={classes.submit}
-            >
+    <main>
+      <BackpackBox>
+        <KawaiiAnimation />
+      </BackpackBox>
+      <PaperLogin elevation={10}>
+        <ContainerLogin component="main" maxWidth="xs">
+          <CssBaseline />
+          <div className={classes.paper}>
+            <TypographyLogin component="h1" variant="h5">
               Login
-            </Button>
-            <Grid container justify="flex-end">
-              <Grid item>
-                <Link
-                  href=""
-                  onClick={() => history.push("/signup")}
-                  variant="body2"
-                >
-                  Don't have an account? Sign Up
-                </Link>
+            </TypographyLogin>
+            <form className={classes.form} onSubmit={handleSubmit}>
+              <LoginTextField
+                variant="outlined"
+                margin="normal"
+                required
+                fullWidth
+                id="email"
+                label="Email Address"
+                name="email"
+                value={inputs.email || ""}
+                onChange={handleInputChange}
+                autoFocus
+                style={{ color: "white" }}
+              />
+              <LoginTextField
+                variant="outlined"
+                margin="normal"
+                required
+                fullWidth
+                name="password"
+                label="Password"
+                type="password"
+                id="password"
+                value={inputs.password || ""}
+                onChange={handleInputChange}
+              />
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                color="primary"
+                className={classes.submit}
+              >
+                Login
+              </Button>
+              <Grid container justify="flex-end">
+                <Grid item>
+                  <Link
+                    href=""
+                    onClick={() => history.push("/signup")}
+                    variant="body2"
+                  >
+                    Don't have an account? Sign Up
+                  </Link>
+                </Grid>
               </Grid>
-            </Grid>
-          </form>
-        </div>
-        <Box mt={8}></Box>
-      </ContainerLogin>
-    </PaperLogin>
+            </form>
+          </div>
+          <Box mt={8}></Box>
+        </ContainerLogin>
+      </PaperLogin>
+    </main>
   );
 }

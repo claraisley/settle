@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
-import Button from "@material-ui/core/Button";
+// import Button from "@material-ui/core/Button";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
@@ -12,7 +12,7 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormControl from "@material-ui/core/FormControl";
 import FormLabel from "@material-ui/core/FormLabel";
 import personalizeText from "./HelperFunction";
-import { Container } from "@material-ui/core";
+// import { Container } from "@material-ui/core";
 
 const CardQuestion = styled(Card)`
   margin-top: 5%;

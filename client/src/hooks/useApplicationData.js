@@ -4,10 +4,13 @@ import Menu from "../components/Menu.js";
 import Workthrough from "../components/Workthrough/Index.js";
 import Progress from "../components/Progress/Index.js";
 import Signup from "../components/Signup/Index.js";
-import StaticPageList from "../components/StaticPageList";
-import StaticPage from "../components/StaticPage";
+import Tips from "../components/Tips";
+import About from "../components/About";
 import Meditation from "../components/Meditation";
 import Login from "../components/Login.js";
+import WhatIs from "../components/Whatis";
+import ThinkingTraps from "../components/ThinkingTrap";
+import { useLocation } from "react-router-dom";
 
 export default function useApplicationData() {
   //pages state
@@ -15,7 +18,8 @@ export default function useApplicationData() {
     pages: {
       thinkingTraps: [],
       tipsTricks: [],
-      signupQuestions: []
+      signupQuestions: [],
+      meditations: []
     },
     user: {
       email: "",
@@ -31,15 +35,14 @@ export default function useApplicationData() {
       user
     }));
   };
-  
-    if (!state.user.name && localStorage.getItem('currentUser')) {
-      const { data } = JSON.parse(localStorage.getItem('currentUser'));
-      console.log(data)
-      setUser({email: data.email, name: data.name, id: data.id })
-    } 
+
+  if (!state.user.name && localStorage.getItem("currentUser")) {
+    const { data } = JSON.parse(localStorage.getItem("currentUser"));
+    setUser({ email: data.email, name: data.name, id: data.id });
+  }
 
   useEffect(() => {
-    Promise.all([ 
+    Promise.all([
       axios.request({
         url: "http://localhost:3001/thinking_traps",
         method: "get",
@@ -69,16 +72,28 @@ export default function useApplicationData() {
           "Access-Control-Allow-Credentials": true
         },
         withCredentials: true
+      }),
+      axios.request({
+        url: "http://localhost:3001/meditations",
+        method: "get",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+          "Access-Control-Allow-Credentials": true
+        },
+        withCredentials: true
       })
     ])
       .then(response => {
+        console.log(response);
         setState(prev => ({
           ...prev,
           pages: {
             ...prev.pages,
             thinkingTraps: response[0].data,
             tipsTricks: response[1].data,
-            signupQuestions: response[2].data
+            signupQuestions: response[2].data,
+            meditations: response[3].data
           }
         }));
       })
@@ -87,28 +102,26 @@ export default function useApplicationData() {
       });
   }, []);
 
-
   const authenticatetUser = function() {
-   
     if (state.user.name) {
-      return true
+      return true;
     } else {
-      return false
+      return false;
     }
-  }
-
-  const pageText = {
-    about: "KATHERINE WRITE THE THING HERE SEARCH ME IN USEAPPLICATIONDATA FOR ABOUT PAGE",
-    whatIs: "KATHERINE WRITE THE THING HERE SEARCH ME IN USEAPPLICATIONDATA FOR WHAT IS TEST ANXIETY PAGE"
   };
 
   const links = [
-    
     {
       name: "Signup",
       path: "/signup",
       requiresAuthentication: false,
-      component: <Signup user={state.user} setUser={setUser} signupQuestions={state.pages.signupQuestions} />
+      component: (
+        <Signup
+          user={state.user}
+          setUser={setUser}
+          signupQuestions={state.pages.signupQuestions}
+        />
+      )
     },
     {
       name: "Login",
@@ -123,35 +136,30 @@ export default function useApplicationData() {
       component: <Menu user={state.user} />
     },
     {
-      name: "What is test anxiety?",
+      name: "What is Test Anxiety?",
       path: "/test-anxiety",
       requiresAuthentication: true,
-      component: (
-        <StaticPage
-          title={"What is test anxiety?"}
-          text={pageText.whatIs}
-        />
-      )
+      component: <WhatIs />
     },
     {
       name: "Thinking Traps",
       path: "/thinking-traps",
       requiresAuthentication: true,
-      component: (
-        <StaticPageList title={"Thinking Traps"} data={state.pages.thinkingTraps} />
-      )
+      component: <ThinkingTraps data={state.pages.thinkingTraps} />
     },
     {
       name: "Meditations",
       path: "/meditations",
       requiresAuthentication: true,
-      component: <Meditation user={state.user}/>
+      component: (
+        <Meditation user={state.user} meditations={state.pages.meditations} />
+      )
     },
     {
       name: "Work-Throughs",
       path: "/workthrough",
       requiresAuthentication: true,
-      component: <Workthrough user={state.user}/>
+      component: <Workthrough user={state.user} />
     },
     {
       name: "My Progress",
@@ -160,25 +168,17 @@ export default function useApplicationData() {
       component: <Progress user={state.user} />
     },
     {
-      name: "Tips for Test Success",
+      name: "Dos and Don'ts For Test Success",
       path: "/tips-tricks",
       requiresAuthentication: true,
-      component: (
-        <StaticPageList title={"Tips and Tricks"} data={state.pages.tipsTricks} />
-      )
-    },    
+      component: <Tips data={state.pages.tipsTricks} />
+    },
     {
       name: "About",
       path: "/about",
-      requiresAuthentication: true,
-      component: (
-        <StaticPage
-          title={"About"}
-          text={pageText.about}
-        />
-      )
-    },
-
+      requiresAuthentication: false,
+      component: <About />
+    }
   ];
 
   return { state, setUser, links, authenticatetUser };

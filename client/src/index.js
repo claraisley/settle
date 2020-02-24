@@ -4,14 +4,15 @@ import "./index.css";
 import App from "./components/App";
 import * as serviceWorker from "./serviceWorker";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
-import { Button, Box, Container, CssBaseline } from "@material-ui/core";
-
-import deepOrange from "@material-ui/core/colors/deepOrange";
+import { Container, CssBaseline } from "@material-ui/core";
+// import deepOrange from "@material-ui/core/colors/deepOrange";
 
 const theme = createMuiTheme({
   palette: {
     primary: {
-      main: "#d67557"
+      main: "#deb559"
+      //#d6a026 - yellow
+      //#d67557 -orange one
     },
     text: {
       primary: "#ffffff",

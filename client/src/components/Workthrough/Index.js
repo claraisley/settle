@@ -9,7 +9,7 @@ import IconButton from "@material-ui/core/IconButton";
 import ExpandLessIcon from "@material-ui/icons/ExpandLess";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import { makeStyles } from "@material-ui/core/styles";
-import LinearProgress from "@material-ui/core/LinearProgress";
+// import LinearProgress from "@material-ui/core/LinearProgress";
 import axios from "axios";
 
 const useStyles = makeStyles(theme => ({
@@ -35,7 +35,7 @@ export default function Workthrough(props) {
     currentFollowup: {},
     currentThinkingTrap: {}
   });
-
+  console.log("STATE", state)
 
   const { mode, transition, back } = useVisualMode(START);
 
@@ -63,7 +63,7 @@ export default function Workthrough(props) {
     transition(MOOD);
   }
 
-  // starts the workthrough when the user selects 4 or 6 questions. needs to be updated to pull real data
+  // starts the workthrough when the user selects today or tomorrow on the start page
   const startWorkthrough = numberOfQuestions => {
     Promise.all([
       axios.request({
@@ -92,7 +92,6 @@ export default function Workthrough(props) {
       withCredentials: true})
     ])
       .then(function (response) {
-        console.log(response)
         for (let question of response[0].data) {
           question.answered = false;
         }
@@ -128,7 +127,7 @@ export default function Workthrough(props) {
     transition(FOLLOWUP);
   };
 
-  // triggered when a user responds to the mood question. currently doesn't save their response anywhere
+  // triggered when a user responds to the mood question and sends completed reflection data to database
   const respondMood = (moodValue) => {
     const reflection_responses = state.responsesChosen.map(response => {
       return { "response_id": response }
@@ -161,6 +160,20 @@ export default function Workthrough(props) {
     return question.answered === false;
   }).length;
 
+  // function to start a new workthrough by clearing start and transitioning to start
+  const restartWorkthrough = () => {
+    setState(prev => ({
+      ...prev,
+      questions: [],
+      interests: [],
+      currentQuestion: {},
+      responsesChosen: [],
+      currentFollowup: {},
+      currentThinkingTrap: {}
+    }));
+    transition(START)
+  }
+
   return (
     <main className="workthrough">
       <h2>Workthrough</h2>
@@ -182,7 +195,7 @@ export default function Workthrough(props) {
             interests={state.interests}
           />
         )}
-        {mode === COMPLETION && <Completion />}
+        {mode === COMPLETION && <Completion restartWorkthrough={restartWorkthrough} />}
       </section>
       <section>
         <label htmlFor="workthrough-progress">
@@ -196,6 +209,7 @@ export default function Workthrough(props) {
         <IconButton onClick={() => startNextQuestion()}>
           <ExpandMoreIcon fontSize="large" />
         </IconButton>
+        <button onClick={() => restartWorkthrough()}>Quit without saving</button>
       </section>
     </main>
   );

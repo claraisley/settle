@@ -45,6 +45,7 @@ export function FourBackPack() {
       <BackPackItem size={100} mood="sad" />
       <BackPackItem size={100} mood="sad" />
       <BackPackItem size={100} mood="sad" />
+      <BackPackItem size={100} mood="sad" />
     </BackPackDiv>
   );
 }
@@ -52,9 +53,11 @@ export function FourBackPack() {
 export function FiveBackPack() {
   return (
     <BackPackDiv>
-      <BackPackItem size={100} mood="sad" />
-      <BackPackItem size={100} mood="sad" />
-      <BackPackItem size={100} mood="sad" />
+      <BackPackItem size={100} mood="ko" />
+      <BackPackItem size={100} mood="ko" />
+      <BackPackItem size={100} mood="ko" />
+      <BackPackItem size={100} mood="ko" />
+      <BackPackItem size={100} mood="ko" />
     </BackPackDiv>
   );
 }

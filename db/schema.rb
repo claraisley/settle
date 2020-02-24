@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 2020_02_20_230752) do
 
   create_table "meditations", force: :cascade do |t|
     t.string "name"
+    t.string "URL"
     t.integer "time_in_minutes"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

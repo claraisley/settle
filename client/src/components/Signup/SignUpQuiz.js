@@ -5,10 +5,14 @@ import QuestionList from "./QuestionList";
 import { useHistory } from "react-router-dom";
 import Button from "@material-ui/core/Button";
 import useSignUpQuiz from "../../hooks/useSignUpQuiz";
+
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import { Paper } from "@material-ui/core";
+
+import { Planet } from 'react-kawaii'
+
 const axios = require("axios").default;
 
 const PaperQuiz = styled(Paper)`
@@ -125,6 +129,7 @@ export default function SignUpQuiz(props) {
 
   return (
     <main>
+
       <PaperQuiz className={classes.root}>
         <CardQuiz>
           <CardContentQuiz>
@@ -132,6 +137,7 @@ export default function SignUpQuiz(props) {
               Thanks for signing up {props.user.name}, we'd like to ask you a
               few questions to get to know you better. It'll help us loads!
             </TypographyHeader>
+    <Planet size={220} mood="happy" color="#FCCB7E" />
           </CardContentQuiz>
         </CardQuiz>
         <CardQuizList className={classes.responseList}>
