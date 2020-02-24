@@ -26,16 +26,32 @@ const START = "START";
 
 export default function Workthrough(props) {
   const classes = useStyles();
-
+  const [ open, setOpen] = useState(false)
   const [state, setState] = useState({
     questions: [],
     interests: [],
     currentQuestion: {},
     responsesChosen: [],
     currentFollowup: {},
-    currentThinkingTrap: {}
+    currentThinkingTrap: {},
+    open: false
   });
-  console.log("STATE", state)
+
+
+  const handleClickOpen = () => {
+    setState(prev => ({
+      ...prev,
+      open: true
+    }));
+   };
+
+  const handleClose = () => {
+    setState(prev => ({
+      ...prev,
+      open: false
+    }));
+    startNextQuestion();
+  };
 
   const { mode, transition, back } = useVisualMode(START);
 
@@ -106,6 +122,7 @@ export default function Workthrough(props) {
   // this function is triggered when a user responds to a question
   // sets the current question answered to true, saves their response in the responseChosen array in state, and pulls the followup
   const respond = responseID => {
+    setOpen(true);
     const followup = state.currentQuestion.responses.find(
       response => response.id === responseID
     ).follow_ups;
@@ -124,7 +141,6 @@ export default function Workthrough(props) {
       currentFollowup: followup,
       currentThinkingTrap: thinkingTrap
     }));
-    transition(FOLLOWUP);
   };
 
   // triggered when a user responds to the mood question and sends completed reflection data to database
@@ -169,7 +185,7 @@ export default function Workthrough(props) {
       currentQuestion: {},
       responsesChosen: [],
       currentFollowup: {},
-      currentThinkingTrap: {}
+      currentThinkingTrap: {},
     }));
     transition(START)
   }
@@ -181,20 +197,30 @@ export default function Workthrough(props) {
         {mode === START && <Start startWorkthrough={startWorkthrough} />}
         {mode === MOOD && <Mood onResponse={respondMood} />}
         {mode === QUESTION && (
+          <>
           <Question
             question={state.currentQuestion}
             responses={state.currentQuestion.responses}
             onResponse={respond}
             interests={state.interests}
           />
+
+          <button onClick={startNextQuestion}>ttt</button>
+          </>
         )}
-        {mode === FOLLOWUP && (
           <Followup
+            open= {open}
+            handleClose = { () =>  setOpen(prev => !prev)}
             followup={state.currentFollowup}
             thinkingTrap={state.currentThinkingTrap}
             interests={state.interests}
+            nextQuestion={ () => {
+              setOpen(prev => {
+                startNextQuestion();
+                return !prev;
+              })
+            }}
           />
-        )}
         {mode === COMPLETION && <Completion restartWorkthrough={restartWorkthrough} />}
       </section>
       <section>
@@ -206,7 +232,7 @@ export default function Workthrough(props) {
         <IconButton onClick={() => back()}>
           <ExpandLessIcon fontSize="large" />
         </IconButton>
-        <IconButton onClick={() => startNextQuestion()}>
+        <IconButton onClick={() => handleClickOpen() }>
           <ExpandMoreIcon fontSize="large" />
         </IconButton>
         <button onClick={() => restartWorkthrough()}>Quit without saving</button>
