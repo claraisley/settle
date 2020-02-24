@@ -72,7 +72,7 @@ export default function Meditation(props) {
   const handleEnd = meditationId => {
     axios
       .request({
-        url: "http://localhost:3001/meditations",
+        url: "/meditations",
         method: "post",
         headers: {
           "Content-Type": "application/json",
