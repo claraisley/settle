@@ -14,15 +14,6 @@ import FormLabel from "@material-ui/core/FormLabel";
 import personalizeText from "./HelperFunction";
 // import { Container } from "@material-ui/core";
 
-// const PaperQuestion = styled(Paper)`
-//   margin-top: 7%;
-//   margin-left: 20%;
-//   margin-right: 20%;
-//   margin-bottom: 7%
-//   background-color: #353c52;
-//   backgroundimage: http://www.transparenttextures.com/patterns/cubes.png;
-// `;
-
 const CardQuestion = styled(Card)`
   margin-top: 5%;
   margin-left: 10%;
