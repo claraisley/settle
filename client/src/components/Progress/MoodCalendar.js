@@ -13,9 +13,14 @@ const BackImg = styled.img`
 height: 100px;
 width: 100px;
 `;
-
-
-
+const StyledCalendar = styled(Calendar)`
+width: 450px;
+height: 300px;
+font-size: 1rem !important;
+.react-calendar__navigation: { // this doesn't work why!
+  font-size: 1rem !important;
+}
+`
 
 export default function MoodCalendar(props) {
   const [state, setState] = useState({
@@ -48,7 +53,7 @@ export default function MoodCalendar(props) {
       .then(response => {
         setState(prev => ({ ...prev, moods: response.data })); // if no moods, then state.moods is just an empty array
       })
-      .catch(function(error) {
+      .catch(function (error) {
         console.log(error);
       });
   }, [props.user.id]);
@@ -80,10 +85,10 @@ export default function MoodCalendar(props) {
       </BackButton>
       <h2>Mood Calendar</h2>
       {state.moods.length > 0 ? (
-        <Calendar tileContent={tileContent} calendarType={"US"} />
+        <StyledCalendar tileContent={tileContent} calendarType={"US"} />
       ) : (
-        <p>Start a reflection to start tracking your moods!</p>
-      )}
+          <p>Start a reflection to start tracking your moods!</p>
+        )}
     </main>
   );
 }
