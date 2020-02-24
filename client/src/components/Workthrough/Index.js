@@ -146,7 +146,7 @@ export default function Workthrough(props) {
     };
     axios
       .request({
-        url: "http://localhost:3001/reflections",
+        url: "/reflections",
         method: "post",
         headers: {
           "Content-Type": "application/json",

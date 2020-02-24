@@ -44,7 +44,7 @@ export default function useApplicationData() {
   useEffect(() => {
     Promise.all([
       axios.request({
-        url: "http://localhost:3001/thinking_traps",
+        url: "/thinking_traps",
         method: "get",
         headers: {
           "Content-Type": "application/json",
@@ -54,7 +54,7 @@ export default function useApplicationData() {
         withCredentials: true
       }),
       axios.request({
-        url: "http://localhost:3001/tips",
+        url: "/tips",
         method: "get",
         headers: {
           "Content-Type": "application/json",
@@ -64,7 +64,7 @@ export default function useApplicationData() {
         withCredentials: true
       }),
       axios.request({
-        url: "http://localhost:3001/interests",
+        url: "/interests",
         method: "get",
         headers: {
           "Content-Type": "application/json",
@@ -74,7 +74,7 @@ export default function useApplicationData() {
         withCredentials: true
       }),
       axios.request({
-        url: "http://localhost:3001/meditations",
+        url: "/meditations",
         method: "get",
         headers: {
           "Content-Type": "application/json",
