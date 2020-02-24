@@ -13,7 +13,15 @@ const BackImg = styled.img`
 height: 100px;
 width: 100px;
 `;
-
+const Title = styled.h1`
+  text-align: center;
+  margin-left: 30%;
+`;
+const StyledDiv = styled.div`
+display: flex;
+margin-bottom: 3%;
+margin-top: 3%;
+`
 
 
 export default function ThinkingTrap(props) {
@@ -49,11 +57,15 @@ const emptyMessage = "Go through some Work-Throughs to see which thinking traps 
 
 
   return (
-    <main className="ThinkingTrap">
-      <h2>Thinking Traps</h2>
+    <main>
+      <StyledDiv>
+      
       <BackButton onClick={()=>{props.goToProgressPage("HOME")}}>
       <BackImg src="https://res.cloudinary.com/dpfixnpii/image/upload/v1582400198/arrow_xph8bj.svg"/>
       </BackButton> 
+      <Title>Thinking Traps Progress</Title>
+      </StyledDiv>
+      
       <article> 
         {!(Object.entries(trapData).length) ? <p>{emptyMessage}</p> : <TrapItems trapData={trapData}/>}
       </article>
