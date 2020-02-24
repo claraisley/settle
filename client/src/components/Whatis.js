@@ -73,7 +73,7 @@ const TitlePaper = styled(Paper)`
 const Title = styled.h1`
   text-align: center;
 `;
-const SymptomsTitle = styled.h2`
+const SymptomsTitle = styled.h1`
   text-align: center;
 `;
 const WhatIsPaperBackground = styled(Paper)`
@@ -177,13 +177,16 @@ export default function WhatIs() {
                 performance declines. This extra anxiety, commonly referred to
                 as Test Anxiety, makes it difficult for a student to demonstrate
                 what they know during a test or exam.
+              </Text>
+              <Text>
                 <strong>
-                  {" "}
                   This is because Test Anxiety creates a kind of 'noise' or
                   'mental static' in the brain, blocking our ability to grab
                   facts and knowledge stored in our memory, while also messing
                   with our ability to understand questions and solve them.
-                </strong>{" "}
+                </strong>
+              </Text>
+              <Text>
                 Because it’s natural for students to base some of their
                 self-worth on their academic performance, it makes sense that
                 test anxiety can lead to a host of problems in those who suffer
@@ -195,9 +198,11 @@ export default function WhatIs() {
             <WhatIsPaperBackground>
               <NotePaper elevation={11}>
                 <Text>
-                  It’s important to note that each person who deals with test
-                  anxiety will experience a different collection of symptoms
-                  with differing degrees of intensity.
+                  <strong>
+                    It’s important to note that each person who deals with test
+                    anxiety will experience a different collection of symptoms
+                    with differing degrees of intensity.
+                  </strong>
                 </Text>
               </NotePaper>
               <SymptomsTitle>Symptoms</SymptomsTitle>

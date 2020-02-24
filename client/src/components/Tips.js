@@ -30,14 +30,23 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
+
+
 const StaticPaper = styled(Paper)`
   width: 90%;
-  margin: 6% auto 5% auto;
+  margin: 10px auto;
   background-color: #353c52;
   justify-content: center;
   align-items: center;
   padding: 4%;
+  background-image: url(http://www.transparenttextures.com/patterns/cubes.png);
 `;
+
+const Title = styled.h1`
+  text-align: center;
+  margin: 20px auto;
+`;
+
 
 export default function Tips(props) {
   const classes = useStyles();
@@ -69,9 +78,9 @@ export default function Tips(props) {
   });
 
   return (
-    <main className="static">
-      <StaticPaper elevation={10}>
-        <h2>Dos and Dont's For Test Success</h2>
+    <main>
+      <Title>Dos and Don'ts of Dealing with Test Anxiety </Title>
+      <StaticPaper elevation={12}>
         <div className={classes.root}></div>
         {items}
       </StaticPaper>

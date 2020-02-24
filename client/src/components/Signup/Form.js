@@ -27,6 +27,7 @@ const PaperSignup = styled(Paper)`
   margin-left: 20%;
   margin-right: 20%;
   background-color: #353c52;
+  margin-bottom: 5%;
 `;
 
 const TextFieldSignup = styled(TextField)`

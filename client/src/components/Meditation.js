@@ -99,14 +99,12 @@ export default function Meditation(props) {
         expanded={expanded === `panel${meditation.id}`}
         key={meditation.id}
         onChange={handleChange(`panel${meditation.id}`)}
-        
       >
         <ExpansionPanelSummary
           expandIcon={<ExpandMoreIcon />}
           aria-controls={`panel${meditation.id}bh-content`}
           id={`panel${meditation.id}bh-header`}
           className={classes.expansion}
-          
         >
           <Typography className={classes.heading}>{meditation.name}</Typography>
         </ExpansionPanelSummary>
@@ -133,6 +131,8 @@ export default function Meditation(props) {
           by focusing your attention on the here and now, your mind gets a break
           from worrying about the future or past. Use the guided medidations
           below to help you relax and start practicing your mindfulness skills.
+        </Text>
+        <Text>
           These meditations have been specifically made for students with test
           anxiety and it’s OK if it seems a little weird at first. To get the
           hang of it, try practicing with one of the longer recordings in the

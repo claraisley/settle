@@ -105,7 +105,7 @@ export default function ThinkingTraps(props) {
           Just because you think something doesn’t mean it’s true or that it
           will happen. For example, thinking that you will fail a test doesn’t
           mean you will actually fail. Certain types or patterns of thoughts
-          tend to trap us in anxiety. These patterns, or Thinking Traps, are
+          tend to trap us in anxiety. These patterns, called Thinking Traps, are
           unfair or overly negative ways of seeing things. Thinking Traps
           prevent us from seeing ourselves, others, and the world, in a balanced
           and realistic way. Explore some of the common Thinking Traps below and consider
