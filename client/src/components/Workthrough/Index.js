@@ -35,7 +35,7 @@ export default function Workthrough(props) {
     currentFollowup: {},
     currentThinkingTrap: {}
   });
-  console.log("STATE", state);
+  console.log("STATE RESPONSEs", state.responsesChosen);
 
   const { mode, transition, back } = useVisualMode(START);
 

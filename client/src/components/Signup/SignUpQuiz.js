@@ -5,14 +5,10 @@ import QuestionList from "./QuestionList";
 import { useHistory } from "react-router-dom";
 import Button from "@material-ui/core/Button";
 import useSignUpQuiz from "../../hooks/useSignUpQuiz";
-
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
-// import Typography from "@material-ui/core/Typography";
 import { Paper } from "@material-ui/core";
-
 import { Planet } from 'react-kawaii'
-
 const axios = require("axios").default;
 
 const PaperQuiz = styled(Paper)`
@@ -55,8 +51,6 @@ const CardContentQuiz = styled(CardContent)`
   color: white;
   text-align: center;
 `;
-
-
 
 const StyledPlanet = styled(Planet)`
 margin-top: 3%;
@@ -117,19 +111,14 @@ export default function SignUpQuiz(props) {
       axiosArr.push(newPromise);
     }
 
-    console.log(axiosArr);
-
     return axios
       .all(axiosArr)
       .then(
         axios.spread((...responses) => {
           responses.forEach(res => console.log("Success"));
-          console.log("submitted all axios calls");
           localStorage.removeItem("mode");
           history.push("/menu");
-        })
-      )
-
+        }))
       .catch(error => {
         console.log(error);
       });
@@ -144,11 +133,10 @@ export default function SignUpQuiz(props) {
       <PaperQuiz className={classes.root} elevation={11}>
         <CardQuiz>
           <CardContentQuiz elevation={11}>
-          <Title>Please fill out this short survery to get started. </Title>
-          <StyledPlanet size={100} mood="happy" color="#FCCB7E" />
+            <Title>Please fill out this short survey to get started. </Title>
+            <StyledPlanet size={100} mood="happy" color="#FCCB7E" />
           </CardContentQuiz>
         </CardQuiz>
-       
         <CardQuizList className={classes.responseList} elevation={12}>
           <form onSubmit={handleSubmit}>
             <QuestionList
@@ -156,7 +144,6 @@ export default function SignUpQuiz(props) {
               questionState={questionState}
               changeQuestion={changeQuestion}
             />
-
             <StyledButton type="submit" fullWidth variant="contained" color="primary">
               Submit
             </StyledButton>
