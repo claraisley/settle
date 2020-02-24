@@ -164,7 +164,7 @@ export default function Nav(props) {
           </Typography>
           {props.user.name && (
             <Typography variant="h6" noWrap className={classes.welcome}>
-              Welcome {props.user.name}!
+              Hi {props.user.name}!
             </Typography>
           )}
           <IconButton

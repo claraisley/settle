@@ -16,10 +16,10 @@ import { Planet } from 'react-kawaii'
 const axios = require("axios").default;
 
 const PaperQuiz = styled(Paper)`
-  margin-top: 1em;
+  margin-top: 2em;
   margin-left: 10%;
   margin-right: 10%;
-  margin-bottom: 1em;
+  margin-bottom: 3em;
   background-color: #353c52;
   background-image: url(http://www.transparenttextures.com/patterns/cubes.png);
 `;
@@ -48,16 +48,28 @@ const CardQuizList = styled(Card)`
 const CardContentQuiz = styled(CardContent)`
   padding: 10px;
   padding-bottom: 0 !important;
-  margin-top: 5%;
-  margin-bottom: 5%;
+  margin-top: 1%;
+  margin-bottom: 3%;
+  margin-left: 15%;
+  margin-right: 15%;
   color: white;
   text-align: center;
 `;
 
-const TypographyHeader = styled(Typography)`
-  font-size: large;
-  font-weight: 600;
+
+
+const StyledPlanet = styled(Planet)`
+margin-top: 3%;
+`
+const Title = styled.h1`
+  text-align: center;
+  margin: 20px auto;
+ 
 `;
+
+const StyledButton = styled(Button)`
+margin-top: 5%;
+`
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -129,18 +141,15 @@ export default function SignUpQuiz(props) {
 
   return (
     <main>
-
-      <PaperQuiz className={classes.root}>
+      <PaperQuiz className={classes.root} elevation={11}>
         <CardQuiz>
-          <CardContentQuiz>
-            <TypographyHeader>
-              Thanks for signing up {props.user.name}, we'd like to ask you a
-              few questions to get to know you better. It'll help us loads!
-            </TypographyHeader>
-    <Planet size={220} mood="happy" color="#FCCB7E" />
+          <CardContentQuiz elevation={11}>
+          <Title>Please fill out this short survery to get started. </Title>
+          <StyledPlanet size={100} mood="happy" color="#FCCB7E" />
           </CardContentQuiz>
         </CardQuiz>
-        <CardQuizList className={classes.responseList}>
+       
+        <CardQuizList className={classes.responseList} elevation={12}>
           <form onSubmit={handleSubmit}>
             <QuestionList
               signupQuestions={props.signupQuestions}
@@ -148,9 +157,9 @@ export default function SignUpQuiz(props) {
               changeQuestion={changeQuestion}
             />
 
-            <Button type="submit" fullWidth variant="contained" color="primary">
+            <StyledButton type="submit" fullWidth variant="contained" color="primary">
               Submit
-            </Button>
+            </StyledButton>
           </form>
         </CardQuizList>
       </PaperQuiz>
