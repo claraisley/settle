@@ -78,7 +78,7 @@ export default function MoodCalendar(props) {
       >
         <BackImg src="https://res.cloudinary.com/dpfixnpii/image/upload/v1582400198/arrow_xph8bj.svg" />
       </BackButton>
-      <h2>Mood Chart</h2>
+      <h2>Mood Calendar</h2>
       {state.moods.length > 0 ? (
         <Calendar tileContent={tileContent} calendarType={"US"} />
       ) : (
