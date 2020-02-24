@@ -4,6 +4,13 @@ import TextField from "@material-ui/core/TextField";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
 
+const QuestionCheckbox = styled(Checkbox)`
+  color: #d67557;
+  & > span:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+`;
+
 const QuestionTextField = styled(TextField)`
   & > * {
     color: white;
@@ -35,7 +42,7 @@ export default function QuestionItem(props) {
       <h2>{props.question}</h2>
       <FormControlLabel
         control={
-          <Checkbox
+          <QuestionCheckbox
             checked={state.checkedA}
             onChange={handleChangeA("checkedA")}
             value="checkedA"
@@ -44,7 +51,17 @@ export default function QuestionItem(props) {
         }
         label="Yes"
       />
-
+      <FormControlLabel
+        control={
+          <QuestionCheckbox
+            checked={state.checkedB}
+            onChange={handleChangeB("checkedB")}
+            value="checkedB"
+            color="primary"
+          />
+        }
+        label="No"
+      />
       {state.checkedA && (
         <QuestionTextField
           fullWidth
@@ -57,18 +74,6 @@ export default function QuestionItem(props) {
           onChange={handleInterestChange}
         />
       )}
-
-      <FormControlLabel
-        control={
-          <Checkbox
-            checked={state.checkedB}
-            onChange={handleChangeB("checkedB")}
-            value="checkedB"
-            color="primary"
-          />
-        }
-        label="No"
-      />
     </main>
   );
 }
