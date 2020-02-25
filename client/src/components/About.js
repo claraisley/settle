@@ -60,15 +60,15 @@ export default function About() {
           released in coordination with Anxiety Canada.{" "}
         </Text>
         <Text>
-          The meditations are original, Test Anxiety-specifc meditations
+          The meditations are original Test Anxiety-specifc meditations
           gracioulsy created by the Toronto-based artist{" "}
-          <StyledHREF href="https://emilydownunda.wordpress.com/">
+          <StyledHREF href="https://www.emilydawndickinson.com/">
             Emily Dickinson
           </StyledHREF>
           .
         </Text>
         <Text>
-          Concept and material found in the Work-Throughs is original content by 
+          General concept and material found in the Work-Throughs is original content by 
             <StyledHREF href="https://www.linkedin.com/in/katherine-szelag/">  Katherine Szelag{" "}
           </StyledHREF>
           .
