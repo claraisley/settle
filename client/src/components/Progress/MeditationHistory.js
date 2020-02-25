@@ -79,7 +79,6 @@ export default function MeditationHistory(props) {
         withCredentials: true
       })
       .then(response => {
-        console.log(response);
         let results = response.data;
         setState(prev => ({ ...prev, meditations: results })); // if no meditations, then state.meditations is just an empty array
       })

@@ -30,7 +30,7 @@ const theme = createMuiTheme({
 });
 
 ReactDOM.render(
-  <ThemeProvider className="background" theme={theme}>
+  <ThemeProvider theme={theme}>
     <CssBaseline />
     <Container>
       <App />
