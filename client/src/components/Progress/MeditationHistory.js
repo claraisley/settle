@@ -233,7 +233,7 @@ export default function MeditationHistory(props) {
         <BackButton onClick={() => { props.goToProgressPage("HOME") }}>
           <BackImg src="https://res.cloudinary.com/dpfixnpii/image/upload/v1582400198/arrow_xph8bj.svg" />
         </BackButton>
-        <Title>Meditation Tracker</Title>
+        <Title>My Meditation Tracker</Title>
       </StyledDiv>
       {state.loading ? <CenterDiv><CircularProgress /></CenterDiv> : 
       <NotePaper elevation={12}>
