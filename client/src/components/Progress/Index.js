@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import { makeStyles } from "@material-ui/core/styles";
 import MoodCalendar from "./MoodCalendar";
 import ThinkingTrap from "./ThinkingTrap";
 import Button from "@material-ui/core/Button";
