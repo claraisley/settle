@@ -10,6 +10,7 @@ import Paper from "@material-ui/core/Paper";
 
 const ProgressButton = styled(Button)`
   width: 20vw;
+  margin-top: 10%;
 `;
 const ProgressImg = styled.img`
   width: 18vw;
@@ -66,19 +67,25 @@ export default function Progress(props) {
                 <ProgressButton onClick={() => { goToProgressPage(TRAP) }}>
                   <ProgressImg src="https://res.cloudinary.com/dpfixnpii/image/upload/v1582394796/brain_thxely.svg" />
                 </ProgressButton>
-                <h1>Thinking Trap Progress</h1>
+                <ProgressButton onClick={() => { goToProgressPage(TRAP) }}>
+                  <h1>Thinking Trap Progress</h1>
+                </ProgressButton>
               </StyledDiv>
               <StyledDiv>
                 <ProgressButton onClick={() => { goToProgressPage(MOOD) }}>
                   <ProgressImg src="https://res.cloudinary.com/dpfixnpii/image/upload/v1582394641/emoji_z9c9di.svg" />
                 </ProgressButton>
-                <h1>Mood Tracker</h1>
+                <ProgressButton onClick={() => { goToProgressPage(MOOD) }}>
+                  <h1>Mood Tracker</h1>
+                </ProgressButton>
               </StyledDiv>
               <StyledDiv>
                 <ProgressButton onClick={() => { goToProgressPage(MEDITATION) }}>
                   <ProgressImg src="https://res.cloudinary.com/dpfixnpii/image/upload/v1582394724/clock_cz4ub4.svg" />
                 </ProgressButton>
-                <h1>Meditation Tracker</h1>
+                <ProgressButton onClick={() => { goToProgressPage(MEDITATION) }}>
+                  <h1>Meditation Tracker</h1>
+                </ProgressButton>
               </StyledDiv>
             </StyledSection>
           </ProgressPaper>
