@@ -19,17 +19,7 @@ import {
   Legend2
 } from "./backpacks";
 
-const CardTooltip = styled(Card)`
-  margin-left: 25%;
-  margin-right: 25%;
-  padding: 2em;
-  background-color: #353c52;
-`;
-const TooltipText = styled.span`
-  font-style: italic;
-  font-weight: 600;
-  font-size: 1rem;
-`;
+
 
 const Tooltiptip = styled.span`
   font-size: 1rem;
@@ -50,30 +40,23 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
+const Styledh1 = styled.h1`
+
+`
+
 export default function TrapItems(props) {
 
   
   const classes = useStyles();
+  
   const rounded = Object.entries(props.trapData).map(trap => {
     return Math.round(trap[1]);
   });
 
-  const [isMobile, setIsMobile] = useState(false);
-  const [open, setOpen] = useState(false);
 
-  useEffect(() => {
-    if (window.innerWidth < 600) setIsMobile(true);
-  }, []);
 
-  const handleTooltipClose = () => {
-    setOpen(false);
-  };
 
-  const handleTooltipOpen = () => {
-    setOpen(true);
-  };
 
-  console.log(isMobile)
   const lookup = {
     0: "Catastrophizing",
     1: "Filtering",
@@ -107,23 +90,7 @@ export default function TrapItems(props) {
     return (
       <Grid item xs={12} sm={6} key={index}>
         <Paper className={classes.paper} elevation={12}>
-          {isMobile ? (
-            <Tooltip
-              TransitionComponent={Zoom}
-              title={<Tooltiptip>{definitions[index]}</Tooltiptip>}
-              classes={{ tooltip: classes.customWidth }}
-              arrow
-              onClose={handleTooltipClose}
-              open={open}
-            >
-              <ClickAwayListener onClickAway={handleTooltipClose}>
-                <h1 onClick={handleTooltipOpen}>
-                  {lookup[index]}
-                  <sup>[?]</sup>
-                </h1>
-              </ClickAwayListener>
-            </Tooltip>
-          ) : (
+          
             <Tooltip
               TransitionComponent={Zoom}
               title={<Tooltiptip>{definitions[index]}</Tooltiptip>}
@@ -135,7 +102,7 @@ export default function TrapItems(props) {
                 <sup>[?]</sup>
               </h1>
             </Tooltip>
-          )}
+          
           <Comp />
         </Paper>
       </Grid>
