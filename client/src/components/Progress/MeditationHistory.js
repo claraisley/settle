@@ -189,7 +189,7 @@ export default function MeditationHistory(props) {
 
       <NotePaper elevation={12}>
         <Grid container spacing={2}>
-          <Grid item xs={12} sm={6}>
+          <Grid item xs={12} sm={12}>
             <Grid container spacing={4}>
               <Grid item xs={12} sm={6}>
                 <StyledTitle>
@@ -210,7 +210,7 @@ export default function MeditationHistory(props) {
               </Grid>
             </Grid>
           </Grid>
-          <Grid item xs={12} sm={6}>
+          <Grid item xs={12} sm={12}>
             {state.meditations.length > 0 ? (
               <Chart
                 type="bar"
