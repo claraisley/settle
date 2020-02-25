@@ -1,23 +1,18 @@
 import React from "react";
 import styled from "styled-components";
-import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Card from "@material-ui/core/Card";
-import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
-import FormLabel from "@material-ui/core/FormLabel";
 import "./question.css";
 import { CardActions, ButtonBase } from "@material-ui/core";
 
 const CardStart = styled(Card)`
   margin-left: 10%;
   margin-right: 10%;
-
   padding: 1em;
   flex-direction: column;
 `;
-
 const CardActionStart = styled(CardActions)`
   padding: 0;
   & > p {
@@ -27,17 +22,6 @@ const CardActionStart = styled(CardActions)`
     text-align: center;
   }
 `;
-
-// const CardContentStart = styled(CardContent)`
-//   padding: 0;
-//   & > p {
-//     margin-top: 5%;
-//     margin-bottom: 5%;
-//     color: white;
-//     text-align: center;
-//   }
-// `;
-
 const TypographyStart = styled(Typography)`
   font-size: x-large;
   font-weight: 600;

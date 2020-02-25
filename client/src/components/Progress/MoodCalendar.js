@@ -5,17 +5,17 @@ import styled from "styled-components";
 import Button from "@material-ui/core/Button";
 // import Paper from "@material-ui/core/Paper";
 import CircularProgress from '@material-ui/core/CircularProgress';
-import { makeStyles } from "@material-ui/core/styles";
+// import { makeStyles } from "@material-ui/core/styles";
 
 //styling
-const useStyles = makeStyles(theme => ({
-  root: {
-    display: 'flex',
-    '& > * + *': {
-      marginLeft: theme.spacing(2),
-    },
-  },
-}));
+// const useStyles = makeStyles(theme => ({
+//   root: {
+//     display: 'flex',
+//     '& > * + *': {
+//       marginLeft: theme.spacing(2),
+//     },
+//   },
+// }));
 const CenterDiv = styled.div`
   width: 100vw;
   height: 75vh;
@@ -92,7 +92,6 @@ export default function MoodCalendar(props) {
         withCredentials: true
       })
       .then(response => {
-        console.log(response)
         setState(prev => ({ ...prev, moods: response.data, loading: false })); // if no moods, then state.moods is just an empty array
       })
       .catch(function(error) {

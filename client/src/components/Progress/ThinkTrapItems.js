@@ -25,15 +25,11 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-
-
 export default function TrapItems(props) {
   const classes = useStyles();
   const rounded = Object.entries(props.trapData).map(trap => {
     return Math.round(trap[1]);
   });
-
-  console.log(rounded);
 
   const lookup = {
     0: "Catastrophizing",
@@ -56,8 +52,7 @@ export default function TrapItems(props) {
   const traps = rounded.map((trap, index) => {
     let Comp = comps[trap] || FiveBackPack;
     return (
-      <Grid item xs={12} sm={6} >
-        
+      <Grid item xs={12} sm={6} key={index}>
         <Paper className={classes.paper} elevation={12}>
           <h1>{lookup[index]}</h1>
           <Comp />

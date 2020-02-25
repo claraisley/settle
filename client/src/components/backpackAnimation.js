@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Backpack } from "react-kawaii";
-import { styler, tween, merge, action, easing, keyframes } from "popmotion";
+import { styler, tween, merge, action, easing } from "popmotion";
 
 class KawaiiAnimation extends Component {
   constructor(props) {

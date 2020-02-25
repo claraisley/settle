@@ -1,8 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
-import { makeStyles, useTheme } from "@material-ui/core/styles";
-import Button from "@material-ui/core/Button";
+import { makeStyles } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -103,7 +102,6 @@ const useStyles = makeStyles(theme => ({
 export default function Nav(props) {
   const history = useHistory();
   const classes = useStyles();
-  const theme = useTheme();
 
   const [state, setState] = React.useState({
     right: false

@@ -91,8 +91,6 @@ export default function WhatIs() {
     setExpanded(prevEx => (prevEx !== panel ? panel : false));
   };
 
-  const note = "Finally, ";
-
   const data = [
     {
       id: 1,
