@@ -7,33 +7,34 @@ import Button from "@material-ui/core/Button";
 import MeditationHistory from "./MeditationHistory";
 import useVisualMode from "../../hooks/useVisualMode";
 import Paper from "@material-ui/core/Paper";
-import Grid from "@material-ui/core/Grid";
 
 const ProgressButton = styled(Button)`
-  height: 300px;
-  width: 300px;
+  width: 20vw;
 `;
 const ProgressImg = styled.img`
-  height: 200px;
-  width: 200px;
+  width: 18vw;
 `;
 const ProgressPaper = styled(Paper)`
   margin-top: 10%;
   margin-bottom: 5%;
+  margin-left: 2%;
+  margin-right: 2%;
   background-color: #353c52;
+  padding: 3% 0 5% 0;
 `;
 const StyledDiv = styled.div`
-  margin-left: 5%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 4vw;
+  margin-right: 4vw;
 `;
-const StyledTitle = styled.h2`
-  margin-left: 14%;
-  margin-bottom: 5%;
-`;
-const StyledTitle2 = styled.h2`
-  margin-left: 22%;
-`;
-const StyledTitle3 = styled.h2`
-  margin-left: 17%;
+const StyledSection = styled.section`
+  display: flex;
+  justify-content: center;
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
 `;
 const useStyles = makeStyles(theme => ({
   root: {
@@ -59,39 +60,33 @@ export default function Progress(props) {
     <main className="progress">
       {mode === HOME && (
         <div className={classes.root}>
-          <Grid container spacing={2}>
-            <Grid item xs={12} sm={12}>
-              <ProgressPaper elevation={12}>
-                <StyledDiv>
-                <Grid container spacing={3}>
-                  <Grid item xs={12} sm={4}>
-                    <ProgressButton onClick={() => {goToProgressPage(TRAP)}}>
-                      <ProgressImg src="https://res.cloudinary.com/dpfixnpii/image/upload/v1582394796/brain_thxely.svg" />
-                    </ProgressButton>
-                    <StyledTitle>Thinking Trap Progress</StyledTitle>
-                  </Grid>
-                  <Grid item xs={12} sm={4}>
-                    <ProgressButton onClick={() => {goToProgressPage(MOOD)}}>
-                      <ProgressImg src="https://res.cloudinary.com/dpfixnpii/image/upload/v1582394641/emoji_z9c9di.svg" />
-                    </ProgressButton>
-                    <StyledTitle2>Mood Tracker</StyledTitle2>
-                  </Grid>
-                  <Grid item xs={12} sm={4}>
-                    <ProgressButton onClick={() => {goToProgressPage(MEDITATION)}}>
-                      <ProgressImg src="https://res.cloudinary.com/dpfixnpii/image/upload/v1582394724/clock_cz4ub4.svg" />
-                    </ProgressButton>
-                    <StyledTitle3>Meditation Tracker</StyledTitle3>
-                  </Grid>
-                </Grid>
-                </StyledDiv>
-              </ProgressPaper>
-            </Grid>
-          </Grid>
+          <ProgressPaper elevation={12}>
+            <StyledSection>
+              <StyledDiv>
+                <ProgressButton onClick={() => { goToProgressPage(TRAP) }}>
+                  <ProgressImg src="https://res.cloudinary.com/dpfixnpii/image/upload/v1582394796/brain_thxely.svg" />
+                </ProgressButton>
+                <h1>Thinking Trap Progress</h1>
+              </StyledDiv>
+              <StyledDiv>
+                <ProgressButton onClick={() => { goToProgressPage(MOOD) }}>
+                  <ProgressImg src="https://res.cloudinary.com/dpfixnpii/image/upload/v1582394641/emoji_z9c9di.svg" />
+                </ProgressButton>
+                <h1>Mood Tracker</h1>
+              </StyledDiv>
+              <StyledDiv>
+                <ProgressButton onClick={() => { goToProgressPage(MEDITATION) }}>
+                  <ProgressImg src="https://res.cloudinary.com/dpfixnpii/image/upload/v1582394724/clock_cz4ub4.svg" />
+                </ProgressButton>
+                <h1>Meditation Tracker</h1>
+              </StyledDiv>
+            </StyledSection>
+          </ProgressPaper>
         </div>
       )}
       {mode === TRAP && (<ThinkingTrap user={props.user} goToProgressPage={goToProgressPage} />)}
       {mode === MOOD && (<MoodCalendar user={props.user} goToProgressPage={goToProgressPage} />)}
-      {mode === MEDITATION && (<MeditationHistory user={props.user} goToProgressPage={goToProgressPage}/>)}
+      {mode === MEDITATION && (<MeditationHistory user={props.user} goToProgressPage={goToProgressPage} />)}
     </main>
   );
 }
