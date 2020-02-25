@@ -8,6 +8,7 @@ import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import FormLabel from "@material-ui/core/FormLabel";
 import "./question.css";
+import { CardActions, ButtonBase } from "@material-ui/core";
 
 const ButtonDiv = styled.div`
   justify-content: center;
@@ -22,7 +23,7 @@ const CardStart = styled(Card)`
   flex-direction: column;
 `;
 
-const CardContentStart = styled(CardContent)`
+const CardActionStart = styled(CardActions)`
   padding: 0;
   & > p {
     margin-top: 5%;
@@ -72,38 +73,22 @@ export default function Start(props) {
       <div className={classes.root}>
         <Paper elevation={10}>
           <CardStart className={classes.cards}>
-            <CardContentStart>
-              <TypographyStart gutterBottom>
-                The test I'm preparing for is today
-              </TypographyStart>
-            </CardContentStart>
-            <ButtonDiv>
-              <Button
-                className={classes.button}
-                variant="contained"
-                color="primary"
-                onClick={() => props.startWorkthrough(3)}
-              >
-                Today
-              </Button>
-            </ButtonDiv>
+            <ButtonBase onClick={() => props.startWorkthrough(3)}>
+              <CardActionStart>
+                <TypographyStart gutterBottom>
+                  The test I'm preparing for is today
+                </TypographyStart>
+              </CardActionStart>
+            </ButtonBase>
           </CardStart>
           <CardStart className={classes.cards}>
-            <CardContentStart>
-              <TypographyStart gutterBottom>
-                The test I'm preparing for is tomorrow
-              </TypographyStart>
-            </CardContentStart>
-            <ButtonDiv>
-              <Button
-                className={classes.button}
-                variant="contained"
-                color="primary"
-                onClick={() => props.startWorkthrough(5)}
-              >
-                Tomorrow
-              </Button>
-            </ButtonDiv>
+            <ButtonBase onClick={() => props.startWorkthrough(5)}>
+              <CardActionStart>
+                <TypographyStart gutterBottom>
+                  The test I'm preparing for is tomorrow
+                </TypographyStart>
+              </CardActionStart>
+            </ButtonBase>
           </CardStart>
         </Paper>
       </div>
