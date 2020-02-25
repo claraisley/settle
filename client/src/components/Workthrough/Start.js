@@ -28,6 +28,16 @@ const CardActionStart = styled(CardActions)`
   }
 `;
 
+// const CardContentStart = styled(CardContent)`
+//   padding: 0;
+//   & > p {
+//     margin-top: 5%;
+//     margin-bottom: 5%;
+//     color: white;
+//     text-align: center;
+//   }
+// `;
+
 const TypographyStart = styled(Typography)`
   font-size: x-large;
   font-weight: 600;

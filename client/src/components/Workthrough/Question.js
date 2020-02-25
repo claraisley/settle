@@ -40,8 +40,9 @@ const QuestionResponse = styled.div`
   & > label {
     margin: 0.5em;
     text-align: center;
-    & > span:hover {
-      background-color: rgba(255, 255, 255, 0.1);
+      & > span:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+      }
     }
   }
 `;
