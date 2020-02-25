@@ -4,9 +4,9 @@ class ReflectionsController < ApplicationController
 
     # send the user_id here with the get (from state)
     # user it find the user
-    #@user = User.find(params[:id])
+    @user = User.find(params[:id])
   
-   @user = User.find(1)
+   #@user = User.find(1)
     # grab universal thoughts sort according to most recent 
     @thoughts = Thought.where(interest_id: nil).to_a
     @sortedDate = @thoughts.sort_by {|thought| thought.most_recent_for(@user)}
