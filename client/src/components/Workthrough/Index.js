@@ -12,6 +12,7 @@ const MainQuiz = styled.main`
   padding-top: 8em;
 `;
 
+
 const MOOD = "MOOD";
 const QUESTION = "QUESTION";
 // const FOLLOWUP = "FOLLOWUP";
