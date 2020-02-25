@@ -68,9 +68,10 @@ const useStyles = makeStyles(theme => ({
   drawerHeader: {
     display: "flex",
     alignItems: "center",
-    padding: theme.spacing(0, 1),
+    padding: theme.spacing(0),
     ...theme.mixins.toolbar,
-    justifyContent: "flex-start"
+    justifyContent: "flex-start",
+    color: theme.palette.text.secondary
   },
   content: {
     flexGrow: 1,
@@ -201,14 +202,16 @@ export default function Nav(props) {
       >
         <div className={classes.drawerHeader}>
           {props.user.name && (
-            <Button
-              variant="contained"
-              onClick={() => {
-                logout();
-              }}
-            >
-              Logout
-            </Button>
+            <List>
+              <ListItem
+                button
+                onClick={() => {
+                  logout();
+                }}
+              >
+                <ListItemText>Logout </ListItemText>
+              </ListItem>
+            </List>
           )}
         </div>
         <Divider />
