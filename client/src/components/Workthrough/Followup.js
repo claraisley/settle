@@ -11,7 +11,7 @@ import MuiDialogContent from "@material-ui/core/DialogContent";
 import MuiDialogActions from "@material-ui/core/DialogActions";
 import Typography from "@material-ui/core/Typography";
 import { Card } from "@material-ui/core";
-import ClickAwayListener from '@material-ui/core/ClickAwayListener';
+import ClickAwayListener from "@material-ui/core/ClickAwayListener";
 // styling for later for tooltip: https://stackoverflow.com/questions/36759985/how-to-style-material-uis-tooltip/54606987#54606987
 
 const DialogContent = withStyles(theme => ({
@@ -65,13 +65,12 @@ const Tooltiptip = styled.span`
 
 export default function Followup(props) {
   const classes = useStyles();
-  const [isMobile, setIsMobile] = useState(false)
+  const [isMobile, setIsMobile] = useState(false);
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    if (window.innerWidth < 600)
-      setIsMobile(true)
-  }, [])
+    if (window.innerWidth < 600) setIsMobile(true);
+  }, []);
 
   const handleTooltipClose = () => {
     setOpen(false);
@@ -84,6 +83,8 @@ export default function Followup(props) {
   return (
     <Div>
       <Dialog
+        disableBackdropClick={true}
+        disableEscapeKeyDown={true}
         onClose={props.handleClose}
         aria-labelledby="customized-dialog-title"
         open={props.open}
@@ -96,7 +97,7 @@ export default function Followup(props) {
             )}
           </Text>
           <CardTooltip elevation={7}>
-            {isMobile ?
+            {isMobile ? (
               <Tooltip
                 TransitionComponent={Zoom}
                 title={<Tooltiptip>{props.thinkingTrap.definition}</Tooltiptip>}
@@ -106,10 +107,13 @@ export default function Followup(props) {
                 open={open}
               >
                 <ClickAwayListener onClickAway={handleTooltipClose}>
-                  <TooltipText onClick={handleTooltipOpen}>Related thinking trap: {props.thinkingTrap.name}<sup>[?]</sup></TooltipText>
+                  <TooltipText onClick={handleTooltipOpen}>
+                    Related thinking trap: {props.thinkingTrap.name}
+                    <sup>[?]</sup>
+                  </TooltipText>
                 </ClickAwayListener>
               </Tooltip>
-              :
+            ) : (
               <Tooltip
                 TransitionComponent={Zoom}
                 title={<Tooltiptip>{props.thinkingTrap.definition}</Tooltiptip>}
@@ -120,7 +124,8 @@ export default function Followup(props) {
                   Related thinking trap: {props.thinkingTrap.name}
                   <sup>[?]</sup>
                 </TooltipText>
-              </Tooltip>}
+              </Tooltip>
+            )}
           </CardTooltip>
         </DialogContent>
         <DialogActions>

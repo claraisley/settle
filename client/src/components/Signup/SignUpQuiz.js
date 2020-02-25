@@ -8,7 +8,7 @@ import useSignUpQuiz from "../../hooks/useSignUpQuiz";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import { Paper } from "@material-ui/core";
-import { Planet } from 'react-kawaii'
+import { Planet } from "react-kawaii";
 const axios = require("axios").default;
 
 const PaperQuiz = styled(Paper)`
@@ -96,7 +96,8 @@ export default function SignUpQuiz(props) {
           responses.forEach(res => console.log("Success"));
           localStorage.removeItem("mode");
           history.push("/menu");
-        }))
+        })
+      )
       .catch(error => {
         console.log(error);
       });
