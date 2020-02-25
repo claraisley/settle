@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import styled from "styled-components";
 import Mood from "./Mood.js";
 import Question from "./Question.js";
 import useVisualMode from "../../hooks/useVisualMode";
@@ -12,6 +13,9 @@ import { makeStyles } from "@material-ui/core/styles";
 // import LinearProgress from "@material-ui/core/LinearProgress";
 import axios from "axios";
 
+const MainQuiz = styled.main`
+  padding-top: 4em;
+`;
 const useStyles = makeStyles(theme => ({
   root: {
     width: "25%"
@@ -35,7 +39,9 @@ export default function Workthrough(props) {
     currentFollowup: {},
     currentThinkingTrap: {}
   });
+
   console.log("STATE RESPONSEs", state.responsesChosen);
+
 
   const { mode, transition, back } = useVisualMode(START);
 
@@ -81,7 +87,9 @@ export default function Workthrough(props) {
         withCredentials: true
       }),
       axios.request({
+
         url: "/user_interests",
+
         method: "get",
         headers: {
           "Content-Type": "application/json",
@@ -184,7 +192,7 @@ export default function Workthrough(props) {
   };
 
   return (
-    <main className="workthrough">
+    <MainQuiz className="workthrough">
       <h2>Workthrough</h2>
       <section>
         {mode === START && <Start startWorkthrough={startWorkthrough} />}
@@ -224,6 +232,6 @@ export default function Workthrough(props) {
           Quit without saving
         </button>
       </section>
-    </main>
+    </MainQuiz>
   );
 }
