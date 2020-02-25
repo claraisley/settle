@@ -11,7 +11,7 @@ class ReflectionsController < ApplicationController
     @thoughts = Thought.where(interest_id: nil).to_a
     @sortedDate = @thoughts.sort_by {|thought| thought.most_recent_for(@user)}
 
-    #@thoughts = Thought.all
+   
     
 
     # grabs the interests associated with that user and the thoughts that use that interest
@@ -31,7 +31,7 @@ class ReflectionsController < ApplicationController
     @sorted_thoughts = @sortedDate.first(int)
 
     # joins interest thoght to sorted thoughts
-    @sampled_thoughts = @sorted_thoughts.concat(@interest_thought)
+    @sampled_thoughts = @interest_thought.concat(@sorted_thoughts)
     
     #renders the thoughts and their responses and followups 
     render :json => @sampled_thoughts.to_json(:include => {:responses => { :include => [:follow_ups, :thinking_trap] }})
