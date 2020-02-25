@@ -26,6 +26,7 @@ const Heading = styled.h2`
 const Footer = styled.section`
   margin-left: 15%;
   padding: 3em;
+  justify-content: center;
 `;
 
 const BackButton = styled(Button)`
