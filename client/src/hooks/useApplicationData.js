@@ -10,7 +10,7 @@ import Meditation from "../components/Meditation";
 import Login from "../components/Login.js";
 import WhatIs from "../components/Whatis";
 import ThinkingTraps from "../components/ThinkingTrap";
-// import { useLocation } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 
 export default function useApplicationData() {
   //pages state
