@@ -18,11 +18,6 @@ const MainQuiz = styled.main`
   padding-top: 4em;
 `;
 
-const Heading = styled.h2`
-  margin-left: 15%;
-  padding-left: 1.7em;
-`;
-
 const Footer = styled.section`
   margin-left: 15%;
   padding: 3em;
@@ -226,7 +221,6 @@ export default function Workthrough(props) {
 
   return (
     <MainQuiz className="workthrough">
-      <Heading>Workthrough</Heading>
       <section>
         {mode === START && <Start startWorkthrough={startWorkthrough} />}
         {mode === MOOD && <Mood onResponse={respondMood} />}
