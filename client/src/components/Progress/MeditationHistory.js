@@ -219,7 +219,9 @@ export default function MeditationHistory(props) {
                 width="500"
               />
             ) : (
-              <StyledTitle>Do a meditation to start tracking your progress!</StyledTitle>
+              <StyledTitle>
+                Do a meditation to start tracking your progress!
+              </StyledTitle>
             )}
           </Grid>
         </Grid>
