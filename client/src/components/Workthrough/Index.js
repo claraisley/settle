@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import styled from "styled-components";
 import Mood from "./Mood.js";
 import Question from "./Question.js";
 import useVisualMode from "../../hooks/useVisualMode";
@@ -12,6 +13,9 @@ import { makeStyles } from "@material-ui/core/styles";
 // import LinearProgress from "@material-ui/core/LinearProgress";
 import axios from "axios";
 
+const MainQuiz = styled.main`
+  padding-top: 4em;
+`;
 const useStyles = makeStyles(theme => ({
   root: {
     width: "25%"
@@ -35,7 +39,7 @@ export default function Workthrough(props) {
     currentFollowup: {},
     currentThinkingTrap: {}
   });
-  console.log("STATE", state)
+  console.log("STATE", state);
 
   const { mode, transition, back } = useVisualMode(START);
 
@@ -75,30 +79,37 @@ export default function Workthrough(props) {
           "Access-Control-Allow-Credentials": true
         },
         params: {
-          number: numberOfQuestions, id: props.user.id
+          number: numberOfQuestions,
+          id: props.user.id
         },
         withCredentials: true
       }),
-      axios.request({ url: "http://localhost:3001/user_interests",
-      method: "get",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-        "Access-Control-Allow-Credentials": true
-      },
-      params: {
-        id: props.user.id
-      },
-      withCredentials: true})
+      axios.request({
+        url: "http://localhost:3001/user_interests",
+        method: "get",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+          "Access-Control-Allow-Credentials": true
+        },
+        params: {
+          id: props.user.id
+        },
+        withCredentials: true
+      })
     ])
-      .then(function (response) {
+      .then(function(response) {
         for (let question of response[0].data) {
           question.answered = false;
         }
-        setState(prev => ({ ...prev, questions: response[0].data, interests: response[1].data }));
+        setState(prev => ({
+          ...prev,
+          questions: response[0].data,
+          interests: response[1].data
+        }));
         startNextQuestion();
       })
-      .catch(function (error) {
+      .catch(function(error) {
         console.log(error);
       });
   };
@@ -128,32 +139,34 @@ export default function Workthrough(props) {
   };
 
   // triggered when a user responds to the mood question and sends completed reflection data to database
-  const respondMood = (moodValue) => {
+  const respondMood = moodValue => {
     const reflection_responses = state.responsesChosen.map(response => {
-      return { "response_id": response }
-    })
+      return { response_id: response };
+    });
     const postData = {
-      "user_id": props.user.id,
-      "moods": [{ "value": moodValue }],
-      "reflection_responses": reflection_responses
-    }
-    axios.request({
-      url: 'http://localhost:3001/reflections',
-      method: 'post',
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json',
-        'Access-Control-Allow-Credentials': true
-      },
-      data: postData,
-      withCredentials: true
-    }).then(function (response) {
-      transition(COMPLETION)
-    })
-      .catch(function (error) {
-        console.log(error);
+      user_id: props.user.id,
+      moods: [{ value: moodValue }],
+      reflection_responses: reflection_responses
+    };
+    axios
+      .request({
+        url: "http://localhost:3001/reflections",
+        method: "post",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+          "Access-Control-Allow-Credentials": true
+        },
+        data: postData,
+        withCredentials: true
       })
-  }
+      .then(function(response) {
+        transition(COMPLETION);
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
+  };
 
   // progress is based on number of questions answered so doesn't go down if the user presses the back button
   const currentProgress = state.questions.filter(question => {
@@ -171,11 +184,11 @@ export default function Workthrough(props) {
       currentFollowup: {},
       currentThinkingTrap: {}
     }));
-    transition(START)
-  }
+    transition(START);
+  };
 
   return (
-    <main className="workthrough">
+    <MainQuiz className="workthrough">
       <h2>Workthrough</h2>
       <section>
         {mode === START && <Start startWorkthrough={startWorkthrough} />}
@@ -195,7 +208,9 @@ export default function Workthrough(props) {
             interests={state.interests}
           />
         )}
-        {mode === COMPLETION && <Completion restartWorkthrough={restartWorkthrough} />}
+        {mode === COMPLETION && (
+          <Completion restartWorkthrough={restartWorkthrough} />
+        )}
       </section>
       <section>
         <label htmlFor="workthrough-progress">
@@ -209,8 +224,10 @@ export default function Workthrough(props) {
         <IconButton onClick={() => startNextQuestion()}>
           <ExpandMoreIcon fontSize="large" />
         </IconButton>
-        <button onClick={() => restartWorkthrough()}>Quit without saving</button>
+        <button onClick={() => restartWorkthrough()}>
+          Quit without saving
+        </button>
       </section>
-    </main>
+    </MainQuiz>
   );
 }

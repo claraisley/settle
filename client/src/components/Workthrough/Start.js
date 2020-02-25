@@ -10,15 +10,10 @@ import FormLabel from "@material-ui/core/FormLabel";
 import "./question.css";
 import { CardActions, ButtonBase } from "@material-ui/core";
 
-const ButtonDiv = styled.div`
-  justify-content: center;
-  text-align: center;
-`;
 const CardStart = styled(Card)`
-  margin-top: 5%;
   margin-left: 10%;
   margin-right: 10%;
-  margin-bottom: 5%;
+
   padding: 1em;
   flex-direction: column;
 `;
@@ -46,7 +41,7 @@ const useStyles = makeStyles(theme => ({
     "& > *": {
       margin: theme.spacing(1),
       width: theme.spacing(100),
-      height: theme.spacing(64),
+
       backgroundColor: "#353c52",
       backgroundImage: `url(http://www.transparenttextures.com/patterns/cubes.png)`
     }
