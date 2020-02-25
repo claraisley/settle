@@ -47,7 +47,8 @@ const TypographyLogin = styled(Typography)`
 const BackpackBox = styled.div`
   margin-top: 2%;
   margin-bottom: 2%;
-  margin-left: 45%;
+  display: flex;
+  justify-content: center;
 `;
 
 // MATERIAL UI STYLING CSS
