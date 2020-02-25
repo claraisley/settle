@@ -75,6 +75,7 @@ export default function MoodCalendar(props) {
         withCredentials: true
       })
       .then(response => {
+        console.log(response)
         setState(prev => ({ ...prev, moods: response.data })); // if no moods, then state.moods is just an empty array
       })
       .catch(function(error) {
