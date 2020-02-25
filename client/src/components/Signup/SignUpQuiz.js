@@ -19,24 +19,27 @@ const PaperQuiz = styled(Paper)`
   background-color: #353c52;
   padding: 1em;
 `;
-const CardQuizList = styled(Card)`
-  padding: 2em;
-  margin-top: 2em;
-  margin-left: 5%;
-  margin-right: 5%;
-  margin-bottom: 2em;
-  align-items: center;
-  height: 100%;
-  background-color: #353c52;
-`;
+
+// const CardQuiz = styled(Card)`
+//   margin-top: 2em;
+//   margin-left: 5%;
+//   margin-right: 5%;
+//   align-items: center;
+//   text-align: center;
+//   background-color: #353c52;
+// `;
 
 const CardContentQuiz = styled(CardContent)`
   padding: 10px;
-  margin-top: 2rem;
+  padding-bottom: 0 !important;
+  margin-top: 1%;
+  margin-bottom: 3%;
   margin-left: 15%;
   margin-right: 15%;
+  color: white;
   text-align: center;
 `;
+
 const StyledPlanet = styled(Planet)`
   margin-top: 3%;
 `;
@@ -64,6 +67,9 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: "#353c52",
     color: "white"
   }
+  // formControl: {
+  //   margin: theme.spacing(3)
+  // }
 }));
 export default function SignUpQuiz(props) {
   const classes = useStyles();
@@ -109,12 +115,10 @@ export default function SignUpQuiz(props) {
   return (
     <main>
       <PaperQuiz className={classes.root} elevation={11}>
-        <CardQuiz elevation={4}>
-          <CardContentQuiz>
-            <Title>Please fill out this short survey to get started. </Title>
-            <StyledPlanet size={100} mood="happy" color="#FCCB7E" />
-          </CardContentQuiz>
-        </CardQuiz>
+        <CardContentQuiz>
+          <Title>Please fill out this short survey to get started. </Title>
+          <StyledPlanet size={100} mood="happy" color="#FCCB7E" />
+        </CardContentQuiz>
 
         <form onSubmit={handleSubmit}>
           <QuestionList
