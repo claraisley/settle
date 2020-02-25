@@ -66,7 +66,14 @@ export default function MeditationHistory(props) {
   useEffect(() => {
     axios
       .request({
+<<<<<<< Updated upstream
         url: "/user_meditations",
+=======
+        url: "http://localhost:3001/user_meditations",
+
+        url: "/user_meditations",
+
+>>>>>>> Stashed changes
         method: "get",
         headers: {
           "Content-Type": "application/json",
@@ -219,7 +226,9 @@ export default function MeditationHistory(props) {
                 width="500"
               />
             ) : (
-              <StyledTitle>Do a meditation to start tracking your progress!</StyledTitle>
+              <StyledTitle>
+                Do a meditation to start tracking your progress!
+              </StyledTitle>
             )}
           </Grid>
         </Grid>

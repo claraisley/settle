@@ -12,6 +12,7 @@ const BackImg = styled.img`
   height: 100px;
   width: 100px;
 `;
+<<<<<<< Updated upstream
 const Title = styled.h1`
 text-align: center;
 margin-bottom: 5%;
