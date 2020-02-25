@@ -14,20 +14,34 @@ import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
+import styled from "styled-components";
 
 const drawerWidth = 300;
+
+const Cactus = styled.img`
+height: 60px;
+width: 60px;
+margin-bottom: 10px;
+`
 
 const useStyles = makeStyles(theme => ({
   root: {
     display: "flex"
   },
   appBar: {
+
     paddingTop: "10px",
     paddingBottom: "10px",
+
     transition: theme.transitions.create(["margin", "width"], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen
     })
+  },
+  toolbar:{
+    
+    verticalAlign: "middle",
+    minHeight: "100px"
   },
   appBarShift: {
     width: `calc(100% - ${drawerWidth}px)`,
@@ -161,12 +175,14 @@ export default function Nav(props) {
     <div className={classes.root}>
       <CssBaseline />
       <AppBar position="fixed" className={classes.appBar}>
-        <Toolbar>
+        <Toolbar className={classes.toolbar}>
+        <Cactus src='https://res.cloudinary.com/dpfixnpii/image/upload/v1582608002/cactus_wxnhwz.svg'/>
           <Typography variant="h6" noWrap className={classes.title}>
             SETTLE
           </Typography>
+          
           {props.user.name && (
-            <Typography variant="h6" noWrap className={classes.welcome}>
+            <Typography variant="h6"  noWrap className={classes.welcome}>
               Hi {props.user.name}!
             </Typography>
           )}

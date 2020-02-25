@@ -9,27 +9,40 @@ import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import Paper from "@material-ui/core/Paper";
 import Button from "@material-ui/core/Button";
-import Grid from "@material-ui/core/Grid";
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 const useStyles = makeStyles(theme => ({
   formControl: {
     margin: theme.spacing(1),
-    minWidth: 120
+    minWidth: 120,
+    color: theme.palette.text.secondary
   },
   selectEmpty: {
     marginTop: theme.spacing(2)
-  }
+  },
+  root: {
+    display: 'flex',
+    '& > * + *': {
+      marginLeft: theme.spacing(2),
+    },
+  },
 }));
 
+const CenterDiv = styled.div`
+  width: 100vw;
+  height: 75vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
 const BackButton = styled(Button)`
-  height: 100px;
-  width: 100px;
+  height: 50px;
+  width: 50px;
 `;
 const BackImg = styled.img`
-  height: 100px;
-  width: 100px;
+  height: 50px;
+  width: 50px;
 `;
-
 const Title = styled.h1`
   text-align: center;
   margin-left: 30%;
@@ -39,22 +52,45 @@ const StyledDiv = styled.div`
   margin-bottom: 3%;
   margin-top: 3%;
 `;
-
-const StyledTitle = styled.h1`
-  color: #ffd882;
+const Subheading = styled.div`
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  margin-bottom: 1rem;
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
 `;
 const NotePaper = styled(Paper)`
   margin-left: 3%;
   margin-right: 3%;
   margin-bottom: 3%;
-  padding: 3%;
+  padding: 4%;
   background-color: #353c52;
 `;
+const StyledInputLabel = styled(InputLabel)`
+  color: white;
+`;
+const StyledMenuItem = styled(MenuItem)`
+  color: #353c52;
+`;
+const StyledSubtitle = styled.h2`
+  font-size: 1.25rem
+`;
+const StyledSelect = styled(Select).attrs({ 
+  classes: { root: 'root'} 
+})` 
+ .root  {
+   font-size: 1.25rem;
+   font-weight: bold;
+ }
+`
 
 export default function MeditationHistory(props) {
   const [state, setState] = useState({
     meditations: [],
-    baseDay: new Date()
+    baseDay: new Date(),
+    loading: true
   });
   const classes = useStyles();
 
@@ -79,11 +115,10 @@ export default function MeditationHistory(props) {
         withCredentials: true
       })
       .then(response => {
-        console.log(response);
         let results = response.data;
-        setState(prev => ({ ...prev, meditations: results })); // if no meditations, then state.meditations is just an empty array
+        setState(prev => ({ ...prev, meditations: results, loading: false })); // if no meditations, then state.meditations is just an empty array
       })
-      .catch(function(error) {
+      .catch(function (error) {
         console.log(error);
       });
   }, [props.user.id]);
@@ -127,7 +162,10 @@ export default function MeditationHistory(props) {
   const chartData = {
     options: {
       chart: {
-        id: "basic-bar"
+        id: "basic-bar",
+        toolbar: {
+          show: false
+        }
       },
       xaxis: {
         categories: Object.values(weekObject).map(
@@ -136,7 +174,13 @@ export default function MeditationHistory(props) {
         title: {
           text: `Week of ${getSunday(state.baseDay).toDateString()}`,
           style: {
-            fontSize: "1rem"
+            fontSize: "1.25rem",
+            color: "white"
+          }
+        },
+        labels: {
+          style: {
+            colors: "white"
           }
         }
       },
@@ -144,15 +188,24 @@ export default function MeditationHistory(props) {
         title: {
           text: "Minutes",
           style: {
-            fontSize: "1rem"
+            fontSize: "1.25rem",
+            color: "white"
           }
         },
-        forceNiceScale: true
+        forceNiceScale: true,
+        labels: {
+          style: {
+            colors: "white"
+          }
+        }
+      },
+      tooltip: {
+        theme: "dark"
       }
     },
     series: [
       {
-        name: "series-1",
+        name: "Meditation Time",
         data: Object.values(weekObject).map(({ time }) => time)
       }
     ]
@@ -168,64 +221,46 @@ export default function MeditationHistory(props) {
 
   const weekStartOptions = sundayArray.map(sunday => {
     return (
-      <MenuItem key={sunday.toDateString()} value={sunday.toDateString()}>
+      <StyledMenuItem key={sunday.toDateString()} value={sunday.toDateString()}>
         {sunday.toDateString()}
-      </MenuItem>
+      </StyledMenuItem>
     );
   });
 
   return (
     <main className="MeditationHistory">
       <StyledDiv>
-        <BackButton
-          onClick={() => {
-            props.goToProgressPage("HOME");
-          }}
-        >
+        <BackButton onClick={() => { props.goToProgressPage("HOME") }}>
           <BackImg src="https://res.cloudinary.com/dpfixnpii/image/upload/v1582400198/arrow_xph8bj.svg" />
         </BackButton>
-        <Title>Meditation Tracker</Title>
+        <Title>My Meditation Tracker</Title>
       </StyledDiv>
-
+      {state.loading ? <CenterDiv><CircularProgress /></CenterDiv> : 
       <NotePaper elevation={12}>
-        <Grid container spacing={2}>
-          <Grid item xs={12} sm={12}>
-            <Grid container spacing={4}>
-              <Grid item xs={12} sm={6}>
-                <StyledTitle>
-                  Choose a week to see how many minutes you have meditated:{" "}
-                </StyledTitle>
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <FormControl className={classes.formControl}>
-                  <InputLabel id="week-picker">Week</InputLabel>
-                  <Select
-                    value={getSunday(state.baseDay).toDateString()}
-                    onChange={handleChange}
-                    color="black"
-                  >
-                    {weekStartOptions}
-                  </Select>
-                </FormControl>
-              </Grid>
-            </Grid>
-          </Grid>
-          <Grid item xs={12} sm={12}>
-            {state.meditations.length > 0 ? (
-              <Chart
-                type="bar"
-                options={chartData.options}
-                series={chartData.series}
-                width="100%"
-              />
-            ) : (
-              <StyledTitle>
-                Do a meditation to start tracking your progress!
-              </StyledTitle>
-            )}
-          </Grid>
-        </Grid>
-      </NotePaper>
+        <Subheading>
+          <StyledSubtitle>Choose a week to see how many minutes you have meditated:{" "}</StyledSubtitle>
+          <FormControl className={classes.formControl}>
+            <StyledInputLabel id="week-picker">Week Starting</StyledInputLabel>
+            <StyledSelect
+              value={getSunday(state.baseDay).toDateString()}
+              onChange={handleChange}
+              color="black"
+            >
+              {weekStartOptions}
+            </StyledSelect>
+          </FormControl>
+        </Subheading>
+        {state.meditations.length > 0 ? (
+          <Chart
+            type="bar"
+            options={chartData.options}
+            series={chartData.series}
+            width="100%"
+          />
+        ) : (
+            <h2>Do a meditation to start tracking your progress!</h2>
+          )}
+      </NotePaper> }
     </main>
   );
 }

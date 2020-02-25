@@ -133,8 +133,8 @@ export default function Meditation(props) {
           below to help you relax and start practicing your mindfulness skills.
         </Text>
         <Text>
-          These meditations have been specifically made for students with test
-          anxiety and it’s OK if it seems a little weird at first. To get the
+          These meditations have been <strong>specifically made for students with test
+          anxiety</strong>, and it’s OK if it seems a little weird at first. To get the
           hang of it, try practicing with one of the longer recordings in the
           days leading up to a test. The shorter ones are great for doing the
           day of a test, like on your lunch break!{" "}

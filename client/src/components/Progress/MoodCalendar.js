@@ -3,17 +3,33 @@ import axios from "axios";
 import Calendar from "react-calendar";
 import styled from "styled-components";
 import Button from "@material-ui/core/Button";
-import Paper from "@material-ui/core/Paper";
-import Grid from "@material-ui/core/Grid";
+// import Paper from "@material-ui/core/Paper";
+import CircularProgress from '@material-ui/core/CircularProgress';
+import { makeStyles } from "@material-ui/core/styles";
 
 //styling
+const useStyles = makeStyles(theme => ({
+  root: {
+    display: 'flex',
+    '& > * + *': {
+      marginLeft: theme.spacing(2),
+    },
+  },
+}));
+const CenterDiv = styled.div`
+  width: 100vw;
+  height: 75vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
 const BackButton = styled(Button)`
-  height: 100px;
-  width: 100px;
+  height: 50px;
+  width: 50px;
 `;
 const BackImg = styled.img`
-  height: 100px;
-  width: 100px;
+  height: 50px;
+  width: 50px;
 `;
 const StyledCalendar = styled(Calendar)`
   width: 450px;
@@ -26,11 +42,12 @@ const StyledCalendar = styled(Calendar)`
 `;
 const Title = styled.h1`
   text-align: center;
+  margin-left: 31%
 `;
 const StyledDiv = styled.div`
-display: flex;
-margin-top: 3%;
-justify-content: center:
+  display: flex;
+  margin-top: 3%;
+  margin-bottom: 3%;
 `;
 const StyledDiv2 = styled.div`
   display: flex;
@@ -39,16 +56,16 @@ const StyledDiv2 = styled.div`
 const StyledTitle = styled.h1`
   color: #ffd882;
 `;
-const NotePaper = styled(Paper)`
-  
-  padding: 3%;
-  background-color: #353c52;
-  background-image: url(http://www.transparenttextures.com/patterns/cubes.png);
-`;
+// const NotePaper = styled(Paper)`
+//   padding: 3%;
+//   background-color: #353c52;
+//   background-image: url(http://www.transparenttextures.com/patterns/cubes.png);
+// `;
 
 export default function MoodCalendar(props) {
   const [state, setState] = useState({
-    moods: []
+    moods: [],
+    loading: true
   });
 
   const emojiLookup = {
@@ -76,7 +93,7 @@ export default function MoodCalendar(props) {
       })
       .then(response => {
         console.log(response)
-        setState(prev => ({ ...prev, moods: response.data })); // if no moods, then state.moods is just an empty array
+        setState(prev => ({ ...prev, moods: response.data, loading: false })); // if no moods, then state.moods is just an empty array
       })
       .catch(function(error) {
         console.log(error);
@@ -102,15 +119,12 @@ export default function MoodCalendar(props) {
   return (
     <main>
       <StyledDiv>
-        <BackButton
-          onClick={() => {
-            props.goToProgressPage("HOME");
-          }}
-        >
+        <BackButton onClick={() => {props.goToProgressPage("HOME")}}>
           <BackImg src="https://res.cloudinary.com/dpfixnpii/image/upload/v1582400198/arrow_xph8bj.svg" />
         </BackButton>
+      <Title>My Mood Calendar</Title>
       </StyledDiv>
-      <Title>My Mood Tracker</Title>
+      {state.loading ? <CenterDiv><CircularProgress /></CenterDiv> : 
       <StyledDiv2>
         {state.moods.length > 0 ? (
           <StyledCalendar tileContent={tileContent} calendarType={"US"} />
@@ -120,8 +134,7 @@ export default function MoodCalendar(props) {
             Start a reflection to start tracking your moods!
           </StyledTitle>
         )}
-       
-      </StyledDiv2>
+        </StyledDiv2> }
     </main>
   );
 }

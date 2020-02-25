@@ -17,19 +17,17 @@ import KawaiiAnimation from "../backpackAnimation";
 const axios = require("axios").default;
 
 // CSS STYLED COMPONENTS
-
 const ContainerSignup = styled(Container)`
   padding: 3%;
 `;
-
 const PaperSignup = styled(Paper)`
-  margin-top: 7%;
-  margin-left: 20%;
-  margin-right: 20%;
+margin-top: 8%;
+margin-left: 6%;
+margin-right: 6%;
+margin-bottom: 5%;
   background-color: #353c52;
-  margin-bottom: 5%;
+ 
 `;
-
 const TextFieldSignup = styled(TextField)`
   & > * {
     color: white;
@@ -38,20 +36,19 @@ const TextFieldSignup = styled(TextField)`
     }
   }
 `;
-
 const TypographySignup = styled(Typography)`
   font-size: x-large;
   font-weight: 600;
 `;
-
 const BackpackBox = styled.div`
-margin-top: 2%;
+margin-top: 5%;
 margin-bottom: 2%;
-margin-left: 45%
-`
+display: flex;
+justify-content: center;
+
+`;
 
 // MATERIAL UI COMPONENT STYLING THEME
-
 const useStyles = makeStyles(theme => ({
   paper: {
     marginTop: theme.spacing(5),

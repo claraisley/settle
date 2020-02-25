@@ -11,13 +11,11 @@ const StaticPaper2 = styled(Paper)`
   align-items: center;
   padding: 1%;
 `;
-
 const Title = styled.h1`
   text-align: center;
   margin: 20px auto;
   marin-top: 5%;
 `;
-
 const Text = styled.p`
   line-height: 1.5;
   font-size: 1.5em;
@@ -25,13 +23,12 @@ const Text = styled.p`
   margin: 15px;
   flex-wrap: wrap;
 `;
-
 const BackpackBox = styled.div`
   margin-top: 2%;
   margin-bottom: 5%;
-  margin-left: 45%;
+  display: flex;
+  justify-content: center;
 `;
-
 const StyledHREF = styled.a`
   color: white;
 `;
@@ -63,15 +60,15 @@ export default function About() {
           released in coordination with Anxiety Canada.{" "}
         </Text>
         <Text>
-          The meditations are original, Test Anxiety-specifc meditations
+          The meditations are original Test Anxiety-specifc meditations
           gracioulsy created by the Toronto-based artist{" "}
-          <StyledHREF href="https://emilydownunda.wordpress.com/">
+          <StyledHREF href="https://www.emilydawndickinson.com/">
             Emily Dickinson
           </StyledHREF>
           .
         </Text>
         <Text>
-          Concept and material found in the Work-Throughs is original content by 
+          General concept and material found in the Work-Throughs is original content by 
             <StyledHREF href="https://www.linkedin.com/in/katherine-szelag/">  Katherine Szelag{" "}
           </StyledHREF>
           .
