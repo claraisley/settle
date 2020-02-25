@@ -17,24 +17,29 @@ const PaperQuiz = styled(Paper)`
   margin-right: 10%;
   margin-bottom: 3em;
   background-color: #353c52;
+  padding: 1em;
 `;
-const CardQuizList = styled(Card)`
-  padding: 2em;
-  margin-top: 2em;
-  margin-left: 5%;
-  margin-right: 5%;
-  margin-bottom: 2em;
-  align-items: center;
-  height: 100%;
-  background-color: #353c52;
-`;
+
+// const CardQuiz = styled(Card)`
+//   margin-top: 2em;
+//   margin-left: 5%;
+//   margin-right: 5%;
+//   align-items: center;
+//   text-align: center;
+//   background-color: #353c52;
+// `;
+
 const CardContentQuiz = styled(CardContent)`
   padding: 10px;
-  margin-top: 2rem;
+  padding-bottom: 0 !important;
+  margin-top: 1%;
+  margin-bottom: 3%;
   margin-left: 15%;
   margin-right: 15%;
+  color: white;
   text-align: center;
 `;
+
 const StyledPlanet = styled(Planet)`
   margin-top: 3%;
 `;
@@ -42,10 +47,7 @@ const Title = styled.h1`
   text-align: center;
   margin: 20px auto;
 `;
-const StyledButton = styled(Button)`
-  margin-top: 5%;
-  font-size: 1.25rem;
-`;
+
 const useStyles = makeStyles(theme => ({
   root: {
     display: "flex",
@@ -65,6 +67,9 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: "#353c52",
     color: "white"
   }
+  // formControl: {
+  //   margin: theme.spacing(3)
+  // }
 }));
 export default function SignUpQuiz(props) {
   const classes = useStyles();
@@ -110,22 +115,21 @@ export default function SignUpQuiz(props) {
   return (
     <main>
       <PaperQuiz className={classes.root} elevation={11}>
-        <CardContentQuiz elevation={11}>
+        <CardContentQuiz>
           <Title>Please fill out this short survey to get started. </Title>
           <StyledPlanet size={100} mood="happy" color="#FCCB7E" />
         </CardContentQuiz>
-        <CardQuizList className={classes.responseList} elevation={12}>
-          <form onSubmit={handleSubmit}>
-            <QuestionList
-              signupQuestions={props.signupQuestions}
-              questionState={questionState}
-              changeQuestion={changeQuestion}
-            />
-            <StyledButton type="submit" fullWidth variant="contained" color="primary">
-              Submit
-            </StyledButton>
-          </form>
-        </CardQuizList>
+
+        <form onSubmit={handleSubmit}>
+          <QuestionList
+            signupQuestions={props.signupQuestions}
+            questionState={questionState}
+            changeQuestion={changeQuestion}
+          />
+          <Button type="submit" fullWidth variant="contained" color="primary">
+            Submit
+          </Button>
+        </form>
       </PaperQuiz>
     </main>
   );
