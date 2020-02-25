@@ -19,17 +19,11 @@ const useStyles = makeStyles(theme => ({
     textAlign: "center",
     color: theme.palette.text.secondary
   },
-  button: {
-    justifyContent: "center",
-    textAlign: "center",
-    margin: theme.spacing(2)
-  },
   cards: {
     display: "flex",
     justifyContent: "center",
     margin: "2em",
-    backgroundColor: "#353c52",
-    color: "white"
+    backgroundColor: "#353c52"
   }
 }));
 
@@ -54,7 +48,7 @@ const CardActionStart = styled(CardActions)`
   & > p {
     margin-top: 5%;
     margin-bottom: 5%;
-    color: white;
+    color: #deb559;
     text-align: center;
   }
 `;
@@ -77,40 +71,34 @@ export default function Completion(props) {
               <CardStart elevation={4} className={classes.cards}>
                 <ButtonBase onClick={() => history.push("/meditations")}>
                   <CardActionStart>
-                    <Paragraphs gutterBottom>Meditations</Paragraphs>
+                    <Paragraphs gutterBottom>MEDITATIONS</Paragraphs>
                   </CardActionStart>
                 </ButtonBase>
               </CardStart>
               <CardStart elevation={4} className={classes.cards}>
                 <ButtonBase onClick={() => history.push("/tips-tricks")}>
                   <CardActionStart>
-                    <Paragraphs gutterBottom>Tips and Tricks</Paragraphs>
+                    <Paragraphs gutterBottom>TIPS AND TRICKS</Paragraphs>
                   </CardActionStart>
                 </ButtonBase>
               </CardStart>
-            </Papers>
-          </Grid>
-          <Grid item xs={12} sm={6}>
-            <Papers elevation={7} className={classes.paper}>
+
               <Paragraphs>
                 Or do you want to do another work-through?
               </Paragraphs>
               <CardStart elevation={4} className={classes.cards}>
                 <ButtonBase onClick={() => props.restartWorkthrough()}>
                   <CardActionStart>
-                    <Paragraphs gutterBottom>Start New Work Through</Paragraphs>
+                    <Paragraphs gutterBottom>START NEW WORK-THROUGH</Paragraphs>
                   </CardActionStart>
                 </ButtonBase>
               </CardStart>
-            </Papers>
-          </Grid>
-          <Grid item xs={12} sm={6}>
-            <Papers elevation={7} className={classes.paper}>
+
               <Paragraphs>If not, have fun and do your best!</Paragraphs>
               <CardStart elevation={4} className={classes.cards}>
                 <ButtonBase onClick={() => history.push("/menu")}>
                   <CardActionStart>
-                    <Paragraphs gutterBottom>Home</Paragraphs>
+                    <Paragraphs gutterBottom>HOME</Paragraphs>
                   </CardActionStart>
                 </ButtonBase>
               </CardStart>
