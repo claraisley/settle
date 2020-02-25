@@ -45,8 +45,6 @@ const Paragraphs = styled(Typography)`
 `;
 
 const CardStart = styled(Card)`
-  width: 40%;
-
   padding: 1em;
   flex-direction: column;
 `;
