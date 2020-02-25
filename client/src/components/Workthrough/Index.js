@@ -30,8 +30,8 @@ const Footer = styled.section`
 `;
 
 const BackButton = styled(Button)`
-  height: 50px;
-  width: 50px;
+  height: 70px;
+  width: 70px;
 `;
 
 const BackImg = styled.img`
@@ -40,8 +40,8 @@ const BackImg = styled.img`
 `;
 
 const ForwardButton = styled(Button)`
-  height: 50px;
-  width: 50px;
+  height: 70px;
+  width: 70px;
 `;
 
 const ForwardImg = styled.img`
