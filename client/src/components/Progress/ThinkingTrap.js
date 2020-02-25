@@ -32,6 +32,7 @@ const BackImg = styled.img`
 const Title = styled.h1`
   text-align: center;
   margin-bottom: 5%;
+  margin-left: 30%;
 `;
 const StyledDiv = styled.div`
   display: flex;
@@ -65,7 +66,7 @@ export default function ThinkingTrap(props) {
         setTrapData(response.data);
         setLoading(false)
       })
-      .catch(function(error) {
+      .catch(function (error) {
         console.log(error);
       });
   }, [props.user.id]);
@@ -77,15 +78,15 @@ export default function ThinkingTrap(props) {
   return (
     <main>
       <StyledDiv>
-        <BackButton onClick={() => {props.goToProgressPage("HOME")}}>
+        <BackButton onClick={() => { props.goToProgressPage("HOME") }}>
           <BackImg src="https://res.cloudinary.com/dpfixnpii/image/upload/v1582400198/arrow_xph8bj.svg" />
         </BackButton>
+        <Title>Thinking Traps Progress</Title>
       </StyledDiv>
-      <Title>Thinking Traps Progress</Title>
-      {loading? <CenterDiv><CircularProgress /></CenterDiv> : 
-      <article>
-        {checkEmpty ? (<TrapItems trapData={trapData} />) : (<StyledTitle>{emptyMessage}</StyledTitle>)}
-      </article>}
+      {loading ? <CenterDiv><CircularProgress /></CenterDiv> :
+        <article>
+          {checkEmpty ? (<TrapItems trapData={trapData} />) : (<StyledTitle>{emptyMessage}</StyledTitle>)}
+        </article>}
     </main>
   );
 }
