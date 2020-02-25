@@ -3,8 +3,7 @@ import axios from "axios";
 import Calendar from "react-calendar";
 import styled from "styled-components";
 import Button from "@material-ui/core/Button";
-import Paper from "@material-ui/core/Paper";
-import Grid from "@material-ui/core/Grid";
+// import Paper from "@material-ui/core/Paper";
 
 //styling
 const BackButton = styled(Button)`
@@ -39,12 +38,11 @@ const StyledDiv2 = styled.div`
 const StyledTitle = styled.h1`
   color: #ffd882;
 `;
-const NotePaper = styled(Paper)`
-  
-  padding: 3%;
-  background-color: #353c52;
-  background-image: url(http://www.transparenttextures.com/patterns/cubes.png);
-`;
+// const NotePaper = styled(Paper)`
+//   padding: 3%;
+//   background-color: #353c52;
+//   background-image: url(http://www.transparenttextures.com/patterns/cubes.png);
+// `;
 
 export default function MoodCalendar(props) {
   const [state, setState] = useState({
