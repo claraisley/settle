@@ -132,6 +132,7 @@ export default function Nav(props) {
   const navList = links.map((link, index) => {
     return (
       <div
+        key={index}
         className={classes.drawerPaper}
         role="presentation"
         onClick={toggleDrawer(state.right, false)}
