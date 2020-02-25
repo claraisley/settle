@@ -6,23 +6,12 @@ import useVisualMode from "../../hooks/useVisualMode";
 import Followup from "./Followup.js";
 import Completion from "./Completion.js";
 import Start from "./Start.js";
-// import IconButton from "@material-ui/core/IconButton";
-// import ExpandLessIcon from "@material-ui/icons/ExpandLess";
-// import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import { makeStyles } from "@material-ui/core/styles";
-// import LinearProgress from "@material-ui/core/LinearProgress";
 import axios from "axios";
-import { Button } from "@material-ui/core";
 
 const MainQuiz = styled.main`
   padding-top: 8em;
 `;
-const Footer = styled.section`
-  margin-left: 15%;
-  padding: 3em;
-  justify-content: center;
-`;
-
 const useStyles = makeStyles(theme => ({
   root: {
     width: "25%"
@@ -198,7 +187,13 @@ export default function Workthrough(props) {
     <MainQuiz className="workthrough">
       <section>
         {mode === START && <Start startWorkthrough={startWorkthrough} />}
-        {mode === MOOD && <Mood onResponse={respondMood} restartWorkthrough={restartWorkthrough} back={back} />}
+        {mode === MOOD &&
+          <Mood
+            onResponse={respondMood}
+            restartWorkthrough={restartWorkthrough}
+            questionsDone={state.questions.length - currentProgress}
+            totalQuestions={state.questions.length}
+          />}
         {mode === QUESTION && (
           <Question
             question={state.currentQuestion}
@@ -206,8 +201,9 @@ export default function Workthrough(props) {
             onResponse={respond}
             interests={state.interests}
             restartWorkthrough={restartWorkthrough}
-            back={back}
             startNextQuestion={startNextQuestion}
+            questionsDone={state.questions.length - currentProgress}
+            totalQuestions={state.questions.length}
           />
         )}
         <Followup
@@ -227,13 +223,6 @@ export default function Workthrough(props) {
           <Completion restartWorkthrough={restartWorkthrough} />
         )}
       </section>
-      <Footer>
-        <label htmlFor="workthrough-progress">
-          Progress {state.questions.length - currentProgress}/
-          {state.questions.length}
-        </label>
-        <div className={classes.root}></div>
-      </Footer>
     </MainQuiz>
   );
 }

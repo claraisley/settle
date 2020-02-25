@@ -12,24 +12,8 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormControl from "@material-ui/core/FormControl";
 import FormLabel from "@material-ui/core/FormLabel";
 import personalizeText from "./HelperFunction";
-// import { Container } from "@material-ui/core";
+import LinearProgress from '@material-ui/core/LinearProgress';
 
-const BackButton = styled(Button)`
-  height: 40px;
-  width: 40px;
-`;
-const BackImg = styled.img`
-  height: 35px;
-  width: 35px;
-`;
-const ForwardButton = styled(Button)`
-  height: 40px;
-  width: 40px;
-`;
-const ForwardImg = styled.img`
-  height: 35px;
-  width: 35px;
-`;
 const RestartButton = styled(Button)`
 `;
 const CardQuestion = styled(Card)`
@@ -138,12 +122,7 @@ export default function Question(props) {
             </RadioGroup>
           </FormControl>
         </CardQuestion>
-        <BackButton onClick={() => props.back()}>
-          <BackImg src="https://res.cloudinary.com/dpfixnpii/image/upload/v1582400198/arrow_xph8bj.svg" />
-        </BackButton>
-        <ForwardButton onClick={() => props.startNextQuestion()}>
-          <ForwardImg src="https://res.cloudinary.com/dpfixnpii/image/upload/v1582400212/arrow-point-to-right_qgqicj.svg" />
-        </ForwardButton>
+        <LinearProgress variant="determinate" value={props.questionsDone/props.totalQuestions*100} />
         <RestartButton
           variant="contained"
           color="primary"
