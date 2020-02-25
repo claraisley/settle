@@ -14,8 +14,14 @@ import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
+import styled from "styled-components";
 
 const drawerWidth = 300;
+
+const Cactus = styled.img`
+height: 50px;
+width: 50px;
+`
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -160,9 +166,11 @@ export default function Nav(props) {
       <CssBaseline />
       <AppBar position="fixed" className={classes.appBar}>
         <Toolbar>
+        <Cactus src='https://res.cloudinary.com/dpfixnpii/image/upload/v1582608002/cactus_wxnhwz.svg'/>
           <Typography variant="h6" noWrap className={classes.title}>
             SETTLE
           </Typography>
+          
           {props.user.name && (
             <Typography variant="h6" noWrap className={classes.welcome}>
               Hi {props.user.name}!
