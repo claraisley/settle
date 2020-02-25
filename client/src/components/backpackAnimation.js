@@ -61,10 +61,10 @@ class KawaiiAnimation extends Component {
       flip: 1
     });
 
-    const polarToCartesian = ({ angle, radius }) => ({
-      x: radius * Math.cos(angle),
-      y: radius * Math.sin(angle)
-    });
+    // const polarToCartesian = ({ angle, radius }) => ({
+    //   x: radius * Math.cos(angle),
+    //   y: radius * Math.sin(angle)
+    // });
 
     tween({
       from: { y: 10 },

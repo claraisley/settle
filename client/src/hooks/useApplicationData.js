@@ -10,7 +10,6 @@ import Meditation from "../components/Meditation";
 import Login from "../components/Login.js";
 import WhatIs from "../components/Whatis";
 import ThinkingTraps from "../components/ThinkingTrap";
-import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 
 export default function useApplicationData() {
   //pages state
@@ -85,7 +84,6 @@ export default function useApplicationData() {
       })
     ])
       .then(response => {
-        console.log(response);
         setState(prev => ({
           ...prev,
           pages: {
