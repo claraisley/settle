@@ -38,7 +38,6 @@ const StaticPaper = styled(Paper)`
   justify-content: center;
   align-items: center;
   padding: 4%;
-  background-image: url(http://www.transparenttextures.com/patterns/cubes.png);
 `;
 
 const StaticPaper2 = styled(Paper)`

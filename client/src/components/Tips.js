@@ -30,8 +30,6 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-
-
 const StaticPaper = styled(Paper)`
   width: 90%;
   margin: 10px auto;
@@ -39,14 +37,11 @@ const StaticPaper = styled(Paper)`
   justify-content: center;
   align-items: center;
   padding: 4%;
-  background-image: url(http://www.transparenttextures.com/patterns/cubes.png);
 `;
-
 const Title = styled.h1`
   text-align: center;
   margin: 20px auto;
 `;
-
 
 export default function Tips(props) {
   const classes = useStyles();
