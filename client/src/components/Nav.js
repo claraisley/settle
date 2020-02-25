@@ -120,16 +120,6 @@ export default function Nav(props) {
     setState({ ...state, right: open });
   };
 
-  // const [open, setOpen] = React.useState(false);
-
-  // const handleDrawerOpen = () => {
-  //   setOpen(true);
-  // };
-
-  // const handleDrawerClose = () => {
-  //   setOpen(false);
-  // };
-
   const filteredLinks = props.links.filter(function(link) {
     return link.name !== "Signup" && link.name !== "Login";
   });
@@ -209,7 +199,7 @@ export default function Nav(props) {
                   logout();
                 }}
               >
-                <ListItemText>Logout </ListItemText>
+                <ListItemText className={classes.linkName}>Logout</ListItemText>
               </ListItem>
             </List>
           )}
