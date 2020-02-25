@@ -5,6 +5,7 @@ import TextField from "@material-ui/core/TextField";
 
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
+import { Card } from "@material-ui/core";
 
 const QuestionCheckbox = styled(Checkbox)`
   color: #d67557;
@@ -20,6 +21,16 @@ const QuestionTextField = styled(TextField)`
       border-color: white;
     }
   }
+`;
+const CardQuizList = styled(Card)`
+  padding: 2em;
+  margin-top: 2em;
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-bottom: 2em;
+  align-items: center;
+  height: 100%;
+  background-color: #353c52;
 `;
 export default function QuestionItem(props) {
   const [state, setState] = useState({
@@ -40,7 +51,7 @@ export default function QuestionItem(props) {
   };
 
   return (
-    <main>
+    <CardQuizList>
       <h2>{props.question}</h2>
       <FormControlLabel
         control={
@@ -76,6 +87,6 @@ export default function QuestionItem(props) {
           onChange={handleInterestChange}
         />
       )}
-    </main>
+    </CardQuizList>
   );
 }

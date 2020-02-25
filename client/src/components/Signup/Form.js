@@ -21,12 +21,11 @@ const ContainerSignup = styled(Container)`
   padding: 3%;
 `;
 const PaperSignup = styled(Paper)`
-margin-top: 8%;
-margin-left: 6%;
-margin-right: 6%;
-margin-bottom: 5%;
+  margin-top: 8%;
+  margin-left: 6%;
+  margin-right: 6%;
+  margin-bottom: 5%;
   background-color: #353c52;
- 
 `;
 const TextFieldSignup = styled(TextField)`
   & > * {
@@ -41,11 +40,10 @@ const TypographySignup = styled(Typography)`
   font-weight: 600;
 `;
 const BackpackBox = styled.div`
-margin-top: 5%;
-margin-bottom: 2%;
-display: flex;
-justify-content: center;
-
+  margin-top: 5%;
+  margin-bottom: 2%;
+  display: flex;
+  justify-content: center;
 `;
 
 // MATERIAL UI COMPONENT STYLING THEME
@@ -90,7 +88,6 @@ export default function SignUp(props) {
       data: body
     })
       .then(response => {
-       
         console.log(response);
         props.setUser({
           email: response.data.email,
@@ -109,116 +106,114 @@ export default function SignUp(props) {
 
   return (
     <main>
-       <BackpackBox>
-      <KawaiiAnimation/>
+      <BackpackBox>
+        <KawaiiAnimation />
       </BackpackBox>
       <PaperSignup elevation={10}>
-      <ContainerSignup component="main" maxWidth="xs">
-        <CssBaseline />
-        <div className={classes.paper}>
-          <TypographySignup component="h1" variant="h5">
-            Sign Up
-          </TypographySignup>
-          <form
-            className={classes.form}
-            autoComplete="off"
-            onSubmit={handleSubmit}
-          >
-            <Grid container spacing={2}>
-              <Grid item xs={12} sm={6}>
-                <TextFieldSignup
-                  name="firstName"
-                  variant="outlined"
-                  required
-                  fullWidth
-                  type="text"
-                  id="firstName"
-                  label="First Name"
-                  value={inputs.firstName || ""}
-                  onChange={handleInputChange}
-                  autoFocus
-                />
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <TextFieldSignup
-                  variant="outlined"
-                  required
-                  fullWidth
-                  id="lastName"
-                  type="text"
-                  label="Last Name"
-                  name="lastName"
-                  value={inputs.lastName || ""}
-                  onChange={handleInputChange}
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <TextFieldSignup
-                  variant="outlined"
-                  required
-                  fullWidth
-                  id="email"
-                  type="email"
-                  label="Email Address"
-                  name="email"
-                  value={inputs.email || ""}
-                  onChange={handleInputChange}
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <TextFieldSignup
-                  variant="outlined"
-                  required
-                  fullWidth
-                  name="password1"
-                  label="Password"
-                  type="password"
-                  id="password1"
-                  value={inputs.password1 || ""}
-                  onChange={handleInputChange}
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <TextFieldSignup
-                  variant="outlined"
-                  required
-                  fullWidth
-                  name="password2"
-                  label="Password Confirmation"
-                  type="password"
-                  id="password2"
-                  value={inputs.password2 || ""}
-                  onChange={handleInputChange}
-                />
-              </Grid>
-            </Grid>
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              color="primary"
-              className={classes.submit}
-            >
+        <ContainerSignup component="main" maxWidth="xs">
+          <CssBaseline />
+          <div className={classes.paper}>
+            <TypographySignup component="h1" variant="h5">
               Sign Up
-            </Button>
-            <Grid container justify="flex-end">
-              <Grid item>
-                <Link
-                  href=""
-                  onClick={() => history.push("/login")}
-                  variant="body2"
-                >
-                  Already have an account? Login
-                </Link>
+            </TypographySignup>
+            <form
+              className={classes.form}
+              autoComplete="off"
+              onSubmit={handleSubmit}
+            >
+              <Grid container spacing={2}>
+                <Grid item xs={12} sm={6}>
+                  <TextFieldSignup
+                    name="firstName"
+                    variant="outlined"
+                    required
+                    fullWidth
+                    type="text"
+                    id="firstName"
+                    label="First Name"
+                    value={inputs.firstName || ""}
+                    onChange={handleInputChange}
+                    autoFocus
+                  />
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <TextFieldSignup
+                    variant="outlined"
+                    required
+                    fullWidth
+                    id="lastName"
+                    type="text"
+                    label="Last Name"
+                    name="lastName"
+                    value={inputs.lastName || ""}
+                    onChange={handleInputChange}
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <TextFieldSignup
+                    variant="outlined"
+                    required
+                    fullWidth
+                    id="email"
+                    type="email"
+                    label="Email Address"
+                    name="email"
+                    value={inputs.email || ""}
+                    onChange={handleInputChange}
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <TextFieldSignup
+                    variant="outlined"
+                    required
+                    fullWidth
+                    name="password1"
+                    label="Password"
+                    type="password"
+                    id="password1"
+                    value={inputs.password1 || ""}
+                    onChange={handleInputChange}
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <TextFieldSignup
+                    variant="outlined"
+                    required
+                    fullWidth
+                    name="password2"
+                    label="Password Confirmation"
+                    type="password"
+                    id="password2"
+                    value={inputs.password2 || ""}
+                    onChange={handleInputChange}
+                  />
+                </Grid>
               </Grid>
-            </Grid>
-          </form>
-        </div>
-        <Box mt={5}></Box>
-      </ContainerSignup>
-    </PaperSignup>
-
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                color="primary"
+                className={classes.submit}
+              >
+                Sign Up
+              </Button>
+              <Grid container justify="flex-end">
+                <Grid item>
+                  <Link
+                    href=""
+                    onClick={() => history.push("/login")}
+                    variant="body2"
+                  >
+                    Already have an account? Login
+                  </Link>
+                </Grid>
+              </Grid>
+            </form>
+          </div>
+          <Box mt={5}></Box>
+        </ContainerSignup>
+      </PaperSignup>
     </main>
-    
   );
 }

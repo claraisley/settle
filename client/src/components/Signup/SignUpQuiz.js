@@ -8,7 +8,7 @@ import useSignUpQuiz from "../../hooks/useSignUpQuiz";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import { Paper } from "@material-ui/core";
-import { Planet } from 'react-kawaii'
+import { Planet } from "react-kawaii";
 const axios = require("axios").default;
 
 const PaperQuiz = styled(Paper)`
@@ -29,16 +29,16 @@ const CardQuiz = styled(Card)`
   background-color: #353c52;
 `;
 
-const CardQuizList = styled(Card)`
-  padding: 2em;
-  margin-top: 2em;
-  margin-left: 5%;
-  margin-right: 5%;
-  margin-bottom: 2em;
-  align-items: center;
-  height: 100%;
-  background-color: #353c52;
-`;
+// const CardQuizList = styled(Card)`
+//   padding: 2em;
+//   margin-top: 2em;
+//   margin-left: 5%;
+//   margin-right: 5%;
+//   margin-bottom: 2em;
+//   align-items: center;
+//   height: 100%;
+//   background-color: #353c52;
+// `;
 
 const CardContentQuiz = styled(CardContent)`
   padding: 10px;
@@ -52,17 +52,16 @@ const CardContentQuiz = styled(CardContent)`
 `;
 
 const StyledPlanet = styled(Planet)`
-margin-top: 3%;
-`
+  margin-top: 3%;
+`;
 const Title = styled.h1`
   text-align: center;
   margin: 20px auto;
- 
 `;
 
 const StyledButton = styled(Button)`
-margin-top: 5%;
-`
+  margin-top: 5%;
+`;
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -117,7 +116,8 @@ export default function SignUpQuiz(props) {
           responses.forEach(res => console.log("Success"));
           localStorage.removeItem("mode");
           history.push("/menu");
-        }))
+        })
+      )
       .catch(error => {
         console.log(error);
       });
@@ -136,18 +136,22 @@ export default function SignUpQuiz(props) {
             <StyledPlanet size={100} mood="happy" color="#FCCB7E" />
           </CardContentQuiz>
         </CardQuiz>
-        <CardQuizList className={classes.responseList} elevation={12}>
-          <form onSubmit={handleSubmit}>
-            <QuestionList
-              signupQuestions={props.signupQuestions}
-              questionState={questionState}
-              changeQuestion={changeQuestion}
-            />
-            <StyledButton type="submit" fullWidth variant="contained" color="primary">
-              Submit
-            </StyledButton>
-          </form>
-        </CardQuizList>
+
+        <form onSubmit={handleSubmit}>
+          <QuestionList
+            signupQuestions={props.signupQuestions}
+            questionState={questionState}
+            changeQuestion={changeQuestion}
+          />
+          <StyledButton
+            type="submit"
+            fullWidth
+            variant="contained"
+            color="primary"
+          >
+            Submit
+          </StyledButton>
+        </form>
       </PaperQuiz>
     </main>
   );
