@@ -121,7 +121,6 @@ export default function Workthrough(props) {
     const thinkingTrap = state.currentQuestion.responses.find(
       response => response.id === responseID
     ).thinking_trap;
-
     setState(prev => ({
       ...prev,
       questions: [
