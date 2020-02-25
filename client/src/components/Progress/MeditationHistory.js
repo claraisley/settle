@@ -216,7 +216,7 @@ export default function MeditationHistory(props) {
                 type="bar"
                 options={chartData.options}
                 series={chartData.series}
-                width="500"
+                width="100%"
               />
             ) : (
               <StyledTitle>Do a meditation to start tracking your progress!</StyledTitle>
