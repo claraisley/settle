@@ -6,65 +6,19 @@ import useVisualMode from "../../hooks/useVisualMode";
 import Followup from "./Followup.js";
 import Completion from "./Completion.js";
 import Start from "./Start.js";
-import IconButton from "@material-ui/core/IconButton";
-import ExpandLessIcon from "@material-ui/icons/ExpandLess";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import { makeStyles } from "@material-ui/core/styles";
-// import LinearProgress from "@material-ui/core/LinearProgress";
 import axios from "axios";
-import { Button } from "@material-ui/core";
 
 const MainQuiz = styled.main`
-  padding-top: 4em;
+  padding-top: 8em;
 `;
-
-const Heading = styled.h2`
-  margin-left: 15%;
-  padding-left: 1.7em;
-`;
-
-const Footer = styled.section`
-  margin-left: 15%;
-  padding: 3em;
-  justify-content: center;
-`;
-
-const BackButton = styled(Button)`
-  height: 70px;
-  width: 70px;
-`;
-
-const BackImg = styled.img`
-  height: 50px;
-  width: 50px;
-`;
-
-const ForwardButton = styled(Button)`
-  height: 70px;
-  width: 70px;
-`;
-
-const ForwardImg = styled.img`
-  height: 50px;
-  width: 50px;
-`;
-
-const RestartButton = styled(Button)``;
-
-const useStyles = makeStyles(theme => ({
-  root: {
-    width: "25%"
-  }
-}));
 
 const MOOD = "MOOD";
 const QUESTION = "QUESTION";
-const FOLLOWUP = "FOLLOWUP";
+// const FOLLOWUP = "FOLLOWUP";
 const COMPLETION = "COMPLETION";
 const START = "START";
 
 export default function Workthrough(props) {
-  const classes = useStyles();
   const [open, setOpen] = useState(false);
   const [state, setState] = useState({
     questions: [],
@@ -75,9 +29,7 @@ export default function Workthrough(props) {
     currentThinkingTrap: {}
   });
 
-  console.log("STATE RESPONSEs", state.responsesChosen);
-
-  const { mode, transition, back } = useVisualMode(START);
+  const { mode, transition } = useVisualMode(START);
 
   const startNextQuestion = () => {
     setState(prev => ({
@@ -135,7 +87,7 @@ export default function Workthrough(props) {
         withCredentials: true
       })
     ])
-      .then(function(response) {
+      .then(function (response) {
         for (let question of response[0].data) {
           question.answered = false;
         }
@@ -146,7 +98,7 @@ export default function Workthrough(props) {
         }));
         startNextQuestion();
       })
-      .catch(function(error) {
+      .catch(function (error) {
         console.log(error);
       });
   };
@@ -162,7 +114,6 @@ export default function Workthrough(props) {
     const thinkingTrap = state.currentQuestion.responses.find(
       response => response.id === responseID
     ).thinking_trap;
-
     setState(prev => ({
       ...prev,
       questions: [
@@ -197,10 +148,10 @@ export default function Workthrough(props) {
         data: postData,
         withCredentials: true
       })
-      .then(function(response) {
+      .then(function (response) {
         transition(COMPLETION);
       })
-      .catch(function(error) {
+      .catch(function (error) {
         console.log(error);
       });
   };
@@ -226,16 +177,25 @@ export default function Workthrough(props) {
 
   return (
     <MainQuiz className="workthrough">
-      <Heading>Workthrough</Heading>
       <section>
         {mode === START && <Start startWorkthrough={startWorkthrough} />}
-        {mode === MOOD && <Mood onResponse={respondMood} />}
+        {mode === MOOD &&
+          <Mood
+            onResponse={respondMood}
+            restartWorkthrough={restartWorkthrough}
+            questionsDone={state.questions.length - currentProgress}
+            totalQuestions={state.questions.length}
+          />}
         {mode === QUESTION && (
           <Question
             question={state.currentQuestion}
             responses={state.currentQuestion.responses}
             onResponse={respond}
             interests={state.interests}
+            restartWorkthrough={restartWorkthrough}
+            startNextQuestion={startNextQuestion}
+            questionsDone={state.questions.length - currentProgress}
+            totalQuestions={state.questions.length}
           />
         )}
         <Followup
@@ -255,27 +215,6 @@ export default function Workthrough(props) {
           <Completion restartWorkthrough={restartWorkthrough} />
         )}
       </section>
-      <Footer>
-        <label htmlFor="workthrough-progress">
-          Progress {state.questions.length - currentProgress}/
-          {state.questions.length}
-        </label>
-        <div className={classes.root}></div>
-        <BackButton onClick={() => back()}>
-          <BackImg src="https://res.cloudinary.com/dpfixnpii/image/upload/v1582400198/arrow_xph8bj.svg" />
-        </BackButton>
-
-        <ForwardButton onClick={() => startNextQuestion()}>
-          <ForwardImg src="https://res.cloudinary.com/dpfixnpii/image/upload/v1582400212/arrow-point-to-right_qgqicj.svg" />
-        </ForwardButton>
-        <RestartButton
-          variant="contained"
-          color="primary"
-          onClick={() => restartWorkthrough()}
-        >
-          Quit without saving
-        </RestartButton>
-      </Footer>
     </MainQuiz>
   );
 }
