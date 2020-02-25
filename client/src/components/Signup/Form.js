@@ -21,11 +21,12 @@ const ContainerSignup = styled(Container)`
   padding: 3%;
 `;
 const PaperSignup = styled(Paper)`
-  margin-top: 8%;
-  margin-left: 6%;
-  margin-right: 6%;
+margin-top: 8%;
+margin-left: 6%;
+margin-right: 6%;
+margin-bottom: 5%;
   background-color: #353c52;
-  margin-bottom: 5%;
+ 
 `;
 const TextFieldSignup = styled(TextField)`
   & > * {
@@ -44,6 +45,7 @@ margin-top: 5%;
 margin-bottom: 2%;
 display: flex;
 justify-content: center;
+
 `;
 
 // MATERIAL UI COMPONENT STYLING THEME
