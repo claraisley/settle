@@ -19,17 +19,16 @@ import styled from "styled-components";
 const drawerWidth = 300;
 
 const Cactus = styled.img`
-height: 60px;
-width: 60px;
-margin-bottom: 10px;
-`
+  height: 60px;
+  width: 60px;
+  margin-bottom: 10px;
+`;
 
 const useStyles = makeStyles(theme => ({
   root: {
     display: "flex"
   },
   appBar: {
-
     paddingTop: "10px",
     paddingBottom: "10px",
 
@@ -38,10 +37,8 @@ const useStyles = makeStyles(theme => ({
       duration: theme.transitions.duration.leavingScreen
     })
   },
-  toolbar:{
-    
-    verticalAlign: "middle",
-    minHeight: "100px"
+  toolbar: {
+    verticalAlign: "middle"
   },
   appBarShift: {
     width: `calc(100% - ${drawerWidth}px)`,
@@ -176,13 +173,13 @@ export default function Nav(props) {
       <CssBaseline />
       <AppBar position="fixed" className={classes.appBar}>
         <Toolbar className={classes.toolbar}>
-        <Cactus src='https://res.cloudinary.com/dpfixnpii/image/upload/v1582608002/cactus_wxnhwz.svg'/>
+          <Cactus src="https://res.cloudinary.com/dpfixnpii/image/upload/v1582608002/cactus_wxnhwz.svg" />
           <Typography variant="h6" noWrap className={classes.title}>
             SETTLE
           </Typography>
-          
+
           {props.user.name && (
-            <Typography variant="h6"  noWrap className={classes.welcome}>
+            <Typography variant="h6" noWrap className={classes.welcome}>
               Hi {props.user.name}!
             </Typography>
           )}
