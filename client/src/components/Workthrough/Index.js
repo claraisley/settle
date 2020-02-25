@@ -6,17 +6,11 @@ import useVisualMode from "../../hooks/useVisualMode";
 import Followup from "./Followup.js";
 import Completion from "./Completion.js";
 import Start from "./Start.js";
-import { makeStyles } from "@material-ui/core/styles";
 import axios from "axios";
 
 const MainQuiz = styled.main`
   padding-top: 8em;
 `;
-const useStyles = makeStyles(theme => ({
-  root: {
-    width: "25%"
-  }
-}));
 
 const MOOD = "MOOD";
 const QUESTION = "QUESTION";
@@ -25,7 +19,6 @@ const COMPLETION = "COMPLETION";
 const START = "START";
 
 export default function Workthrough(props) {
-  const classes = useStyles();
   const [open, setOpen] = useState(false);
   const [state, setState] = useState({
     questions: [],
@@ -36,7 +29,7 @@ export default function Workthrough(props) {
     currentThinkingTrap: {}
   });
 
-  const { mode, transition, back } = useVisualMode(START);
+  const { mode, transition } = useVisualMode(START);
 
   const startNextQuestion = () => {
     setState(prev => ({
