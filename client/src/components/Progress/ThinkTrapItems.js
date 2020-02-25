@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
@@ -7,7 +7,7 @@ import Typography from "@material-ui/core/Typography";
 import { Card } from "@material-ui/core";
 import Zoom from "@material-ui/core/Zoom";
 import styled from "styled-components";
-import ClickAwayListener from '@material-ui/core/ClickAwayListener';
+import ClickAwayListener from "@material-ui/core/ClickAwayListener";
 
 import {
   OneBackPack,
@@ -56,14 +56,12 @@ export default function TrapItems(props) {
     return Math.round(trap[1]);
   });
 
-  const [isMobile, setIsMobile] = useState(false)
+  const [isMobile, setIsMobile] = useState(false);
   const [open, setOpen] = useState(false);
- 
 
   useEffect(() => {
-    if (window.innerWidth < 600)
-      setIsMobile(true)
-  },[])
+    if (window.innerWidth < 600) setIsMobile(true);
+  }, []);
 
   const handleTooltipClose = () => {
     setOpen(false);
@@ -72,7 +70,6 @@ export default function TrapItems(props) {
   const handleTooltipOpen = () => {
     setOpen(true);
   };
-
 
   const lookup = {
     0: "Catastrophizing",
@@ -107,38 +104,40 @@ export default function TrapItems(props) {
     return (
       <Grid item xs={12} sm={6}>
         <Paper className={classes.paper} elevation={12}>
-          <Tooltip
-            TransitionComponent={Zoom}
-            title={<Tooltiptip>{definitions[index]}</Tooltiptip>}
-            classes={{ tooltip: classes.customWidth }}
-            arrow
-            onClose={handleTooltipClose}
-            open={open}
-          >
-            <h1>
-              {lookup[index]}
-              <sup>[?]</sup>
-            </h1>
-          </Tooltip>
+          {isMobile ? (
+            <Tooltip
+              TransitionComponent={Zoom}
+              title={<Tooltiptip>{definitions[index]}</Tooltiptip>}
+              classes={{ tooltip: classes.customWidth }}
+              arrow
+              onClose={handleTooltipClose}
+              open={open}
+            >
+              <ClickAwayListener onClickAway={handleTooltipClose}>
+                <h1 onClick={handleTooltipOpen}>
+                  {lookup[index]}
+                  <sup>[?]</sup>
+                </h1>
+              </ClickAwayListener>
+            </Tooltip>
+          ) : (
+            <Tooltip
+              TransitionComponent={Zoom}
+              title={<Tooltiptip>{definitions[index]}</Tooltiptip>}
+              classes={{ tooltip: classes.customWidth }}
+              arrow
+            >
+              <h1>
+                {lookup[index]}
+                <sup>[?]</sup>
+              </h1>
+            </Tooltip>
+          )}
           <Comp />
         </Paper>
       </Grid>
     );
   });
-
-  //   <CardTooltip elevation={7}>
-  //   <Tooltip
-  //     TransitionComponent={Zoom}
-  //     title={<Tooltiptip>{props.thinkingTrap.definition}</Tooltiptip>}
-  //     classes={{ tooltip: classes.customWidth }}
-  //     arrow
-  //   >
-  //     <TooltipText>
-  //       Related thinking trap: {props.thinkingTrap.name}
-  //       <sup>[?]</sup>
-  //     </TooltipText>
-
-  // </CardTooltip>
 
   return (
     <main>
