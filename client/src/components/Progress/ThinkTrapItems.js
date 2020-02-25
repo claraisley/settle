@@ -3,7 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import Tooltip from "@material-ui/core/Tooltip";
-import Typography from "@material-ui/core/Typography";
+// import Typography from "@material-ui/core/Typography";
 import { Card } from "@material-ui/core";
 import Zoom from "@material-ui/core/Zoom";
 import styled from "styled-components";
@@ -102,7 +102,7 @@ export default function TrapItems(props) {
   const traps = rounded.map((trap, index) => {
     let Comp = comps[trap] || FiveBackPack;
     return (
-      <Grid item xs={12} sm={6}>
+      <Grid item xs={12} sm={6} key={index}>
         <Paper className={classes.paper} elevation={12}>
           {isMobile ? (
             <Tooltip

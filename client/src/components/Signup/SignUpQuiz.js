@@ -17,7 +17,6 @@ const PaperQuiz = styled(Paper)`
   margin-right: 10%;
   margin-bottom: 3em;
   background-color: #353c52;
-  background-image: url(http://www.transparenttextures.com/patterns/cubes.png);
 `;
 
 const CardQuiz = styled(Card)`
