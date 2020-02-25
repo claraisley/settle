@@ -19,27 +19,26 @@ import styled from "styled-components";
 const drawerWidth = 300;
 
 const Cactus = styled.img`
-height: 60px;
-width: 60px;
-margin-bottom: 10px;
-`
+  height: 60px;
+  width: 60px;
+  margin-bottom: 10px;
+`;
 
 const useStyles = makeStyles(theme => ({
   root: {
     display: "flex"
   },
   appBar: {
-    height: '6em',
-    marginBottom: '2em',
+    paddingTop: "10px",
+    paddingBottom: "10px",
+
     transition: theme.transitions.create(["margin", "width"], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen
     })
   },
-  toolbar:{
-    
-    verticalAlign: "middle",
-    minHeight: "100px"
+  toolbar: {
+    verticalAlign: "middle"
   },
   appBarShift: {
     width: `calc(100% - ${drawerWidth}px)`,
@@ -50,8 +49,7 @@ const useStyles = makeStyles(theme => ({
     marginRight: drawerWidth
   },
   title: {
-    flexGrow: 1,
-    
+    flexGrow: 1
   },
   welcome: {
     flexGrow: 1,
@@ -131,7 +129,7 @@ export default function Nav(props) {
   //   setOpen(false);
   // };
 
-  const filteredLinks = props.links.filter(function (link) {
+  const filteredLinks = props.links.filter(function(link) {
     return link.name !== "Signup" && link.name !== "Login";
   });
 
@@ -175,13 +173,13 @@ export default function Nav(props) {
       <CssBaseline />
       <AppBar position="fixed" className={classes.appBar}>
         <Toolbar className={classes.toolbar}>
-        <Cactus src='https://res.cloudinary.com/dpfixnpii/image/upload/v1582608002/cactus_wxnhwz.svg'/>
+          <Cactus src="https://res.cloudinary.com/dpfixnpii/image/upload/v1582608002/cactus_wxnhwz.svg" />
           <Typography variant="h6" noWrap className={classes.title}>
             SETTLE
           </Typography>
-          
+
           {props.user.name && (
-            <Typography variant="h6"  noWrap className={classes.welcome}>
+            <Typography variant="h6" noWrap className={classes.welcome}>
               Hi {props.user.name}!
             </Typography>
           )}
@@ -205,10 +203,12 @@ export default function Nav(props) {
           {props.user.name && (
             <Button
               variant="contained"
-              onClick={() => { logout() }}
+              onClick={() => {
+                logout();
+              }}
             >
               Logout
-              </Button>
+            </Button>
           )}
         </div>
         <Divider />
