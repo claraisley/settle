@@ -51,6 +51,8 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default function TrapItems(props) {
+
+  
   const classes = useStyles();
   const rounded = Object.entries(props.trapData).map(trap => {
     return Math.round(trap[1]);
@@ -71,6 +73,7 @@ export default function TrapItems(props) {
     setOpen(true);
   };
 
+  console.log(isMobile)
   const lookup = {
     0: "Catastrophizing",
     1: "Filtering",
