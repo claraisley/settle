@@ -14,16 +14,16 @@ import Grid from "@material-ui/core/Grid";
 const useStyles = makeStyles(theme => ({
   formControl: {
     margin: theme.spacing(1),
-    minWidth: 120,
+    minWidth: 120
   },
   selectEmpty: {
-    marginTop: theme.spacing(2),
-  },
+    marginTop: theme.spacing(2)
+  }
 }));
 
 const BackButton = styled(Button)`
-height: 100px;
-width: 100px;
+  height: 100px;
+  width: 100px;
 `;
 const BackImg = styled.img`
   height: 100px;
@@ -55,11 +55,11 @@ export default function MeditationHistory(props) {
   const [state, setState] = useState({
     meditations: [],
     baseDay: new Date()
-  })
+  });
   const classes = useStyles();
 
   const handleChange = event => {
-    setState(prev => ({ ...prev, baseDay: new Date(event.target.value) }))
+    setState(prev => ({ ...prev, baseDay: new Date(event.target.value) }));
   };
 
   // gets the user's meditation history
@@ -79,45 +79,48 @@ export default function MeditationHistory(props) {
         withCredentials: true
       })
       .then(response => {
-        console.log(response)
-        let results = response.data
-        setState(prev => ({ ...prev, meditations: results })) // if no meditations, then state.meditations is just an empty array
+        console.log(response);
+        let results = response.data;
+        setState(prev => ({ ...prev, meditations: results })); // if no meditations, then state.meditations is just an empty array
       })
-      .catch(function (error) {
+      .catch(function(error) {
         console.log(error);
       });
   }, [props.user.id]);
 
   // gets Sunday for a given day
-  const getSunday = (day) => {
+  const getSunday = day => {
     let dayOfWeek = day.getDay();
     day.setDate(day.getDate() - dayOfWeek);
     return day;
   };
 
   // makes an object for the week to use as data for the graph
-  let weekObject = {}
+  let weekObject = {};
   for (let i = 0; i < 7; i++) {
-    let weekday = state.baseDay
-    weekday.setDate(getSunday(state.baseDay).getDate() + i)
+    let weekday = state.baseDay;
+    weekday.setDate(getSunday(state.baseDay).getDate() + i);
     weekObject[weekday.toDateString()] = {
       displayDate: weekday.toDateString().substr(4, 6),
       time: 0
-    }
+    };
   }
 
   // builds an array objects of user's meditations: key is the date and value is the time
   let meditationArray = [];
   for (let meditation of state.meditations) {
-    meditationArray.push({ [meditation.created_at]: meditation.meditation.time_in_minutes })
+    meditationArray.push({
+      [meditation.created_at]: meditation.meditation.time_in_minutes
+    });
   }
-
 
   // adds the user's meditations to the week object
   for (let meditation of meditationArray) {
-    let formatMeditationDay = new Date(Object.keys(meditation)[0]).toDateString()
+    let formatMeditationDay = new Date(
+      Object.keys(meditation)[0]
+    ).toDateString();
     if (formatMeditationDay in weekObject) {
-      weekObject[formatMeditationDay].time += Object.values(meditation)[0]
+      weekObject[formatMeditationDay].time += Object.values(meditation)[0];
     }
   }
 
@@ -127,7 +130,24 @@ export default function MeditationHistory(props) {
         id: "basic-bar",
       },
       xaxis: {
-        categories: Object.values(weekObject).map(({ displayDate }) => displayDate)
+        categories: Object.values(weekObject).map(
+          ({ displayDate }) => displayDate
+        ),
+        title: {
+          text: `Week of ${getSunday(state.baseDay).toDateString()}`,
+          style: {
+            fontSize: "1rem"
+          }
+        }
+      },
+      yaxis: {
+        title: {
+          text: "Minutes",
+          style: {
+            fontSize: "1rem"
+          }
+        },
+        forceNiceScale: true
       }
     },
     series: [
@@ -141,14 +161,18 @@ export default function MeditationHistory(props) {
   // creates array of the last 5 Sundays
   let sundayArray = [];
   for (let i = 0; i < 6; i++) {
-    let sunday = new Date()
-    sunday.setDate(getSunday(sunday).getDate() - 7 * i)
-    sundayArray.push(sunday)
+    let sunday = new Date();
+    sunday.setDate(getSunday(sunday).getDate() - 7 * i);
+    sundayArray.push(sunday);
   }
 
   const weekStartOptions = sundayArray.map(sunday => {
-    return <MenuItem key={sunday.toDateString()} value={sunday.toDateString()}>{sunday.toDateString()}</MenuItem>
-  })
+    return (
+      <MenuItem key={sunday.toDateString()} value={sunday.toDateString()}>
+        {sunday.toDateString()}
+      </MenuItem>
+    );
+  });
 
   return (
     <main className="MeditationHistory">
@@ -195,11 +219,13 @@ export default function MeditationHistory(props) {
                 width="100%"
               />
             ) : (
-              <StyledTitle>Do a meditation to start tracking your progress!</StyledTitle>
+              <StyledTitle>
+                Do a meditation to start tracking your progress!
+              </StyledTitle>
             )}
           </Grid>
         </Grid>
       </NotePaper>
     </main>
-  )
+  );
 }

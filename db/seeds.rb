@@ -26,54 +26,53 @@ ActiveRecord::Base.transaction do
 
   catastrophizing = ThinkingTrap.create!(
     name: "Catastrophizing", 
-    example_statement1: "I will fail this test and then fail my course.", 
-    example_statement2: "When I get to the test I'm going to completely blank and everyone around me will notice.", 
+    example_statement1: "'I will fail this test and then fail my course.'", 
+    example_statement2: "'When I get to the test I'm going to completely blank and everyone around me will notice.'", 
     text: "Catastrophizing is when we imagine that the worst possible scenerio is about to happen. Not only does our brain jumps to the worst possible outcome, we also predict that we wont be able to cope when it happens. But, the imagined worst-case scenario usually never happens and even if it did, we are most likely able to cope with it. We can also catastrophize a current situtation by believing that something is far worse than it actually is. Either way, these are irrational thoughts involving the belief that you’re in a worse situation than you really are.",
     definition: "Catastrophizing is when we assume the worst possible scenerio will happen."
     )
   filtering = ThinkingTrap.create!(
     name: "Filtering",
-    example_statement1: "I left 3 questions blank, my mark will be horrible",
-    example_statement2: "Who cares if I did great on my english test, my math test will still go poorly.",
+    example_statement1: "'I left 3 questions blank, my mark will be horrible.'",
+    example_statement2: "'Who cares if I did great on my english test, my math test will still go poorly.'",
     text: "When we fall into the thinking trap of Filtering, we pay attention only to the negative aspects and ignore all the positive ones. It's hard to have balanced thoughts if you only focus on the negative. You are more than your test anxiety and there are many good things about you!",
     definition: "Filtering involves only paying attention to the negative aspects of a situation while ignoring all the positive"
   )
   fortune_telling = ThinkingTrap.create!(
     name: "Fortune-telling",
-    example_statement1: "I know I’ll mess up.",
-    example_statement2: "I'm going to fail the math test",
+    example_statement1: "'I know I’ll mess up.'",
+    example_statement2: "'I'm going to fail the math test.'",
     text: "Fortune-telling is a type of thinking error where we predict something negative will happen without realistically considering the real odds of the situation. We assume that some event or events will end badly for us, but in reality, we cannot predict the future because we don’t have a magic ball!",
     definition: "Fortune-telling is thinking trap where we predict that things will turn out badly without realistically considering the evidence adn odds in a situation. "
   )
   mind_reading = ThinkingTrap.create!(
     name: "Mind-reading",
-    example_statement1: "Everyone will think I'm stupid.",
-    example_statement2: "My teacher doesn't like me",
+    example_statement1: "'Everyone will think I'm stupid.'",
+    example_statement2: "'My teacher doesn't like me.'",
     text: "When you think you know a person’s intentions or thoughts, you are falling into the thinking trap known as Mind-reading. You assume people will focus your flaws and believe their negative responses are your fault, even though their response might have nothing to do with you at all.",
     definition: "Fortune-telling is thinking trap where we believe that we know what others are thinking and we assume that they are thinking the worst of us."
   )
   black_white = ThinkingTrap.create!(
     name: "Black-and-white thinking",
-    example_statement1: "If I don't do get a good mark on this test I will totally fail",
-    example_statement2: "I planned to study for 6 hours but could only study for 4, now there is no way I will pass.",
-    text: "Black-and-white thinking occurs when we only look at situations in terms of extremes: things are either good or bad, a success or a failure - it's all or nothing. For example; if you do something in a way that is less than perfect, you automatically see yourself as a failure. In reality, most outcomes fall in between absolute perfection and complete disaste",
+    example_statement1: "'If I don't do get a good mark on this test I will totally fail.'",
+    example_statement2: "'I planned to study for 6 hours but could only study for 4, now there is no way I will pass.",
+    text: "Black-and-white thinking occurs when we only look at situations in terms of extremes: things are either good or bad, a success or a failure - it's all or nothing. For example, if you do something in a way that is less than perfect, you automatically see yourself as a failure. In reality, most outcomes fall in between absolute perfection and complete disaster.'",
     definition: "When we constantly think of things in extreme terms, such as “always” and “never” we are fall into the trap of Black-and-white thinking."
   )
   over_gen = ThinkingTrap.create!(
     name: "Over-generalization",
-    example_statement1: "I always fail tests or exams",
-    example_statement2: "I never succeed in school.",
-    text: "Over-generalization occurs when we draw conclusions based on just one example. For exmaple after interviewing for a job and not getting it, we might overgeneralize by thinking we’ll never get a job. Although common, this thinking error is highly inaccurate and very limiting and usually involves words like 'always' and 'never'.",
+    example_statement1: "'I always fail tests or exams.'",
+    example_statement2: "'I never succeed in school.'",
+    text: "Over-generalization occurs when we draw conclusions based on just one example. After interviewing for a job and not getting it, we might overgeneralize by thinking we’ll never get a job. Although common, this thinking error is highly inaccurate and very limiting and usually involves words like 'always' and 'never'.",
     definition: "Over-generalization occurs when we inaccurately conclude that one negative event puts us in a never-ending pattern of defeat. One failed test becomes 'I always fail tests'."
   )
   should = ThinkingTrap.create!(
     name: "Should-statements",
-    example_statement1: "I should stop worrying about my tests.",
-    example_statement2: "I shouldn't have text anxiety.",
-    text: "Should-statements are thinking errors involving telling yourself how you 'should', 'must', or 'ought' to feel and behave. They may seem like thoughts meant to motivate us, but in reality they often become unrealistic interal rules that leave us dissapointed and frustrated in overselves when they aren't followed. We can work towards goals without putting extra pressure on ourselves by avoiding using words like 'should' and 'must'.",
+    example_statement1: "'I should stop worrying about my tests.'",
+    example_statement2: "'I shouldn't have text anxiety.'",
+    text: "Should-statements are thinking errors involving telling yourself how you 'should', 'must', or 'ought' to feel and behave. They may seem like thoughts meant to motivate us, but in reality they often become unrealistic internal rules, leaving us dissapointed and frustrated in overselves when they aren't followed. We can work towards goals without putting extra pressure on ourselves by avoiding using words like 'should' and 'must'.",
     definition: "Should-statements are a common thinking trap where we tell ourselves how we “should”, “must”, or “ought” to feel and behave. In reality they often leave us anxious and dissapointed in ourselves."
   )
-
 
   #QUESTIONS/AKA THOUGHTS
   q1 = Thought.create!(interest: pet_interest, text: "If I mess this test up, will petName be there for me when I get home?")
@@ -91,226 +90,59 @@ ActiveRecord::Base.transaction do
   ###############################################################################################
   # RESPONSES
   #q1 responses
-  r1 = Response.create!(
-    thought: q1,
-    thinking_trap: filtering,
-    value: 0,
-    text: "Yes, petName loves me no matter what."
-  )
-  r2 = Response.create!(
-    thought: q1,
-    thinking_trap: filtering,
-    value: 1,
-    text: " petName doesn't show much affection but I don't think they would care."
-  )
-  r3 = Response.create!(
-    thought: q1,
-    thinking_trap: filtering,
-    value: 3,
-    text: "No, they'll be upset if I fail the test."
-  )
+  r1 = Response.create!(thought: q1, thinking_trap: filtering, value: 0, text: "Yes, petName loves me no matter what.")
+  r2 = Response.create!(thought: q1, thinking_trap: filtering, value: 1, text: " petName doesn't show much affection but I don't think they would care.")
+  r3 = Response.create!(thought: q1, thinking_trap: filtering, value: 3, text: "No, they'll be upset if I fail the test.")
 
   #q2 responses
-  r4 = Response.create!(
-    thought: q2,
-    thinking_trap: catastrophizing,
-    value: 2,
-    text: "Yes, everyone will know I'm freaking out. "
-  )
-  r5 = Response.create!(
-    thought: q2,
-    thinking_trap: catastrophizing,
-    value: 1,
-    text: "Probably not."
-  )
-  r6 = Response.create!(
-    thought: q2,
-    thinking_trap: catastrophizing,
-    value: 0,
-    text: "No, people will be busy with their own test. "
-  )
+  r4 = Response.create!(thought: q2, thinking_trap: catastrophizing, value: 2, text: "Yes, everyone will know I'm freaking out. ")
+  r5 = Response.create!(thought: q2, thinking_trap: catastrophizing, value: 1, text: "Probably not.")
+  r6 = Response.create!(thought: q2, thinking_trap: catastrophizing, value: 0, text: "No, people will be busy with their own test. ")
 
   #q3 responses
-  r7 = Response.create!(
-    thought: q3,
-    thinking_trap: fortune_telling,
-    value: 0,
-    text: "No, I can't know that for sure. "
-  )
-  r8 = Response.create!(
-    thought: q3,
-    thinking_trap: fortune_telling,
-    value: 2,
-    text: "No, but what if I do this time?"
-  )
-  r9 = Response.create!(
-    thought: q3,
-    thinking_trap: fortune_telling,
-    value: 5,
-    text: "Yes, I will defintely 100% fail."
-  )
+  r7 = Response.create!(thought: q3, thinking_trap: fortune_telling, value: 0, text: "No, I can't know that for sure. ")
+  r8 = Response.create!(thought: q3, thinking_trap: fortune_telling, value: 2, text: "No, but what if I do this time?")
+  r9 = Response.create!(thought: q3, thinking_trap: fortune_telling, value: 5, text: "Yes, I will defintely 100% fail.")
 
   #q4 responses
-  r10 = Response.create!(
-    thought: q4,
-    thinking_trap: catastrophizing,
-    value: 0,
-    text: "Hassle."
-  )
-  r11 = Response.create!(
-    thought: q4,
-    thinking_trap: catastrophizing,
-    value: 3,
-    text: "Horror."
-  )
-  r12 = Response.create!(
-    thought: q4,
-    thinking_trap: catastrophizing,
-    value: 1,
-    text: "Both."
-  )
+  r10 = Response.create!(thought: q4, thinking_trap: catastrophizing, value: 0, text: "Hassle.")
+  r11 = Response.create!(thought: q4, thinking_trap: catastrophizing, value: 3, text: "Horror.")
+  r12 = Response.create!(thought: q4, thinking_trap: catastrophizing, value: 1, text: "Both.")
 
   #q5 responses
-  r13 = Response.create!(
-    thought: q5,
-    thinking_trap: over_gen,
-    value: 0,
-    text: "No, I don't always fail tests/exams."
-  )
-  r14 = Response.create!(
-    thought: q5,
-    thinking_trap: over_gen,
-    value: 2,
-    text: "I don't always fail...but this time I might."
-  )
-  r15 = Response.create!(
-    thought: q5,
-    thinking_trap: over_gen,
-    value: 5,
-    text: "Yes, I always fail."
-  )
+  r13 = Response.create!(thought: q5, thinking_trap: over_gen, value: 0, text: "No, I don't always fail tests/exams.")
+  r14 = Response.create!(thought: q5, thinking_trap: over_gen, value: 2, text: "I don't always fail...but this time I might.")
+  r15 = Response.create!(thought: q5, thinking_trap: over_gen, value: 5, text: "Yes, I always fail.")
 
   #q6 responses
-  r16 = Response.create!(
-    thought: q6,
-    thinking_trap: black_white,
-    value: 1,
-    text: "I can't say for sure but it's possible I will fail completely. "
-  )
-  r17 = Response.create!(
-    thought: q6,
-    thinking_trap: black_white,
-    value: 2,
-    text: "Yes, by failing the test I have totally failed. "
-  )
-  r18 = Response.create!(
-    thought: q6,
-    thinking_trap: black_white,
-    value: 0,
-    text: "No, I don't think one test will make or break my mark. "
-  )
+  r16 = Response.create!(thought: q6, thinking_trap: black_white, value: 1, text: "I can't say for sure but it's possible I will fail completely. ")
+  r17 = Response.create!(thought: q6, thinking_trap: black_white, value: 2, text: "Yes, by failing the test I have totally failed. ")
+  r18 = Response.create!(thought: q6, thinking_trap: black_white, value: 0, text: "No, I don't think one test will make or break my mark. ")
 
-  #q7
-  r19 = Response.create!(
-    thought: q7,
-    thinking_trap: should,
-    value: 1,
-    text: "I wish I didn't have it, but it's not up to me. "
-  )
-  r20 = Response.create!(
-    thought: q7,
-    thinking_trap: should,
-    value: 3,
-    text: "It's not fully my fault but I shouldn't have it."
-  )
-  r21 = Response.create!(
-    thought: q7,
-    thinking_trap: should,
-    value: 5,
-    text: "True, it's embarassing and I shouldn't have it."
-  )
+  #q7 responses
+  r19 = Response.create!(thought: q7, thinking_trap: should, value: 1, text: "I wish I didn't have it, but it's not up to me. ")
+  r20 = Response.create!(thought: q7, thinking_trap: should, value: 3, text: "It's not fully my fault but I shouldn't have it.")
+  r21 = Response.create!(thought: q7, thinking_trap: should, value: 5, text: "True, it's embarassing and I shouldn't have it.")
   
   #q8 responses
-  r22 = Response.create!(
-    thought: q8,
-    thinking_trap: mind_reading,
-    value: 2,
-    text: "True, my teacher thinks poorly of me."
-  )
-  r23 = Response.create!(
-    thought: q8,
-    thinking_trap: mind_reading,
-    value: 0,
-    text: "I can't say for sure what my teacher thinks of me."
-  )
-  r24 = Response.create!(
-    thought: q8,
-    thinking_trap: mind_reading,
-    value: 1,
-    text: "I'm not sure but I wouldn't be surprised."
-  )
+  r22 = Response.create!(thought: q8, thinking_trap: mind_reading, value: 2, text: "True, my teacher thinks poorly of me.")
+  r23 = Response.create!(thought: q8, thinking_trap: mind_reading, value: 0, text: "I can't say for sure what my teacher thinks of me.")
+  r24 = Response.create!(thought: q8, thinking_trap: mind_reading, value: 1, text: "I'm not sure but I wouldn't be surprised.")
 
   #q9 responses
-
-  r25 = Response.create!(
-    thought: q9,
-    thinking_trap: should,
-    value: 1,
-    text: "Ideally yes, I should finish before the times ends. "
-  )
-  r26 = Response.create!(
-    thought: q9,
-    thinking_trap: should,
-    value: 0,
-    text: "I will try my best to finish the test in the alloted time. "
-  )
-  r27 = Response.create!(
-    thought: q9,
-    thinking_trap: should,
-    value: 4,
-    text: "I shouldn't struggle the way I do with finishing tests in time. "
-  )
+  r25 = Response.create!(thought: q9, thinking_trap: should, value: 1, text: "Ideally yes, I should finish before the times ends. ")
+  r26 = Response.create!(thought: q9, thinking_trap: should, value: 0, text: "I will try my best to finish the test in the alloted time. ")
+  r27 = Response.create!(thought: q9, thinking_trap: should, value: 4, text: "I shouldn't struggle the way I do with finishing tests in time. ")
 
   #q10 responses
-  r28 = Response.create!(
-    thought: q10,
-    thinking_trap: mind_reading,
-    value: 0,
-    text: "No, even if this test doesn't go my way the teacher won't see that it as a reflection of my full capabilities.  "
-  )
-  r29 = Response.create!(
-    thought: q10,
-    thinking_trap: mind_reading,
-    value: 2,
-    text: "My teacher may think I am incapable if I don't do well."
-  )
-  r30 = Response.create!(
-    thought: q10,
-    thinking_trap: mind_reading,
-    value: 5,
-    text: "Yes, my teacher will think I am stupid and maybe they are right. "
-  )
+  r28 = Response.create!(thought: q10, thinking_trap: mind_reading, value: 0, text: "No, even if this test doesn't go my way the teacher won't see that it as a reflection of my full capabilities.  ")
+  r29 = Response.create!(thought: q10, thinking_trap: mind_reading, value: 2, text: "My teacher may think I am incapable if I don't do well.")
+  r30 = Response.create!(thought: q10, thinking_trap: mind_reading, value: 5, text: "Yes, my teacher will think I am stupid and maybe they are right. ")
 
   #q11 responses
-
-  r31 = Response.create!(
-    thought: q11,
-    thinking_trap: catastrophizing,
-    value: 0,
-    text: "Yes, friendName doesn't care about that."
-  )
-  r32 = Response.create!(
-    thought: q11,
-    thinking_trap: catastrophizing,
-    value: 2,
-    text: "Yes, but I doubt I'll be in the mood to even hangout soon thanks to this test."
-  )
-  r33 = Response.create!(
-    thought: q11,
-    thinking_trap: catastrophizing,
-    value: 5,
-    text: "No, they won't want to."
-  )
+  r31 = Response.create!(thought: q11, thinking_trap: catastrophizing, value: 0, text: "Yes, friendName doesn't care about that.")
+  r32 = Response.create!(thought: q11, thinking_trap: catastrophizing, value: 2, text: "Yes, but I doubt I'll be in the mood to even hangout soon thanks to this test.")
+  r33 = Response.create!(thought: q11, thinking_trap: catastrophizing, value: 5, text: "No, they won't want to.")
 
   ###############################################################################################
   #FOLLOWUPS
@@ -468,7 +300,6 @@ ActiveRecord::Base.transaction do
   )
 
   #q10 followups
-
   f28 = FollowUp.create!(
     response: r28,
     thinking_trap: mind_reading,
@@ -486,7 +317,6 @@ ActiveRecord::Base.transaction do
   )
 
   #q11 followups
-
   f31 = FollowUp.create!(
     response: r31,
     thinking_trap: catastrophizing,
@@ -505,105 +335,87 @@ ActiveRecord::Base.transaction do
 
 #################################################################################################
 #TIPS FOR TEST SUCCESS
-  Tip.create!(name: "DO", 
-    text: "Do reward yourself after the test with your favourite food, movie or some other treat!"
-    )
-  Tip.create!(name: "DON'T", 
-    text: "Don't spend your time before a test with classmates who generate stress for you."
-    )
- 
-  Tip.create!(name: "DO", 
-    text: "Do start studying for the test in advance. Budget your time so you are well prepared for the test."
-    )
-  Tip.create!(name: "DON'T", 
-    text: "Don't spend the hour before the test cramming, grab a bite to eat and do one of Settle's meditations or work-throughs instead."
-    ) 
-  Tip.create!(name: "DO", 
-    text: "Do eat a light meal before a test. Having food in your stomach will give you enery and keep you focused."
-    )
-  Tip.create!(name: "DON'T", 
-    text: "Don't stay up late studying the night before a test. A lack of sleep can increase anxious thoughts and only make things worse."
-    )
+Tip.create!(name: "DO", text: "Do reward yourself after the test with your favourite food, movie or some other treat!")
+Tip.create!(name: "DON'T", text: "Don't spend your time before a test with classmates who generate stress for you.")
+Tip.create!(name: "DO", text: "Do start studying for the test in advance. Budget your time so you are well prepared for the test.")
+Tip.create!(name: "DON'T", text: "Don't spend the hour before the test cramming, grab a bite to eat and do one of Settle's meditations or work-throughs instead.") 
+Tip.create!(name: "DO", text: "Do eat a light meal before a test. Having food in your stomach will give you enery and keep you focused.")
+Tip.create!(name: "DON'T", text: "Don't stay up late studying the night before a test. A lack of sleep can increase anxious thoughts and only make things worse.")
+Tip.create!(name: "DO", text: "Do tell yourself that you will do your best on the test, and that will be enough! ")
+Tip.create!(name: "DON'T", text: "Don't skip the class right before the test - it's a prime time for the instructor to give out hints or the format of the test. ")
+Tip.create!(name: "DO", text: "Do remind yourself that the test is only a test.")
+Tip.create!(name: "DON'T", text: "Don't spend too much time on one question. Answer the easy questions first. This will give you the confidence and momentum to get through the rest of the test.  ")   
 
 #################################################################################################
-#REEFLECTIONS AND MOODS FOR ANALYTICS SECTIONS
-  Reflection.create!(user_id: 2, 
-    created_at: Date.new(2020, 2, 1)
-    )
-  Reflection.create!(user_id: 2, 
-    created_at: Date.new(2020, 2, 2)
-    )
-  Reflection.create!(user_id: 2, 
-    created_at: Date.new(2020, 2, 4)
-    )
-  Reflection.create!(user_id: 2, 
-    created_at: Date.new(2020, 2, 5)
-    )  
-  Reflection.create!(user_id: 2, 
-    created_at: Date.new(2020, 2, 7)
-    )
-  Reflection.create!(user_id: 2, 
-    created_at: Date.new(2020, 2, 10)
-    )
-  Reflection.create!(user_id: 2, 
-    created_at: Date.new(2020, 2, 14)
-    )
-  Reflection.create!(user_id: 2, 
-    created_at: Date.new(2020, 2, 15)
-    )
-  Reflection.create!(user_id: 2, 
-    created_at: Date.new(2020, 2, 18)
-    )
-  Reflection.create!(user_id: 2, 
-    created_at: Date.new(2020, 2, 22)
-    )
-  Reflection.create!(user_id: 2, 
-    created_at: Date.new(2020, 2, 24)
-    )
-  Mood.create!(reflection_id: 1,
-    value: 2, 
-    created_at: Date.new(2020, 2, 1)
-    )
-  Mood.create!(reflection_id: 2,
-    value: 3, 
-    created_at: Date.new(2020, 2, 2)
-    )
-  Mood.create!(reflection_id: 3,
-    value: 5, 
-    created_at: Date.new(2020, 2, 4)
-    )
-  Mood.create!(reflection_id: 4,
-    value: 1, 
-    created_at: Date.new(2020, 2, 5)
-    )  
-  Mood.create!(reflection_id: 5,
-    value: 2, 
-    created_at: Date.new(2020, 2, 7)
-    )
-  Mood.create!(reflection_id: 6,
-    value: 3, 
-    created_at: Date.new(2020, 2, 10)
-    )
-  Mood.create!(reflection_id: 7,
-    value: 5, 
-    created_at: Date.new(2020, 2, 14)
-    )
-  Mood.create!(reflection_id: 8,
-    value: 4, 
-    created_at: Date.new(2020, 2, 15)
-    )
-  Mood.create!(reflection_id: 9,
-    value: 1, 
-    created_at: Date.new(2020, 2, 18)
-    )
-  Mood.create!(reflection_id: 10,
-    value: 2,
-    created_at: Date.new(2020, 2, 22)
-    )
-  Mood.create!(reflection_id: 11,
-    value: 3,
-    created_at: Date.new(2020, 2, 24)
-    )
+#REFLECTIONS, MOODS AND RESPONSES FOR ANALYTICS SECTIONS
+  Reflection.create!(user_id: 1, created_at: Date.new(2020, 2, 1))
+  Reflection.create!(user_id: 1, created_at: Date.new(2020, 2, 2))
+  Reflection.create!(user_id: 1, created_at: Date.new(2020, 2, 4))
+  Reflection.create!(user_id: 1, created_at: Date.new(2020, 2, 5))  
+  Reflection.create!(user_id: 1, created_at: Date.new(2020, 2, 7))
+  Reflection.create!(user_id: 1, created_at: Date.new(2020, 2, 10))
+  Reflection.create!(user_id: 1, created_at: Date.new(2020, 2, 14))
+  Reflection.create!(user_id: 1, created_at: Date.new(2020, 2, 15))
+  Reflection.create!(user_id: 1, created_at: Date.new(2020, 2, 18))
+  Reflection.create!(user_id: 1, created_at: Date.new(2020, 2, 22))
+  Reflection.create!(user_id: 1, created_at: Date.new(2020, 2, 24))
+
+  Mood.create!(reflection_id: 1, value: 2, created_at: Date.new(2020, 2, 1))
+  Mood.create!(reflection_id: 2, value: 3, created_at: Date.new(2020, 2, 2))
+  Mood.create!(reflection_id: 3, value: 5, created_at: Date.new(2020, 2, 4))
+  Mood.create!(reflection_id: 4, value: 1, created_at: Date.new(2020, 2, 5))  
+  Mood.create!(reflection_id: 5, value: 2, created_at: Date.new(2020, 2, 7))
+  Mood.create!(reflection_id: 6, value: 3, created_at: Date.new(2020, 2, 10))
+  Mood.create!(reflection_id: 7, value: 5, created_at: Date.new(2020, 2, 14))
+  Mood.create!(reflection_id: 8, value: 4, created_at: Date.new(2020, 2, 15))
+  Mood.create!(reflection_id: 9, value: 1, created_at: Date.new(2020, 2, 18))
+  Mood.create!(reflection_id: 10, value: 2, created_at: Date.new(2020, 2, 22))
+  Mood.create!(reflection_id: 11, value: 3, created_at: Date.new(2020, 2, 24))
+
+  ReflectionResponse.create!(response_id: 1, reflection_id: 1)
+  ReflectionResponse.create!(response_id: 3, reflection_id: 1)
+  ReflectionResponse.create!(response_id: 5, reflection_id: 1)
+  ReflectionResponse.create!(response_id: 7, reflection_id: 1)
+  ReflectionResponse.create!(response_id: 9, reflection_id: 2)
+  ReflectionResponse.create!(response_id: 11, reflection_id: 2)
+  ReflectionResponse.create!(response_id: 2, reflection_id: 2)
+  ReflectionResponse.create!(response_id: 4, reflection_id: 2)
+  ReflectionResponse.create!(response_id: 6, reflection_id: 3)
+  ReflectionResponse.create!(response_id: 8, reflection_id: 3)
+  ReflectionResponse.create!(response_id: 10, reflection_id: 3)
+  ReflectionResponse.create!(response_id: 1, reflection_id: 3)
+  ReflectionResponse.create!(response_id: 3, reflection_id: 4)
+  ReflectionResponse.create!(response_id: 4, reflection_id: 4)
+  ReflectionResponse.create!(response_id: 5, reflection_id: 4)
+  ReflectionResponse.create!(response_id: 6, reflection_id: 4)
+  ReflectionResponse.create!(response_id: 7, reflection_id: 5)
+  ReflectionResponse.create!(response_id: 8, reflection_id: 5)
+  ReflectionResponse.create!(response_id: 9, reflection_id: 5)
+  ReflectionResponse.create!(response_id: 10, reflection_id: 5)
+  ReflectionResponse.create!(response_id: 11, reflection_id: 6)
+  ReflectionResponse.create!(response_id: 1, reflection_id: 6)
+  ReflectionResponse.create!(response_id: 2, reflection_id: 6)
+  ReflectionResponse.create!(response_id: 3, reflection_id: 6)
+  ReflectionResponse.create!(response_id: 5, reflection_id: 7)
+  ReflectionResponse.create!(response_id: 6, reflection_id: 7)
+  ReflectionResponse.create!(response_id: 9, reflection_id: 7)
+  ReflectionResponse.create!(response_id: 8, reflection_id: 7)
+  ReflectionResponse.create!(response_id: 10, reflection_id: 8)
+  ReflectionResponse.create!(response_id: 5, reflection_id: 8)
+  ReflectionResponse.create!(response_id: 4, reflection_id: 8)
+  ReflectionResponse.create!(response_id: 3, reflection_id: 8)
+  ReflectionResponse.create!(response_id: 2, reflection_id: 9)
+  ReflectionResponse.create!(response_id: 1, reflection_id: 9)
+  ReflectionResponse.create!(response_id: 7, reflection_id: 9)
+  ReflectionResponse.create!(response_id: 8, reflection_id: 9)
+  ReflectionResponse.create!(response_id: 5, reflection_id: 10)
+  ReflectionResponse.create!(response_id: 1, reflection_id: 10)
+  ReflectionResponse.create!(response_id: 3, reflection_id: 10)
+  ReflectionResponse.create!(response_id: 10, reflection_id: 10)
+  ReflectionResponse.create!(response_id: 11, reflection_id: 11)
+  ReflectionResponse.create!(response_id: 9, reflection_id: 11)
+  ReflectionResponse.create!(response_id: 8, reflection_id: 11)
+  ReflectionResponse.create!(response_id: 7, reflection_id: 11)
     
   #### MEDITATIONS AND USER MEDITATIONS
   Meditation.create!(name: "Good Enough", time_in_minutes: 2, URL: "https://res.cloudinary.com/dpfixnpii/video/upload/v1582394111/Good_Enough_-_1_Minute_30_Seconds_lphc1x.mp4")
@@ -611,10 +423,19 @@ ActiveRecord::Base.transaction do
   Meditation.create!(name: "Trust Yourself", time_in_minutes: 6, URL: "https://res.cloudinary.com/dpfixnpii/video/upload/v1582394145/Trust_Yourself_-_6_minutes_wssty0.mp4")
   Meditation.create!(name: "Set Yourself Up For Sucess", time_in_minutes: 9, URL: "https://res.cloudinary.com/dpfixnpii/video/upload/v1582394130/Set_Yourself_Up_For_Success_-_9_Minutes_d9lsxw.mp4")
 
-  UserMeditation.create!(user: User.first, meditation_id: 1)
-  UserMeditation.create!(user: User.first, meditation_id: 2)
-  UserMeditation.create!(user: User.first, meditation_id: 2)
-  UserMeditation.create!(user: User.first, meditation_id: 3)
-  UserMeditation.create!(user: User.first, meditation_id: 3)
+  UserMeditation.create!(user: User.first, meditation_id: 1, created_at: Date.new(2020, 2, 1))
+  UserMeditation.create!(user: User.first, meditation_id: 2, created_at: Date.new(2020, 2, 4))
+  UserMeditation.create!(user: User.first, meditation_id: 2, created_at: Date.new(2020, 2, 6))
+  UserMeditation.create!(user: User.first, meditation_id: 3, created_at: Date.new(2020, 2, 9))
+  UserMeditation.create!(user: User.first, meditation_id: 3, created_at: Date.new(2020, 2, 13))
+  UserMeditation.create!(user: User.first, meditation_id: 3, created_at: Date.new(2020, 2, 16))
+  UserMeditation.create!(user: User.first, meditation_id: 4, created_at: Date.new(2020, 2, 21))
+  UserMeditation.create!(user: User.first, meditation_id: 4, created_at: Date.new(2020, 2, 22))
+  UserMeditation.create!(user: User.first, meditation_id: 1, created_at: Date.new(2020, 2, 23))
+  UserMeditation.create!(user: User.first, meditation_id: 2, created_at: Date.new(2020, 2, 24))
+  UserMeditation.create!(user: User.first, meditation_id: 4, created_at: Date.new(2020, 2, 25))
+  UserMeditation.create!(user: User.first, meditation_id: 3, created_at: Date.new(2020, 2, 26))
+  UserMeditation.create!(user: User.first, meditation_id: 1, created_at: Date.new(2020, 2, 27))
+  UserMeditation.create!(user: User.first, meditation_id: 3, created_at: Date.new(2020, 2, 28))
 
 end  

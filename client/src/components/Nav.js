@@ -15,7 +15,7 @@ import MenuIcon from "@material-ui/icons/Menu";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 
-const drawerWidth = 240;
+const drawerWidth = 300;
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -164,7 +164,7 @@ export default function Nav(props) {
           </Typography>
           {props.user.name && (
             <Typography variant="h6" noWrap className={classes.welcome}>
-              Welcome {props.user.name}!
+              Hi {props.user.name}!
             </Typography>
           )}
           <IconButton
