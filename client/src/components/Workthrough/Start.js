@@ -1,23 +1,19 @@
 import React from "react";
 import styled from "styled-components";
-import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Card from "@material-ui/core/Card";
-import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
+import "./question.css";
 import FormLabel from "@material-ui/core/FormLabel";
-
 import { CardActions, ButtonBase } from "@material-ui/core";
 
 const CardStart = styled(Card)`
   margin-left: 10%;
   margin-right: 10%;
-
   padding: 1em;
   flex-direction: column;
 `;
-
 const CardActionStart = styled(CardActions)`
   padding: 0;
   & > p {
@@ -28,16 +24,28 @@ const CardActionStart = styled(CardActions)`
   }
 `;
 
-// const CardContentStart = styled(CardContent)`
-//   padding: 0;
-//   & > p {
-//     margin-top: 5%;
-//     margin-bottom: 5%;
-//     color: white;
-//     text-align: center;
-//   }
-// `;
 
+const StaticPaper2 = styled(Paper)`
+  width: 90%;
+  margin: 10px auto;
+  background-color: #353c52;
+  justify-content: center;
+  align-items: center;
+  padding: 1%;
+`;
+
+const Title = styled.h1`
+  text-align: center;
+  margin: 20px auto;
+  marfin-top: 5%;
+`;
+
+const Text = styled.p`
+  line-height: 1.5;
+  font-size: 1.5em;
+  font-weight: normal;
+  margin: 15px;
+`;
 const TypographyStart = styled(Typography)`
   font-size: x-large;
   font-weight: 600;
@@ -51,9 +59,7 @@ const useStyles = makeStyles(theme => ({
     "& > *": {
       margin: theme.spacing(1),
       width: theme.spacing(100),
-
       backgroundColor: "#353c52",
-      backgroundImage: `url(http://www.transparenttextures.com/patterns/cubes.png)`
     }
   },
   button: {
@@ -75,6 +81,17 @@ export default function Start(props) {
 
   return (
     <main className="start">
+      <Title>Work-Throughs</Title>
+      <StaticPaper2 elevation={10}>
+        <Text>
+          Thoughts are the things that we say to ourselves without speaking out
+          loud (self-talk). Each of us have our own way of thinking about
+          things, but it's important to recognize that our self-talk has a big
+          effect on how we feel. As a test approaches and you feel anxious, use
+          these Work-Throughs to identify which Thinking Traps you are falling
+          into, and to help you challenge anxious thoughts as they arise.{" "}
+        </Text>
+      </StaticPaper2>
       <div className={classes.root}>
         <Paper elevation={10}>
           <CardStart className={classes.cards}>

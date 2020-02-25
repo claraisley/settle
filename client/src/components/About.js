@@ -69,9 +69,7 @@ export default function About() {
         </Text>
         <Text>
           General concept and material found in the Work-Throughs is original content by 
-            <StyledHREF href="https://www.linkedin.com/in/katherine-szelag/">  Katherine Szelag{" "}
-          </StyledHREF>
-          .
+            <StyledHREF href="https://www.linkedin.com/in/katherine-szelag/">  Katherine Szelag{""}</StyledHREF>.
         </Text>
       </StaticPaper2>
     </main>

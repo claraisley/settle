@@ -73,7 +73,6 @@ const useStyles = makeStyles(theme => ({
       width: theme.spacing(100),
       height: theme.spacing(72),
       backgroundColor: "#353c52",
-      backgroundImage: `url(http://www.transparenttextures.com/patterns/cubes.png)`
     }
   },
   responseList: {

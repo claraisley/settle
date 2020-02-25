@@ -39,7 +39,7 @@ ActiveRecord::Base.transaction do
     example_statement1: "'I left 3 questions blank, my mark will be horrible.'",
     example_statement2: "'Who cares if I did great on my english test, my math test will still go poorly.'",
     text: "When we fall into the thinking trap of Filtering, we pay attention only to the negative aspects and ignore all the positive ones. It's hard to have balanced thoughts if you only focus on the negative. You are more than your test anxiety and there are many good things about you!",
-    definition: "Filtering involves only paying attention to the negative aspects of a situation while ignoring all the positive"
+    definition: "Filtering involves only paying attention to the negative aspects of a situation while ignoring all the positive."
   )
   fortune_telling = ThinkingTrap.create!(
     name: "Fortune-telling",
@@ -53,7 +53,7 @@ ActiveRecord::Base.transaction do
     example_statement1: "'Everyone will think I'm stupid.'",
     example_statement2: "'My teacher doesn't like me.'",
     text: "When you think you know a person’s intentions or thoughts, you are falling into the thinking trap known as Mind-reading. You assume people will focus your flaws and believe their negative responses are your fault, even though their response might have nothing to do with you at all.",
-    definition: "Fortune-telling is thinking trap where we believe that we know what others are thinking and we assume that they are thinking the worst of us."
+    definition: "Mind-reading is a thinking error where we falsely believe we know a person's intentions or thoughts."
   )
   black_white = ThinkingTrap.create!(
     name: "Black-and-white thinking",

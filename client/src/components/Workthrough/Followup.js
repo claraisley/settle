@@ -67,12 +67,11 @@ export default function Followup(props) {
   const classes = useStyles();
   const [isMobile, setIsMobile] = useState(false)
   const [open, setOpen] = useState(false);
-  console.log("IS MOBILE?", isMobile)
 
   useEffect(() => {
     if (window.innerWidth < 600)
       setIsMobile(true)
-  })
+  }, [])
 
   const handleTooltipClose = () => {
     setOpen(false);
