@@ -23,9 +23,8 @@ const CardQuiz = styled(Card)`
   margin-top: 2em;
   margin-left: 5%;
   margin-right: 5%;
-
   align-items: center;
-  height: 100%;
+  text-align: center;
   background-color: #353c52;
 `;
 

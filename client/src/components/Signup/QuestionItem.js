@@ -29,7 +29,7 @@ const CardQuizList = styled(Card)`
   margin-right: 5%;
   margin-bottom: 2em;
   align-items: center;
-  height: 100%;
+
   background-color: #353c52;
 `;
 export default function QuestionItem(props) {
