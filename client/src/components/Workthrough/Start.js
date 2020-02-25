@@ -38,10 +38,10 @@ const CardActionStart = styled(CardActions)`
 //   }
 // `;
 
-// const TypographyStart = styled(Typography)`
-//   font-size: x-large;
-//   font-weight: 600;
-// `;
+const TypographyStart = styled(Typography)`
+  font-size: x-large;
+  font-weight: 600;
+`;
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -95,7 +95,7 @@ export default function Start(props) {
               </CardActionStart>
             </ButtonBase>
           </CardStart>
-        </PaperStart>
+        </Paper>
       </div>
     </main>
   );
