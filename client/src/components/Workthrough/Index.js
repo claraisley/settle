@@ -39,7 +39,9 @@ export default function Workthrough(props) {
     currentFollowup: {},
     currentThinkingTrap: {}
   });
-  console.log("STATE", state);
+
+  console.log("STATE RESPONSEs", state.responsesChosen);
+
 
   const { mode, transition, back } = useVisualMode(START);
 
@@ -71,7 +73,7 @@ export default function Workthrough(props) {
   const startWorkthrough = numberOfQuestions => {
     Promise.all([
       axios.request({
-        url: "http://localhost:3001/reflections",
+        url: "/reflections",
         method: "get",
         headers: {
           "Content-Type": "application/json",
@@ -85,7 +87,9 @@ export default function Workthrough(props) {
         withCredentials: true
       }),
       axios.request({
-        url: "http://localhost:3001/user_interests",
+
+        url: "/user_interests",
+
         method: "get",
         headers: {
           "Content-Type": "application/json",
@@ -150,7 +154,7 @@ export default function Workthrough(props) {
     };
     axios
       .request({
-        url: "http://localhost:3001/reflections",
+        url: "/reflections",
         method: "post",
         headers: {
           "Content-Type": "application/json",

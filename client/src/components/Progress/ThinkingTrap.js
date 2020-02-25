@@ -1,62 +1,79 @@
-import React, { useState, useEffect} from "react";
-import TrapItems from "./ThinkTrapItems"
+import React, { useState, useEffect } from "react";
+import TrapItems from "./ThinkTrapItems";
 import styled from "styled-components";
 import Button from "@material-ui/core/Button";
 const axios = require("axios").default;
 
-
 const BackButton = styled(Button)`
-height: 100px;
-width: 100px;
+  height: 100px;
+  width: 100px;
 `;
 const BackImg = styled.img`
-height: 100px;
-width: 100px;
+  height: 100px;
+  width: 100px;
 `;
 
-
+const Title = styled.h1`
+  text-align: center;
+  margin-bottom: 5%;
+`;
+const StyledDiv = styled.div`
+  display: flex;
+  margin-top: 3%;
+`;
+const StyledTitle = styled.h1`
+  color: #ffd882;
+`;
 
 export default function ThinkingTrap(props) {
-
   const [trapData, setTrapData] = useState({});
 
   useEffect(() => {
-    axios.request({
-      url: "http://localhost:3001/trap_data",
-      method: "get",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-        "Access-Control-Allow-Credentials": true
-      },
-      params: {
-        id: props.user.id
-      },
-      withCredentials: true
-    })
-      .then(response => {
-        let results = response.data
-        setTrapData(results) // if no relfections done, then trapData is empty object
+    axios
+      .request({
+        url: "/trap_data",
+        method: "get",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+          "Access-Control-Allow-Credentials": true
+        },
+        params: {
+          id: props.user.id
+        },
+        withCredentials: true
       })
-      .catch(function (error) {
+      .then(response => {
+        setTrapData(response.data);
+      })
+      .catch(function(error) {
         console.log(error);
       });
-  }, [props.user.id])
-  
+  }, [props.user.id]);
 
+  const emptyMessage =
+    "Go through some Work-Throughs to see which thinking traps you are falling into!";
 
-const emptyMessage = "Go through some Work-Throughs to see which thinking traps you are falling into!"
-
-
+  const checkEmpty = Object.entries(trapData).length;
   return (
-    <main className="ThinkingTrap">
-      <h2>Thinking Traps</h2>
-      <BackButton onClick={()=>{props.goToProgressPage("HOME")}}>
-      <BackImg src="https://res.cloudinary.com/dpfixnpii/image/upload/v1582400198/arrow_xph8bj.svg"/>
-      </BackButton> 
-      <article> 
-        {!(Object.entries(trapData).length) ? <p>{emptyMessage}</p> : <TrapItems trapData={trapData}/>}
+    <main>
+      <StyledDiv>
+        <BackButton
+          onClick={() => {
+            props.goToProgressPage("HOME");
+          }}
+        >
+          <BackImg src="https://res.cloudinary.com/dpfixnpii/image/upload/v1582400198/arrow_xph8bj.svg" />
+        </BackButton>
+      </StyledDiv>
+      <Title>Thinking Traps Progress</Title>
+      <article>
+        {checkEmpty ? (
+          <TrapItems trapData={trapData} />
+        ) : (
+          <StyledTitle>{emptyMessage}</StyledTitle>
+        )}
       </article>
     </main>
-  )
+  );
 }

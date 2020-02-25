@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import ExpansionPanel from "@material-ui/core/ExpansionPanel";
 import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";
@@ -72,7 +72,7 @@ export default function Meditation(props) {
   const handleEnd = meditationId => {
     axios
       .request({
-        url: "http://localhost:3001/meditations",
+        url: "/meditations",
         method: "post",
         headers: {
           "Content-Type": "application/json",
