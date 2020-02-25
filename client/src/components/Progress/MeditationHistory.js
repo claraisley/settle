@@ -82,7 +82,7 @@ export default function MeditationHistory(props) {
         let results = response.data;
         setState(prev => ({ ...prev, meditations: results })); // if no meditations, then state.meditations is just an empty array
       })
-      .catch(function(error) {
+      .catch(function (error) {
         console.log(error);
       });
   }, [props.user.id]);
@@ -127,6 +127,9 @@ export default function MeditationHistory(props) {
     options: {
       chart: {
         id: "basic-bar",
+        toolbar: {
+          show: false
+        }
       },
       xaxis: {
         categories: Object.values(weekObject).map(
@@ -135,7 +138,13 @@ export default function MeditationHistory(props) {
         title: {
           text: `Week of ${getSunday(state.baseDay).toDateString()}`,
           style: {
-            fontSize: "1rem"
+            fontSize: "1rem",
+            color: "white"
+          }
+        },
+        labels: {
+          style: {
+            colors: "white"
           }
         }
       },
@@ -143,15 +152,24 @@ export default function MeditationHistory(props) {
         title: {
           text: "Minutes",
           style: {
-            fontSize: "1rem"
+            fontSize: "1rem",
+            color: "white"
           }
         },
-        forceNiceScale: true
+        forceNiceScale: true,
+        labels: {
+          style: {
+            colors: "white"
+          }
+        }
+      },
+      tooltip: {
+        theme: "dark"
       }
     },
     series: [
       {
-        name: "series-1",
+        name: "Meditation Time",
         data: Object.values(weekObject).map(({ time }) => time)
       }
     ]
@@ -176,16 +194,11 @@ export default function MeditationHistory(props) {
   return (
     <main className="MeditationHistory">
       <StyledDiv>
-        <BackButton
-          onClick={() => {
-            props.goToProgressPage("HOME");
-          }}
-        >
+        <BackButton onClick={() => { props.goToProgressPage("HOME") }}>
           <BackImg src="https://res.cloudinary.com/dpfixnpii/image/upload/v1582400198/arrow_xph8bj.svg" />
         </BackButton>
         <Title>Meditation Tracker</Title>
       </StyledDiv>
-
       <NotePaper elevation={12}>
         <Grid container spacing={2}>
           <Grid item xs={12} sm={6}>
@@ -218,10 +231,10 @@ export default function MeditationHistory(props) {
                 width="100%"
               />
             ) : (
-              <StyledTitle>
-                Do a meditation to start tracking your progress!
+                <StyledTitle>
+                  Do a meditation to start tracking your progress!
               </StyledTitle>
-            )}
+              )}
           </Grid>
         </Grid>
       </NotePaper>
