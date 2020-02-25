@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
-// import Button from "@material-ui/core/Button";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
@@ -12,7 +11,6 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormControl from "@material-ui/core/FormControl";
 import FormLabel from "@material-ui/core/FormLabel";
 import personalizeText from "./HelperFunction";
-// import { Container } from "@material-ui/core";
 
 const CardQuestion = styled(Card)`
   margin-top: 5%;
@@ -40,8 +38,11 @@ const QuestionResponse = styled.div`
   & > label {
     margin: 0.5em;
     text-align: center;
-      & > span:hover {
+      & > .makeStyles-cards-194:hover {
         background-color: rgba(255, 255, 255, 0.1);
+      }
+      & > .MuiRadio-colorSecondary.Mui-checked {
+        color: white;
       }
     }
   }
@@ -73,9 +74,6 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: "#353c52",
     color: "white"
   }
-  // formControl: {
-  //   margin: theme.spacing(3)
-  // }
 }));
 
 export default function Question(props) {
@@ -118,6 +116,7 @@ export default function Question(props) {
               name="gender1"
               value={value}
               onChange={handleChange}
+              className={{ root: classes.radio, checked: classes.checked }}
             >
               <QuestionResponse>{responseList}</QuestionResponse>
             </RadioGroup>

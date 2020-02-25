@@ -15,7 +15,8 @@ if (process.env.REACT_APP_API_BASE_URL) {
 const theme = createMuiTheme({
   palette: {
     primary: {
-      main: "#deb559"
+      main: "#deb559",
+      secondary: "#ffffff"
       //#d6a026 - yellow
       //#d67557 -orange one
     },

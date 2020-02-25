@@ -15,6 +15,7 @@ import MenuIcon from "@material-ui/icons/Menu";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import styled from "styled-components";
+import ButtonBase from "@material-ui/core/ButtonBase";
 
 const drawerWidth = 300;
 
@@ -164,11 +165,12 @@ export default function Nav(props) {
       <CssBaseline />
       <AppBar position="fixed" className={classes.appBar}>
         <Toolbar className={classes.toolbar}>
-          <Cactus src="https://res.cloudinary.com/dpfixnpii/image/upload/v1582608002/cactus_wxnhwz.svg" />
-          <Typography variant="h6" noWrap className={classes.title}>
-            SETTLE
-          </Typography>
-
+          <ButtonBase onClick={() => history.push("/menu")}>
+            <Cactus src="https://res.cloudinary.com/dpfixnpii/image/upload/v1582608002/cactus_wxnhwz.svg" />
+            <Typography variant="h6" noWrap className={classes.title}>
+              SETTLE
+            </Typography>
+          </ButtonBase>
           {props.user.name && (
             <Typography variant="h6" noWrap className={classes.welcome}>
               Hi {props.user.name}!
