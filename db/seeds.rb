@@ -10,7 +10,7 @@
 ActiveRecord::Base.transaction do
 
   #USERS
-  User.create!(first_name: "Katherine", last_name: "Szelag", email: "katherine.szelag@alum.utoronto.ca", password: "123456")
+  User.create!(first_name: "Katherine", last_name: "Szelag", email: "katherine@example.com", password: "123456")
   User.create!(first_name: "Dwight", last_name: "Shrute", email: "dwight@gmail.com", password: "123123")
 
   #INTERESTS
@@ -21,7 +21,10 @@ ActiveRecord::Base.transaction do
  
   #USER INTERESTS
   UserInterest.create!(user: User.first, interest: Interest.first, value: "Charlie")
-  
+  UserInterest.create!(user: User.first, interest: friend_name, value: "Isidora")
+  UserInterest.create!(user: User.first, interest: hobby, value: "cooking")
+  UserInterest.create!(user: User.first, interest: sport, value: "boxing")
+
   #THINKING TRAPS
 
   catastrophizing = ThinkingTrap.create!(
@@ -43,7 +46,7 @@ ActiveRecord::Base.transaction do
     example_statement1: "'I know I’ll mess up.'",
     example_statement2: "'I'm going to fail the math test.'",
     text: "Fortune-telling is a type of thinking error where we predict something negative will happen without realistically considering the real odds of the situation. We assume that some event or events will end badly for us, but in reality, we cannot predict the future because we don’t have a magic ball!",
-    definition: "Fortune-telling is thinking trap where we predict that things will turn out badly without realistically considering the evidence adn odds in a situation. "
+    definition: "Fortune-telling is thinking trap where we predict that things will turn out badly without realistically considering the evidence and odds in a situation. "
   )
   mind_reading = ThinkingTrap.create!(
     name: "Mind-reading",
@@ -87,7 +90,7 @@ ActiveRecord::Base.transaction do
   q10 = Thought.create!(interest: friend_name, text: "If my mark on this test is 'bad', my teacher, friends and classmates will think I am stupid.")
   q11 = Thought.create!(interest: friend_name, text: "Will friendName still hangout with me if I mess this test up?")
   q12 = Thought.create!(interest: sport, text: "Having text anxiety means I will never be a good student.")
-
+  q13 = Thought.create!(interest: hobby, text: "If the worst-case scenerio happens (i.e. the test goes poorly), I won't be able to deal with it.")
 
   ###############################################################################################
   # RESPONSES
@@ -150,6 +153,11 @@ ActiveRecord::Base.transaction do
   r34 = Response.create!(thought: q12, thinking_trap: black_white, value: 5, text: "True, being this anxious now means I won't ever succeed.")
   r35 = Response.create!(thought: q12, thinking_trap: black_white, value: 2, text: "If I don't overcome my anxiety then it's possible I won't ever be a good student. ")
   r36 = Response.create!(thought: q12, thinking_trap: black_white, value: 0, text: "I could probably work around my test anxiety and it may not last forever.")
+  
+  #q13 response
+  r37 = Response.create!(thought: q13, thinking_trap: fortune_telling, value: 4, text: "If I fail the test I won't be able to deal with it.  ")
+  r38 = Response.create!(thought: q13, thinking_trap: fortune_telling, value: 2, text: "I know it's not the end of the world but it's hard to imagine how I could cope with that.")
+  r39 = Response.create!(thought: q13, thinking_trap: fortune_telling, value: 1, text: "I'd be upset for sure, but I think I might be able to cope with a bad outcome like that. ")
   
   ###############################################################################################
   #FOLLOWUPS
@@ -356,6 +364,24 @@ ActiveRecord::Base.transaction do
     thinking_trap: black_white,
     text:"You're right! Tests are only one type of assessment in school and it is definitely possible you could one day learn to better manage test anxiety. Just like with sportName, practice and effort can make all the difference. Keep being positive and continue to use these work-throughs and the meditations to challenge any anxious thinking."
   )
+
+  #q13 followups
+  f37 = FollowUp.create!(
+    response: r37,
+    thinking_trap: fortune_telling,
+    text:"All of us are stronger than we think we are. Think back throughout your life or academic career to a time when you suffered a big disspointment. It was a difficult situation I'm sure, but in the end you kept going. If the worst-case scenerio does happen, you will definitely be able to cope. To help you deal with it you could do things like socialize with friends or hobbyName."
+  )
+  f38 = FollowUp.create!(
+    response: r38,
+    thinking_trap: fortune_telling,
+    text:"You are right, a test going poorly is not the end of the world. It might seem unlikely but if the worst-case scenerio does happen, you will definitely be able to cope. Think back throughout your life or academic career to a time when you suffered a big disspointment. It was a difficult situation I'm sure, but in the end you kept going. To help you deal with a bad outcome you could do things like socialize with friends or hobbyName. "
+  )
+  f39 = FollowUp.create!(
+    response: r39,
+    thinking_trap: fortune_telling,
+    text:"Even though a test going poorly is not the end of the world, it is definitely frustrating. If the worst-case scenerio does happen, you will definitely be able to cope. To help you deal with a bad outcome you could do things like socialize with friends or hobbyName. "
+  )
+
 
 #################################################################################################
 #TIPS FOR TEST SUCCESS
