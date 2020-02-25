@@ -24,8 +24,8 @@ const ContainerLogin = styled(Container)`
 
 const PaperLogin = styled(Paper)`
   margin-top: 8%;
-  margin-left: 20%;
-  margin-right: 20%;
+  margin-left: 10%;
+  margin-right: 10%;
   margin-bottom: 5%;
   background-color: #353c52;
 `;
