@@ -12,10 +12,45 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import { makeStyles } from "@material-ui/core/styles";
 // import LinearProgress from "@material-ui/core/LinearProgress";
 import axios from "axios";
+import { Button } from "@material-ui/core";
 
 const MainQuiz = styled.main`
   padding-top: 4em;
 `;
+
+const Heading = styled.h2`
+  margin-left: 15%;
+  padding-left: 1.7em;
+`;
+
+const Footer = styled.section`
+  margin-left: 15%;
+  padding: 3em;
+  justify-content: center;
+`;
+
+const BackButton = styled(Button)`
+  height: 70px;
+  width: 70px;
+`;
+
+const BackImg = styled.img`
+  height: 50px;
+  width: 50px;
+`;
+
+const ForwardButton = styled(Button)`
+  height: 70px;
+  width: 70px;
+`;
+
+const ForwardImg = styled.img`
+  height: 50px;
+  width: 50px;
+`;
+
+const RestartButton = styled(Button)``;
+
 const useStyles = makeStyles(theme => ({
   root: {
     width: "25%"
@@ -30,19 +65,17 @@ const START = "START";
 
 export default function Workthrough(props) {
   const classes = useStyles();
-  const [ open, setOpen] = useState(false)
+  const [open, setOpen] = useState(false);
   const [state, setState] = useState({
     questions: [],
     interests: [],
     currentQuestion: {},
     responsesChosen: [],
     currentFollowup: {},
-    currentThinkingTrap: {},
+    currentThinkingTrap: {}
   });
 
-
   console.log("STATE RESPONSEs", state.responsesChosen);
-
 
   const { mode, transition, back } = useVisualMode(START);
 
@@ -88,7 +121,6 @@ export default function Workthrough(props) {
         withCredentials: true
       }),
       axios.request({
-
         url: "/user_interests",
 
         method: "get",
@@ -187,66 +219,63 @@ export default function Workthrough(props) {
       currentQuestion: {},
       responsesChosen: [],
       currentFollowup: {},
-      currentThinkingTrap: {},
+      currentThinkingTrap: {}
     }));
     transition(START);
   };
 
   return (
     <MainQuiz className="workthrough">
-      <h2>Workthrough</h2>
+      <Heading>Workthrough</Heading>
       <section>
         {mode === START && <Start startWorkthrough={startWorkthrough} />}
         {mode === MOOD && <Mood onResponse={respondMood} />}
         {mode === QUESTION && (
-   
           <Question
             question={state.currentQuestion}
             responses={state.currentQuestion.responses}
             onResponse={respond}
             interests={state.interests}
           />
-
-        
         )}
-          <Followup
-            open={open}
-            handleClose = { () =>  setOpen(prev => !prev)}
-            followup={state.currentFollowup}
-            thinkingTrap={state.currentThinkingTrap}
-            interests={state.interests}
-            nextQuestion={ () => {
-              setOpen(prev => {
-                startNextQuestion();
-                return !prev;
-              })
-            }}
-          />
-
-        )}
+        <Followup
+          open={open}
+          handleClose={() => setOpen(prev => !prev)}
+          followup={state.currentFollowup}
+          thinkingTrap={state.currentThinkingTrap}
+          interests={state.interests}
+          nextQuestion={() => {
+            setOpen(prev => {
+              startNextQuestion();
+              return !prev;
+            });
+          }}
+        />
         {mode === COMPLETION && (
           <Completion restartWorkthrough={restartWorkthrough} />
         )}
-
       </section>
-      <section>
+      <Footer>
         <label htmlFor="workthrough-progress">
           Progress {state.questions.length - currentProgress}/
           {state.questions.length}
         </label>
         <div className={classes.root}></div>
-        <IconButton onClick={() => back()}>
-          <ExpandLessIcon fontSize="large" />
-        </IconButton>
+        <BackButton onClick={() => back()}>
+          <BackImg src="https://res.cloudinary.com/dpfixnpii/image/upload/v1582400198/arrow_xph8bj.svg" />
+        </BackButton>
 
-        <IconButton onClick={() => startNextQuestion()}>
-          <ExpandMoreIcon fontSize="large" />
-        </IconButton>
-        <button onClick={() => restartWorkthrough()}>
+        <ForwardButton onClick={() => startNextQuestion()}>
+          <ForwardImg src="https://res.cloudinary.com/dpfixnpii/image/upload/v1582400212/arrow-point-to-right_qgqicj.svg" />
+        </ForwardButton>
+        <RestartButton
+          variant="contained"
+          color="primary"
+          onClick={() => restartWorkthrough()}
+        >
           Quit without saving
-        </button>
-
-      </section>
+        </RestartButton>
+      </Footer>
     </MainQuiz>
   );
 }
