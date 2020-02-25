@@ -4,8 +4,6 @@ import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Card from "@material-ui/core/Card";
 import Typography from "@material-ui/core/Typography";
-
-import FormLabel from "@material-ui/core/FormLabel";
 import { CardActions, ButtonBase } from "@material-ui/core";
 
 const CardStart = styled(Card)`
@@ -23,8 +21,6 @@ const CardActionStart = styled(CardActions)`
     text-align: center;
   }
 `;
-
-
 const StaticPaper2 = styled(Paper)`
   width: 90%;
   margin: 10px auto;
@@ -33,13 +29,11 @@ const StaticPaper2 = styled(Paper)`
   align-items: center;
   padding: 1%;
 `;
-
 const Title = styled.h1`
   text-align: center;
   margin: 20px auto;
   marfin-top: 5%;
 `;
-
 const Text = styled.p`
   line-height: 1.5;
   font-size: 1.5em;

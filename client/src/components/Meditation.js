@@ -8,6 +8,13 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import axios from "axios";
 import Paper from "@material-ui/core/Paper";
 import styled from "styled-components";
+import Button from '@material-ui/core/Button';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import Slide from '@material-ui/core/Slide';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -30,7 +37,9 @@ const useStyles = makeStyles(theme => ({
     color: theme.palette.text.secondary
   }
 }));
-
+const Transition = React.forwardRef(function Transition(props, ref) {
+  return <Slide direction="up" ref={ref} {...props} />;
+});
 const StaticPaper = styled(Paper)`
   width: 90%;
   margin: 10px auto;
@@ -67,6 +76,15 @@ export default function Meditation(props) {
   const handleChange = panel => event => {
     setExpanded(prevEx => (prevEx !== panel ? panel : false));
   };
+  const [open, setOpen] = React.useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   const handleEnd = meditationId => {
     axios
@@ -84,10 +102,11 @@ export default function Meditation(props) {
         },
         withCredentials: true
       })
-      .then(function(response) {
+      .then(function (response) {
+        handleClickOpen()
         console.log(response); // here we could maybe do like a "congrats for finishing a meditation thing!"
       })
-      .catch(function(error) {
+      .catch(function (error) {
         console.log(error);
       });
   };
@@ -120,6 +139,26 @@ export default function Meditation(props) {
 
   return (
     <main className="meditations">
+      <Dialog
+        open={open}
+        TransitionComponent={Transition}
+        keepMounted
+        onClose={handleClose}
+        aria-labelledby="alert-dialog-slide-title"
+        aria-describedby="alert-dialog-slide-description"
+      >
+        <DialogTitle id="alert-dialog-slide-title">{"Use Google's location service?"}</DialogTitle>
+        <DialogContent>
+          <DialogContentText id="alert-dialog-slide-description">
+            Congratulations for completing a meditation! It's perfectly normal if your mind wandered. Just like any skill, mindfulness takes practice but being present for a even short time has been show to have benefits! 
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose} color="primary">
+            Close
+          </Button>
+        </DialogActions>
+      </Dialog>
       <Title>Meditations</Title>
       <StaticPaper2 elevation={10}>
         <Text>
