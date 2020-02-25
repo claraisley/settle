@@ -21,9 +21,9 @@ const ContainerSignup = styled(Container)`
   padding: 3%;
 `;
 const PaperSignup = styled(Paper)`
-  margin-top: 7%;
-  margin-left: 20%;
-  margin-right: 20%;
+  margin-top: 8%;
+  margin-left: 6%;
+  margin-right: 6%;
   background-color: #353c52;
   margin-bottom: 5%;
 `;
@@ -40,7 +40,7 @@ const TypographySignup = styled(Typography)`
   font-weight: 600;
 `;
 const BackpackBox = styled.div`
-margin-top: 2%;
+margin-top: 5%;
 margin-bottom: 2%;
 display: flex;
 justify-content: center;

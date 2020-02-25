@@ -51,6 +51,7 @@ const StaticPaper2 = styled(Paper)`
 const Title = styled.h1`
   text-align: center;
   margin: 20px auto;
+  marfin-top: 5%;
 `;
 
 const Text = styled.p`

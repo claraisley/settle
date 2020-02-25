@@ -24,8 +24,8 @@ const ContainerLogin = styled(Container)`
 
 const PaperLogin = styled(Paper)`
   margin-top: 8%;
-  margin-left: 10%;
-  margin-right: 10%;
+  margin-left: 6%;
+  margin-right: 6%;
   margin-bottom: 5%;
   background-color: #353c52;
 `;
@@ -45,7 +45,7 @@ const TypographyLogin = styled(Typography)`
 `;
 
 const BackpackBox = styled.div`
-  margin-top: 2%;
+  margin-top: 5%;
   margin-bottom: 2%;
   display: flex;
   justify-content: center;
