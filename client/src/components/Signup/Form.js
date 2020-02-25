@@ -90,8 +90,6 @@ export default function SignUp(props) {
       data: body
     })
       .then(response => {
-       
-        console.log(response);
         props.setUser({
           email: response.data.email,
           name: response.data.name,
