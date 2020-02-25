@@ -3,16 +3,16 @@ import Button from "@material-ui/core/Button";
 import styled from "styled-components";
 import Paper from "@material-ui/core/Paper";
 
+const RestartButton = styled(Button)`
+`;
 const MoodButton = styled(Button)`
   height: 60px;
   width: 60px;
 `;
-
 const MoodImg = styled.img`
   height: 50px;
   width: 50px;
 `;
-
 const MoodPaper = styled(Paper)`
   padding: 8%;
   margin: 5% auto 5% auto;
@@ -70,6 +70,13 @@ export default function Mood(props) {
       <MoodPaper elevation={10}>
         <h4>How are you feeling right now?</h4>
         <div className={moodList}>{moodList}</div>
+        <RestartButton
+          variant="contained"
+          color="primary"
+          onClick={() => props.restartWorkthrough()}
+        >
+          Quit without saving
+        </RestartButton>
       </MoodPaper>
     </main>
   );

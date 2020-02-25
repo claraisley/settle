@@ -13,14 +13,16 @@ import FormControl from "@material-ui/core/FormControl";
 import FormLabel from "@material-ui/core/FormLabel";
 import personalizeText from "./HelperFunction";
 // import { Container } from "@material-ui/core";
+import { Button } from "@material-ui/core";
 
+const RestartButton = styled(Button)`
+`;
 const CardQuestion = styled(Card)`
   margin-top: 5%;
   margin-left: 10%;
   margin-right: 10%;
   margin-bottom: 5%;
 `;
-
 const CardContentQuestion = styled(CardContent)`
   & > p {
     margin-top: 5%;
@@ -29,12 +31,10 @@ const CardContentQuestion = styled(CardContent)`
     text-align: center;
   }
 `;
-
 const TypographyHeader = styled(Typography)`
   font-size: x-large;
   font-weight: 600;
 `;
-
 const QuestionResponse = styled.div`
   display: grid;
   & > label {
@@ -123,6 +123,13 @@ export default function Question(props) {
             </RadioGroup>
           </FormControl>
         </CardQuestion>
+        <RestartButton
+          variant="contained"
+          color="primary"
+          onClick={() => props.restartWorkthrough()}
+        >
+          Quit without saving
+        </RestartButton>
       </Paper>
     </div>
   );

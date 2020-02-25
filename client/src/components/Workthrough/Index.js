@@ -6,9 +6,9 @@ import useVisualMode from "../../hooks/useVisualMode";
 import Followup from "./Followup.js";
 import Completion from "./Completion.js";
 import Start from "./Start.js";
-import IconButton from "@material-ui/core/IconButton";
-import ExpandLessIcon from "@material-ui/icons/ExpandLess";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+// import IconButton from "@material-ui/core/IconButton";
+// import ExpandLessIcon from "@material-ui/icons/ExpandLess";
+// import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import { makeStyles } from "@material-ui/core/styles";
 // import LinearProgress from "@material-ui/core/LinearProgress";
 import axios from "axios";
@@ -17,39 +17,31 @@ import { Button } from "@material-ui/core";
 const MainQuiz = styled.main`
   padding-top: 4em;
 `;
-
 const Heading = styled.h2`
   margin-left: 15%;
   padding-left: 1.7em;
 `;
-
 const Footer = styled.section`
   margin-left: 15%;
   padding: 3em;
   justify-content: center;
 `;
-
 const BackButton = styled(Button)`
   height: 70px;
   width: 70px;
 `;
-
 const BackImg = styled.img`
   height: 50px;
   width: 50px;
 `;
-
 const ForwardButton = styled(Button)`
   height: 70px;
   width: 70px;
 `;
-
 const ForwardImg = styled.img`
   height: 50px;
   width: 50px;
 `;
-
-const RestartButton = styled(Button)``;
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -59,7 +51,7 @@ const useStyles = makeStyles(theme => ({
 
 const MOOD = "MOOD";
 const QUESTION = "QUESTION";
-const FOLLOWUP = "FOLLOWUP";
+// const FOLLOWUP = "FOLLOWUP";
 const COMPLETION = "COMPLETION";
 const START = "START";
 
@@ -74,8 +66,6 @@ export default function Workthrough(props) {
     currentFollowup: {},
     currentThinkingTrap: {}
   });
-
-  console.log("STATE RESPONSEs", state.responsesChosen);
 
   const { mode, transition, back } = useVisualMode(START);
 
@@ -229,13 +219,14 @@ export default function Workthrough(props) {
       <Heading>Workthrough</Heading>
       <section>
         {mode === START && <Start startWorkthrough={startWorkthrough} />}
-        {mode === MOOD && <Mood onResponse={respondMood} />}
+        {mode === MOOD && <Mood onResponse={respondMood} restartWorkthrough={restartWorkthrough} />}
         {mode === QUESTION && (
           <Question
             question={state.currentQuestion}
             responses={state.currentQuestion.responses}
             onResponse={respond}
             interests={state.interests}
+            restartWorkthrough={restartWorkthrough}
           />
         )}
         <Followup
@@ -268,13 +259,6 @@ export default function Workthrough(props) {
         <ForwardButton onClick={() => startNextQuestion()}>
           <ForwardImg src="https://res.cloudinary.com/dpfixnpii/image/upload/v1582400212/arrow-point-to-right_qgqicj.svg" />
         </ForwardButton>
-        <RestartButton
-          variant="contained"
-          color="primary"
-          onClick={() => restartWorkthrough()}
-        >
-          Quit without saving
-        </RestartButton>
       </Footer>
     </MainQuiz>
   );
