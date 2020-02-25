@@ -17,7 +17,7 @@ ActiveRecord::Base.transaction do
   pet_interest = Interest.create!(name: "pet_name", question: "Do you have any pets?", question_field: "Type the name of your pet here")
   friend_name = Interest.create!(name: "friend_name", question: "Will you give us the first name of someone you're close with?", question_field: "Type the name here")
   hobby = Interest.create!(name: "hobby", question: "Do you have any hobbies?", question_field: "Type the hobby here")
-  sport = Interest.create!(name: "sport", question: "Do you play any or watch any sports?", question_field: "Type the name of the sport here")
+  sport = Interest.create!(name: "sport", question: "Do you play any sports/e-sports?", question_field: "Type the name of the sport here")
  
   #USER INTERESTS
   UserInterest.create!(user: User.first, interest: Interest.first, value: "Charlie")
@@ -86,6 +86,8 @@ ActiveRecord::Base.transaction do
   q9 = Thought.create!(interest: NIL, text: "I shouldn't run out of time when doing a test.")
   q10 = Thought.create!(interest: friend_name, text: "If my mark on this test is 'bad', my teacher, friends and classmates will think I am stupid.")
   q11 = Thought.create!(interest: friend_name, text: "Will friendName still hangout with me if I mess this test up?")
+  q12 = Thought.create!(interest: sport, text: "Having text anxiety means I will never be a good student.")
+
 
   ###############################################################################################
   # RESPONSES
@@ -144,6 +146,11 @@ ActiveRecord::Base.transaction do
   r32 = Response.create!(thought: q11, thinking_trap: catastrophizing, value: 2, text: "Yes, but I doubt I'll be in the mood to even hangout soon thanks to this test.")
   r33 = Response.create!(thought: q11, thinking_trap: catastrophizing, value: 5, text: "No, they won't want to.")
 
+  #q12 responses
+  r34 = Response.create!(thought: q12, thinking_trap: black_white, value: 5, text: "True, being this anxious now means I won't ever succeed.")
+  r35 = Response.create!(thought: q12, thinking_trap: black_white, value: 2, text: "If I don't overcome my anxiety then it's possible I won't ever be a good student. ")
+  r36 = Response.create!(thought: q12, thinking_trap: black_white, value: 0, text: "I could probably work around my test anxiety and it may not last forever.")
+  
   ###############################################################################################
   #FOLLOWUPS
   #q1 followups
@@ -331,6 +338,23 @@ ActiveRecord::Base.transaction do
     response: r33,
     thinking_trap: catastrophizing,
     text:"friendName wouldn't be your friend if they cared about stuff like that. Sometimes we talk to ourselves in a mean way. This kind of thinking is unhelpful and unfair. Close friends support you and like you for who you are, the outcome of this test will not affect that."
+  )
+
+  #q12 followups
+  f34 = FollowUp.create!(
+    response: r34,
+    thinking_trap: black_white,
+    text:"Having test anxiety can be extremely frustrating. That being said, believing you will never succeed because of it is not a balanced thought. Resist falling into Black-and-white Thinking by not focusing soley on the negatives. Tests are only one type of assessment in school, and it is definitely possible you could one day learn to better manage and cope with test anxiety. Just like with sportName, practice and effort can make all the difference. Keep using these work-throughs and the meditations to challenge any anxious thinking."
+  )
+  f35 = FollowUp.create!(
+    response: r35,
+    thinking_trap: black_white,
+    text:"Although it may feel like things will always be as they are now, objectively we know that is not true. Tests are only one type of assessment in school and it is definitely possible you could one day learn to better manage and cope with test anxiety. Just like with sportName, practice and effort can make all the difference. Keep using these work-throughs and the meditations to challenge any anxious thinking."
+  )
+  f36 = FollowUp.create!(
+    response: r36,
+    thinking_trap: black_white,
+    text:"You're right! Tests are only one type of assessment in school and it is definitely possible you could one day learn to better manage test anxiety. Just like with sportName, practice and effort can make all the difference. Keep being positive and continue to use these work-throughs and the meditations to challenge any anxious thinking."
   )
 
 #################################################################################################
