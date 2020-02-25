@@ -4,8 +4,6 @@ import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Card from "@material-ui/core/Card";
 import Typography from "@material-ui/core/Typography";
-
-import FormLabel from "@material-ui/core/FormLabel";
 import { CardActions, ButtonBase } from "@material-ui/core";
 
 const CardStart = styled(Card)`
@@ -19,11 +17,10 @@ const CardActionStart = styled(CardActions)`
   & > p {
     margin-top: 5%;
     margin-bottom: 5%;
-    color: white;
+    color: #deb559;
     text-align: center;
   }
 `;
-
 
 const StaticPaper2 = styled(Paper)`
   width: 90%;
@@ -33,14 +30,13 @@ const StaticPaper2 = styled(Paper)`
   align-items: center;
   padding: 1%;
 `;
-
 const Title = styled.h1`
   text-align: center;
   margin: 20px auto;
   marfin-top: 5%;
 `;
-
 const Text = styled.p`
+  text-align: center;
   line-height: 1.5;
   font-size: 1.5em;
   font-weight: normal;
@@ -59,7 +55,7 @@ const useStyles = makeStyles(theme => ({
     "& > *": {
       margin: theme.spacing(1),
       width: theme.spacing(100),
-      backgroundColor: "#353c52",
+      backgroundColor: "#353c52"
     }
   },
   button: {
@@ -70,7 +66,7 @@ const useStyles = makeStyles(theme => ({
   cards: {
     display: "flex",
     justifyContent: "center",
-    margin: "10%",
+    margin: "2em",
     backgroundColor: "#353c52",
     color: "white"
   }
@@ -91,10 +87,8 @@ export default function Start(props) {
           these Work-Throughs to identify which Thinking Traps you are falling
           into, and to help you challenge anxious thoughts as they arise.{" "}
         </Text>
-      </StaticPaper2>
-      <div className={classes.root}>
-        <Paper elevation={10}>
-          <CardStart className={classes.cards}>
+        <div className={classes.root}>
+          <CardStart elevation={10} className={classes.cards}>
             <ButtonBase onClick={() => props.startWorkthrough(3)}>
               <CardActionStart>
                 <TypographyStart gutterBottom>
@@ -103,7 +97,7 @@ export default function Start(props) {
               </CardActionStart>
             </ButtonBase>
           </CardStart>
-          <CardStart className={classes.cards}>
+          <CardStart elevation={10} className={classes.cards}>
             <ButtonBase onClick={() => props.startWorkthrough(5)}>
               <CardActionStart>
                 <TypographyStart gutterBottom>
@@ -112,8 +106,8 @@ export default function Start(props) {
               </CardActionStart>
             </ButtonBase>
           </CardStart>
-        </Paper>
-      </div>
+        </div>
+      </StaticPaper2>
     </main>
   );
 }

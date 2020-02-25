@@ -13,11 +13,20 @@ import Link from "@material-ui/core/Link";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import KawaiiAnimation from "./backpackAnimation";
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import Slide from '@material-ui/core/Slide';
 
 const axios = require("axios").default;
 
-// CSS STYLED COMPONENTS
+const Transition = React.forwardRef(function Transition(props, ref) {
+  return <Slide direction="up" ref={ref} {...props} />;
+});
 
+// CSS STYLED COMPONENTS
 const ContainerLogin = styled(Container)`
   padding: 3%;
 `;
@@ -72,13 +81,22 @@ const useStyles = makeStyles(theme => ({
 // LOGIN FUNCTION
 
 export default function Login(props) {
+  const [open, setOpen] = React.useState(false);
   const classes = useStyles();
-
   const history = useHistory();
 
   if (localStorage.getItem("currentUser")) {
     history.push("/menu");
   }
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
   const login = () => {
     const body = {
       email: inputs.email,
@@ -102,6 +120,7 @@ export default function Login(props) {
       })
       .catch(err => {
         console.log(err);
+        handleClickOpen()
       });
   };
 
@@ -109,6 +128,26 @@ export default function Login(props) {
 
   return (
     <main>
+      <Dialog
+        open={open}
+        TransitionComponent={Transition}
+        keepMounted
+        onClose={handleClose}
+        aria-labelledby="alert-dialog-slide-title"
+        aria-describedby="alert-dialog-slide-description"
+      >
+        <DialogTitle id="alert-dialog-slide-title">{"Use Google's location service?"}</DialogTitle>
+        <DialogContent>
+          <DialogContentText id="alert-dialog-slide-description">
+            There was a problem signing you in. Double check your email and password, then try again!
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose} color="primary">
+            Close
+          </Button>
+        </DialogActions>
+      </Dialog>
       <BackpackBox>
         <KawaiiAnimation />
       </BackpackBox>

@@ -1,6 +1,11 @@
 import React from "react";
 import "./App.css";
-import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect
+} from "react-router-dom";
 import Nav from "./Nav";
 import useApplicationData from "../hooks/useApplicationData.js";
 import Login from "./Login";
@@ -15,8 +20,8 @@ function App() {
         authenticatetUser() ? (
           <Component {...props} />
         ) : (
-            <Redirect to="/login" />
-          )
+          <Redirect to="/login" />
+        )
       }
     />
   );
@@ -28,10 +33,10 @@ function App() {
         component={() => link.component}
       />
     ) : (
-        <Route key={index} path={link.path}>
-          {link.component}
-        </Route>
-      );
+      <Route key={index} path={link.path}>
+        {link.component}
+      </Route>
+    );
   });
 
   return (
@@ -40,12 +45,15 @@ function App() {
         <Nav links={links} user={state.user} setUser={setUser} />
         <Switch>
           <Route exact path="/">
-            {authenticatetUser() ? <Redirect to="/menu" user={state.user} /> : <Login user={state.user} setUser={setUser} />}
+            {authenticatetUser() ? (
+              <Redirect to="/menu" user={state.user} />
+            ) : (
+              <Login user={state.user} setUser={setUser} />
+            )}
           </Route>
           {routes}
         </Switch>
       </Router>
-      <div className="body-wrapper"></div>
     </div>
   );
 }
