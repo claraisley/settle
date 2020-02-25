@@ -4,8 +4,25 @@ import Calendar from "react-calendar";
 import styled from "styled-components";
 import Button from "@material-ui/core/Button";
 // import Paper from "@material-ui/core/Paper";
+import CircularProgress from '@material-ui/core/CircularProgress';
+import { makeStyles } from "@material-ui/core/styles";
 
 //styling
+const useStyles = makeStyles(theme => ({
+  root: {
+    display: 'flex',
+    '& > * + *': {
+      marginLeft: theme.spacing(2),
+    },
+  },
+}));
+const CenterDiv = styled.div`
+  width: 100vw;
+  height: 75vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
 const BackButton = styled(Button)`
   height: 100px;
   width: 100px;
@@ -46,7 +63,8 @@ const StyledTitle = styled.h1`
 
 export default function MoodCalendar(props) {
   const [state, setState] = useState({
-    moods: []
+    moods: [],
+    loading: true
   });
 
   const emojiLookup = {
@@ -74,7 +92,7 @@ export default function MoodCalendar(props) {
       })
       .then(response => {
         console.log(response)
-        setState(prev => ({ ...prev, moods: response.data })); // if no moods, then state.moods is just an empty array
+        setState(prev => ({ ...prev, moods: response.data, loading: false })); // if no moods, then state.moods is just an empty array
       })
       .catch(function(error) {
         console.log(error);
@@ -108,7 +126,8 @@ export default function MoodCalendar(props) {
           <BackImg src="https://res.cloudinary.com/dpfixnpii/image/upload/v1582400198/arrow_xph8bj.svg" />
         </BackButton>
       </StyledDiv>
-      <Title>My Mood Tracker</Title>
+      <Title>My Mood Calendar</Title>
+      {state.loading ? <CenterDiv><CircularProgress /></CenterDiv> : 
       <StyledDiv2>
         {state.moods.length > 0 ? (
           <StyledCalendar tileContent={tileContent} calendarType={"US"} />
@@ -118,8 +137,7 @@ export default function MoodCalendar(props) {
             Start a reflection to start tracking your moods!
           </StyledTitle>
         )}
-       
-      </StyledDiv2>
+        </StyledDiv2> }
     </main>
   );
 }

@@ -9,6 +9,7 @@ import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import Paper from "@material-ui/core/Paper";
 import Button from "@material-ui/core/Button";
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 const useStyles = makeStyles(theme => ({
   formControl: {
@@ -18,9 +19,22 @@ const useStyles = makeStyles(theme => ({
   },
   selectEmpty: {
     marginTop: theme.spacing(2)
-  }
+  },
+  root: {
+    display: 'flex',
+    '& > * + *': {
+      marginLeft: theme.spacing(2),
+    },
+  },
 }));
 
+const CenterDiv = styled.div`
+  width: 100vw;
+  height: 75vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
 const BackButton = styled(Button)`
   height: 100px;
   width: 100px;
@@ -75,7 +89,8 @@ const StyledSelect = styled(Select).attrs({
 export default function MeditationHistory(props) {
   const [state, setState] = useState({
     meditations: [],
-    baseDay: new Date()
+    baseDay: new Date(),
+    loading: true
   });
   const classes = useStyles();
 
@@ -101,7 +116,7 @@ export default function MeditationHistory(props) {
       })
       .then(response => {
         let results = response.data;
-        setState(prev => ({ ...prev, meditations: results })); // if no meditations, then state.meditations is just an empty array
+        setState(prev => ({ ...prev, meditations: results, loading: false })); // if no meditations, then state.meditations is just an empty array
       })
       .catch(function (error) {
         console.log(error);
@@ -218,8 +233,9 @@ export default function MeditationHistory(props) {
         <BackButton onClick={() => { props.goToProgressPage("HOME") }}>
           <BackImg src="https://res.cloudinary.com/dpfixnpii/image/upload/v1582400198/arrow_xph8bj.svg" />
         </BackButton>
-        <Title>Meditation Tracker</Title>
+        <Title>My Meditation Tracker</Title>
       </StyledDiv>
+      {state.loading ? <CenterDiv><CircularProgress /></CenterDiv> : 
       <NotePaper elevation={12}>
         <Subheading>
           <StyledSubtitle>Choose a week to see how many minutes you have meditated:{" "}</StyledSubtitle>
@@ -242,11 +258,9 @@ export default function MeditationHistory(props) {
             width="100%"
           />
         ) : (
-            <h2>
-              Do a meditation to start tracking your progress!
-              </h2>
+            <h2>Do a meditation to start tracking your progress!</h2>
           )}
-      </NotePaper>
+      </NotePaper> }
     </main>
   );
 }
