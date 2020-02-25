@@ -35,9 +35,7 @@ const useStyles = makeStyles(theme => ({
     "& > *": {
       margin: theme.spacing(1),
       width: theme.spacing(100),
-
       backgroundColor: "#353c52",
-      backgroundImage: `url(http://www.transparenttextures.com/patterns/cubes.png)`
     }
   },
   button: {

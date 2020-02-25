@@ -78,7 +78,6 @@ const SymptomsTitle = styled.h1`
 `;
 const WhatIsPaperBackground = styled(Paper)`
   background-color: #353c52;
-  background-image: url(http://www.transparenttextures.com/patterns/cubes.png);
   margin: 5%;
   margin-top: 0%;
   padding: 5%;

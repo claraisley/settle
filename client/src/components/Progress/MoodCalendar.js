@@ -59,7 +59,6 @@ const StyledTitle = styled.h1`
 // const NotePaper = styled(Paper)`
 //   padding: 3%;
 //   background-color: #353c52;
-//   background-image: url(http://www.transparenttextures.com/patterns/cubes.png);
 // `;
 
 export default function MoodCalendar(props) {
