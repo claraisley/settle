@@ -7,6 +7,7 @@ import Typography from "@material-ui/core/Typography";
 import { Card } from "@material-ui/core";
 import Zoom from "@material-ui/core/Zoom";
 import styled from "styled-components";
+import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 
 import {
   OneBackPack,
@@ -55,7 +56,23 @@ export default function TrapItems(props) {
     return Math.round(trap[1]);
   });
 
-  console.log(rounded);
+  const [isMobile, setIsMobile] = useState(false)
+  const [open, setOpen] = useState(false);
+ 
+
+  useEffect(() => {
+    if (window.innerWidth < 600)
+      setIsMobile(true)
+  },[])
+
+  const handleTooltipClose = () => {
+    setOpen(false);
+  };
+
+  const handleTooltipOpen = () => {
+    setOpen(true);
+  };
+
 
   const lookup = {
     0: "Catastrophizing",
@@ -95,6 +112,8 @@ export default function TrapItems(props) {
             title={<Tooltiptip>{definitions[index]}</Tooltiptip>}
             classes={{ tooltip: classes.customWidth }}
             arrow
+            onClose={handleTooltipClose}
+            open={open}
           >
             <h1>
               {lookup[index]}
