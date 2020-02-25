@@ -3,6 +3,14 @@ import Button from "@material-ui/core/Button";
 import styled from "styled-components";
 import Paper from "@material-ui/core/Paper";
 
+const BackButton = styled(Button)`
+  height: 40px;
+  width: 40px;
+`;
+const BackImg = styled.img`
+  height: 35px;
+  width: 35px;
+`;
 const RestartButton = styled(Button)`
 `;
 const MoodButton = styled(Button)`
@@ -70,6 +78,10 @@ export default function Mood(props) {
       <MoodPaper elevation={10}>
         <h4>How are you feeling right now?</h4>
         <div className={moodList}>{moodList}</div>
+        <BackButton onClick={() => props.back()}>
+          <BackImg src="https://res.cloudinary.com/dpfixnpii/image/upload/v1582400198/arrow_xph8bj.svg" />
+        </BackButton>
+
         <RestartButton
           variant="contained"
           color="primary"

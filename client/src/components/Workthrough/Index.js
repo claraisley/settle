@@ -15,32 +15,12 @@ import axios from "axios";
 import { Button } from "@material-ui/core";
 
 const MainQuiz = styled.main`
-  padding-top: 4em;
-`;
-const Heading = styled.h2`
-  margin-left: 15%;
-  padding-left: 1.7em;
+  padding-top: 8em;
 `;
 const Footer = styled.section`
   margin-left: 15%;
   padding: 3em;
   justify-content: center;
-`;
-const BackButton = styled(Button)`
-  height: 70px;
-  width: 70px;
-`;
-const BackImg = styled.img`
-  height: 50px;
-  width: 50px;
-`;
-const ForwardButton = styled(Button)`
-  height: 70px;
-  width: 70px;
-`;
-const ForwardImg = styled.img`
-  height: 50px;
-  width: 50px;
 `;
 
 const useStyles = makeStyles(theme => ({
@@ -125,7 +105,7 @@ export default function Workthrough(props) {
         withCredentials: true
       })
     ])
-      .then(function(response) {
+      .then(function (response) {
         for (let question of response[0].data) {
           question.answered = false;
         }
@@ -136,7 +116,7 @@ export default function Workthrough(props) {
         }));
         startNextQuestion();
       })
-      .catch(function(error) {
+      .catch(function (error) {
         console.log(error);
       });
   };
@@ -187,10 +167,10 @@ export default function Workthrough(props) {
         data: postData,
         withCredentials: true
       })
-      .then(function(response) {
+      .then(function (response) {
         transition(COMPLETION);
       })
-      .catch(function(error) {
+      .catch(function (error) {
         console.log(error);
       });
   };
@@ -216,10 +196,9 @@ export default function Workthrough(props) {
 
   return (
     <MainQuiz className="workthrough">
-      <Heading>Workthrough</Heading>
       <section>
         {mode === START && <Start startWorkthrough={startWorkthrough} />}
-        {mode === MOOD && <Mood onResponse={respondMood} restartWorkthrough={restartWorkthrough} />}
+        {mode === MOOD && <Mood onResponse={respondMood} restartWorkthrough={restartWorkthrough} back={back} />}
         {mode === QUESTION && (
           <Question
             question={state.currentQuestion}
@@ -227,6 +206,8 @@ export default function Workthrough(props) {
             onResponse={respond}
             interests={state.interests}
             restartWorkthrough={restartWorkthrough}
+            back={back}
+            startNextQuestion={startNextQuestion}
           />
         )}
         <Followup
@@ -252,13 +233,6 @@ export default function Workthrough(props) {
           {state.questions.length}
         </label>
         <div className={classes.root}></div>
-        <BackButton onClick={() => back()}>
-          <BackImg src="https://res.cloudinary.com/dpfixnpii/image/upload/v1582400198/arrow_xph8bj.svg" />
-        </BackButton>
-
-        <ForwardButton onClick={() => startNextQuestion()}>
-          <ForwardImg src="https://res.cloudinary.com/dpfixnpii/image/upload/v1582400212/arrow-point-to-right_qgqicj.svg" />
-        </ForwardButton>
       </Footer>
     </MainQuiz>
   );

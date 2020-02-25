@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
-// import Button from "@material-ui/core/Button";
+import Button from "@material-ui/core/Button";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
@@ -13,8 +13,23 @@ import FormControl from "@material-ui/core/FormControl";
 import FormLabel from "@material-ui/core/FormLabel";
 import personalizeText from "./HelperFunction";
 // import { Container } from "@material-ui/core";
-import { Button } from "@material-ui/core";
 
+const BackButton = styled(Button)`
+  height: 40px;
+  width: 40px;
+`;
+const BackImg = styled.img`
+  height: 35px;
+  width: 35px;
+`;
+const ForwardButton = styled(Button)`
+  height: 40px;
+  width: 40px;
+`;
+const ForwardImg = styled.img`
+  height: 35px;
+  width: 35px;
+`;
 const RestartButton = styled(Button)`
 `;
 const CardQuestion = styled(Card)`
@@ -123,6 +138,12 @@ export default function Question(props) {
             </RadioGroup>
           </FormControl>
         </CardQuestion>
+        <BackButton onClick={() => props.back()}>
+          <BackImg src="https://res.cloudinary.com/dpfixnpii/image/upload/v1582400198/arrow_xph8bj.svg" />
+        </BackButton>
+        <ForwardButton onClick={() => props.startNextQuestion()}>
+          <ForwardImg src="https://res.cloudinary.com/dpfixnpii/image/upload/v1582400212/arrow-point-to-right_qgqicj.svg" />
+        </ForwardButton>
         <RestartButton
           variant="contained"
           color="primary"
