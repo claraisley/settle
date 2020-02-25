@@ -7,7 +7,7 @@ import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import FormLabel from "@material-ui/core/FormLabel";
-import "./question.css";
+
 import { CardActions, ButtonBase } from "@material-ui/core";
 
 const CardStart = styled(Card)`
