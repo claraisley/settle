@@ -2,12 +2,14 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import styled from "styled-components";
 import Chart from "react-apexcharts";
-import { makeStyles } from '@material-ui/core/styles';
-import InputLabel from '@material-ui/core/InputLabel';
-import MenuItem from '@material-ui/core/MenuItem';
-import FormControl from '@material-ui/core/FormControl';
-import Select from '@material-ui/core/Select';
+import { makeStyles } from "@material-ui/core/styles";
+import InputLabel from "@material-ui/core/InputLabel";
+import MenuItem from "@material-ui/core/MenuItem";
+import FormControl from "@material-ui/core/FormControl";
+import Select from "@material-ui/core/Select";
+import Paper from "@material-ui/core/Paper";
 import Button from "@material-ui/core/Button";
+import Grid from "@material-ui/core/Grid";
 
 const useStyles = makeStyles(theme => ({
   formControl: {
@@ -24,10 +26,30 @@ height: 100px;
 width: 100px;
 `;
 const BackImg = styled.img`
-height: 100px;
-width: 100px;
+  height: 100px;
+  width: 100px;
 `;
 
+const Title = styled.h1`
+  text-align: center;
+  margin-left: 30%;
+`;
+const StyledDiv = styled.div`
+  display: flex;
+  margin-bottom: 3%;
+  margin-top: 3%;
+`;
+
+const StyledTitle = styled.h1`
+  color: #ffd882;
+`;
+const NotePaper = styled(Paper)`
+  margin-left: 3%;
+  margin-right: 3%;
+  margin-bottom: 3%;
+  padding: 3%;
+  background-color: #353c52;
+`;
 
 export default function MeditationHistory(props) {
   const [state, setState] = useState({
@@ -42,19 +64,20 @@ export default function MeditationHistory(props) {
 
   // gets the user's meditation history
   useEffect(() => {
-    axios.request({
-      url: "http://localhost:3001/user_meditations",
-      method: "get",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-        "Access-Control-Allow-Credentials": true
-      },
-      params: {
-        user_id: props.user.id
-      },
-      withCredentials: true
-    })
+    axios
+      .request({
+        url: "/user_meditations",
+        method: "get",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+          "Access-Control-Allow-Credentials": true
+        },
+        params: {
+          user_id: props.user.id
+        },
+        withCredentials: true
+      })
       .then(response => {
         console.log(response)
         let results = response.data
@@ -101,7 +124,7 @@ export default function MeditationHistory(props) {
   const chartData = {
     options: {
       chart: {
-        id: "basic-bar"
+        id: "basic-bar",
       },
       xaxis: {
         categories: Object.values(weekObject).map(({ displayDate }) => displayDate)
@@ -129,27 +152,54 @@ export default function MeditationHistory(props) {
 
   return (
     <main className="MeditationHistory">
-      <h2>My Previous Meditations</h2>
-      <BackButton onClick={()=>{props.goToProgressPage("HOME")}}>
-      <BackImg src="https://res.cloudinary.com/dpfixnpii/image/upload/v1582400198/arrow_xph8bj.svg"/>
-      </BackButton>
-      <span>This is how long you've meditated for the week of </span>
-      <FormControl className={classes.formControl}>
-        <InputLabel id="week-picker">Week</InputLabel>
-        <Select
-          value={getSunday(state.baseDay).toDateString()}
-          onChange={handleChange}
+      <StyledDiv>
+        <BackButton
+          onClick={() => {
+            props.goToProgressPage("HOME");
+          }}
         >
-          {weekStartOptions}
-        </Select>
-      </FormControl>
-      {state.meditations.length > 0 ?
-        <Chart
-          type="bar"
-          options={chartData.options}
-          series={chartData.series}
-          width="500" /> : <p>Do a meditation to start tracking your progress!</p>
-      }
+          <BackImg src="https://res.cloudinary.com/dpfixnpii/image/upload/v1582400198/arrow_xph8bj.svg" />
+        </BackButton>
+        <Title>Meditation Tracker</Title>
+      </StyledDiv>
+
+      <NotePaper elevation={12}>
+        <Grid container spacing={2}>
+          <Grid item xs={12} sm={6}>
+            <Grid container spacing={4}>
+              <Grid item xs={12} sm={6}>
+                <StyledTitle>
+                  Choose a week to see how many minutes you have meditated:{" "}
+                </StyledTitle>
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <FormControl className={classes.formControl}>
+                  <InputLabel id="week-picker">Week</InputLabel>
+                  <Select
+                    value={getSunday(state.baseDay).toDateString()}
+                    onChange={handleChange}
+                    color="black"
+                  >
+                    {weekStartOptions}
+                  </Select>
+                </FormControl>
+              </Grid>
+            </Grid>
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            {state.meditations.length > 0 ? (
+              <Chart
+                type="bar"
+                options={chartData.options}
+                series={chartData.series}
+                width="100%"
+              />
+            ) : (
+              <StyledTitle>Do a meditation to start tracking your progress!</StyledTitle>
+            )}
+          </Grid>
+        </Grid>
+      </NotePaper>
     </main>
   )
 }
