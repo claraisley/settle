@@ -22,6 +22,8 @@ const useStyles = makeStyles(theme => ({
     display: "flex"
   },
   appBar: {
+    paddingTop: "15px",
+    paddingBottom: "15px",
     transition: theme.transitions.create(["margin", "width"], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen
@@ -36,7 +38,7 @@ const useStyles = makeStyles(theme => ({
     marginRight: drawerWidth
   },
   title: {
-    flexGrow: 1,
+    flexGrow: 1
   },
   welcome: {
     flexGrow: 1,
@@ -116,7 +118,7 @@ export default function Nav(props) {
   //   setOpen(false);
   // };
 
-  const filteredLinks = props.links.filter(function (link) {
+  const filteredLinks = props.links.filter(function(link) {
     return link.name !== "Signup" && link.name !== "Login";
   });
 
@@ -188,10 +190,12 @@ export default function Nav(props) {
           {props.user.name && (
             <Button
               variant="contained"
-              onClick={() => { logout() }}
+              onClick={() => {
+                logout();
+              }}
             >
               Logout
-              </Button>
+            </Button>
           )}
         </div>
         <Divider />
