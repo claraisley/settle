@@ -36,12 +36,12 @@ const CenterDiv = styled.div`
   align-items: center;
 `;
 const BackButton = styled(Button)`
-  height: 100px;
-  width: 100px;
+  height: 50px;
+  width: 50px;
 `;
 const BackImg = styled.img`
-  height: 100px;
-  width: 100px;
+  height: 50px;
+  width: 50px;
 `;
 const Title = styled.h1`
   text-align: center;

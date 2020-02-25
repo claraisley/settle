@@ -24,12 +24,12 @@ const CenterDiv = styled.div`
   align-items: center;
 `;
 const BackButton = styled(Button)`
-  height: 100px;
-  width: 100px;
+  height: 50px;
+  width: 50px;
 `;
 const BackImg = styled.img`
-  height: 100px;
-  width: 100px;
+  height: 50px;
+  width: 50px;
 `;
 const StyledCalendar = styled(Calendar)`
   width: 450px;
@@ -42,11 +42,12 @@ const StyledCalendar = styled(Calendar)`
 `;
 const Title = styled.h1`
   text-align: center;
+  margin-left: 31%
 `;
 const StyledDiv = styled.div`
-display: flex;
-margin-top: 3%;
-justify-content: center:
+  display: flex;
+  margin-top: 3%;
+  margin-bottom: 3%;
 `;
 const StyledDiv2 = styled.div`
   display: flex;
@@ -118,15 +119,11 @@ export default function MoodCalendar(props) {
   return (
     <main>
       <StyledDiv>
-        <BackButton
-          onClick={() => {
-            props.goToProgressPage("HOME");
-          }}
-        >
+        <BackButton onClick={() => {props.goToProgressPage("HOME")}}>
           <BackImg src="https://res.cloudinary.com/dpfixnpii/image/upload/v1582400198/arrow_xph8bj.svg" />
         </BackButton>
-      </StyledDiv>
       <Title>My Mood Calendar</Title>
+      </StyledDiv>
       {state.loading ? <CenterDiv><CircularProgress /></CenterDiv> : 
       <StyledDiv2>
         {state.moods.length > 0 ? (
