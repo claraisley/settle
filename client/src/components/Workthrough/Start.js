@@ -4,7 +4,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Card from "@material-ui/core/Card";
 import Typography from "@material-ui/core/Typography";
-import "./question.css";
+
 import FormLabel from "@material-ui/core/FormLabel";
 import { CardActions, ButtonBase } from "@material-ui/core";
 
@@ -23,7 +23,6 @@ const CardActionStart = styled(CardActions)`
     text-align: center;
   }
 `;
-
 
 const StaticPaper2 = styled(Paper)`
   width: 90%;
@@ -59,7 +58,7 @@ const useStyles = makeStyles(theme => ({
     "& > *": {
       margin: theme.spacing(1),
       width: theme.spacing(100),
-      backgroundColor: "#353c52",
+      backgroundColor: "#353c52"
     }
   },
   button: {
