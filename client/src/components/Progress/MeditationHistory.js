@@ -66,14 +66,7 @@ export default function MeditationHistory(props) {
   useEffect(() => {
     axios
       .request({
-<<<<<<< Updated upstream
         url: "/user_meditations",
-=======
-        url: "http://localhost:3001/user_meditations",
-
-        url: "/user_meditations",
-
->>>>>>> Stashed changes
         method: "get",
         headers: {
           "Content-Type": "application/json",
