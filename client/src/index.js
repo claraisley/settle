@@ -6,6 +6,11 @@ import * as serviceWorker from "./serviceWorker";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 import { Container, CssBaseline } from "@material-ui/core";
 // import deepOrange from "@material-ui/core/colors/deepOrange";
+import axios from "axios";
+
+if (process.env.REACT_APP_API_BASE_URL) {
+  axios.defaults.baseURL = process.env.REACT_APP_API_BASE_URL;
+}
 
 const theme = createMuiTheme({
   palette: {
@@ -26,6 +31,7 @@ const theme = createMuiTheme({
 
 ReactDOM.render(
   <ThemeProvider className="background" theme={theme}>
+
     <CssBaseline />
     <Container>
       <App />
