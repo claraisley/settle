@@ -14,11 +14,6 @@ import FormLabel from "@material-ui/core/FormLabel";
 import personalizeText from "./HelperFunction";
 import LinearProgress from "@material-ui/core/LinearProgress";
 
-// const CenterDiv = styled.div`
-//   display: flex;
-//   justify-content: center;
-//   margin-top: 2rem;
-// `;
 const StyledProgress = styled(LinearProgress)`
   height: 1rem;
   margin: 1rem;
