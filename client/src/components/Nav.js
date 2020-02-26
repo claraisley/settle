@@ -99,6 +99,9 @@ const useStyles = makeStyles(theme => ({
   },
   fullList: {
     width: "auto"
+  },
+  button: {
+    marginLeft: "auto"
   }
 }));
 
@@ -177,6 +180,7 @@ export default function Nav(props) {
             </Typography>
           )}
           <IconButton
+            className={classes.button}
             color="inherit"
             aria-label="open drawer"
             edge="end"

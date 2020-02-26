@@ -34,7 +34,7 @@ const StyledDiv = styled.div`
 const OuterDiv = styled.div`
   display: flex;
   justify-content: center;
-  `;
+`;
 
 export default function Progress(props) {
   const HOME = "HOME";
@@ -54,35 +54,68 @@ export default function Progress(props) {
         <OuterDiv>
           <ProgressPaper elevation={12}>
             <StyledDiv>
-              <ProgressButton onClick={() => { goToProgressPage(TRAP) }}>
+              <ProgressButton
+                onClick={() => {
+                  goToProgressPage(TRAP);
+                }}
+              >
                 <ProgressImg src="https://res.cloudinary.com/dpfixnpii/image/upload/v1582394796/brain_thxely.svg" />
               </ProgressButton>
-              <ProgressButton onClick={() => { goToProgressPage(TRAP) }}>
+              <ProgressButton
+                onClick={() => {
+                  goToProgressPage(TRAP);
+                }}
+              >
                 <h1>Thinking Trap Progress</h1>
               </ProgressButton>
             </StyledDiv>
             <StyledDiv>
-              <ProgressButton onClick={() => { goToProgressPage(MOOD) }}>
+              <ProgressButton
+                onClick={() => {
+                  goToProgressPage(MOOD);
+                }}
+              >
                 <ProgressImg src="https://res.cloudinary.com/dpfixnpii/image/upload/v1582394641/emoji_z9c9di.svg" />
               </ProgressButton>
-              <ProgressButton onClick={() => { goToProgressPage(MOOD) }}>
+              <ProgressButton
+                onClick={() => {
+                  goToProgressPage(MOOD);
+                }}
+              >
                 <h1>Mood Tracker</h1>
               </ProgressButton>
             </StyledDiv>
             <StyledDiv>
-              <ProgressButton onClick={() => { goToProgressPage(MEDITATION) }}>
+              <ProgressButton
+                onClick={() => {
+                  goToProgressPage(MEDITATION);
+                }}
+              >
                 <ProgressImg src="https://res.cloudinary.com/dpfixnpii/image/upload/v1582394724/clock_cz4ub4.svg" />
               </ProgressButton>
-              <ProgressButton onClick={() => { goToProgressPage(MEDITATION) }}>
+              <ProgressButton
+                onClick={() => {
+                  goToProgressPage(MEDITATION);
+                }}
+              >
                 <h1>Meditation Tracker</h1>
               </ProgressButton>
             </StyledDiv>
           </ProgressPaper>
         </OuterDiv>
       )}
-      {mode === TRAP && (<ThinkingTrap user={props.user} goToProgressPage={goToProgressPage} />)}
-      {mode === MOOD && (<MoodCalendar user={props.user} goToProgressPage={goToProgressPage} />)}
-      {mode === MEDITATION && (<MeditationHistory user={props.user} goToProgressPage={goToProgressPage} />)}
+      {mode === TRAP && (
+        <ThinkingTrap user={props.user} goToProgressPage={goToProgressPage} />
+      )}
+      {mode === MOOD && (
+        <MoodCalendar user={props.user} goToProgressPage={goToProgressPage} />
+      )}
+      {mode === MEDITATION && (
+        <MeditationHistory
+          user={props.user}
+          goToProgressPage={goToProgressPage}
+        />
+      )}
     </main>
   );
 }
