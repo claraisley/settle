@@ -6,11 +6,9 @@ import Button from "@material-ui/core/Button";
 import MeditationHistory from "./MeditationHistory";
 import useVisualMode from "../../hooks/useVisualMode";
 import Paper from "@material-ui/core/Paper";
+import { ButtonBase, Card, Typography } from "@material-ui/core";
 
-const ProgressButton = styled(Button)`
-  width: 21vw;
-  margin-top: 10%;
-`;
+const ProgressButton = styled(Button)``;
 const ProgressImg = styled.img`
   width: 20vw;
 `;
@@ -26,15 +24,24 @@ const ProgressPaper = styled(Paper)`
     flex-direction: column;
   }
 `;
-const StyledDiv = styled.div`
+const Buttons = styled(ButtonBase)`
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 21vw;
+  margin-top: 10%;
 `;
 const OuterDiv = styled.div`
   display: flex;
   justify-content: center;
-  `;
+`;
+
+const CardProgress = styled(Card)`
+  margin-left: 10%;
+  margin-right: 10%;
+  padding: 1em;
+  flex-direction: column;
+`;
 
 export default function Progress(props) {
   const HOME = "HOME";
@@ -53,36 +60,63 @@ export default function Progress(props) {
       {mode === HOME && (
         <OuterDiv>
           <ProgressPaper elevation={12}>
-            <StyledDiv>
-              <ProgressButton onClick={() => { goToProgressPage(TRAP) }}>
+            <CardProgress>
+              <Buttons
+                onClick={() => {
+                  goToProgressPage(TRAP);
+                }}
+              >
                 <ProgressImg src="https://res.cloudinary.com/dpfixnpii/image/upload/v1582394796/brain_thxely.svg" />
-              </ProgressButton>
-              <ProgressButton onClick={() => { goToProgressPage(TRAP) }}>
-                <h1>Thinking Trap Progress</h1>
-              </ProgressButton>
-            </StyledDiv>
-            <StyledDiv>
-              <ProgressButton onClick={() => { goToProgressPage(MOOD) }}>
+                <Typography>Thinking Trap Progress</Typography>
+              </Buttons>
+            </CardProgress>
+            <Buttons>
+              <ProgressButton
+                onClick={() => {
+                  goToProgressPage(MOOD);
+                }}
+              >
                 <ProgressImg src="https://res.cloudinary.com/dpfixnpii/image/upload/v1582394641/emoji_z9c9di.svg" />
               </ProgressButton>
-              <ProgressButton onClick={() => { goToProgressPage(MOOD) }}>
+              <ProgressButton
+                onClick={() => {
+                  goToProgressPage(MOOD);
+                }}
+              >
                 <h1>Mood Tracker</h1>
               </ProgressButton>
-            </StyledDiv>
-            <StyledDiv>
-              <ProgressButton onClick={() => { goToProgressPage(MEDITATION) }}>
+            </Buttons>
+            <ButtonBase>
+              <ProgressButton
+                onClick={() => {
+                  goToProgressPage(MEDITATION);
+                }}
+              >
                 <ProgressImg src="https://res.cloudinary.com/dpfixnpii/image/upload/v1582394724/clock_cz4ub4.svg" />
               </ProgressButton>
-              <ProgressButton onClick={() => { goToProgressPage(MEDITATION) }}>
+              <ProgressButton
+                onClick={() => {
+                  goToProgressPage(MEDITATION);
+                }}
+              >
                 <h1>Meditation Tracker</h1>
               </ProgressButton>
-            </StyledDiv>
+            </ButtonBase>
           </ProgressPaper>
         </OuterDiv>
       )}
-      {mode === TRAP && (<ThinkingTrap user={props.user} goToProgressPage={goToProgressPage} />)}
-      {mode === MOOD && (<MoodCalendar user={props.user} goToProgressPage={goToProgressPage} />)}
-      {mode === MEDITATION && (<MeditationHistory user={props.user} goToProgressPage={goToProgressPage} />)}
+      {mode === TRAP && (
+        <ThinkingTrap user={props.user} goToProgressPage={goToProgressPage} />
+      )}
+      {mode === MOOD && (
+        <MoodCalendar user={props.user} goToProgressPage={goToProgressPage} />
+      )}
+      {mode === MEDITATION && (
+        <MeditationHistory
+          user={props.user}
+          goToProgressPage={goToProgressPage}
+        />
+      )}
     </main>
   );
 }
