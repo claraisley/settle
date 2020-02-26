@@ -6,7 +6,7 @@
 🌵Settle is a single page, responsive React application built with a RubyonRails API back-end. A wellness application, Settle aims to help its users manage and cope with the symptoms of Test Anxiety.     
 
 🌵Geared towards secondary-school
-students, our app aims to introduce teens to the practice of mindfulness, as well as cognitive behavioural therpay concepts. Settle is rooted in the continuing goal of empowering its users with the tools and knowledge they need to modify the dysfunctional patterns of thinking associated with anxiety. User activity is saved and used to track and display their progress.
+students, our app aims to introduce teens to the practice of mindfulness, as well as cognitive behavioural therpay concepts. Settle is rooted in the continuing goal of empowering its users with the tools and knowledge they need to modify the dysfunctional patterns of thinking associated with anxiety. User activity is saved and used to track/display progress.
 
 ## Attributions
 
