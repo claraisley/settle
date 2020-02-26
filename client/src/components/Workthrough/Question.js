@@ -48,7 +48,7 @@ const QuestionResponse = styled.div`
   & > label {
     margin: 0.5em;
     text-align: center;
-      & > .makeStyles-cards-194:hover {
+      & > .MuiRadio-colorSecondary:hover {
         background-color: rgba(255, 255, 255, 0.1);
       }
       & > .MuiRadio-colorSecondary.Mui-checked {
