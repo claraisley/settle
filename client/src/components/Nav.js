@@ -49,7 +49,9 @@ const useStyles = makeStyles(theme => ({
     marginRight: drawerWidth
   },
   title: {
-    flexGrow: 1
+    flexGrow: 1,
+    fontWeight: 700,
+    fontSize: "xx-large"
   },
   welcome: {
     flexGrow: 1,
