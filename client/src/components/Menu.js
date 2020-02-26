@@ -1,9 +1,7 @@
 import React from "react";
 import Card from "@material-ui/core/Card";
-import CardActions from "@material-ui/core/CardActions";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import CardContent from "@material-ui/core/CardContent";
-import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import styled from "styled-components";
@@ -18,7 +16,6 @@ const StyledCard = styled(Card)`
 
 const StyledPaper = styled(Paper)`
   background-color: #353c52;
- 
   margin: 5%;
   margin-top: 5%;
   padding: 5%;
@@ -47,12 +44,6 @@ export default function Menu() {
                   />
                 </CardContent>
               </CardActionArea>
-
-              <CardActions>
-                <Button size="small" onClick={() => redirect("/progress")}>
-                  Learn More
-                </Button>
-              </CardActions>
             </StyledCard>
           </Grid>
           <Grid item xs={12} sm={4}>
@@ -66,11 +57,6 @@ export default function Menu() {
                   />
                 </CardContent>
               </CardActionArea>
-              <CardActions>
-                <Button size="small" onClick={() => redirect("/meditations")}>
-                  Learn More
-                </Button>
-              </CardActions>
             </StyledCard>
           </Grid>
           <Grid item xs={12} sm={4}>
@@ -84,12 +70,6 @@ export default function Menu() {
                   />
                 </CardContent>
               </CardActionArea>
-
-              <CardActions>
-                <Button size="small" onClick={() => redirect("/workthrough")}>
-                  Learn More
-                </Button>
-              </CardActions>
             </StyledCard>
           </Grid>
           <Grid item xs={12} sm={4}>
@@ -103,12 +83,6 @@ export default function Menu() {
                   />
                 </CardContent>
               </CardActionArea>
-
-              <CardActions>
-                <Button size="small" onClick={() => redirect("/test-anxiety")}>
-                  Learn More
-                </Button>
-              </CardActions>
             </StyledCard>
           </Grid>
           <Grid item xs={12} sm={4}>
@@ -122,15 +96,6 @@ export default function Menu() {
                   />
                 </CardContent>
               </CardActionArea>
-
-              <CardActions>
-                <Button
-                  size="small"
-                  onClick={() => redirect("/thinking-traps")}
-                >
-                  Learn More
-                </Button>
-              </CardActions>
             </StyledCard>
           </Grid>
           <Grid item xs={12} sm={4}>
@@ -144,12 +109,6 @@ export default function Menu() {
                   />
                 </CardContent>
               </CardActionArea>
-
-              <CardActions>
-                <Button size="small" onClick={() => redirect("/tips-tricks")}>
-                  Learn More
-                </Button>
-              </CardActions>
             </StyledCard>
           </Grid>
         </Grid>
