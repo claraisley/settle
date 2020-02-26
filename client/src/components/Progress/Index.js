@@ -15,7 +15,7 @@ const ProgressImg = styled.img`
   width: 20vw;
 `;
 const ProgressPaper = styled(Paper)`
-  margin-top: 10%;
+  margin-top: 5%;
   margin-bottom: 5%;
   width: 90vw;
   background-color: #353c52;
