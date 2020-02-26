@@ -65,7 +65,7 @@ const Title = styled.h1`
 
 const Text = styled.p`
   line-height: 1.5;
-  font-size: 1.5em;
+  font-size: 1.25rem;
   font-weight: normal;
   margin: 15px;
 `;
