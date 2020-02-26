@@ -147,7 +147,7 @@ export default function MoodCalendar(props) {
       <StaticPaper2 elevation={10}>
         <Text>
           This calendar displays the moods you've inputed after your
-          Work-Through!
+          Work-Throughs!
         </Text>
       </StaticPaper2>
 
