@@ -17,25 +17,15 @@ const PaperQuiz = styled(Paper)`
   margin-right: 10%;
   margin-bottom: 3em;
   background-color: #353c52;
+  padding: 1em;
 `;
 
-const CardQuiz = styled(Card)`
-  margin-top: 2em;
-  margin-left: 5%;
-  margin-right: 5%;
-  align-items: center;
-  text-align: center;
-  background-color: #353c52;
-`;
-
-// const CardQuizList = styled(Card)`
-//   padding: 2em;
+// const CardQuiz = styled(Card)`
 //   margin-top: 2em;
 //   margin-left: 5%;
 //   margin-right: 5%;
-//   margin-bottom: 2em;
 //   align-items: center;
-//   height: 100%;
+//   text-align: center;
 //   background-color: #353c52;
 // `;
 
@@ -56,10 +46,6 @@ const StyledPlanet = styled(Planet)`
 const Title = styled.h1`
   text-align: center;
   margin: 20px auto;
-`;
-
-const StyledButton = styled(Button)`
-  margin-top: 5%;
 `;
 
 const useStyles = makeStyles(theme => ({
@@ -129,12 +115,10 @@ export default function SignUpQuiz(props) {
   return (
     <main>
       <PaperQuiz className={classes.root} elevation={11}>
-        <CardQuiz>
-          <CardContentQuiz elevation={11}>
-            <Title>Please fill out this short survey to get started. </Title>
-            <StyledPlanet size={100} mood="happy" color="#FCCB7E" />
-          </CardContentQuiz>
-        </CardQuiz>
+        <CardContentQuiz>
+          <Title>Please fill out this short survey to get started. </Title>
+          <StyledPlanet size={100} mood="happy" color="#FCCB7E" />
+        </CardContentQuiz>
 
         <form onSubmit={handleSubmit}>
           <QuestionList
@@ -142,14 +126,9 @@ export default function SignUpQuiz(props) {
             questionState={questionState}
             changeQuestion={changeQuestion}
           />
-          <StyledButton
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="primary"
-          >
+          <Button type="submit" fullWidth variant="contained" color="primary">
             Submit
-          </StyledButton>
+          </Button>
         </form>
       </PaperQuiz>
     </main>
