@@ -8,6 +8,10 @@
 🌵Geared towards secondary-school
 students, our app aims to introduce teens to the practice of mindfulness and cognitive behavioural therpay concepts. Settle is rooted in the continuing goal of empowering its users with the tools and knowledge they need to modify the dysfunctional patterns of thinking associated with anxiety. User activity is saved and used to track and display their progress.
 
+## Attributions
+
+The inspiration and source material for this application comes from a [Test Anxiety Booklet](https://www.anxietycanada.com/sites/default/files/Test_Anxiety_Booklet.pdf) released in coordination with Anxiety Canada. The meditations are original Test Anxiety-specifc meditations gracioulsy created by the Toronto-based artist [Emily Dickinson](https://www.emilydawndickinson.com/). Work-Through concept and material is original content by [Katherine Szelag](https://www.linkedin.com/in/katherine-szelag/).
+
 ## GIFs/ERD
 
 ![Sign up quiz](https://github.com/claraisley/settle/blob/master/docs/sign-in.gif?raw=true)
