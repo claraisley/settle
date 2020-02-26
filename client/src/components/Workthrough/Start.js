@@ -1,43 +1,47 @@
 import React from "react";
 import styled from "styled-components";
-import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Card from "@material-ui/core/Card";
-import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
-import FormLabel from "@material-ui/core/FormLabel";
-import "./question.css";
 import { CardActions, ButtonBase } from "@material-ui/core";
 
 const CardStart = styled(Card)`
   margin-left: 10%;
   margin-right: 10%;
-
   padding: 1em;
   flex-direction: column;
 `;
-
 const CardActionStart = styled(CardActions)`
   padding: 0;
   & > p {
     margin-top: 5%;
     margin-bottom: 5%;
-    color: white;
+    color: #deb559;
     text-align: center;
   }
 `;
 
-// const CardContentStart = styled(CardContent)`
-//   padding: 0;
-//   & > p {
-//     margin-top: 5%;
-//     margin-bottom: 5%;
-//     color: white;
-//     text-align: center;
-//   }
-// `;
-
+const StaticPaper2 = styled(Paper)`
+  width: 90%;
+  margin: 10px auto;
+  background-color: #353c52;
+  justify-content: center;
+  align-items: center;
+  padding: 1%;
+`;
+const Title = styled.h1`
+  text-align: center;
+  margin: 20px auto;
+  marfin-top: 5%;
+`;
+const Text = styled.p`
+  text-align: center;
+  line-height: 1.5;
+  font-size: 1.5em;
+  font-weight: normal;
+  margin: 15px;
+`;
 const TypographyStart = styled(Typography)`
   font-size: x-large;
   font-weight: 600;
@@ -51,9 +55,7 @@ const useStyles = makeStyles(theme => ({
     "& > *": {
       margin: theme.spacing(1),
       width: theme.spacing(100),
-
-      backgroundColor: "#353c52",
-      backgroundImage: `url(http://www.transparenttextures.com/patterns/cubes.png)`
+      backgroundColor: "#353c52"
     }
   },
   button: {
@@ -64,7 +66,7 @@ const useStyles = makeStyles(theme => ({
   cards: {
     display: "flex",
     justifyContent: "center",
-    margin: "10%",
+    margin: "2em",
     backgroundColor: "#353c52",
     color: "white"
   }
@@ -75,28 +77,37 @@ export default function Start(props) {
 
   return (
     <main className="start">
-      <div className={classes.root}>
-        <Paper elevation={10}>
-          <CardStart className={classes.cards}>
+      <Title>Work-Throughs</Title>
+      <StaticPaper2 elevation={10}>
+        <Text>
+          Thoughts are the things that we say to ourselves without speaking out
+          loud (self-talk). Each of us have our own way of thinking about
+          things, but it's important to recognize that our self-talk has a big
+          effect on how we feel. As a test approaches and you feel anxious, use
+          these Work-Throughs to identify which Thinking Traps you are falling
+          into, and to help you challenge anxious thoughts as they arise.{" "}
+        </Text>
+        <div className={classes.root}>
+          <CardStart elevation={10} className={classes.cards}>
             <ButtonBase onClick={() => props.startWorkthrough(3)}>
               <CardActionStart>
                 <TypographyStart gutterBottom>
-                  The test I'm preparing for is today
+                  Short Work-Through
                 </TypographyStart>
               </CardActionStart>
             </ButtonBase>
           </CardStart>
-          <CardStart className={classes.cards}>
+          <CardStart elevation={10} className={classes.cards}>
             <ButtonBase onClick={() => props.startWorkthrough(5)}>
               <CardActionStart>
                 <TypographyStart gutterBottom>
-                  The test I'm preparing for is tomorrow
+                  Long Work-Through
                 </TypographyStart>
               </CardActionStart>
             </ButtonBase>
           </CardStart>
-        </Paper>
-      </div>
+        </div>
+      </StaticPaper2>
     </main>
   );
 }

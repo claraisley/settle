@@ -19,17 +19,11 @@ const useStyles = makeStyles(theme => ({
     textAlign: "center",
     color: theme.palette.text.secondary
   },
-  button: {
-    justifyContent: "center",
-    textAlign: "center",
-    margin: theme.spacing(2)
-  },
   cards: {
     display: "flex",
     justifyContent: "center",
-    margin: "2em",
-    backgroundColor: "#353c52",
-    color: "white"
+    margin: "1em",
+    backgroundColor: "#353c52"
   }
 }));
 
@@ -54,7 +48,7 @@ const CardActionStart = styled(CardActions)`
   & > p {
     margin-top: 5%;
     margin-bottom: 5%;
-    color: white;
+    color: #deb559;
     text-align: center;
   }
 `;
@@ -70,43 +64,29 @@ export default function Completion(props) {
           <Grid item xs={12}>
             <Papers elevation={7} className={classes.paper}>
               <Paragraphs>
-                We hope you're feeling ready for your test or quiz. If you have
-                a little extra time, do you want to try a meditation or go
-                through some tips and tricks?
+                Great job on completing that Work-Through! Good luck on your test, you've got this!
               </Paragraphs>
-              <CardStart elevation={4} className={classes.cards}>
-                <ButtonBase onClick={() => history.push("/meditations")}>
-                  <CardActionStart>
-                    <Paragraphs gutterBottom>Meditations</Paragraphs>
-                  </CardActionStart>
-                </ButtonBase>
-              </CardStart>
-              <CardStart elevation={4} className={classes.cards}>
-                <ButtonBase onClick={() => history.push("/tips-tricks")}>
-                  <CardActionStart>
-                    <Paragraphs gutterBottom>Tips and Tricks</Paragraphs>
-                  </CardActionStart>
-                </ButtonBase>
-              </CardStart>
-            </Papers>
-          </Grid>
-          <Grid item xs={12} sm={6}>
-            <Papers elevation={7} className={classes.paper}>
-              <Paragraphs>
-                Or do you want to do another work-through?
-              </Paragraphs>
+
               <CardStart elevation={4} className={classes.cards}>
                 <ButtonBase onClick={() => props.restartWorkthrough()}>
                   <CardActionStart>
-                    <Paragraphs gutterBottom>Start New Work Through</Paragraphs>
+                    <Paragraphs gutterBottom>Do another Work-Through</Paragraphs>
                   </CardActionStart>
                 </ButtonBase>
               </CardStart>
-            </Papers>
-          </Grid>
-          <Grid item xs={12} sm={6}>
-            <Papers elevation={7} className={classes.paper}>
-              <Paragraphs>If not, have fun and do your best!</Paragraphs>
+
+              <CardStart elevation={4} className={classes.cards}>
+                <ButtonBase onClick={() => history.push("/meditations")}>
+                  <CardActionStart>
+                    <Paragraphs gutterBottom>Explore Meditations</Paragraphs>
+                  </CardActionStart>
+                </ButtonBase>
+              </CardStart>
+             
+
+              
+              
+
               <CardStart elevation={4} className={classes.cards}>
                 <ButtonBase onClick={() => history.push("/menu")}>
                   <CardActionStart>
@@ -114,6 +94,16 @@ export default function Completion(props) {
                   </CardActionStart>
                 </ButtonBase>
               </CardStart>
+
+              <CardStart elevation={4} className={classes.cards}>
+                <ButtonBase onClick={() => history.push("/tips-tricks")}>
+                  <CardActionStart>
+                    <Paragraphs gutterBottom>Dos and Don'ts</Paragraphs>
+                  </CardActionStart>
+                </ButtonBase>
+              </CardStart>
+
+
             </Papers>
           </Grid>
         </Grid>

@@ -15,17 +15,27 @@ if (process.env.REACT_APP_API_BASE_URL) {
 const theme = createMuiTheme({
   palette: {
     primary: {
-      main: "#deb559"
+      main: "#deb559",
+      secondary: "#ffffff"
       //#d6a026 - yellow
       //#d67557 -orange one
     },
     text: {
       primary: "#ffffff",
-      secondary: "#353c52"
+      secondary: "#353c52",
+      fontSize: "1rem"
     },
     background: {
       default: "#353c52"
     }
+  },
+  typography: {
+    fontFamily: "Poppins",
+
+    fontWeightLight: 300,
+    fontWeightRegular: 400,
+    fontWeightMedium: 500,
+    fontWeightBold: 700
   }
 });
 

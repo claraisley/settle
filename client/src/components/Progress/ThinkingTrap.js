@@ -2,24 +2,14 @@ import React, { useState, useEffect } from "react";
 import TrapItems from "./ThinkTrapItems";
 import styled from "styled-components";
 import Button from "@material-ui/core/Button";
-import { makeStyles } from '@material-ui/core/styles';
 import CircularProgress from '@material-ui/core/CircularProgress';
 const axios = require("axios").default;
 
-const useStyles = makeStyles(theme => ({
-  root: {
-    display: 'flex',
-    '& > * + *': {
-      marginLeft: theme.spacing(2),
-    },
-  },
-}));
 const CenterDiv = styled.div`
   width: 100vw;
   height: 75vh;
   display: flex;
   justify-content: center;
-  align-items: center;
 `;
 const BackButton = styled(Button)`
   height: 50px;
@@ -45,7 +35,6 @@ const StyledTitle = styled.h1`
 export default function ThinkingTrap(props) {
   const [trapData, setTrapData] = useState({});
   const [loading, setLoading] = useState(true);
-  const classes = useStyles();
 
   useEffect(() => {
     axios
@@ -85,7 +74,7 @@ export default function ThinkingTrap(props) {
       </StyledDiv>
       {loading ? <CenterDiv><CircularProgress /></CenterDiv> :
         <article>
-          {checkEmpty ? (<TrapItems trapData={trapData} />) : (<StyledTitle>{emptyMessage}</StyledTitle>)}
+          {checkEmpty ? (<TrapItems trapData={trapData} />) : (<CenterDiv><StyledTitle>{emptyMessage}</StyledTitle></CenterDiv>)}
         </article>}
     </main>
   );

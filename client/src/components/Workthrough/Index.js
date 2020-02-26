@@ -9,7 +9,7 @@ import Start from "./Start.js";
 import axios from "axios";
 
 const MainQuiz = styled.main`
-  padding-top: 8em;
+  padding-top: 1.5em;
 `;
 
 const MOOD = "MOOD";
@@ -87,7 +87,7 @@ export default function Workthrough(props) {
         withCredentials: true
       })
     ])
-      .then(function (response) {
+      .then(function(response) {
         for (let question of response[0].data) {
           question.answered = false;
         }
@@ -98,7 +98,7 @@ export default function Workthrough(props) {
         }));
         startNextQuestion();
       })
-      .catch(function (error) {
+      .catch(function(error) {
         console.log(error);
       });
   };
@@ -148,10 +148,10 @@ export default function Workthrough(props) {
         data: postData,
         withCredentials: true
       })
-      .then(function (response) {
+      .then(function(response) {
         transition(COMPLETION);
       })
-      .catch(function (error) {
+      .catch(function(error) {
         console.log(error);
       });
   };
@@ -179,13 +179,14 @@ export default function Workthrough(props) {
     <MainQuiz className="workthrough">
       <section>
         {mode === START && <Start startWorkthrough={startWorkthrough} />}
-        {mode === MOOD &&
+        {mode === MOOD && (
           <Mood
             onResponse={respondMood}
             restartWorkthrough={restartWorkthrough}
             questionsDone={state.questions.length - currentProgress}
             totalQuestions={state.questions.length}
-          />}
+          />
+        )}
         {mode === QUESTION && (
           <Question
             question={state.currentQuestion}

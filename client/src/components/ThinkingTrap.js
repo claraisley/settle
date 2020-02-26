@@ -37,7 +37,6 @@ const StaticPaper = styled(Paper)`
   justify-content: center;
   align-items: center;
   padding: 4%;
-  background-image: url(http://www.transparenttextures.com/patterns/cubes.png);
 `;
 const StaticPaper2 = styled(Paper)`
   width: 90%;
@@ -88,10 +87,10 @@ export default function ThinkingTraps(props) {
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
           <Typography className={classes.details}>
-            {data.text}
-            <h5>Example Statements</h5>
-            <p>{data.example_statement1}</p>
-            <p>{data.example_statement2}</p>
+            {data.text}<br /><br />
+            <strong>Example Statements</strong><br /><br />
+            {data.example_statement1}<br /><br />
+            {data.example_statement2}
           </Typography>
         </ExpansionPanelDetails>
       </ExpansionPanel>

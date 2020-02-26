@@ -33,11 +33,16 @@ const StyledHREF = styled.a`
   color: white;
 `;
 
+const Cactus = styled.img`
+  height: 200px;
+  width: 200px;
+`;
+
 export default function About() {
   return (
     <main>
       <BackpackBox>
-        <KawaiiAnimation />
+      <Cactus src="https://res.cloudinary.com/dpfixnpii/image/upload/v1582608002/cactus_wxnhwz.svg" />
       </BackpackBox>
       <Title>Who are we?</Title>
       <StaticPaper2 elevation={10}>
@@ -69,9 +74,7 @@ export default function About() {
         </Text>
         <Text>
           General concept and material found in the Work-Throughs is original content by 
-            <StyledHREF href="https://www.linkedin.com/in/katherine-szelag/">  Katherine Szelag{" "}
-          </StyledHREF>
-          .
+            <StyledHREF href="https://www.linkedin.com/in/katherine-szelag/">  Katherine Szelag{""}</StyledHREF>.
         </Text>
       </StaticPaper2>
     </main>

@@ -1,8 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
-import { makeStyles, useTheme } from "@material-ui/core/styles";
-import Button from "@material-ui/core/Button";
+import { makeStyles } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -15,6 +14,7 @@ import MenuIcon from "@material-ui/icons/Menu";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import styled from "styled-components";
+import ButtonBase from "@material-ui/core/ButtonBase";
 
 const drawerWidth = 300;
 
@@ -49,7 +49,9 @@ const useStyles = makeStyles(theme => ({
     marginRight: drawerWidth
   },
   title: {
-    flexGrow: 1
+    flexGrow: 1,
+    fontWeight: 700,
+    fontSize: "xx-large"
   },
   welcome: {
     flexGrow: 1,
@@ -97,13 +99,15 @@ const useStyles = makeStyles(theme => ({
   },
   fullList: {
     width: "auto"
+  },
+  button: {
+    marginLeft: "auto"
   }
 }));
 
 export default function Nav(props) {
   const history = useHistory();
   const classes = useStyles();
-  const theme = useTheme();
 
   const [state, setState] = React.useState({
     right: false
@@ -119,16 +123,6 @@ export default function Nav(props) {
 
     setState({ ...state, right: open });
   };
-
-  // const [open, setOpen] = React.useState(false);
-
-  // const handleDrawerOpen = () => {
-  //   setOpen(true);
-  // };
-
-  // const handleDrawerClose = () => {
-  //   setOpen(false);
-  // };
 
   const filteredLinks = props.links.filter(function(link) {
     return link.name !== "Signup" && link.name !== "Login";
@@ -174,17 +168,19 @@ export default function Nav(props) {
       <CssBaseline />
       <AppBar position="fixed" className={classes.appBar}>
         <Toolbar className={classes.toolbar}>
-          <Cactus src="https://res.cloudinary.com/dpfixnpii/image/upload/v1582608002/cactus_wxnhwz.svg" />
-          <Typography variant="h6" noWrap className={classes.title}>
-            SETTLE
-          </Typography>
-
+          <ButtonBase onClick={() => history.push("/menu")}>
+            <Cactus src="https://res.cloudinary.com/dpfixnpii/image/upload/v1582608002/cactus_wxnhwz.svg" />
+            <Typography variant="h6" noWrap className={classes.title}>
+              SETTLE
+            </Typography>
+          </ButtonBase>
           {props.user.name && (
             <Typography variant="h6" noWrap className={classes.welcome}>
               Hi {props.user.name}!
             </Typography>
           )}
           <IconButton
+            className={classes.button}
             color="inherit"
             aria-label="open drawer"
             edge="end"
@@ -209,7 +205,7 @@ export default function Nav(props) {
                   logout();
                 }}
               >
-                <ListItemText>Logout </ListItemText>
+                <ListItemText className={classes.linkName}>Logout</ListItemText>
               </ListItem>
             </List>
           )}

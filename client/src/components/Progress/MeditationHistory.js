@@ -33,7 +33,6 @@ const CenterDiv = styled.div`
   height: 75vh;
   display: flex;
   justify-content: center;
-  align-items: center;
 `;
 const BackButton = styled(Button)`
   height: 50px;
@@ -77,8 +76,8 @@ const StyledMenuItem = styled(MenuItem)`
 const StyledSubtitle = styled.h2`
   font-size: 1.25rem
 `;
-const StyledSelect = styled(Select).attrs({ 
-  classes: { root: 'root'} 
+const StyledSelect = styled(Select).attrs({
+  classes: { root: 'root' }
 })` 
  .root  {
    font-size: 1.25rem;
@@ -235,32 +234,30 @@ export default function MeditationHistory(props) {
         </BackButton>
         <Title>My Meditation Tracker</Title>
       </StyledDiv>
-      {state.loading ? <CenterDiv><CircularProgress /></CenterDiv> : 
-      <NotePaper elevation={12}>
-        <Subheading>
-          <StyledSubtitle>Choose a week to see how many minutes you have meditated:{" "}</StyledSubtitle>
-          <FormControl className={classes.formControl}>
-            <StyledInputLabel id="week-picker">Week Starting</StyledInputLabel>
-            <StyledSelect
-              value={getSunday(state.baseDay).toDateString()}
-              onChange={handleChange}
-              color="black"
-            >
-              {weekStartOptions}
-            </StyledSelect>
-          </FormControl>
-        </Subheading>
-        {state.meditations.length > 0 ? (
-          <Chart
-            type="bar"
-            options={chartData.options}
-            series={chartData.series}
-            width="100%"
-          />
-        ) : (
-            <h2>Do a meditation to start tracking your progress!</h2>
-          )}
-      </NotePaper> }
+      {state.meditations.length > 0 ? (
+          <NotePaper elevation={12}>
+            {state.loading ? <CenterDiv><CircularProgress /></CenterDiv> : (
+              <Subheading>
+                <StyledSubtitle>Choose a week to see how many minutes you have meditated:{" "}</StyledSubtitle>
+                <FormControl className={classes.formControl}>
+                  <StyledInputLabel id="week-picker">Week Starting</StyledInputLabel>
+                  <StyledSelect
+                    value={getSunday(state.baseDay).toDateString()}
+                    onChange={handleChange}
+                    color="black"
+                  >
+                    {weekStartOptions}
+                  </StyledSelect>
+                </FormControl>
+              </Subheading>)}
+            <Chart
+              type="bar"
+              options={chartData.options}
+              series={chartData.series}
+              width="100%"
+            />
+          </NotePaper>) : 
+          <CenterDiv><h2>Do a meditation to start tracking your progress!</h2></CenterDiv> }
     </main>
   );
 }

@@ -12,20 +12,19 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormControl from "@material-ui/core/FormControl";
 import FormLabel from "@material-ui/core/FormLabel";
 import personalizeText from "./HelperFunction";
-import LinearProgress from '@material-ui/core/LinearProgress';
+import LinearProgress from "@material-ui/core/LinearProgress";
 
 const CenterDiv = styled.div`
   display: flex;
   justify-content: center;
   margin-top: 2rem;
-  `;
+`;
 const StyledProgress = styled(LinearProgress)`
   height: 1rem;
   margin: 1rem;
   border-radius: 4px;
 `;
-const RestartButton = styled(Button)`
-`;
+const RestartButton = styled(Button)``;
 const CardQuestion = styled(Card)`
   margin-top: 5%;
   margin-left: 10%;
@@ -49,8 +48,11 @@ const QuestionResponse = styled.div`
   & > label {
     margin: 0.5em;
     text-align: center;
-      & > span:hover {
+      & > .MuiRadio-colorSecondary:hover {
         background-color: rgba(255, 255, 255, 0.1);
+      }
+      & > .MuiRadio-colorSecondary.Mui-checked {
+        color: #deb559;
       }
     }
   }
@@ -65,8 +67,7 @@ const useStyles = makeStyles(theme => ({
       margin: theme.spacing(1),
       width: theme.spacing(100),
       height: theme.spacing(72),
-      backgroundColor: "#353c52",
-      backgroundImage: `url(http://www.transparenttextures.com/patterns/cubes.png)`
+      backgroundColor: "#353c52"
     }
   },
   responseList: {
@@ -98,7 +99,9 @@ export default function Question(props) {
         key={response.id}
         className={classes.responseList}
         value={response.text}
-        onChange={() => {props.onResponse(response.id)}}
+        onChange={() => {
+          props.onResponse(response.id);
+        }}
         control={<Radio className={classes.cards} />}
         label={personalizeText(props.interests, response.text)}
       />
@@ -110,7 +113,9 @@ export default function Question(props) {
       <Paper elevation={10}>
         <CardQuestion className={classes.cards}>
           <CardContentQuestion>
-            <TypographyHeader gutterBottom>{personalizeText(props.interests, props.question.text)}</TypographyHeader>
+            <TypographyHeader gutterBottom>
+              {personalizeText(props.interests, props.question.text)}
+            </TypographyHeader>
           </CardContentQuestion>
         </CardQuestion>
         <CardQuestion className={classes.cards}>
@@ -121,12 +126,16 @@ export default function Question(props) {
               name="gender1"
               value={value}
               onChange={handleChange}
+              className={{ root: classes.radio, checked: classes.checked }}
             >
               <QuestionResponse>{responseList}</QuestionResponse>
             </RadioGroup>
           </FormControl>
         </CardQuestion>
-        <StyledProgress variant="determinate" value={props.questionsDone / props.totalQuestions * 100} />
+        <StyledProgress
+          variant="determinate"
+          value={(props.questionsDone / props.totalQuestions) * 100}
+        />
         <CenterDiv>
           <RestartButton
             variant="contained"
@@ -134,7 +143,7 @@ export default function Question(props) {
             onClick={() => props.restartWorkthrough()}
           >
             Quit without saving
-        </RestartButton>
+          </RestartButton>
         </CenterDiv>
       </Paper>
     </div>
