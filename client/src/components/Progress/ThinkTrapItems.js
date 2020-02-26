@@ -69,8 +69,8 @@ export default function TrapItems(props) {
 
   const definitions = {
     0: "Catastrophizing is when we assume the worst possible scenerio will happen.",
-    1: "Filtering involves only paying attention to the negative aspects of a situation while ignoring all the positive.",
-    2: "Fortune-telling is thinking trap where we predict that things will turn out badly without realistically considering the evidence and odds in a situation.",
+    1: "Filtering involves only paying attention to the negative aspects of a situation, and ignoring all the positive.",
+    2: "Fortune-telling is a thinking error where we predict that things will turn out badly without realistically considering the evidence and odds in a situation.",
     3: "Mind-reading is a thinking error where we believe we know a person's intentions or thoughts.",
     4: "When we constantly think of things in extreme terms, such as “always” and “never” we are fall into the trap of Black-and-white thinking.",
     5: "Over-generalization occurs when we inaccurately conclude that one negative event puts us in a never-ending pattern of defeat. One failed test becomes 'I always fail tests'.",
