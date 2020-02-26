@@ -27,6 +27,12 @@ const MoodPaper = styled(Paper)`
 const Header = styled.h1`
   margin-bottom: 2rem;
 `;
+const MoodEmojis = styled.div`
+  @media (max-width: 480px) {
+    display: flex;
+    flex-direction: column;
+  }
+`;
 
 export default function Mood(props) {
   const moods = [
@@ -73,7 +79,7 @@ export default function Mood(props) {
     <main className="Mood">
       <MoodPaper elevation={10}>
         <Header>How are you feeling right now?</Header>
-        <div className={moodList}>{moodList}</div>
+        <MoodEmojis>{moodList}</MoodEmojis>
         <RestartButton
           variant="contained"
           color="primary"
