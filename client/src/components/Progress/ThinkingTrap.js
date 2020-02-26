@@ -12,20 +12,22 @@ const CenterDiv = styled.div`
   justify-content: center;
 `;
 const BackButton = styled(Button)`
-  height: 50px;
-  width: 50px;
+  height: 40px;
+  width: 40px;
 `;
 const BackImg = styled.img`
-  height: 50px;
-  width: 50px;
+  height: 40px;
+  width: 40px;
 `;
 const Title = styled.h1`
-  text-align: center;
   margin-bottom: 5%;
-  margin-left: 30%;
+  text-align: center;
 `;
 const StyledDiv = styled.div`
   display: flex;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
   margin-top: 3%;
 `;
 const StyledTitle = styled.h1`
@@ -71,6 +73,7 @@ export default function ThinkingTrap(props) {
           <BackImg src="https://res.cloudinary.com/dpfixnpii/image/upload/v1582400198/arrow_xph8bj.svg" />
         </BackButton>
         <Title>Thinking Traps Progress</Title>
+        <div></div>
       </StyledDiv>
       {loading ? <CenterDiv><CircularProgress /></CenterDiv> :
         <article>

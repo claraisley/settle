@@ -24,12 +24,12 @@ const CenterDiv = styled.div`
   align-items: center;
 `;
 const BackButton = styled(Button)`
-  height: 50px;
-  width: 50px;
+  height: 40px;
+  width: 40px;
 `;
 const BackImg = styled.img`
-  height: 50px;
-  width: 50px;
+  height: 40px;
+  width: 40px;
 `;
 const StyledCalendar = styled(Calendar)`
   width: 450px;
@@ -42,10 +42,11 @@ const StyledCalendar = styled(Calendar)`
 `;
 const Title = styled.h1`
   text-align: center;
-  margin-left: 31%
 `;
 const StyledDiv = styled.div`
+  width: 100%;
   display: flex;
+  justify-content: space-between;
   margin-top: 3%;
   margin-bottom: 3%;
 `;
@@ -93,7 +94,7 @@ export default function MoodCalendar(props) {
       .then(response => {
         setState(prev => ({ ...prev, moods: response.data, loading: false })); // if no moods, then state.moods is just an empty array
       })
-      .catch(function(error) {
+      .catch(function (error) {
         console.log(error);
       });
   }, [props.user.id]);
@@ -117,22 +118,23 @@ export default function MoodCalendar(props) {
   return (
     <main>
       <StyledDiv>
-        <BackButton onClick={() => {props.goToProgressPage("HOME")}}>
+        <BackButton onClick={() => { props.goToProgressPage("HOME") }}>
           <BackImg src="https://res.cloudinary.com/dpfixnpii/image/upload/v1582400198/arrow_xph8bj.svg" />
         </BackButton>
-      <Title>My Mood Calendar</Title>
+        <Title>My Mood Calendar</Title>
+        <div></div>
       </StyledDiv>
-      {state.loading ? <CenterDiv><CircularProgress /></CenterDiv> : 
-      <StyledDiv2>
-        {state.moods.length > 0 ? (
-          <StyledCalendar tileContent={tileContent} calendarType={"US"} />
-        ) : (
-          <StyledTitle>
-            {" "}
-            Start a reflection to start tracking your moods!
+      {state.loading ? <CenterDiv><CircularProgress /></CenterDiv> :
+        <StyledDiv2>
+          {state.moods.length > 0 ? (
+            <StyledCalendar tileContent={tileContent} calendarType={"US"} />
+          ) : (
+              <StyledTitle>
+                {" "}
+                Start a reflection to start tracking your moods!
           </StyledTitle>
-        )}
-        </StyledDiv2> }
+            )}
+        </StyledDiv2>}
     </main>
   );
 }
