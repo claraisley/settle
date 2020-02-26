@@ -1,4 +1,5 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import styled from "styled-components";
 import ExpansionPanel from "@material-ui/core/ExpansionPanel";
@@ -9,6 +10,7 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import { Backpack } from "react-kawaii";
+import Button from "@material-ui/core/Button";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -61,7 +63,7 @@ const Text = styled.p`
 `;
 const StyledBackPack = styled(Backpack)`
   justify-content: center;
-  margin-left: 35%;
+  margin-left: 0%;
   margin-top: 7%;
   margin-bottom: 5%;
 `;
@@ -83,7 +85,19 @@ const WhatIsPaperBackground = styled(Paper)`
   padding: 5%;
 `;
 
+const BackButton = styled(Button)`
+  height: 50px;
+  width: 50px;
+  margin-top: 10%;
+`;
+const BackImg = styled.img`
+  height: 50px;
+  width: 50px;
+  margin-top: 10%;
+`;
+
 export default function WhatIs() {
+  const history = useHistory()
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
   const handleChange = panel => event => {
@@ -142,13 +156,20 @@ export default function WhatIs() {
     <main>
       <div className={classes.grid}>
         <Grid container spacing={3}>
-          <Grid item sm={9} xs={12}>
+          
+          
+          <Grid item sm={3} xs={6}>
+          <BackButton onClick={() => { history.push("/menu")}}>
+          <BackImg src="https://res.cloudinary.com/dpfixnpii/image/upload/v1582400198/arrow_xph8bj.svg" />
+        </BackButton>
+          </Grid>
+          <Grid item sm={3} xs={6}>
+            <StyledBackPack size={150} mood="blissful" color="#FFD882" />
+          </Grid>
+          <Grid item sm={6} xs={12}>
             <TitlePaper elevation={12}>
               <Title>What is Test Anxiety?</Title>
             </TitlePaper>
-          </Grid>
-          <Grid item sm={3} xs={12}>
-            <StyledBackPack size={150} mood="blissful" color="#FFD882" />
           </Grid>
         </Grid>
       </div>
