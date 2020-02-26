@@ -7,20 +7,19 @@ const RestartButton = styled(Button)`
   margin-top: 3rem;
 `;
 const MoodButton = styled(Button)`
-  height: 60px;
-  width: 60px;
+  width: 11vw;
 `;
 const MoodImg = styled.img`
-  height: 50px;
-  width: 50px;
+  width: 10vw;
 `;
 const MoodPaper = styled(Paper)`
   padding: 8%;
   margin: 5% auto 5% auto;
-  width: 50vw;
+  width: 75vw;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  text-align: center;
   align-items: center;
   background-color: #353c52;
 `;
