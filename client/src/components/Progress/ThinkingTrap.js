@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import TrapItems from "./ThinkTrapItems";
 import styled from "styled-components";
 import Button from "@material-ui/core/Button";
-import CircularProgress from '@material-ui/core/CircularProgress';
+import CircularProgress from "@material-ui/core/CircularProgress";
 const axios = require("axios").default;
 
 const CenterDiv = styled.div`
@@ -55,9 +55,9 @@ export default function ThinkingTrap(props) {
       })
       .then(response => {
         setTrapData(response.data);
-        setLoading(false)
+        setLoading(false);
       })
-      .catch(function (error) {
+      .catch(function(error) {
         console.log(error);
       });
   }, [props.user.id]);
@@ -69,16 +69,31 @@ export default function ThinkingTrap(props) {
   return (
     <main>
       <StyledDiv>
-        <BackButton onClick={() => { props.goToProgressPage("HOME") }}>
+        <BackButton
+          onClick={() => {
+            props.goToProgressPage("HOME");
+          }}
+        >
           <BackImg src="https://res.cloudinary.com/dpfixnpii/image/upload/v1582400198/arrow_xph8bj.svg" />
         </BackButton>
-        <Title>Thinking Traps Progress</Title>
+        <Title>Thinking Traps</Title>
         <div></div>
       </StyledDiv>
-      {loading ? <CenterDiv><CircularProgress /></CenterDiv> :
+      {loading ? (
+        <CenterDiv>
+          <CircularProgress />
+        </CenterDiv>
+      ) : (
         <article>
-          {checkEmpty ? (<TrapItems trapData={trapData} />) : (<CenterDiv><StyledTitle>{emptyMessage}</StyledTitle></CenterDiv>)}
-        </article>}
+          {checkEmpty ? (
+            <TrapItems trapData={trapData} />
+          ) : (
+            <CenterDiv>
+              <StyledTitle>{emptyMessage}</StyledTitle>
+            </CenterDiv>
+          )}
+        </article>
+      )}
     </main>
   );
 }
