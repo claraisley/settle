@@ -7,6 +7,8 @@ import Typography from "@material-ui/core/Typography";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import Paper from "@material-ui/core/Paper";
 import styled from "styled-components";
+import Button from "@material-ui/core/Button";
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -49,8 +51,6 @@ const StaticPaper2 = styled(Paper)`
 
 const Title = styled.h1`
   text-align: center;
-  margin: 20px auto;
-  marfin-top: 5%;
 `;
 
 const Text = styled.p`
@@ -58,6 +58,23 @@ const Text = styled.p`
   font-size: 1.5em;
   font-weight: normal;
   margin: 15px;
+`;
+const StyledDiv = styled.div`
+  display: flex;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 3%;
+  margin-top: 3%;
+  align-items: center;
+`;
+const BackButton = styled(Button)`
+  height: 45px;
+  width: 45px;
+`;
+const BackImg = styled.img`
+  height: 40px;
+  width: 40px;
 `;
 // const PanelHeader = styled(ExpansionPanelSummary)` // this turns the header the same yellow but it's not great
 //   background-color: #deb559;
@@ -69,6 +86,7 @@ export default function ThinkingTraps(props) {
   const handleChange = panel => event => {
     setExpanded(prevEx => (prevEx !== panel ? panel : false));
   };
+  const history = useHistory();
 
   const items = props.data.map(data => {
     return (
@@ -99,7 +117,13 @@ export default function ThinkingTraps(props) {
 
   return (
     <main className="static">
-      <Title>Thinking Traps</Title>
+      <StyledDiv>
+        <BackButton onClick={() => history.push("/menu")}>
+          <BackImg src="https://res.cloudinary.com/dpfixnpii/image/upload/v1582400198/arrow_xph8bj.svg" />
+        </BackButton>
+        <Title>Thinking Traps</Title>
+        <div></div>
+      </StyledDiv>
       <StaticPaper2 elevation={10}>
         <Text>
           Just because you think something doesn’t mean it’s true or that it

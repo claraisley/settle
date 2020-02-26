@@ -35,19 +35,21 @@ const CenterDiv = styled.div`
   justify-content: center;
 `;
 const BackButton = styled(Button)`
-  height: 50px;
-  width: 50px;
+  height: 40px;
+  width: 40px;
 `;
 const BackImg = styled.img`
-  height: 50px;
-  width: 50px;
+  height: 40px;
+  width: 40px;
 `;
 const Title = styled.h1`
   text-align: center;
-  margin-left: 30%;
 `;
 const StyledDiv = styled.div`
   display: flex;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
   margin-bottom: 3%;
   margin-top: 3%;
 `;
@@ -233,6 +235,7 @@ export default function MeditationHistory(props) {
           <BackImg src="https://res.cloudinary.com/dpfixnpii/image/upload/v1582400198/arrow_xph8bj.svg" />
         </BackButton>
         <Title>My Meditation Tracker</Title>
+        <div></div>
       </StyledDiv>
       {state.meditations.length > 0 ? (
           <NotePaper elevation={12}>
