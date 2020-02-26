@@ -8,7 +8,7 @@ import Checkbox from "@material-ui/core/Checkbox";
 import { Card } from "@material-ui/core";
 
 const QuestionCheckbox = styled(Checkbox)`
-  color: #d67557;
+  color: #deb559;
   & > span:hover {
     background-color: rgba(255, 255, 255, 0.1);
   }
@@ -29,7 +29,7 @@ const CardQuizList = styled(Card)`
   margin-right: 5%;
   margin-bottom: 2em;
   align-items: center;
-
+  text-align: center;
   background-color: #353c52;
 `;
 export default function QuestionItem(props) {
@@ -51,7 +51,7 @@ export default function QuestionItem(props) {
   };
 
   return (
-    <CardQuizList>
+    <CardQuizList elevation={2}>
       <h2>{props.question}</h2>
       <FormControlLabel
         control={
