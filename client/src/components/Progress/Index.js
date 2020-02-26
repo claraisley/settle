@@ -66,7 +66,7 @@ export default function Progress(props) {
                   goToProgressPage(TRAP);
                 }}
               >
-                <h1>Thinking Trap Progress</h1>
+                <h1>Thinking Traps</h1>
               </ProgressButton>
             </StyledDiv>
             <StyledDiv>
@@ -82,7 +82,7 @@ export default function Progress(props) {
                   goToProgressPage(MOOD);
                 }}
               >
-                <h1>Mood Tracker</h1>
+                <h1>Mood Calendar</h1>
               </ProgressButton>
             </StyledDiv>
             <StyledDiv>
