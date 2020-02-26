@@ -12,6 +12,8 @@ import { useHistory } from "react-router-dom";
 const StyledCard = styled(Card)`
   background-color: #353c52;
   margin-top: 5%;
+  padding-top: 12px;
+  padding-bottom: 12px;
 `;
 
 const StyledPaper = styled(Paper)`
