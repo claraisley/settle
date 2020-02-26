@@ -6,9 +6,11 @@ import Button from "@material-ui/core/Button";
 import MeditationHistory from "./MeditationHistory";
 import useVisualMode from "../../hooks/useVisualMode";
 import Paper from "@material-ui/core/Paper";
-import { ButtonBase, Card, Typography } from "@material-ui/core";
 
-const ProgressButton = styled(Button)``;
+const ProgressButton = styled(Button)`
+  width: 21vw;
+  margin-top: 10%;
+`;
 const ProgressImg = styled.img`
   width: 20vw;
 `;
@@ -24,23 +26,14 @@ const ProgressPaper = styled(Paper)`
     flex-direction: column;
   }
 `;
-const Buttons = styled(ButtonBase)`
+const StyledDiv = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 21vw;
-  margin-top: 10%;
 `;
 const OuterDiv = styled.div`
   display: flex;
   justify-content: center;
-`;
-
-const CardProgress = styled(Card)`
-  margin-left: 10%;
-  margin-right: 10%;
-  padding: 1em;
-  flex-direction: column;
 `;
 
 export default function Progress(props) {
@@ -60,17 +53,23 @@ export default function Progress(props) {
       {mode === HOME && (
         <OuterDiv>
           <ProgressPaper elevation={12}>
-            <CardProgress>
-              <Buttons
+            <StyledDiv>
+              <ProgressButton
                 onClick={() => {
                   goToProgressPage(TRAP);
                 }}
               >
                 <ProgressImg src="https://res.cloudinary.com/dpfixnpii/image/upload/v1582394796/brain_thxely.svg" />
-                <Typography>Thinking Trap Progress</Typography>
-              </Buttons>
-            </CardProgress>
-            <Buttons>
+              </ProgressButton>
+              <ProgressButton
+                onClick={() => {
+                  goToProgressPage(TRAP);
+                }}
+              >
+                <h1>Thinking Trap Progress</h1>
+              </ProgressButton>
+            </StyledDiv>
+            <StyledDiv>
               <ProgressButton
                 onClick={() => {
                   goToProgressPage(MOOD);
@@ -85,8 +84,8 @@ export default function Progress(props) {
               >
                 <h1>Mood Tracker</h1>
               </ProgressButton>
-            </Buttons>
-            <ButtonBase>
+            </StyledDiv>
+            <StyledDiv>
               <ProgressButton
                 onClick={() => {
                   goToProgressPage(MEDITATION);
@@ -101,7 +100,7 @@ export default function Progress(props) {
               >
                 <h1>Meditation Tracker</h1>
               </ProgressButton>
-            </ButtonBase>
+            </StyledDiv>
           </ProgressPaper>
         </OuterDiv>
       )}
