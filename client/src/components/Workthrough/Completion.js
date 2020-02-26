@@ -98,7 +98,7 @@ export default function Completion(props) {
               <CardStart elevation={4} className={classes.cards}>
                 <ButtonBase onClick={() => history.push("/tips-tricks")}>
                   <CardActionStart>
-                    <Paragraphs gutterBottom>Go to Dos and Don'ts</Paragraphs>
+                    <Paragraphs gutterBottom>Dos and Don'ts</Paragraphs>
                   </CardActionStart>
                 </ButtonBase>
               </CardStart>
