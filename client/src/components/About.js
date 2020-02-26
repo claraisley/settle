@@ -67,7 +67,7 @@ export default function About() {
         </Text>
         <Text>
           The meditations are original Test Anxiety-specifc meditations
-          gracioulsy created by the Toronto-based artist{" "}
+          graciously created by the Toronto-based artist{" "}
           <StyledHREF href="https://www.emilydawndickinson.com/">
             Emily Dickinson
           </StyledHREF>

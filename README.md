@@ -10,7 +10,7 @@ students, our app aims to introduce teens to the practice of mindfulness, as wel
 
 ## Attributions
 
-The inspiration and source material for this application comes from a [Test Anxiety Booklet](https://www.anxietycanada.com/sites/default/files/Test_Anxiety_Booklet.pdf) released in coordination with Anxiety Canada. The meditations are original Test Anxiety-specifc meditations gracioulsy created by the Toronto-based artist [Emily Dickinson](https://www.emilydawndickinson.com/). Work-Through concept and material is original content by [Katherine Szelag](https://www.linkedin.com/in/katherine-szelag/).
+The inspiration and source material for this application comes from a [Test Anxiety Booklet](https://www.anxietycanada.com/sites/default/files/Test_Anxiety_Booklet.pdf) released in coordination with Anxiety Canada. The meditations are original Test Anxiety-specifc meditations graciously created by the Toronto-based artist [Emily Dickinson](https://www.emilydawndickinson.com/). Work-Through concept and material is original content by [Katherine Szelag](https://www.linkedin.com/in/katherine-szelag/).
 
 ## GIFs/ERD
 
