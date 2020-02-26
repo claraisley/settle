@@ -23,10 +23,10 @@ const QuestionTextField = styled(TextField)`
   }
 `;
 const CardQuizList = styled(Card)`
-  padding: 1em;
+  padding: 0.5em;
   margin-top: 2em;
-  margin-left: 1%;
-  margin-right: 1%;
+  margin-left: 0%;
+  margin-right: 0%;
   margin-bottom: 2em;
   align-items: center;
   text-align: center;

@@ -13,8 +13,8 @@ const axios = require("axios").default;
 
 const PaperQuiz = styled(Paper)`
   margin-top: 2em;
-  margin-left: 4%;
-  margin-right: 4%;
+  margin-left: 2%;
+  margin-right: 2%;
   margin-bottom: 3em;
   background-color: #353c52;
   padding: 1em;
