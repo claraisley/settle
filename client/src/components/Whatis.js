@@ -78,12 +78,7 @@ const Title = styled.h1`
 const SymptomsTitle = styled.h1`
   text-align: center;
 `;
-const WhatIsPaperBackground = styled(Paper)`
-  background-color: #353c52;
-  margin: 5%;
-  margin-top: 0%;
-  padding: 5%;
-`;
+
 
 const BackButton = styled(Button)`
   height: 50px;
@@ -213,7 +208,7 @@ export default function WhatIs() {
             </WhatIsPaper>
           </Grid>
           <Grid item xs={12} sm={6}>
-            <WhatIsPaperBackground>
+            <WhatIsPaper elevation={10}>
               <NotePaper elevation={11}>
                 <Text>
                   <strong>
@@ -225,7 +220,7 @@ export default function WhatIs() {
               </NotePaper>
               <SymptomsTitle>Symptoms</SymptomsTitle>
               {items}
-            </WhatIsPaperBackground>
+            </WhatIsPaper>
           </Grid>
         </Grid>
       </div>

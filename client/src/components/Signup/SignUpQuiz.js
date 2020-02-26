@@ -13,8 +13,8 @@ const axios = require("axios").default;
 
 const PaperQuiz = styled(Paper)`
   margin-top: 2em;
-  margin-left: 10%;
-  margin-right: 10%;
+  margin-left: 4%;
+  margin-right: 4%;
   margin-bottom: 3em;
   background-color: #353c52;
   padding: 1em;
@@ -30,12 +30,12 @@ const PaperQuiz = styled(Paper)`
 // `;
 
 const CardContentQuiz = styled(CardContent)`
-  padding: 10px;
+  padding: 5px;
   padding-bottom: 0 !important;
   margin-top: 1%;
   margin-bottom: 3%;
-  margin-left: 15%;
-  margin-right: 15%;
+  margin-left: 5%;
+  margin-right: 5%;
   color: white;
   text-align: center;
 `;
