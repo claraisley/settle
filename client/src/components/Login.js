@@ -13,12 +13,12 @@ import Link from "@material-ui/core/Link";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import KawaiiAnimation from "./backpackAnimation";
-import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
-import DialogTitle from '@material-ui/core/DialogTitle';
-import Slide from '@material-ui/core/Slide';
+import Dialog from "@material-ui/core/Dialog";
+import DialogActions from "@material-ui/core/DialogActions";
+import DialogContent from "@material-ui/core/DialogContent";
+import DialogContentText from "@material-ui/core/DialogContentText";
+import DialogTitle from "@material-ui/core/DialogTitle";
+import Slide from "@material-ui/core/Slide";
 
 const axios = require("axios").default;
 
@@ -32,7 +32,7 @@ const ContainerLogin = styled(Container)`
 `;
 
 const PaperLogin = styled(Paper)`
-  margin-top: 8%;
+  margin-top: 3em;
   margin-left: 6%;
   margin-right: 6%;
   margin-bottom: 5%;
@@ -54,8 +54,6 @@ const TypographyLogin = styled(Typography)`
 `;
 
 const BackpackBox = styled.div`
-  margin-top: 5%;
-  margin-bottom: 2%;
   display: flex;
   justify-content: center;
 `;
@@ -120,7 +118,7 @@ export default function Login(props) {
       })
       .catch(err => {
         console.log(err);
-        handleClickOpen()
+        handleClickOpen();
       });
   };
 
@@ -136,10 +134,13 @@ export default function Login(props) {
         aria-labelledby="alert-dialog-slide-title"
         aria-describedby="alert-dialog-slide-description"
       >
-        <DialogTitle id="alert-dialog-slide-title">{"Use Google's location service?"}</DialogTitle>
+        <DialogTitle id="alert-dialog-slide-title">
+          {"Use Google's location service?"}
+        </DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-slide-description">
-            There was a problem signing you in. Double check your email and password, then try again!
+            There was a problem signing you in. Double check your email and
+            password, then try again!
           </DialogContentText>
         </DialogContent>
         <DialogActions>
