@@ -69,6 +69,8 @@ const Cactus = styled.img`
   margin-bottom: 10px;
 `;
 
+
+
 export default function Followup(props) {
   const classes = useStyles();
   const [isMobile, setIsMobile] = useState(false);
@@ -115,7 +117,7 @@ export default function Followup(props) {
               >
                 <ClickAwayListener onClickAway={handleTooltipClose}>
                   <TooltipText onClick={handleTooltipOpen}>
-                    Related thinking trap: {props.thinkingTrap.name}
+                    Related Thinking Trap: {props.thinkingTrap.name}
                     <sup>[?]</sup>
                   </TooltipText>
                   
@@ -129,7 +131,7 @@ export default function Followup(props) {
                 arrow
               >
                 <TooltipText>
-                  Related thinking trap: {props.thinkingTrap.name}
+                  Related Thinking Trap: {props.thinkingTrap.name}
                   <sup>[?]</sup>
                 </TooltipText>
               </Tooltip>
@@ -137,7 +139,7 @@ export default function Followup(props) {
           </CardTooltip>
         </DialogContent>
         <DialogActions>
-          <Button autoFocus onClick={props.nextQuestion} color="primary">
+          <Button autoFocus onClick={props.nextQuestion} color="primary" variant="contained">
             Next Question
           </Button>
         </DialogActions>

@@ -92,7 +92,7 @@ export default function Start(props) {
             <ButtonBase onClick={() => props.startWorkthrough(3)}>
               <CardActionStart>
                 <TypographyStart gutterBottom>
-                  The test I'm preparing for is today
+                  Short Work-Through
                 </TypographyStart>
               </CardActionStart>
             </ButtonBase>
@@ -101,7 +101,7 @@ export default function Start(props) {
             <ButtonBase onClick={() => props.startWorkthrough(5)}>
               <CardActionStart>
                 <TypographyStart gutterBottom>
-                  The test I'm preparing for is tomorrow
+                  Long Work-Through
                 </TypographyStart>
               </CardActionStart>
             </ButtonBase>
