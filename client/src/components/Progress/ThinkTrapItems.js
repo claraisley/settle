@@ -35,8 +35,8 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default function TrapItems(props) {
-  const classes = useStyles()
-  
+  const classes = useStyles();
+
   const rounded = Object.entries(props.trapData).map(trap => {
     return Math.round(trap[1]);
   });
@@ -74,17 +74,17 @@ export default function TrapItems(props) {
     return (
       <Grid item xs={12} sm={6} key={index}>
         <Paper className={classes.paper} elevation={12}>
-            <Tooltip
-              TransitionComponent={Zoom}
-              title={<Tooltiptip>{definitions[index]}</Tooltiptip>}
-              classes={{ tooltip: classes.customWidth }}
-              arrow
-            >
-              <h1>
-                {lookup[index]}
-                <sup>[?]</sup>
-              </h1>
-            </Tooltip>
+          <Tooltip
+            TransitionComponent={Zoom}
+            title={<Tooltiptip>{definitions[index]}</Tooltiptip>}
+            classes={{ tooltip: classes.customWidth }}
+            arrow
+          >
+            <h1>
+              {lookup[index]}
+              <sup>[?]</sup>
+            </h1>
+          </Tooltip>
           <Comp />
         </Paper>
       </Grid>

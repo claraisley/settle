@@ -7,7 +7,7 @@ class TrapDataController < ApplicationController
 
    @user = User.find(params[:id])
 
-    #@user = User.find(1)
+    # @user = User.find(1)
     @responses = @user.reflection_responses
       .map(&:response)
       .group_by(&:thinking_trap_id)

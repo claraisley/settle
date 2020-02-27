@@ -54,7 +54,6 @@ export default function ThinkingTrap(props) {
       .then(response => {
         setTrapData(response.data);
         setLoading(false);
-        console.log(response.data)
       })
       .catch(function(error) {
         console.log(error);
