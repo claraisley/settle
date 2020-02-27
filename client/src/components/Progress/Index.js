@@ -6,8 +6,6 @@ import Button from "@material-ui/core/Button";
 import MeditationHistory from "./MeditationHistory";
 import useVisualMode from "../../hooks/useVisualMode";
 import Paper from "@material-ui/core/Paper";
-import { useHistory } from "react-router-dom";
-
 const ProgressButton = styled(Button)`
   width: 21vw;
   margin-top: 10%;
@@ -19,6 +17,7 @@ const ProgressImg = styled.img`
   width: 20vw;
 `;
 const ProgressPaper = styled(Paper)`
+  margin-top: 5%;
   margin-bottom: 5%;
   width: 90vw;
   background-color: #353c52;
@@ -38,47 +37,17 @@ const OuterDiv = styled.div`
   display: flex;
   justify-content: center;
 `;
-const StyledTitleDiv = styled.div`
-  display: flex;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  margin-top: 3%;
-  align-items: center;
-`;
-const BackButton = styled(Button)`
-  height: 45px;
-  width: 45px;
-`;
-const BackImg = styled.img`
-  height: 40px;
-  width: 40px;
-`;
-const Title = styled.h1`
-  text-align: center;
-`;
-
 export default function Progress(props) {
   const HOME = "HOME";
   const MOOD = "MOOD";
   const TRAP = "TRAP";
   const MEDITATION = "MEDITATION";
-  const history = useHistory();
   const { mode, transition } = useVisualMode(HOME);
-
   const goToProgressPage = mode => {
     transition(mode);
   };
-
   return (
     <main className="progress">
-      <StyledTitleDiv>
-        <BackButton onClick={() => history.push("/menu")}>
-          <BackImg src="https://res.cloudinary.com/dpfixnpii/image/upload/v1582400198/arrow_xph8bj.svg" />
-        </BackButton>
-        <Title>My Progress</Title>
-        <div></div>
-      </StyledTitleDiv>
       {mode === HOME && (
         <OuterDiv>
           <ProgressPaper elevation={12}>
