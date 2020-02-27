@@ -40,20 +40,7 @@ const TypographyHeader = styled(Typography)`
   font-size: x-large;
   font-weight: 600;
 `;
-const QuestionResponse = styled.div`
-  display: grid;
-  & > label {
-    margin: 0.5em;
-    text-align: center;
-      & > .MuiRadio-colorSecondary:hover {
-        background-color: rgba(255, 255, 255, 0.1);
-      }
-      & > .MuiRadio-colorSecondary.Mui-checked {
-        color: #deb559;
-      }
-    }
-  }
-`;
+
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -116,9 +103,10 @@ export default function Question(props) {
             </TypographyHeader>
           </CardContentQuestion>
         </CardQuestion>
+
         <CardQuestion className={classes.cards}>
-          <FormControl component="fieldset" className={classes.formControl}>
-            <FormLabel component="legend"></FormLabel>
+        
+
             <RadioGroup
               aria-label="gender"
               name="gender1"
@@ -126,10 +114,11 @@ export default function Question(props) {
               onChange={handleChange}
               className={{ root: classes.radio, checked: classes.checked }}
             >
-              <QuestionResponse>{responseList}</QuestionResponse>
+             {responseList}
             </RadioGroup>
-          </FormControl>
+  
         </CardQuestion>
+
         <StyledProgress
           variant="determinate"
           value={(props.questionsDone / props.totalQuestions) * 100}
