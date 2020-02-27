@@ -15,7 +15,6 @@ const StyledCard = styled(Card)`
   padding-top: 12px;
   padding-bottom: 12px;
 `;
-
 const StyledPaper = styled(Paper)`
   background-color: #353c52;
   margin: 5%;
