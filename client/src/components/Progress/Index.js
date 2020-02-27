@@ -80,11 +80,15 @@ export default function Progress(props) {
               >
                 <ProgressImg src="https://res.cloudinary.com/dpfixnpii/image/upload/v1582394641/emoji_z9c9di.svg" />
               </ProgressButton>
+<<<<<<< HEAD
+              <ProgressButton onClick={() => { goToProgressPage(MOOD) }}>
+=======
               <ProgressButton
                 onClick={() => {
                   goToProgressPage(MOOD);
                 }}
               >
+>>>>>>> 75195cefeef2b09c66a7ce261246c90adf6a539a
                 <h1>Mood Calendar</h1>
               </ProgressButton>
             </StyledDiv>

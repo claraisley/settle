@@ -9,6 +9,7 @@ import {
 import Nav from "./Nav";
 import useApplicationData from "../hooks/useApplicationData.js";
 import Login from "./Login";
+import ScrollToTop from "./ScrollToTop";
 
 function App() {
   const { state, links, authenticatetUser, setUser } = useApplicationData();
@@ -20,8 +21,8 @@ function App() {
         authenticatetUser() ? (
           <Component {...props} />
         ) : (
-          <Redirect to="/login" />
-        )
+            <Redirect to="/login" />
+          )
       }
     />
   );
@@ -33,23 +34,24 @@ function App() {
         component={() => link.component}
       />
     ) : (
-      <Route key={index} path={link.path}>
-        {link.component}
-      </Route>
-    );
+        <Route key={index} path={link.path}>
+          {link.component}
+        </Route>
+      );
   });
 
   return (
     <div className="header">
       <Router>
+        <ScrollToTop />
         <Nav links={links} user={state.user} setUser={setUser} />
         <Switch>
           <Route exact path="/">
             {authenticatetUser() ? (
               <Redirect to="/menu" user={state.user} />
             ) : (
-              <Login user={state.user} setUser={setUser} />
-            )}
+                <Login user={state.user} setUser={setUser} />
+              )}
           </Route>
           {routes}
         </Switch>
