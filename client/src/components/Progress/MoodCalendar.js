@@ -4,25 +4,15 @@ import Calendar from "react-calendar";
 import styled from "styled-components";
 import Button from "@material-ui/core/Button";
 import Paper from "@material-ui/core/Paper";
-// import Paper from "@material-ui/core/Paper";
 import CircularProgress from "@material-ui/core/CircularProgress";
-// import { makeStyles } from "@material-ui/core/styles";
 
-//styling
-// const useStyles = makeStyles(theme => ({
-//   root: {
-//     display: 'flex',
-//     '& > * + *': {
-//       marginLeft: theme.spacing(2),
-//     },
-//   },
-// }));
 const CenterDiv = styled.div`
   width: 100vw;
-  height: 75vh;
+  height: 40vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 `;
 const BackButton = styled(Button)`
   height: 40px;
@@ -55,22 +45,16 @@ const StyledDiv2 = styled.div`
   display: flex;
   justify-content: center;
 `;
-const StyledTitle = styled.h1`
+const StyledTitle = styled.h2`
   color: #ffd882;
 `;
-// const NotePaper = styled(Paper)`
-//   padding: 3%;
-//   background-color: #353c52;
-// `;
-
-const StaticPaper2 = styled(Paper)`
-  width: 90%;
-  margin: 10px auto;
+const StaticPaper = styled(Paper)`
+  margin: 0 auto 1rem auto;
   background-color: #353c52;
-
   padding: 1%;
+  display: flex;
+  justify-content: center;
 `;
-
 const Text = styled.p`
   line-height: 1.5;
   font-size: 1.5em;
@@ -110,7 +94,7 @@ export default function MoodCalendar(props) {
       .then(response => {
         setState(prev => ({ ...prev, moods: response.data, loading: false })); // if no moods, then state.moods is just an empty array
       })
-      .catch(function(error) {
+      .catch(function (error) {
         console.log(error);
       });
   }, [props.user.id]);
@@ -144,29 +128,27 @@ export default function MoodCalendar(props) {
         <Title>My Mood Calendar</Title>
         <div></div>
       </StyledDiv>
-      <StaticPaper2 elevation={10}>
-        <Text>
-          This calendar displays the moods you've inputed after your
-          Work-Throughs!
-        </Text>
-      </StaticPaper2>
-
       {state.loading ? (
         <CenterDiv>
           <CircularProgress />
         </CenterDiv>
       ) : (
-        <StyledDiv2>
-          {state.moods.length > 0 ? (
-            <StyledCalendar tileContent={tileContent} calendarType={"US"} />
-          ) : (
-            <StyledTitle>
-              {" "}
-              Do a Work-Through to start tracking your moods!
+          <StyledDiv2>
+            {state.moods.length > 0 ? (
+              <CenterDiv>
+                <StaticPaper elevation={10}>
+                  <Text>This calendar displays the moods you've inputted after your Work-Throughs!</Text>
+                </StaticPaper>
+                <StyledCalendar tileContent={tileContent} calendarType={"US"} />
+              </CenterDiv>
+            ) : (
+                <StyledTitle>
+                  {" "}
+                  Do a Work-Through to start tracking your moods!
             </StyledTitle>
-          )}
-        </StyledDiv2>
-      )}
+              )}
+          </StyledDiv2>
+        )}
     </main>
   );
 }

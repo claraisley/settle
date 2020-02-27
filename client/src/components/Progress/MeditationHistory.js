@@ -78,6 +78,9 @@ const StyledMenuItem = styled(MenuItem)`
 const StyledSubtitle = styled.h2`
   font-size: 1.25rem
 `;
+const StyledTitle = styled.h2`
+  color: #ffd882;
+`;
 const StyledSelect = styled(Select).attrs({
   classes: { root: 'root' }
 })` 
@@ -260,7 +263,7 @@ export default function MeditationHistory(props) {
               width="100%"
             />
           </NotePaper>) : 
-          <CenterDiv><h2>Do a meditation to start tracking your progress!</h2></CenterDiv> }
+          <CenterDiv><StyledTitle>Do a meditation to start tracking your progress!</StyledTitle></CenterDiv> }
     </main>
   );
 }
