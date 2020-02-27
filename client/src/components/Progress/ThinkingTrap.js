@@ -6,7 +6,6 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 const axios = require("axios").default;
 
 const CenterDiv = styled.div`
-  width: 100vw;
   height: 75vh;
   display: flex;
   justify-content: center;
@@ -21,7 +20,6 @@ const BackImg = styled.img`
 `;
 const Title = styled.h1`
   margin-bottom: 5%;
-  text-align: center;
 `;
 const StyledDiv = styled.div`
   display: flex;

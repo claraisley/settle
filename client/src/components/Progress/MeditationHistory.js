@@ -29,7 +29,6 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const CenterDiv = styled.div`
-  width: 100vw;
   height: 75vh;
   display: flex;
   justify-content: center;
