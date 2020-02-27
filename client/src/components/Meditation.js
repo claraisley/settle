@@ -15,6 +15,7 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Slide from '@material-ui/core/Slide';
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -48,7 +49,6 @@ const StaticPaper = styled(Paper)`
   align-items: center;
   padding: 4%;
 `;
-
 const StaticPaper2 = styled(Paper)`
   width: 90%;
   margin: 10px auto;
@@ -57,17 +57,32 @@ const StaticPaper2 = styled(Paper)`
   align-items: center;
   padding: 1%;
 `;
-
 const Title = styled.h1`
   text-align: center;
   margin: 20px auto;
 `;
-
 const Text = styled.p`
   line-height: 1.5;
   font-size: 1.25rem;
   font-weight: normal;
   margin: 15px;
+`;
+const BackButton = styled(Button)`
+  height: 45px;
+  width: 45px;
+`;
+const BackImg = styled.img`
+  height: 40px;
+  width: 40px;
+`;
+const StyledDiv = styled.div`
+  display: flex;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 3%;
+  margin-top: 3%;
+  align-items: center;
 `;
 
 export default function Meditation(props) {
@@ -77,6 +92,7 @@ export default function Meditation(props) {
     setExpanded(prevEx => (prevEx !== panel ? panel : false));
   };
   const [open, setOpen] = React.useState(false);
+  const history = useHistory();
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -159,7 +175,13 @@ export default function Meditation(props) {
           </Button>
         </DialogActions>
       </Dialog>
-      <Title>Meditations</Title>
+      <StyledDiv>
+        <BackButton onClick={() => history.push("/menu")}>
+          <BackImg src="https://res.cloudinary.com/dpfixnpii/image/upload/v1582400198/arrow_xph8bj.svg" />
+        </BackButton>
+        <Title>Meditations</Title>
+        <div></div>
+      </StyledDiv>
       <StaticPaper2 elevation={10}>
         <Text>
           Mindfulness is a process where we purposely bring our attention to
