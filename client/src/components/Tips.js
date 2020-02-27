@@ -7,6 +7,8 @@ import Typography from "@material-ui/core/Typography";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import Paper from "@material-ui/core/Paper";
 import styled from "styled-components";
+import Button from "@material-ui/core/Button";
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -40,7 +42,23 @@ const StaticPaper = styled(Paper)`
 `;
 const Title = styled.h1`
   text-align: center;
-  margin: 20px auto;
+`;
+const StyledDiv = styled.div`
+  display: flex;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 3%;
+  margin-top: 3%;
+  align-items: center;
+`;
+const BackButton = styled(Button)`
+  height: 45px;
+  width: 45px;
+`;
+const BackImg = styled.img`
+  height: 40px;
+  width: 40px;
 `;
 
 export default function Tips(props) {
@@ -49,6 +67,7 @@ export default function Tips(props) {
   const handleChange = panel => event => {
     setExpanded(prevEx => (prevEx !== panel ? panel : false));
   };
+  const history = useHistory();
 
   const items = props.data.map(data => {
     return (
@@ -74,7 +93,13 @@ export default function Tips(props) {
 
   return (
     <main>
-      <Title>Dos and Don'ts of Dealing with Test Anxiety </Title>
+      <StyledDiv>
+        <BackButton onClick={() => history.push("/menu")}>
+          <BackImg src="https://res.cloudinary.com/dpfixnpii/image/upload/v1582400198/arrow_xph8bj.svg" />
+        </BackButton>
+        <Title>Dos and Don'ts of Dealing with Test Anxiety</Title>
+        <div></div>
+      </StyledDiv>
       <StaticPaper elevation={12}>
         <div className={classes.root}></div>
         {items}

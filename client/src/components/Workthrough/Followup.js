@@ -63,6 +63,14 @@ const Tooltiptip = styled.span`
   margin: 10px;
 `;
 
+const Cactus = styled.img`
+  height: 60px;
+  width: 60px;
+  margin-bottom: 10px;
+`;
+
+
+
 export default function Followup(props) {
   const classes = useStyles();
   const [isMobile, setIsMobile] = useState(false);
@@ -96,6 +104,7 @@ export default function Followup(props) {
               props.followup[0] ? props.followup[0].text : ""
             )}
           </Text>
+          <Cactus src="https://res.cloudinary.com/dpfixnpii/image/upload/v1582608002/cactus_wxnhwz.svg" />
           <CardTooltip elevation={7}>
             {isMobile ? (
               <Tooltip
@@ -108,9 +117,10 @@ export default function Followup(props) {
               >
                 <ClickAwayListener onClickAway={handleTooltipClose}>
                   <TooltipText onClick={handleTooltipOpen}>
-                    Related thinking trap: {props.thinkingTrap.name}
+                    Related Thinking Trap: {props.thinkingTrap.name}
                     <sup>[?]</sup>
                   </TooltipText>
+                  
                 </ClickAwayListener>
               </Tooltip>
             ) : (
@@ -121,7 +131,7 @@ export default function Followup(props) {
                 arrow
               >
                 <TooltipText>
-                  Related thinking trap: {props.thinkingTrap.name}
+                  Related Thinking Trap: {props.thinkingTrap.name}
                   <sup>[?]</sup>
                 </TooltipText>
               </Tooltip>
@@ -129,7 +139,7 @@ export default function Followup(props) {
           </CardTooltip>
         </DialogContent>
         <DialogActions>
-          <Button autoFocus onClick={props.nextQuestion} color="primary">
+          <Button autoFocus onClick={props.nextQuestion} color="primary" variant="contained">
             Next Question
           </Button>
         </DialogActions>

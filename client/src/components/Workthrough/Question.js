@@ -14,17 +14,14 @@ import FormLabel from "@material-ui/core/FormLabel";
 import personalizeText from "./HelperFunction";
 import LinearProgress from "@material-ui/core/LinearProgress";
 
-const CenterDiv = styled.div`
-  display: flex;
-  justify-content: center;
-  margin-top: 2rem;
-`;
 const StyledProgress = styled(LinearProgress)`
   height: 1rem;
   margin: 1rem;
   border-radius: 4px;
 `;
-const RestartButton = styled(Button)``;
+const RestartButton = styled(Button)`
+  margin: 2em;
+`;
 const CardQuestion = styled(Card)`
   margin-top: 5%;
   margin-left: 10%;
@@ -48,7 +45,7 @@ const QuestionResponse = styled.div`
   & > label {
     margin: 0.5em;
     text-align: center;
-      & > .makeStyles-cards-194:hover {
+      & > .MuiRadio-colorSecondary:hover {
         background-color: rgba(255, 255, 255, 0.1);
       }
       & > .MuiRadio-colorSecondary.Mui-checked {
@@ -63,10 +60,11 @@ const useStyles = makeStyles(theme => ({
     display: "flex",
     flexWrap: "wrap",
     justifyContent: "center",
+    textAlign: "center",
     "& > *": {
       margin: theme.spacing(1),
       width: theme.spacing(100),
-      height: theme.spacing(72),
+
       backgroundColor: "#353c52"
     }
   },
@@ -136,15 +134,14 @@ export default function Question(props) {
           variant="determinate"
           value={(props.questionsDone / props.totalQuestions) * 100}
         />
-        <CenterDiv>
-          <RestartButton
-            variant="contained"
-            color="primary"
-            onClick={() => props.restartWorkthrough()}
-          >
-            Quit without saving
-          </RestartButton>
-        </CenterDiv>
+
+        <RestartButton
+          variant="contained"
+          color="primary"
+          onClick={() => props.restartWorkthrough()}
+        >
+          Quit without saving
+        </RestartButton>
       </Paper>
     </div>
   );

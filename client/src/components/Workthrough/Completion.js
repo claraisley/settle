@@ -22,7 +22,7 @@ const useStyles = makeStyles(theme => ({
   cards: {
     display: "flex",
     justifyContent: "center",
-    margin: "2em",
+    margin: "1em",
     backgroundColor: "#353c52"
   }
 }));
@@ -64,44 +64,46 @@ export default function Completion(props) {
           <Grid item xs={12}>
             <Papers elevation={7} className={classes.paper}>
               <Paragraphs>
-                We hope you're feeling ready for your test or quiz. If you have
-                a little extra time, do you want to try a meditation or go
-                through some tips and tricks?
+                Great job on completing that Work-Through! Good luck on your test, you've got this!
               </Paragraphs>
-              <CardStart elevation={4} className={classes.cards}>
-                <ButtonBase onClick={() => history.push("/meditations")}>
-                  <CardActionStart>
-                    <Paragraphs gutterBottom>MEDITATIONS</Paragraphs>
-                  </CardActionStart>
-                </ButtonBase>
-              </CardStart>
-              <CardStart elevation={4} className={classes.cards}>
-                <ButtonBase onClick={() => history.push("/tips-tricks")}>
-                  <CardActionStart>
-                    <Paragraphs gutterBottom>TIPS AND TRICKS</Paragraphs>
-                  </CardActionStart>
-                </ButtonBase>
-              </CardStart>
 
-              <Paragraphs>
-                Or do you want to do another work-through?
-              </Paragraphs>
               <CardStart elevation={4} className={classes.cards}>
                 <ButtonBase onClick={() => props.restartWorkthrough()}>
                   <CardActionStart>
-                    <Paragraphs gutterBottom>START NEW WORK-THROUGH</Paragraphs>
+                    <Paragraphs gutterBottom>Do another Work-Through</Paragraphs>
                   </CardActionStart>
                 </ButtonBase>
               </CardStart>
 
-              <Paragraphs>If not, have fun and do your best!</Paragraphs>
               <CardStart elevation={4} className={classes.cards}>
-                <ButtonBase onClick={() => history.push("/menu")}>
+                <ButtonBase onClick={() => history.push("/meditations")}>
                   <CardActionStart>
-                    <Paragraphs gutterBottom>HOME</Paragraphs>
+                    <Paragraphs gutterBottom>Explore Meditations</Paragraphs>
                   </CardActionStart>
                 </ButtonBase>
               </CardStart>
+             
+
+              
+              
+
+              <CardStart elevation={4} className={classes.cards}>
+                <ButtonBase onClick={() => history.push("/menu")}>
+                  <CardActionStart>
+                    <Paragraphs gutterBottom>Home</Paragraphs>
+                  </CardActionStart>
+                </ButtonBase>
+              </CardStart>
+
+              <CardStart elevation={4} className={classes.cards}>
+                <ButtonBase onClick={() => history.push("/tips-tricks")}>
+                  <CardActionStart>
+                    <Paragraphs gutterBottom>Dos and Don'ts</Paragraphs>
+                  </CardActionStart>
+                </ButtonBase>
+              </CardStart>
+
+
             </Papers>
           </Grid>
         </Grid>

@@ -49,7 +49,9 @@ const useStyles = makeStyles(theme => ({
     marginRight: drawerWidth
   },
   title: {
-    flexGrow: 1
+    flexGrow: 1,
+    fontWeight: 700,
+    fontSize: "xx-large"
   },
   welcome: {
     flexGrow: 1,
@@ -97,6 +99,9 @@ const useStyles = makeStyles(theme => ({
   },
   fullList: {
     width: "auto"
+  },
+  button: {
+    marginLeft: "auto"
   }
 }));
 
@@ -175,6 +180,7 @@ export default function Nav(props) {
             </Typography>
           )}
           <IconButton
+            className={classes.button}
             color="inherit"
             aria-label="open drawer"
             edge="end"

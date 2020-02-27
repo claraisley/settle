@@ -7,25 +7,30 @@ const RestartButton = styled(Button)`
   margin-top: 3rem;
 `;
 const MoodButton = styled(Button)`
-  height: 60px;
-  width: 60px;
+  width: 11vw;
 `;
 const MoodImg = styled.img`
-  height: 50px;
-  width: 50px;
+  width: 10vw;
 `;
 const MoodPaper = styled(Paper)`
   padding: 8%;
   margin: 5% auto 5% auto;
-  width: 50vw;
+  width: 75vw;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  text-align: center;
   align-items: center;
   background-color: #353c52;
 `;
 const Header = styled.h1`
   margin-bottom: 2rem;
+`;
+const MoodEmojis = styled.div`
+  @media (max-width: 480px) {
+    display: flex;
+    flex-direction: column;
+  }
 `;
 
 export default function Mood(props) {
@@ -73,7 +78,7 @@ export default function Mood(props) {
     <main className="Mood">
       <MoodPaper elevation={10}>
         <Header>How are you feeling right now?</Header>
-        <div className={moodList}>{moodList}</div>
+        <MoodEmojis>{moodList}</MoodEmojis>
         <RestartButton
           variant="contained"
           color="primary"

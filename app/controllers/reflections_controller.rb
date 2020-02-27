@@ -9,7 +9,7 @@ class ReflectionsController < ApplicationController
    #@user = User.find(1)
     # grab universal thoughts sort according to most recent 
     @thoughts = Thought.where(interest_id: nil).to_a
-    @sortedDate = @thoughts.sort_by {|thought| thought.most_recent_for(@user)}
+   #@sortedDate = @thoughts.sort_by {|thought| thought.most_recent_for(@user)}
 
    
     
@@ -28,7 +28,7 @@ class ReflectionsController < ApplicationController
     int = Integer(params[:number])
 
     # takes first section from the array, each are distinct, amount to take is sent as params
-    @sorted_thoughts = @sortedDate.first(int)
+    @sorted_thoughts = @thoughts.sample(int)
 
     # joins interest thoght to sorted thoughts
     @sampled_thoughts = @interest_thought.concat(@sorted_thoughts)
