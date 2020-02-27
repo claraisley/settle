@@ -5,6 +5,8 @@ import Paper from "@material-ui/core/Paper";
 import Card from "@material-ui/core/Card";
 import Typography from "@material-ui/core/Typography";
 import { CardActions, ButtonBase } from "@material-ui/core";
+import Button from "@material-ui/core/Button";
+import { useHistory } from "react-router-dom";
 
 const CardStart = styled(Card)`
   margin-left: 10%;
@@ -21,7 +23,6 @@ const CardActionStart = styled(CardActions)`
     text-align: center;
   }
 `;
-
 const StaticPaper2 = styled(Paper)`
   width: 90%;
   margin: 10px auto;
@@ -29,11 +30,6 @@ const StaticPaper2 = styled(Paper)`
   justify-content: center;
   align-items: center;
   padding: 1%;
-`;
-const Title = styled.h1`
-  text-align: center;
-  margin: 20px auto;
-  marfin-top: 5%;
 `;
 const Text = styled.p`
   text-align: center;
@@ -45,6 +41,26 @@ const Text = styled.p`
 const TypographyStart = styled(Typography)`
   font-size: x-large;
   font-weight: 600;
+`;
+const Title = styled.h1`
+  text-align: center;
+`;
+const BackButton = styled(Button)`
+  height: 45px;
+  width: 45px;
+`;
+const BackImg = styled.img`
+  height: 40px;
+  width: 40px;
+`;
+const StyledDiv = styled.div`
+  display: flex;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 3%;
+  margin-top: 3%;
+  align-items: center;
 `;
 
 const useStyles = makeStyles(theme => ({
@@ -74,10 +90,17 @@ const useStyles = makeStyles(theme => ({
 
 export default function Start(props) {
   const classes = useStyles();
+  const history = useHistory();
 
   return (
     <main className="start">
-      <Title>Work-Throughs</Title>
+      <StyledDiv>
+        <BackButton onClick={() => history.push("/menu")}>
+          <BackImg src="https://res.cloudinary.com/dpfixnpii/image/upload/v1582400198/arrow_xph8bj.svg" />
+        </BackButton>
+        <Title>Work-Throughs</Title>
+        <div></div>
+      </StyledDiv>
       <StaticPaper2 elevation={10}>
         <Text>
           Thoughts are the things that we say to ourselves without speaking out

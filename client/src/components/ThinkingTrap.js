@@ -48,7 +48,6 @@ const StaticPaper2 = styled(Paper)`
   align-items: center;
   padding: 1%;
 `;
-
 const Title = styled.h1`
   text-align: center;
 `;
@@ -76,9 +75,6 @@ const BackImg = styled.img`
   height: 40px;
   width: 40px;
 `;
-// const PanelHeader = styled(ExpansionPanelSummary)` // this turns the header the same yellow but it's not great
-//   background-color: #deb559;
-// `;
 
 export default function ThinkingTraps(props) {
   const classes = useStyles();

@@ -78,8 +78,6 @@ const Title = styled.h1`
 const SymptomsTitle = styled.h1`
   text-align: center;
 `;
-
-
 const BackButton = styled(Button)`
   height: 50px;
   width: 50px;
@@ -151,8 +149,6 @@ export default function WhatIs() {
     <main>
       <div className={classes.grid}>
         <Grid container spacing={3}>
-          
-          
           <Grid item sm={3} xs={6}>
           <BackButton onClick={() => { history.push("/menu")}}>
           <BackImg src="https://res.cloudinary.com/dpfixnpii/image/upload/v1582400198/arrow_xph8bj.svg" />
