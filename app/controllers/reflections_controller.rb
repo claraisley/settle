@@ -2,35 +2,35 @@ class ReflectionsController < ApplicationController
 
   def index
 
-    # send the user_id here with the get (from state)
-    # user it find the user
+  #   # send the user_id here with the get (from state)
+  #   # user it find the user
     @user = User.find(params[:id])
   
-   #@user = User.find(1)
-    # grab universal thoughts sort according to most recent 
+  #  #@user = User.find(1)
+  #   # grab universal thoughts sort according to most recent 
     @thoughts = Thought.where(interest_id: nil).to_a
-   #@sortedDate = @thoughts.sort_by {|thought| thought.most_recent_for(@user)}
+  #  #@sortedDate = @thoughts.sort_by {|thought| thought.most_recent_for(@user)}
 
    
     
 
-    # grabs the interests associated with that user and the thoughts that use that interest
+  #   # grabs the interests associated with that user and the thoughts that use that interest
     @thoughtsArray = []
     @user.interests.each do |interest|
       @thoughtsArray.concat(interest.thoughts.to_a)
     end
 
-    #samples on random interest-thought
-    @interest_thought = @thoughtsArray.sample(1)
+  #   #samples on random interest-thought
+   @interest_thought = @thoughtsArray.sample(1)
 
 
-    # makes param into integer so I can use it below
+  #   # makes param into integer so I can use it below
     int = Integer(params[:number])
 
-    # takes first section from the array, each are distinct, amount to take is sent as params
+  #   # takes first section from the array, each are distinct, amount to take is sent as params
     @sorted_thoughts = @thoughts.sample(int)
 
-    # joins interest thoght to sorted thoughts
+  #   # joins interest thoght to sorted thoughts
     @sampled_thoughts = @interest_thought.concat(@sorted_thoughts)
     
     #renders the thoughts and their responses and followups 

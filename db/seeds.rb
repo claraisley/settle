@@ -80,7 +80,7 @@ ActiveRecord::Base.transaction do
   #QUESTIONS/AKA THOUGHTS
   q1 = Thought.create!(interest: pet_interest, text: "If I mess this test up, will petName be there for me when I get home?")
   q2 = Thought.create!(interest: NIL, text: "People can tell when I am feeling anxious.")
-  q3 = Thought.create!(interest: NIL, text: "Am I 100% sure you will fail this test?")
+  q3 = Thought.create!(interest: NIL, text: "Am I 100% sure I will fail this test?")
   q4 = Thought.create!(interest: NIL, text: "Is this test a hassle or a horror for me?")
   q5 = Thought.create!(interest: NIL, text: "I always fail tests and exams.")
   q6 = Thought.create!(interest: NIL, text: "If I don't get a good mark on this test, I am going to fail the course.")
