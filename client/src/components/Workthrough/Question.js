@@ -118,7 +118,7 @@ export default function Question(props) {
         </CardQuestion>
         <CardQuestion className={classes.cards}>
           <FormControl component="fieldset" className={classes.formControl}>
-            <FormLabel component="legend"></FormLabel>
+              
             <RadioGroup
               aria-label="gender"
               name="gender1"
