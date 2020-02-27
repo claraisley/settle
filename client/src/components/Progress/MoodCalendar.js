@@ -44,12 +44,13 @@ const StyledDiv = styled.div`
 const StyledDiv2 = styled.div`
   display: flex;
   justify-content: center;
+  margin-top: 1rem;
 `;
 const StyledTitle = styled.h2`
   color: #ffd882;
 `;
 const StaticPaper = styled(Paper)`
-  margin: 0 auto 1rem auto;
+  margin: 1rem auto 1rem auto;
   background-color: #353c52;
   padding: 1%;
   display: flex;
@@ -128,6 +129,9 @@ export default function MoodCalendar(props) {
         <Title>My Mood Calendar</Title>
         <div></div>
       </StyledDiv>
+      <StaticPaper elevation={10}>
+        <Text>This calendar displays the moods you've inputted after your Work-Throughs!</Text>
+      </StaticPaper>
       {state.loading ? (
         <CenterDiv>
           <CircularProgress />
@@ -136,9 +140,6 @@ export default function MoodCalendar(props) {
           <StyledDiv2>
             {state.moods.length > 0 ? (
               <CenterDiv>
-                <StaticPaper elevation={10}>
-                  <Text>This calendar displays the moods you've inputted after your Work-Throughs!</Text>
-                </StaticPaper>
                 <StyledCalendar tileContent={tileContent} calendarType={"US"} />
               </CenterDiv>
             ) : (
