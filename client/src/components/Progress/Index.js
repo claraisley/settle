@@ -10,6 +10,9 @@ import Paper from "@material-ui/core/Paper";
 const ProgressButton = styled(Button)`
   width: 21vw;
   margin-top: 10%;
+  @media (max-width: 768px) {
+    width: 80%;
+  }
 `;
 const ProgressImg = styled.img`
   width: 20vw;
