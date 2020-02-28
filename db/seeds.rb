@@ -89,7 +89,7 @@ ActiveRecord::Base.transaction do
   q9 = Thought.create!(interest: NIL, text: "I shouldn't run out of time when doing a test.")
   q10 = Thought.create!(interest: friend_name, text: "If my mark on this test is 'bad', my teacher, friends and classmates will think I am stupid.")
   q11 = Thought.create!(interest: friend_name, text: "Will friendName still hangout with me if I mess this test up?")
-  q12 = Thought.create!(interest: sport, text: "Having text anxiety means I will never be a good student.")
+  q12 = Thought.create!(interest: sport, text: "Having test anxiety means I will never be a good student.")
   q13 = Thought.create!(interest: hobby, text: "If the worst-case scenerio happens (i.e. the test goes poorly), I won't be able to deal with it.")
 
   ###############################################################################################
