@@ -1,12 +1,14 @@
 # SETTLE
 
+## Project Members
+
+🌵 Susan Zhang, Clara Isley, Katherine Szelag
+
 ## About Us🎒
- 
 
 🌵Settle is a single page, responsive React application built with a RubyonRails API back-end. A wellness application, Settle aims to help its users manage and cope with the symptoms of Test Anxiety.     
 
-🌵Geared towards secondary-school
-students, our app aims to introduce teens to the practice of mindfulness, as well as cognitive behavioural therpay concepts. Settle is rooted in the continuing goal of empowering its users with the tools and knowledge they need to modify the dysfunctional patterns of thinking associated with anxiety. User activity is saved and used to track/display progress.
+🌵Geared towards secondary-school students, our app aims to introduce teens to the practice of mindfulness, as well as cognitive behavioural therpay concepts. Settle is rooted in the continuing goal of empowering its users with the tools and knowledge they need to modify the dysfunctional patterns of thinking associated with anxiety. User activity is saved and used to track/display progress.
 
 ## Attributions
 
@@ -19,9 +21,6 @@ The inspiration and source material for this application comes from a [Test Anxi
 ![Meditation Tracker](https://github.com/claraisley/settle/blob/master/docs/meditation-tracker.gif?raw=true)
 ![Thinking Trap Tacker](https://github.com/claraisley/settle/blob/master/docs/thinking-traps.gif?raw=true)
 ![Database ERD](https://github.com/claraisley/settle/blob/master/docs/SettleERD.png?raw=true)
-
-
-
 
 
 ## Technical Specifications

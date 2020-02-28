@@ -41,6 +41,7 @@ export default function TrapItems(props) {
     return Math.round(trap[1]);
   });
 
+
   const lookup = {
     0: "Catastrophizing",
     1: "Filtering",

@@ -16,6 +16,7 @@ class TrapDataController < ApplicationController
         dict
       end
 
+
     render json: @responses
 
   end
