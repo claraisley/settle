@@ -13,8 +13,18 @@ import Container from "@material-ui/core/Container";
 import { useHistory } from "react-router-dom";
 import Paper from "@material-ui/core/Paper";
 import KawaiiAnimation from "../backpackAnimation";
+import Dialog from "@material-ui/core/Dialog";
+import DialogActions from "@material-ui/core/DialogActions";
+import DialogContent from "@material-ui/core/DialogContent";
+import DialogContentText from "@material-ui/core/DialogContentText";
+import DialogTitle from "@material-ui/core/DialogTitle";
+import Slide from "@material-ui/core/Slide";
 
 const axios = require("axios").default;
+
+const Transition = React.forwardRef(function Transition(props, ref) {
+  return <Slide direction="up" ref={ref} {...props} />;
+});
 
 // CSS STYLED COMPONENTS
 const ContainerSignup = styled(Container)`
@@ -64,12 +74,21 @@ const useStyles = makeStyles(theme => ({
 // SIGNUP FUNCTION
 
 export default function SignUp(props) {
+  const [open, setOpen] = React.useState(false);
   let history = useHistory();
   const classes = useStyles();
 
   if (localStorage.getItem("currentUser")) {
     history.push("/menu");
   }
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   const signUserUp = () => {
     const body = {
@@ -96,6 +115,7 @@ export default function SignUp(props) {
       })
       .catch(err => {
         console.log(err);
+        handleClickOpen();
       });
   };
 
@@ -103,6 +123,29 @@ export default function SignUp(props) {
 
   return (
     <main>
+      <Dialog
+        open={open}
+        TransitionComponent={Transition}
+        keepMounted
+        onClose={handleClose}
+        aria-labelledby="alert-dialog-slide-title"
+        aria-describedby="alert-dialog-slide-description"
+      >
+        <DialogTitle id="alert-dialog-slide-title">
+          {"Signup form component"}
+        </DialogTitle>
+        <DialogContent>
+          <DialogContentText id="alert-dialog-slide-description">
+            There was a problem creating your account. Double check your email and
+            password, then try again!
+      </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose} color="primary">
+            Close
+      </Button>
+        </DialogActions>
+      </Dialog>
       <BackpackBox>
         <KawaiiAnimation />
       </BackpackBox>
@@ -170,6 +213,7 @@ export default function SignUp(props) {
                     id="password1"
                     value={inputs.password1 || ""}
                     onChange={handleInputChange}
+                    helperText="Password must be 6 characters or more"
                   />
                 </Grid>
                 <Grid item xs={12}>
