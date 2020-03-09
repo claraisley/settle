@@ -28,6 +28,7 @@ The inspiration and source material for this application comes from a [Test Anxi
 React 16.12.0
 Rails 6.0.2
 Ruby 2.7.0
+PostgreSQL
 ```
 
 ## Deployment
