@@ -40,7 +40,7 @@ module Settle
         resource '*', headers: :any, methods: [:get, :post, :options]
       end
       allow do
-        origins 'https://settle.netlify.com'
+        origins 'https://settle.netlify.app'
         resource '*', headers: :any, methods: [:get, :post, :options]
       end
     end

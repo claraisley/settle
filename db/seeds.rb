@@ -131,11 +131,11 @@ ActiveRecord::Base.transaction do
   
   #q8 responses
   r22 = Response.create!(thought: q8, thinking_trap: mind_reading, value: 2, text: "True, my teacher thinks poorly of me.")
-  r23 = Response.create!(thought: q8, thinking_trap: mind_reading, value: 0, text: "I can't say for sure what my teacher thinks of me.")
+  r23 = Response.create!(thought: q8, thinking_trap: mind_reading, value: 0, text: "I can't say for sure what my teacher thinks of me, but I think they think positively.")
   r24 = Response.create!(thought: q8, thinking_trap: mind_reading, value: 1, text: "I'm not sure but I wouldn't be surprised.")
 
   #q9 responses
-  r25 = Response.create!(thought: q9, thinking_trap: should, value: 1, text: "Ideally yes, I should finish before the times ends. ")
+  r25 = Response.create!(thought: q9, thinking_trap: should, value: 1, text: "Ideally yes, I should finish the test before the timer ends. ")
   r26 = Response.create!(thought: q9, thinking_trap: should, value: 0, text: "I will try my best to finish the test in the alloted time. ")
   r27 = Response.create!(thought: q9, thinking_trap: should, value: 4, text: "I shouldn't struggle the way I do with finishing tests in time. ")
 
@@ -147,7 +147,7 @@ ActiveRecord::Base.transaction do
   #q11 responses
   r31 = Response.create!(thought: q11, thinking_trap: catastrophizing, value: 0, text: "Yes, friendName doesn't care about that.")
   r32 = Response.create!(thought: q11, thinking_trap: catastrophizing, value: 2, text: "Yes, but I doubt I'll be in the mood to even hangout soon thanks to this test.")
-  r33 = Response.create!(thought: q11, thinking_trap: catastrophizing, value: 5, text: "No, they won't want to.")
+  r33 = Response.create!(thought: q11, thinking_trap: catastrophizing, value: 5, text: "No, friendName won't want to.")
 
   #q12 responses
   r34 = Response.create!(thought: q12, thinking_trap: black_white, value: 5, text: "True, being this anxious now means I won't ever succeed.")
